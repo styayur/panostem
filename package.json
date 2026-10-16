@@ -2,6 +2,7 @@
   "name": "stem-visual-explorer",
   "private": true,
   "version": "0.4.0-alpha.1",
+  "license": "AGPL-3.0-only",
   "type": "module",
   "engines": {
     "node": ">=22.12.0"

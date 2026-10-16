@@ -10,7 +10,7 @@
 
 [![release](https://img.shields.io/github/v/release/styayur/stem-visual-explorer)](https://github.com/styayur/stem-visual-explorer/releases/latest)
 [![CI](https://github.com/styayur/stem-visual-explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/styayur/stem-visual-explorer/actions/workflows/ci.yml)
-[![license: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
+[![license: AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
 
 ![STEM Visual Explorer search interface](docs/screenshot.png)
 
@@ -603,6 +603,6 @@ measures.
 
 ## License
 
-Licensed under the **GNU Affero General Public License v3.0** — see [LICENSE](LICENSE).
+Licensed under the **GNU Affero General Public License v3.0 only (AGPL-3.0-only)** — see [LICENSE](LICENSE).
 
 Copyright (C) 2026 Yur Stya.
