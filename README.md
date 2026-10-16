@@ -1,7 +1,3 @@
-<div align="center">
-
-<img src="docs/assets/brand/logo-mark.svg" width="84" alt="STEM Visual Explorer logo" />
-
 # STEM Visual Explorer
 
 **Visual search and comparison for mathematics and physics resources.**
@@ -15,13 +11,9 @@
 [![release](https://img.shields.io/github/v/release/styayur/stem-visual-explorer)](https://github.com/styayur/stem-visual-explorer/releases/latest)
 [![CI](https://github.com/styayur/stem-visual-explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/styayur/stem-visual-explorer/actions/workflows/ci.yml)
 [![license: AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)]()
-[![Rust](https://img.shields.io/badge/Rust-black?logo=rust&logoColor=white)]()
-[![Tauri](https://img.shields.io/badge/Tauri-24C8D8?logo=tauri&logoColor=white)]()
 
 ![STEM Visual Explorer search interface](docs/screenshot.png)
 
-</div>
 
 ## Live web version
 
@@ -31,7 +23,7 @@ A fully static build runs in the browser — no server, no API keys:
 
 The desktop app queries the sites live through Rust. The web version instead
 ships a pre-generated snapshot of every provider's index
-(`public/index/*.json`, ~1075 entries) and runs the same deterministic query
+(`public/index/*.json`, 1,079 entries) and runs the same deterministic query
 parser, synonym expander and ranking algorithm in the browser, so search is
 instant. Previously loaded indexes and their manifest are cached locally and can
 be searched without index-server access. Loading the app itself offline still
@@ -65,15 +57,21 @@ Popup windows use the same validated HTTP/HTTPS path. Viewer labels are denied
 application commands even after navigating to a local app URL. Workspace metadata
 is preserved while legacy URL-only payloads remain supported.
 
-`src/lib/concepts.json` is the single offline dictionary/graph used by TypeScript
-and Rust: stable concept IDs, English/Simplified/Traditional labels, synonyms,
-aliases, related concepts and prerequisites. Longest-term matching resolves
-multiword concepts in either language. Variants have weights original **1.0**,
-canonical **0.95**, synonym **0.9**, alternate **0.75**, related **0.35**. Expansion
-is deduplicated by concept and text; related edges are followed only once and
-prerequisites are explanatory metadata. Exact quoted phrases and source/type
-filters retain their semantics. Ranking uses weighted, capped field matches and
-stable tie-breakers, without any LLM or network normalization dependency.
+v0.3 retrieval uses one 490-concept undergraduate ontology for English, Simplified
+and Traditional Chinese search and terminology translation. Queries form concept
+groups: AND across groups, OR across direct/equivalent variants. Boundary-safe
+matching prevents `FT` from matching `left` and `rot` from matching `prototype`.
+Related/prerequisite concepts appear separately and enter results only through
+**Expand related concepts**. Scores expose field evidence; URLs are not full-text
+search fields.
+
+The Web UI shows its static snapshot date, stale status, resolved concept chips
+and evidence-based zero-result diagnostics. Snapshots carry deterministic
+semantic annotations. Weekly/manual refreshes pass provider health, retrieval,
+build and regression gates before opening an update PR. See [retrieval.md](docs/retrieval.md)
+for architecture, cache migration, benchmark methodology and limitations, and
+[the v0.3 audit](docs/audits/v0.3-report.md) for measured before/after results.
+
 
 ## Features
 
