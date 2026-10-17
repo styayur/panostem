@@ -1,7 +1,3 @@
-<div align="center">
-
-<img src="docs/assets/brand/logo-mark.svg" width="84" alt="STEM Visual Explorer logo" />
-
 # STEM Visual Explorer
 
 **面向数学与物理的概念驱动 STEM 学习工作台。**
@@ -14,14 +10,10 @@
 
 [![release](https://img.shields.io/github/v/release/styayur/stem-visual-explorer)](https://github.com/styayur/stem-visual-explorer/releases/latest)
 [![CI](https://github.com/styayur/stem-visual-explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/styayur/stem-visual-explorer/actions/workflows/ci.yml)
-[![license: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)](LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)]()
-[![Rust](https://img.shields.io/badge/Rust-black?logo=rust&logoColor=white)]()
-[![Tauri](https://img.shields.io/badge/Tauri-24C8D8?logo=tauri&logoColor=white)]()
+[![license: AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
 
 ![STEM Visual Explorer 中文界面](docs/screenshot-zh.png)
 
-</div>
 
 ## 概念工作台（0.4.0-alpha.2）
 
@@ -192,4 +184,4 @@ cargo run --no-default-features --example probe
 
 ## 许可证
 
-[GNU Affero General Public License v3.0](LICENSE)。Copyright © 2026 Yur Stya.
+[GNU Affero General Public License v3.0 only (AGPL-3.0-only)](LICENSE)。Copyright © 2026 Yur Stya.
