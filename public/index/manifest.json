@@ -5,10 +5,10 @@
     "homepage": "https://mathinsight.org/",
     "experimental": false,
     "count": 447,
-    "updated_at": "2026-10-04",
+    "updated_at": "2026-10-19",
     "file": "mathinsight.json",
     "schema_version": 2,
-    "content_hash": "af0c33cad9fbfbf2342baa45886981b7038fdeccf3450c5e99f483f22c7159b5"
+    "content_hash": "e37ee1717cd8cb2a754208beef38ae8faac5f1f5024da43706f499a291818621"
   },
   {
     "id": "falstad",
@@ -16,21 +16,21 @@
     "homepage": "https://falstad.com/mathphysics.html",
     "experimental": false,
     "count": 85,
-    "updated_at": "2026-10-04",
+    "updated_at": "2026-10-19",
     "file": "falstad.json",
     "schema_version": 2,
-    "content_hash": "e4eff0bec058fb10feeeedf49c7c8a459215cef0f2e20ff6d22f07a8623194d7"
+    "content_hash": "62fbc8a5e72ac4650c67bfbaf0f9adcc4ecba0b92ffcb98c883de26a9f759a63"
   },
   {
     "id": "phet",
     "name": "PhET",
     "homepage": "https://phet.colorado.edu/",
     "experimental": false,
-    "count": 120,
-    "updated_at": "2026-10-04",
+    "count": 122,
+    "updated_at": "2026-10-19",
     "file": "phet.json",
     "schema_version": 2,
-    "content_hash": "7fd0f6af59b960678c063eb2797247e310437cd21417e71aa48965431b02c225"
+    "content_hash": "9cdd99eeaf1b6115110ab790034f06c76bd4d3b17022ac7c8f6445387cb0f877"
   },
   {
     "id": "betterexplained",
@@ -38,32 +38,32 @@
     "homepage": "https://betterexplained.com/",
     "experimental": false,
     "count": 144,
-    "updated_at": "2026-10-04",
+    "updated_at": "2026-10-19",
     "file": "betterexplained.json",
     "schema_version": 2,
-    "content_hash": "5dedb27a7fb84654c929f848d01cf8c7d630183fa7157bc4738e06bf57ebb4ef"
+    "content_hash": "0513bfe62d2ac47b8f605d2c41ad54c10ea0cf94f6be4567d8315ecef8212bcd"
   },
   {
     "id": "physicsfundamentals",
     "name": "Physics Fundamentals",
     "homepage": "https://physicsfundamentalsinfo.com/labs/",
     "experimental": false,
-    "count": 138,
-    "updated_at": "2026-10-04",
+    "count": 146,
+    "updated_at": "2026-10-19",
     "file": "physicsfundamentals.json",
     "schema_version": 2,
-    "content_hash": "62a204170cc5f1fab4f06e80b0a756bfe8f48fe6e392be45ba656da39e6675c7"
+    "content_hash": "0e4f8842e132fc130e4313f61b1eec4b8fb76e636125169e444295cd4a73cb36"
   },
   {
     "id": "physicstuff",
     "name": "PhysicStuff",
     "homepage": "https://physicstuff.com/lab",
     "experimental": true,
-    "count": 52,
-    "updated_at": "2026-10-04",
+    "count": 56,
+    "updated_at": "2026-10-19",
     "file": "physicstuff.json",
     "schema_version": 2,
-    "content_hash": "816f949ce9bd2429caf1a6441f266dbd62734265fd482a8ee79a0340f123c875"
+    "content_hash": "2045190a285e2a7c3f3fe3d5ff6ff53e1c55235861d0d3a55fe52c001f6e12bc"
   },
   {
     "id": "maotian",
@@ -71,9 +71,9 @@
     "homepage": "https://maotian.nomaki.jp/",
     "experimental": true,
     "count": 93,
-    "updated_at": "2026-10-04",
+    "updated_at": "2026-10-19",
     "file": "maotian.json",
     "schema_version": 2,
-    "content_hash": "9a8785f99377f95324c9c91b10c0dbe05f55bf61762b01bc43caa74cd788cdeb"
+    "content_hash": "05a59f4b5ae2b50e8f922ea6d8d32ca8b811f26a2c76edb9e5827dcf49d610c3"
   }
 ]

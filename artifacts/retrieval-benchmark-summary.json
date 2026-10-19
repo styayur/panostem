@@ -43,10 +43,10 @@
   "current": {
     "concept_resolution_accuracy": 1,
     "cross_language_concept_parity": 1,
-    "cross_language_top10_overlap": 0.5075268817204301,
+    "cross_language_top10_overlap": 0.5118279569892473,
     "concept_recall": 1,
-    "zero_result_queries": 687,
-    "zero_result_rate": 0.4924731182795699,
+    "zero_result_queries": 681,
+    "zero_result_rate": 0.4881720430107527,
     "query_count": 1395,
     "cross_language_top10_overlap_when_available": 1,
     "precision_at_5": 0.44999999999999996,
@@ -2903,21 +2903,39 @@
           "query": "quantum tunneling",
           "precision_at_5": 0,
           "precision_at_10": 0,
-          "judged_top10": []
+          "judged_top10": [
+            {
+              "title": "Alpha Decay",
+              "url": "https://phet.colorado.edu/en/simulations/alpha-decay",
+              "relevant": false
+            }
+          ]
         },
         {
           "language": "zh-CN",
           "query": "量子隧穿",
           "precision_at_5": 0,
           "precision_at_10": 0,
-          "judged_top10": []
+          "judged_top10": [
+            {
+              "title": "Alpha Decay",
+              "url": "https://phet.colorado.edu/en/simulations/alpha-decay",
+              "relevant": false
+            }
+          ]
         },
         {
           "language": "zh-TW",
           "query": "量子穿隧",
           "precision_at_5": 0,
           "precision_at_10": 0,
-          "judged_top10": []
+          "judged_top10": [
+            {
+              "title": "Alpha Decay",
+              "url": "https://phet.colorado.edu/en/simulations/alpha-decay",
+              "relevant": false
+            }
+          ]
         }
       ],
       "precision_at_5": 0,
