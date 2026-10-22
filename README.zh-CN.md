@@ -1,8 +1,8 @@
 # STEM Visual Explorer
 
-**面向数学与物理的概念驱动 STEM 学习工作台。**
+面向数学与物理的概念驱动 STEM 学习工作台。
 
-**Status:** 🟡 Alpha (0.4.0-alpha.2)
+**状态：** Alpha。当前源码为 0.4.0-alpha.2，最新正式 Windows Release 仍为 v0.2.0；源码中的工作台与检索升级不能被视为已包含在该下载包中。
 
 [Web 应用](https://styayur.github.io/stem-visual-explorer/) · [Windows](https://github.com/styayur/stem-visual-explorer/releases/latest) · [文档](docs/architecture.md) · [Releases](https://github.com/styayur/stem-visual-explorer/releases) · [Discussions](https://github.com/styayur/stem-visual-explorer/discussions)
 
@@ -12,8 +12,9 @@
 [![CI](https://github.com/styayur/stem-visual-explorer/actions/workflows/ci.yml/badge.svg)](https://github.com/styayur/stem-visual-explorer/actions/workflows/ci.yml)
 [![license: AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
 
-![STEM Visual Explorer 中文界面](docs/screenshot-zh.png)
+![STEM Visual Explorer 既有中文搜索界面截图](docs/screenshot-zh.png)
 
+保留的实际搜索截图不代表本次新捕获，也不证明所有外站当前可用。
 
 ## 概念工作台（0.4.0-alpha.2）
 
@@ -52,7 +53,7 @@
 | [PhysicStuff](https://physicstuff.com/lab) | 物理交互实验，实验性适配 |
 | [猫田の物理](https://maotian.nomaki.jp/) | 物理可视化，实验性适配 |
 
-网页版使用随项目发布的索引快照，目前约 **1,075 条**；桌面版通过 Rust 获取来源索引，并在适用时使用站点原生搜索。桌面索引缓存有效期为七天，自动刷新失败时继续使用可用旧缓存，手动刷新会报告失败。
+网页版使用随项目发布的索引快照，当前提交为 **1,079 条**（已逐项核对 manifest 与七个索引文件）；桌面版通过 Rust 获取来源索引，并在适用时使用站点原生搜索。桌面索引缓存有效期为七天，自动刷新失败时继续使用可用旧缓存，手动刷新会报告失败。
 
 ## 搜索示例
 
@@ -64,7 +65,7 @@
 | `source:phet` | 浏览指定来源的索引 |
 | `type:interactive gradient` | 限定内容类型 |
 
-点击结果打开预览；双击或 `Ctrl/Cmd + Enter` 打开独立窗口。`Ctrl/Cmd + K` 聚焦搜索，方向键选择，空格打开 Quick Look，`Esc` 关闭弹层。各结果旁的工作区按钮可切换选中状态。
+点击结果打开预览；双击或 `Ctrl/Cmd + Enter` 打开独立窗口。`Ctrl/Cmd + K` 打开命令面板，`Ctrl/Cmd + L` 聚焦搜索，方向键选择，空格打开 Quick Look，`Esc` 关闭弹层。各结果旁的工作区按钮可切换选中状态。
 
 ## 网页版与桌面版
 
@@ -111,7 +112,6 @@
 
 共有 465 个 benchmark case、1,395 个三语查询、36 组人工直接相关标题规则及 41 个 TS/Rust 共享 golden case。周更工作流必须通过来源健康、检索质量、构建、浏览器和 Rust 回归，才创建索引更新 PR。详见 [检索架构与验证方法](docs/retrieval.md)。
 
-
 ## 本地开发
 
 技术栈：React 18、TypeScript、Vite 8、Tailwind CSS、Zustand、Tauri 2、Rust、SQLite。
@@ -119,6 +119,8 @@
 要求：**Node.js 22.12+**、npm；桌面开发另需 Rust、WebView2 及 Windows C++ 构建工具链。通常可使用 Visual Studio C++ Build Tools 与 Windows SDK；GNU 工具链需配套 MinGW 资源工具。
 
 ```bash
+git clone https://github.com/styayur/stem-visual-explorer.git
+cd stem-visual-explorer
 npm ci
 npm run dev             # 前端开发服务，端口 1420
 npm run tauri dev       # 桌面开发
