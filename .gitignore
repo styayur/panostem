@@ -1,5 +1,8 @@
 # dependencies
 node_modules
+.panostem-runtime/
+__pycache__/
+.venv/
 # build output
 dist
 dist-ssr

@@ -110,7 +110,7 @@ const en: Dict = {
   "settings.cacheNote": "Cached indexes are stored locally only.",
   "settings.about": "About",
   "settings.aboutText":
-    "STEM Visual Explorer is a deterministic local search client. It performs no AI ranking, requires no account, sends no telemetry and never talks to a cloud database. Network requests go directly to the source websites you search.",
+    "Panostem is a deterministic local search client. It performs no AI ranking, requires no account, sends no telemetry and never talks to a cloud database. Network requests go directly to the source websites you search.",
   "settings.license": "Licensed under the GNU Affero General Public License v3.0.",
 
   "settings.translation": "Language & translation",
@@ -236,7 +236,7 @@ const zhCN: Dict = {
   "settings.cacheNote": "索引缓存仅保存在本地。",
   "settings.about": "关于",
   "settings.aboutText":
-    "STEM Visual Explorer 是一个确定性的本地搜索客户端：不做 AI 排序、无需登录、不上报遥测、也不使用云数据库。网络请求直接发往你搜索的来源网站。",
+    "Panostem 是一个确定性的本地搜索客户端：不做 AI 排序、无需登录、不上报遥测、也不使用云数据库。网络请求直接发往你搜索的来源网站。",
   "settings.license": "本项目基于 GNU Affero 通用公共许可证 v3.0 发布。",
 
   "settings.translation": "语言与翻译",
@@ -362,7 +362,7 @@ const zhTW: Dict = {
   "settings.cacheNote": "索引快取僅保存在本機。",
   "settings.about": "關於",
   "settings.aboutText":
-    "STEM Visual Explorer 是確定性的本機搜尋客戶端：不做 AI 排序、無需登入、不回傳遙測、也不使用雲端資料庫。網路請求直接送往你搜尋的來源網站。",
+    "Panostem 是確定性的本機搜尋客戶端：不做 AI 排序、無需登入、不回傳遙測、也不使用雲端資料庫。網路請求直接送往你搜尋的來源網站。",
   "settings.license": "本專案採用 GNU Affero 通用公共授權條款 v3.0 發布。",
 
   "settings.translation": "語言與翻譯",

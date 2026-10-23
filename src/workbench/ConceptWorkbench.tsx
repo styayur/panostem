@@ -21,11 +21,14 @@ import { projectGraph } from "./graph";
 import { availableSurfaces } from "./surfaces";
 import WorkbenchInspector from "./WorkbenchInspector";
 import "./workbench.css";
+import { useSceneRegistry } from "../studio/registry";
+import { studioText } from "../studio/uiText";
 
 export default function ConceptWorkbench({ onClose }: { onClose: () => void }) {
   const { session, open, surface, select, visit, setPalette, setLesson } =
     useWorkbenchStore();
   const locale = useSettingsStore((s) => s.settings.ui_locale);
+  const linkedScenes = useSceneRegistry(s => s.scenes).filter(scene => scene.concept_ids.includes(session!.conceptId));
   const [resources, setResources] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(true),
     [errors, setErrors] = useState<string[]>([]);
@@ -148,6 +151,7 @@ export default function ConceptWorkbench({ onClose }: { onClose: () => void }) {
           </h1>
         </div>
         <div className="wb-header-actions">
+          {linkedScenes.length > 0 && <button onClick={() => { useSettingsStore.getState().setPage("studio"); onClose(); }}>{localize(studioText.studio,locale)} ({linkedScenes.length})</button>}
           <button onClick={onClose}>{t("close")}</button>
           <button onClick={() => setPalette(true)} aria-label={t("palette")}>
             Ctrl+K

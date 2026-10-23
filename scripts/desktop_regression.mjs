@@ -182,6 +182,10 @@ try {
   await main.screenshot({ path: "dist-release/audit-native.png" });
   ok("URL validation, workspace bounds, cache clearing and settings persistence");
   process.stdout.write(`DESKTOP REGRESSION: ${checks} groups passed on WebView2\n`);
+} catch (error) {
+  await main?.screenshot({path:"artifacts/desktop-failure.png"}).catch(()=>{});
+  console.error(await main?.locator("body").innerText().catch(()=>"No main page"));
+  throw error;
 } finally {
   if (verifiedProfile) {
     for (const label of children) { try { await invoke("close_window", { label }); } catch { /* already closed */ } }

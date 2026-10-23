@@ -36,7 +36,7 @@ Date: 2026-10-24. This is a plan, not a claim of completion.
 
 - OpenGL driver/headless context differences: real Windows rendering is required;
   Linux CI uses Xvfb/Mesa; macOS is experimental until independently verified.
-- Upstream 1.7.2 supports Python >=3.9 at its tagged setup.cfg; use 3.11.14 rather
+- The tagged setup.cfg has no python_requires field; use tested Python 3.11.14 rather
   than the host's 3.14 to maximize binary-wheel availability. Current master has
   different requirements and is not the runtime API contract.
 - Native LaTeX is optional and large. Detect latex/dvisvgm and report missing

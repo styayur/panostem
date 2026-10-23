@@ -1,0 +1,6 @@
+# Immutable upstream ManimGL v1.7.2 tag; tagged setup.cfg reports 1.7.1.
+manimgl @ https://github.com/3b1b/manim/archive/f427fc67df75513be0cd3f3329e327a9a19401c3.tar.gz
+imageio-ffmpeg==0.6.0
+setuptools==80.9.0
+wheel==0.45.1
+

@@ -1,0 +1,20 @@
+{
+  "PyOpenGL": {
+    "version": "3.1.10",
+    "source": "https://files.pythonhosted.org/packages/6f/16/912b7225d56284859cd9a672827f18be43f8012f8b7b932bc4bd959a298e/pyopengl-3.1.10.tar.gz",
+    "sha256": "c4a02d6866b54eb119c8e9b3fb04fa835a95ab802dd96607ab4cdb0012df8335",
+    "license_files": [
+      "pyopengl-3.1.10/OpenGL/DLLS/freeglut_COPYING.txt",
+      "pyopengl-3.1.10/OpenGL/DLLS/gle_COPYING",
+      "pyopengl-3.1.10/OpenGL/DLLS/gle_COPYING.src",
+      "pyopengl-3.1.10/license.txt"
+    ]
+  },
+  "FFmpeg": {
+    "binary": "imageio-ffmpeg 0.6.0 Windows wheel: ffmpeg 7.1-essentials_build-www.gyan.dev",
+    "license": "GPL-3.0-or-later",
+    "source": "https://github.com/FFmpeg/FFmpeg/tree/n7.1",
+    "build_provider": "https://www.gyan.dev/ffmpeg/builds/",
+    "license_text_sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+  }
+}

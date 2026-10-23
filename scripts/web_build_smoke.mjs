@@ -1,3 +1,4 @@
+import { studioRegression } from "./studio_browser_regression.mjs";
 // Checks the actual Pages build at its deployed subpath, without Vite source imports.
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
@@ -6,7 +7,7 @@ import { visualLearningRegression } from "./visual_learning_regression.mjs";
 import { workbenchRegression } from "./workbench_regression.mjs";
 import { checkVisualBundle } from "./visual_bundle_security.mjs";
 
-const base = "http://127.0.0.1:1422/stem-visual-explorer/";
+const base = "http://127.0.0.1:1422/panostem/";
 const server = spawn(process.execPath, ["node_modules/vite/bin/vite.js", "preview", "--mode", "web", "--host", "127.0.0.1", "--port", "1422", "--strictPort"], { stdio: "pipe" });
 let browser;
 try {
@@ -39,5 +40,6 @@ try {
   await visualLearningRegression(browser, base);
   await workbenchRegression(browser,base);
   await checkVisualBundle();
+  await studioRegression(browser,base);
   process.stdout.write("PAGES BUILD: search, index URLs and workspace navigation passed\n");
 } finally { await browser?.close(); server.kill(); }

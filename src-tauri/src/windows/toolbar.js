@@ -118,7 +118,7 @@
     bar.id = 'sve-toolbar';
     bar.setAttribute('data-sve', 'toolbar');
     bar.setAttribute('role', 'toolbar');
-    bar.setAttribute('aria-label', 'STEM Visual Explorer browser controls');
+    bar.setAttribute('aria-label', 'Panostem browser controls');
     bar.style.cssText = 'position:fixed;top:10px;right:10px;z-index:2147483647;display:flex;gap:2px;background:rgba(18,20,25,.9);border:1px solid #555;border-radius:8px;padding:3px;font:12px/1 system-ui;color:#e5e7eb;box-shadow:0 4px 16px #0005';
     function add(label, title, action) {
       const button = document.createElement('button');
