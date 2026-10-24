@@ -3,10 +3,10 @@
 ## Status and source
 
 This is the new alpha.2 audit, separate from the immutable alpha.1 publication
-record. At implementation review, publication is pending protected PR/merge,
-exact-source checks and asset verification. The post-publication appendix will
-record actual identifiers/results; this section does not claim a planned release
-has already shipped.
+record. Implementation, protected merge, exact-source checks, publication and independent
+asset verification are complete. The publication appendix records actual results,
+with a final follow-up on 2026-10-25. The earlier sections retain the implementation
+checkpoint and its explicit unavailable-test limitations.
 
 Verified baseline: main `7eba670619587842b25ab15b544d421035501c0e`, alpha.1 tag
 `cad3dd2e0da378794278b5436fbdeeb62389be2e`. Work started from a clean existing
@@ -206,6 +206,127 @@ its upstream idle-refresh limitation. The app's local share export does not uplo
 content or create a public URL. Old releases/tags/assets and earlier audit text were
 not rewritten; no unrelated repositories or DNS were changed.
 
-## Publication appendix
+## Publication appendix — verified 2026-10-25
 
-Pending protected merge, exact-source CI, immutable tag and actual asset verification.
+Implementation [PR #36](https://github.com/styayur/panostem/pull/36) was squash-merged
+on 2026-10-24T12:39:02Z. Release source and immutable tag **v0.5.0-alpha.2** both
+resolve to **`d9870a061c9b5a89d0d0ee7a128ba95c63292d75`**. The tag was created only after the merged
+commit's checks completed successfully; the original main/tag remains unchanged.
+The [Windows prerelease](https://github.com/styayur/panostem/releases/tag/v0.5.0-alpha.2) was published at **2026-10-24T12:52:07Z**
+by [Release Windows](https://github.com/styayur/panostem/actions/runs/40095296485)
+([successful job](https://github.com/styayur/panostem/actions/runs/40095296485/job/120876134317)).
+This follow-up records publication facts without replacing that tag, installer or ZIP.
+
+### Exact-source checks before tagging
+
+Every following result belongs to the release source SHA above, not an earlier PR
+commit. Main CodeForge now runs on pushes as well as PRs. The four default CodeQL
+analyses each reported **0 results, no analysis error**. The PR's additional URL
+substring finding in a test was corrected to exact parsed-origin comparison; its
+outdated review thread was automatically resolved, with no suppression/baseline change.
+
+| Check | Conclusion |
+| --- | --- |
+| [Deploy to GitHub Pages](https://github.com/styayur/panostem/actions/runs/40094805712/job/120874788400) | success |
+| [Analyze (actions)](https://github.com/styayur/panostem/actions/runs/40094805801/job/120874714409) | success |
+| [Analyze (rust)](https://github.com/styayur/panostem/actions/runs/40094805801/job/120874714395) | success |
+| [Analyze (javascript-typescript)](https://github.com/styayur/panostem/actions/runs/40094805801/job/120874714345) | success |
+| [Analyze (python)](https://github.com/styayur/panostem/actions/runs/40094805801/job/120874714205) | success |
+| [Windows desktop compile](https://github.com/styayur/panostem/actions/runs/40094805652/job/120874710779) | success |
+| [ManimGL real OpenGL render](https://github.com/styayur/panostem/actions/runs/40094805652/job/120874710778) | success |
+| [Build static site](https://github.com/styayur/panostem/actions/runs/40094805712/job/120874710643) | success |
+| [Runtime contracts (windows-latest)](https://github.com/styayur/panostem/actions/runs/40094805652/job/120874710638) | success |
+| [Retrieval quality and TS/Rust parity](https://github.com/styayur/panostem/actions/runs/40094805652/job/120874710624) | success |
+| [Frontend (type-check + build)](https://github.com/styayur/panostem/actions/runs/40094805652/job/120874710615) | success |
+| [Runtime contracts (ubuntu-latest)](https://github.com/styayur/panostem/actions/runs/40094805652/job/120874710604) | success |
+| [Runtime contracts (macos-latest)](https://github.com/styayur/panostem/actions/runs/40094805652/job/120874710599) | success |
+| [CodeForge regression](https://github.com/styayur/panostem/actions/runs/40094805657/job/120874710581) | success |
+| [Core logic (Rust tests + clippy)](https://github.com/styayur/panostem/actions/runs/40094805652/job/120874710444) | success |
+
+### Actual published bytes
+
+All three files were downloaded from the published release. Their byte sizes and
+full SHA-256 match GitHub asset digests; the two package hashes also match the
+published manifest. Subsequent public release/asset HTTP requests returned **200**.
+No local binary was substituted and no asset was overwritten.
+
+| Published asset | Bytes | SHA-256 |
+| --- | ---: | --- |
+| [panostem_0.5.0-alpha.2_windows-x64.zip](https://github.com/styayur/panostem/releases/download/v0.5.0-alpha.2/panostem_0.5.0-alpha.2_windows-x64.zip) | 8,151,571 | `41b500c79f557c5dcdacc107437387dc216cd41f29ac8c55184db2a4eb1cd9e2` |
+| [panostem_0.5.0-alpha.2_x64-setup.exe](https://github.com/styayur/panostem/releases/download/v0.5.0-alpha.2/panostem_0.5.0-alpha.2_x64-setup.exe) | 4,411,785 | `fb2b31e92b8cdce576dd57015efd7f1289c020cd599a8e537c6a01aa4a4e99dc` |
+| [SHA256SUMS.txt](https://github.com/styayur/panostem/releases/download/v0.5.0-alpha.2/SHA256SUMS.txt) | 210 | `b45a04e91e13216817b766a1614fc47084b0e4369a69004f3b37513669e7d6c6` |
+
+Portable ZIP inspection found **75 entries**, including the
+actual executable, bilingual READMEs, AGPL license, third-party notices/license
+inventory, design system, release checklist and guides/captures. Archive paths
+were checked for traversal and generated runtime/node_modules/target/git content.
+The release's included documentation was compared with the immutable tag's bytes.
+
+Both actual portable and read-only NSIS-extracted executables independently passed
+unchanged `scripts/verify_binary.py`: product **Panostem**, version/app_version
+**0.5.0-alpha.2**, identifier **org.stemvisualexplorer.app**, pinned ManimGL commit
+**f427fc67df75513be0cd3f3329e327a9a19401c3**, controller SHA-256
+`cf450b29e7569fdab11dc20c6e12f4059b1eda84d17daa9d6feadd0ffed17b64` and requirements SHA-256
+`68ac4c912c0241dfc91479038c6ce5c7293a9b63e4ed88413a31a1925f3fae54` match the tagged sources.
+Windows PE product/file versions also report 0.5.0-alpha.2. Authenticode returns
+**NotSigned** for the actual setup and portable executable; no signing claim is made.
+
+Each embedded program is **8,996,352 bytes**. Portable executable
+SHA-256: `085a566e2b2344b22de66d9ce94b854809880934e566f077cf85d9e16af529b4`. NSIS program SHA-256:
+`6710cd283d8b5995d759e81012574019800befa919ba69344655e2c930928086`. An initial byte-equality check found
+**exactly three differing bytes**. Investigation confirmed the upstream bundler's
+single `__TAURI_BUNDLE_TYPE_VAR_UNK` → `__TAURI_BUNDLE_TYPE_VAR_NSS` replacement:
+[Tauri's patch/restore implementation](https://github.com/tauri-apps/tauri/blob/tauri-cli-v2.12.2/crates/tauri-bundler/src/bundle.rs).
+The full binary comparison passes after precisely that one expected replacement,
+with no other byte difference. This is documented packaging metadata, not an
+unexplained source mismatch; the original identity/source-hash assertions were
+retained for **both** programs. NSIS extraction is not installation-lifecycle proof.
+
+### Production native and deployed Web follow-up
+
+A separate audit-identifier build with **embedded production assets** at
+`http://tauri.localhost/` passed real IPC, revision-2 rendering and video decode/player
+checks against the fresh runtime. The actual native header contains Falstad
+frame-src restrictions and Tauri's hashed script-src policy. An off-origin 302
+was blocked by the parent CSP. The harness used direct polling after CSP correctly
+rejected its eval-based string wait; the policy was not weakened. This additional
+native check still uses the audit app identity, not the primary user's app profile.
+
+[Pages deployment](https://github.com/styayur/panostem/actions/runs/40094805712)
+for deployment ID **7298715694** records source `d9870a061c9b5a89d0d0ee7a128ba95c63292d75` and success.
+The actual public app passed search/settings/dark/390px source-filter operations,
+all guided lessons/24 states/three locales, Workbench and Studio real video seek,
+source opt-in, share download/re-import and corrupt-package rejection. External
+textbook/provider pages in the extended lesson suites remain declared fixtures;
+application assets, index data, computation, videos and downloaded shares are real.
+A separate post-publication browser recheck again passed search and oscillator
+playback and found no Python render controls in Web.
+
+Observed Web entry: `https://styayur.github.io/panostem/assets/index-DQsNySRW.js` (407,509 bytes), SHA-256
+`04876d23d0034b03cbfe3c28b95d1c015d994fcf618004401860b5875ff618e4`. Final HTTP: canonical Pages **200**, historical Pages
+**404 without redirect**, old repository/release links follow to Panostem with **200**.
+The old-name repo/personal site/DNS were not modified.
+
+### Final security and validation disposition
+
+- CodeQL **#4 fixed automatically**, API fixed_at 2026-10-24T12:39:59Z, following
+  actual main analysis. No dismissal or security-policy relaxation was needed.
+- PostCSS **#3 now fixed** in the final platform recheck (API fixed_at
+  2026-10-24T09:16:28Z), after the earlier documented stale-alert dismissal. The
+  transitive graph remains patched 7.1.7; this report does not attribute the platform
+  refresh to an unperformed dependency upgrade. Source-map-js #4 remains fixed.
+- Dependabot **#1 glib 0.18.5 remains open** for the experimental Linux chain;
+  Windows is independently verified and no non-Windows release was published.
+- The reproduced fingerprint and ordinary captured-source/requirements races are
+  fixed and tested. Normal trusted Python retains OS permissions; no sandbox claim.
+- Full installer clean/old→new/registry/shortcuts/uninstall/reinstall/recovery and
+  external-project preservation lifecycle remains **UNAVAILABLE / NOT VERIFIED**,
+  for the precise host limitation above. Actual package/PE/source verification is
+  complete. The conservative migration policy and unsigned/no-updater statements stand.
+- Design-system, release-checklist, migration/security/architecture/ManimGL docs and
+  EN/简体 README updates are included. Actual screenshots are indexed separately;
+  the documentation follow-up clarifies the genuine 1440×1400 native E2E capture.
+- Alpha.1 tag `cad3dd2e0da378794278b5436fbdeeb62389be2e` and its existing
+  asset IDs/digests remain unchanged. Earlier audits were not rewritten. Unrelated
+  repositories, personal site and DNS were untouched. Generated verification files
+  remain ignored; the final main/worktree state is reported after this docs PR merges.

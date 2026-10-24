@@ -30,6 +30,8 @@ to its top, while the playback/task captures scroll the main workspace downward.
 Native file-picker text follows the host's Windows language.
 
 No primary-user project/data, generated mockup or image-generation tool was used.
-`docs/studio-web.png` and `docs/studio-desktop.png` are copies of representative
-after captures. The 18-combination regression retains additional screenshots only
+`docs/studio-web.png` copies the after playback view. `docs/studio-desktop.png`
+is the actual 1440×1400 native E2E capture, taken after exact editor-save verification
+and real oscillator playback; the directly comparable native editor capture above
+remains 1440×900. The 18-combination regression retains additional screenshots only
 under ignored `artifacts/design/`; screenshots are not production Web assets.

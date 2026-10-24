@@ -8,7 +8,7 @@
 [![Release](https://img.shields.io/github/v/release/styayur/panostem?include_prereleases)](https://github.com/styayur/panostem/releases)
 [![AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
 
-**Alpha。** 本源码面向预发布版本 **[v0.5.0-alpha.2](https://github.com/styayur/panostem/releases/tag/v0.5.0-alpha.2)**，ManimGL 集成仍属实验阶段。历史最新稳定 Windows 版本为 [v0.2.0](https://github.com/styayur/panostem/releases/tag/v0.2.0)，不包含此后新增的创作室与引导课程。实际测试、资产和部署状态见[交付审计](docs/audits/panostem-alpha2-20261024.md)。
+**Alpha。** 当前预发布版本为 **[v0.5.0-alpha.2](https://github.com/styayur/panostem/releases/tag/v0.5.0-alpha.2)**，ManimGL 集成仍属实验阶段。历史最新稳定 Windows 版本为 [v0.2.0](https://github.com/styayur/panostem/releases/tag/v0.2.0)，不包含此后新增的创作室与引导课程。实际测试、资产和部署状态见[交付审计](docs/audits/panostem-alpha2-20261024.md)。
 
 ![Panostem 网页版播放真实 ManimGL 视频的实际截图](docs/studio-web.png)
 
