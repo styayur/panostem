@@ -122,9 +122,17 @@ User content and third-party textbooks/assets are not automatically relicensed.
 
 ## Publication record
 
-The intended repository is [styayur/panostem](https://github.com/styayur/panostem),
-the intended alpha release is [v0.5.0-alpha.1](https://github.com/styayur/panostem/releases/tag/v0.5.0-alpha.1),
-and the new static path is [Panostem Pages](https://styayur.github.io/panostem/).
-These are targets in the pre-publication source audit. Final PR/merge/tag, deployed
-HTTP checks and actual per-asset SHA-256 are supplied by the completed release
-report; this audit does not manufacture a success state or placeholder release.
+The protected implementation [PR #33](https://github.com/styayur/panostem/pull/33)
+was squash-merged at `cad3dd2e0da378794278b5436fbdeeb62389be2e`.
+The repository is now [styayur/panostem](https://github.com/styayur/panostem),
+and [v0.5.0-alpha.1](https://github.com/styayur/panostem/releases/tag/v0.5.0-alpha.1)
+is a published Windows x64 prerelease with verified installer/portable assets and
+SHA256SUMS. [Panostem Pages](https://styayur.github.io/panostem/) is deployed and its
+live playback/share regression passed. Old GitHub repository/release links redirect;
+the old Pages path returns 404. No other repository or DNS was changed.
+
+The [final publication report](panostem-publication-20261024.md) records exact asset
+hashes, release-source CI, source checkout line-ending verification, existing
+security alerts and unverified platform/sandbox/upgrade limits. Publication
+follow-up fixes runtime checkout line endings for future builds; it does not
+rewrite the published tag or assets.

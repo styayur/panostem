@@ -8,7 +8,7 @@ A concept-driven STEM learning environment with native ManimGL authoring and ren
 [![Release](https://img.shields.io/github/v/release/styayur/panostem?include_prereleases)](https://github.com/styayur/panostem/releases)
 [![AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
 
-**Alpha.** Source version: **0.5.0-alpha.1**. ManimGL integration is experimental. The latest historical stable Windows release is [v0.2.0](https://github.com/styayur/panostem/releases/tag/v0.2.0), which predates Studio and guided lessons. The [delivery audit](docs/audits/panostem-delivery.md) records actual verification, release assets and deployment status.
+**Alpha.** Current prerelease: **[v0.5.0-alpha.1](https://github.com/styayur/panostem/releases/tag/v0.5.0-alpha.1)**. ManimGL integration is experimental. The latest historical stable Windows release is [v0.2.0](https://github.com/styayur/panostem/releases/tag/v0.2.0), which predates Studio and guided lessons. The [delivery audit](docs/audits/panostem-delivery.md) records actual verification, release assets and deployment status.
 
 ![Actual Panostem Web playback of a real ManimGL render](docs/studio-web.png)
 
@@ -53,7 +53,7 @@ The engines remain independent. Existing concept IDs are authoritative; scene me
 
 ## Install and use
 
-Download an actual Windows installer or portable ZIP from [Releases](https://github.com/styayur/panostem/releases). Compare its full SHA-256 with that release's `SHA256SUMS.txt` before running. Asset names are `panostem_<version>_x64-setup.exe` and `panostem_<version>_windows-x64.zip`. Extract portable files completely. WebView2 is required; the installer handles a missing runtime according to its configuration, while portable use needs an existing runtime. Packages are not code-signed.
+Download an actual Windows installer or portable ZIP from [Releases](https://github.com/styayur/panostem/releases). Compare its full SHA-256 with that release's [SHA256SUMS.txt](https://github.com/styayur/panostem/releases/download/v0.5.0-alpha.1/SHA256SUMS.txt) before running. Asset names are `panostem_<version>_x64-setup.exe` and `panostem_<version>_windows-x64.zip`. Extract portable files completely. WebView2 is required; the installer handles a missing runtime according to its configuration, while portable use needs an existing runtime. Packages are not code-signed.
 
 Windows 11 x64 is the primary verified target. Linux/macOS remain experimental without native release claims. In **ManimGL Studio**, authorize **Install / repair runtime**, then **Check environment**. Setup manages CPython **3.11.14**, uv **0.13.5** and ManimGL upstream **v1.7.2**, commit `f427fc67df75513be0cd3f3329e327a9a19401c3`. The tag's package/banner says 1.7.1; the immutable source commit identifies this runtime. Dependencies are hash-locked.
 

@@ -8,7 +8,7 @@
 [![Release](https://img.shields.io/github/v/release/styayur/panostem?include_prereleases)](https://github.com/styayur/panostem/releases)
 [![AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
 
-**Alpha。** 当前源码版本为 **0.5.0-alpha.1**，ManimGL 集成仍属实验阶段。历史最新稳定 Windows 版本为 [v0.2.0](https://github.com/styayur/panostem/releases/tag/v0.2.0)，不包含此后新增的创作室与引导课程。实际测试、资产和部署状态见[交付审计](docs/audits/panostem-delivery.md)。
+**Alpha。** 当前预发布版本为 **[v0.5.0-alpha.1](https://github.com/styayur/panostem/releases/tag/v0.5.0-alpha.1)**，ManimGL 集成仍属实验阶段。历史最新稳定 Windows 版本为 [v0.2.0](https://github.com/styayur/panostem/releases/tag/v0.2.0)，不包含此后新增的创作室与引导课程。实际测试、资产和部署状态见[交付审计](docs/audits/panostem-delivery.md)。
 
 ![Panostem 网页版播放真实 ManimGL 视频的实际截图](docs/studio-web.png)
 
@@ -53,7 +53,7 @@ flowchart LR
 
 ## 安装与使用
 
-从 [Releases](https://github.com/styayur/panostem/releases) 下载实际存在的 Windows 安装器或便携 ZIP，运行前对照该版本的 `SHA256SUMS.txt` 核查完整 SHA-256。资产命名为 `panostem_<version>_x64-setup.exe` 和 `panostem_<version>_windows-x64.zip`。便携包需完整解压。桌面版需要 WebView2；安装器按其配置处理缺失运行时，便携版需要已有运行时。安装包未进行代码签名。
+从 [Releases](https://github.com/styayur/panostem/releases) 下载实际存在的 Windows 安装器或便携 ZIP，运行前对照该版本的 [SHA256SUMS.txt](https://github.com/styayur/panostem/releases/download/v0.5.0-alpha.1/SHA256SUMS.txt) 核查完整 SHA-256。资产命名为 `panostem_<version>_x64-setup.exe` 和 `panostem_<version>_windows-x64.zip`。便携包需完整解压。桌面版需要 WebView2；安装器按其配置处理缺失运行时，便携版需要已有运行时。安装包未进行代码签名。
 
 Windows 11 x64 是主要已验证目标；Linux/macOS 为实验状态，不宣称提供正式原生发布。在 **ManimGL 创作室**授权**安装 / 修复运行时**，再**检查环境**。安装器管理 CPython **3.11.14**、uv **0.13.5** 和 ManimGL 上游 **v1.7.2** 的不可变提交 `f427fc67df75513be0cd3f3329e327a9a19401c3`。该 tag 的包元数据与启动横幅显示 1.7.1，应以源码提交识别运行时。依赖带哈希锁定。
 
