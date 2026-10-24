@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "STEM Visual Explorer",
-  "version": "0.4.0-alpha.2",
+  "productName": "Panostem",
+  "version": "0.5.0-alpha.1",
   "identifier": "org.stemvisualexplorer.app",
   "build": {
     "beforeDevCommand": "npm run dev",
@@ -14,7 +14,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "STEM Visual Explorer",
+        "title": "Panostem",
         "width": 1280,
         "height": 820,
         "minWidth": 960,
@@ -30,14 +30,19 @@
     "active": true,
     "targets": "all",
     "category": "Education",
-    "shortDescription": "Visual search for mathematics and physics.",
-    "longDescription": "A lightweight local STEM search client that aggregates interactive math and physics resources from multiple high quality websites into one unified interface.",
+    "shortDescription": "Concept-driven STEM learning with native ManimGL authoring.",
+    "longDescription": "Panostem combines concept-driven STEM resource discovery, guided numerical lessons and native ManimGL scene authoring, preview and rendering.",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "resources": {
+      "../LICENSE": "licenses/Panostem-AGPL-3.0.txt",
+      "../THIRD_PARTY_NOTICES.md": "licenses/THIRD_PARTY_NOTICES.md",
+      "../licenses/": "licenses/dependencies/"
+    }
   }
 }

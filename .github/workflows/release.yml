@@ -29,20 +29,32 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - run: npm ci
       - run: npm test
+      - name: Require successful CI for the tagged source
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $sha = git rev-parse HEAD
+          $checks = gh api "repos/${{ github.repository }}/commits/$sha/check-runs" --paginate | ConvertFrom-Json
+          foreach ($name in @('Frontend (type-check + build)', 'Windows desktop compile', 'Core logic (Rust tests + clippy)', 'ManimGL real OpenGL render')) {
+            if (-not ($checks.check_runs | Where-Object { $_.name -eq $name -and $_.conclusion -eq 'success' })) { throw "Required CI not successful: $name" }
+          }
       - name: Build Windows executable and installer
         run: npm run tauri build -- --bundles nsis
+      - name: Verify embedded executable identity
+        run: python scripts/verify_binary.py src-tauri/target/release/panostem.exe
       - name: Package portable application and checksums
         shell: pwsh
         run: |
           $tag = '${{ inputs.tag }}'
           if (-not $tag) { $tag = '${{ github.ref_name }}' }
-          if ($tag -notmatch '^v\d+\.\d+\.\d+$') { throw "Tag must use vX.Y.Z: $tag" }
+          if ($tag -notmatch '^v\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw "Tag must use a semantic version: $tag" }
           $version = (Get-Content package.json | ConvertFrom-Json).version
           if ($tag -ne "v$version") { throw 'Tag and package version do not match' }
           git describe --exact-match --tags HEAD
           New-Item -ItemType Directory release-assets
-          Compress-Archive -Path src-tauri/target/release/stem-visual-explorer.exe,README.md,README.zh-CN.md,LICENSE -DestinationPath "release-assets/stem-visual-explorer_${version}_windows-x64.zip"
-          Copy-Item src-tauri/target/release/bundle/nsis/*.exe "release-assets/stem-visual-explorer_${version}_x64-setup.exe"
+          Compress-Archive -Path src-tauri/target/release/panostem.exe,README.md,README.zh-CN.md,LICENSE,THIRD_PARTY_NOTICES.md,licenses,docs -DestinationPath "release-assets/panostem_${version}_windows-x64.zip"
+          Copy-Item src-tauri/target/release/bundle/nsis/*.exe "release-assets/panostem_${version}_x64-setup.exe"
           Get-ChildItem release-assets -File | Sort-Object Name | ForEach-Object {
             $hash = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
             "$hash  $($_.Name)"
@@ -52,6 +64,7 @@ jobs:
         with:
           tag_name: ${{ inputs.tag || github.ref_name }}
           generate_release_notes: true
+          prerelease: ${{ contains(inputs.tag || github.ref_name, '-') }}
           fail_on_unmatched_files: true
           files: |
             release-assets/*

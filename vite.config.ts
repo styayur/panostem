@@ -16,7 +16,7 @@ const disabledParser = fileURLToPath(
 // mode === "web" builds the static GitHub Pages site (served from a repo
 // sub-path); the default mode builds the frontend for the Tauri desktop app.
 export default defineConfig(({ mode }) => ({
-  base: mode === "web" ? "/stem-visual-explorer/" : "/",
+  base: mode === "web" ? (process.env.PANOSTEM_BASE || "/panostem/") : "/",
   plugins: [
     {
       name: "jsxgraph-numeric-only",
@@ -90,7 +90,7 @@ export default defineConfig(({ mode }) => ({
     strictPort: true,
     watch: {
       // Exclude Rust output and local artifacts, including locked WebView2 profiles.
-      ignored: ["**/src-tauri/**", "**/dist-release/**"],
+      ignored: ["**/src-tauri/**", "**/dist-release/**", "**/.panostem-runtime/**"],
     },
   },
 }));

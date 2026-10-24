@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import {
   BookMarked,
   Check,
@@ -24,6 +24,9 @@ import SettingsPage from "./pages/SettingsPage";
 import { reportError, useNoticeStore } from "./stores/noticeStore";
 import { useWorkbenchStore } from "./workbench/workbenchStore";
 import { conceptById } from "./lib/concepts";
+import { studioText } from "./studio/uiText";
+import { localize } from "./learning/types";
+const StudioPage = lazy(() => import("./studio/StudioPage"));
 
 export default function App() {
   const t = useT();
@@ -51,6 +54,7 @@ export default function App() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    if (params.get("route") === "studio") { setPage("studio"); return; }
     const concept=params.get("concept");
     if(params.get("route")==="search"&&concept&&conceptById.has(concept))useWorkbenchStore.getState().open(concept,{type:"resource"});
     if (params.get("route") === "search") return;
@@ -73,16 +77,17 @@ export default function App() {
     <div className="flex h-screen flex-col bg-canvas-light text-zinc-800 dark:bg-canvas-dark dark:text-zinc-100">
       <header className="flex items-center gap-2 border-b border-edge-light bg-white px-3 py-2 dark:border-edge-dark dark:bg-surface-dark">
         <div className="mr-2 flex items-center gap-2">
-          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br from-sky-500 via-indigo-500 to-purple-500 text-[12px] font-bold text-white">
-            SVE
+          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-teal-700 text-[14px] font-bold text-white">
+            P
           </div>
           <div className="leading-tight">
-            <div className="text-[13px] font-semibold">STEM Visual Explorer</div>
+            <div className="text-[13px] font-semibold">Panostem</div>
             <div className="hidden text-[10px] text-zinc-400 sm:block">{t("app.subtitle")}</div>
           </div>
         </div>
 
         <nav className="flex items-center gap-1">
+          <NavButton active={page === "studio"} onClick={() => setPage("studio")} icon={<span aria-hidden="true">⌘</span>} label={localize(studioText.studio,locale)} />
           <NavButton
             active={page === "search"}
             onClick={() => setPage("search")}
@@ -128,6 +133,7 @@ export default function App() {
         {page === "search" && <SearchPage />}
         {page === "favorites" && <FavoritesPage />}
         {page === "settings" && <SettingsPage />}
+        {page === "studio" && <Suspense fallback={<p className="p-6">…</p>}><StudioPage /></Suspense>}
       </main>
     </div>
   );

@@ -1,6 +1,6 @@
 # Contributing
 
-STEM Visual Explorer is a search and comparison tool for STEM resources. Keep the core domain focused on discovery, preview selection, comparison, and learning-oriented context.
+Panostem connects concept-driven STEM discovery and guided lessons with native ManimGL scene authoring. Keep the two execution engines independent and use the existing ontology as the concept authority.
 
 ## Development
 
@@ -11,6 +11,8 @@ npm ci
 npm test
 npm run build
 npm run build:web
+npm run lint
+python -m unittest discover -s tests/runtime -v
 
 cd src-tauri
 cargo fmt --check
@@ -29,6 +31,11 @@ Run browser tests documented in the README for UI/search/provider changes. Deskt
 - CSP and X-Frame-Options are never bypassed with proxy/header-rewrite fallbacks.
 - New providers require a fixture or parser contract test and metadata aligned across Rust/browser policy.
 - Provider-specific behavior belongs in the provider module, not in generic UI components.
+- ManimGL means the pinned 3b1b/manim engine, not Manim Community. Verify CLI/API changes against the immutable source and run real rendering tests.
+- Ordinary Python projects must work without proprietary base classes or metadata. Web never executes Python.
+- Opening a project must not execute code or install packages. Runtime and project-dependency installation require separate grants.
+- Preserve trust-revision checks, archive/path/hash validation, process containment, bounded output, the legacy bundle identifier and existing storage keys.
+- New runtime versions require regenerated hashes, license inventories, 2D/3D/updater renders and decoded-media evidence. See docs/manimgl.md.
 
 ## Pull requests
 

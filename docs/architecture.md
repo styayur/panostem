@@ -1,6 +1,22 @@
 # Architecture
 
-STEM Visual Explorer is a local-first resource discovery and comparison tool. Its architecture is intentionally narrower than a general browser.
+Panostem is a concept-driven STEM learning environment with an independent native ManimGL authoring engine. External WebViewers remain supporting resource viewers with restricted IPC.
+
+## ManimGL architecture
+
+The existing ontology, learning profiles, mathematical state machine, numeric
+SceneFrame/ScenePrimitive validation and JSXGraph renderer remain intact.
+`src/studio` adds a lazy-loaded project/editor/task/share surface. The optional
+metadata registry validates existing Concept IDs rather than adding a resolver.
+`src-tauri/src/studio.rs` owns the application runtime, explicit installation,
+bounded process tasks, cancellation and scoped media tokens. Bundled Python
+controllers under `src-tauri/runtime` inspect/save/archive projects without
+importing them, and execute trusted scenes through the immutable upstream CLI.
+Preview is a separate OpenGL window. Video/frame results are served through a
+random-token protocol limited to app windows; external viewers have no access.
+Web only validates/imports packages and plays media. See
+[ADR 0005](adr/0005-panostem-manimgl.md), [runtime guide](manimgl.md) and
+[migration notes](migration-panostem.md) for contracts and known limitations.
 
 ## Core domain
 

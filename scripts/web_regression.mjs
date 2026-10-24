@@ -1,3 +1,4 @@
+import { studioRegression } from "./studio_browser_regression.mjs";
 // Real Chromium regression suite. External pages and translation are fixtures;
 // application assets and all seven provider indexes are served by the real app.
 import assert from "node:assert/strict";
@@ -324,6 +325,7 @@ try {
   assert.deepEqual(errors, []);
   await visualLearningRegression(browser, base);
   await workbenchRegression(browser,base);
+  await studioRegression(browser,base);
   process.stdout.write(`WEB REGRESSION: ${checks} groups passed; no uncaught page errors\n`);
 } finally {
   await browser?.close();

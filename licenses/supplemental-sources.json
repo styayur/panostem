@@ -1,0 +1,98 @@
+{
+  "PyOpenGL": {
+    "version": "3.1.10",
+    "source": "https://files.pythonhosted.org/packages/6f/16/912b7225d56284859cd9a672827f18be43f8012f8b7b932bc4bd959a298e/pyopengl-3.1.10.tar.gz",
+    "sha256": "c4a02d6866b54eb119c8e9b3fb04fa835a95ab802dd96607ab4cdb0012df8335",
+    "license_files": [
+      "pyopengl-3.1.10/OpenGL/DLLS/freeglut_COPYING.txt",
+      "pyopengl-3.1.10/OpenGL/DLLS/gle_COPYING",
+      "pyopengl-3.1.10/OpenGL/DLLS/gle_COPYING.src",
+      "pyopengl-3.1.10/license.txt"
+    ]
+  },
+  "FFmpeg": {
+    "binary": "imageio-ffmpeg 0.6.0 Windows wheel: ffmpeg 7.1-essentials_build-www.gyan.dev",
+    "license": "GPL-3.0-or-later",
+    "source": "https://github.com/FFmpeg/FFmpeg/tree/n7.1",
+    "build_provider": "https://www.gyan.dev/ffmpeg/builds/",
+    "license_text_sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+  },
+  "Missing published package texts": [
+    {
+      "package": "alloc-stdlib-0.2.4",
+      "source": "https://raw.githubusercontent.com/dropbox/rust-alloc-no-stdlib/ae42d22078b98549e987d2f03d12df7b984fde47/LICENSE",
+      "sha256": "c0c56f26d9c051cac4d200c34c84e7ae9aaa853e01a982a1df08b09931e518ae",
+      "file": "licenses/supplemental/alloc-stdlib-0.2.4-LICENSE.txt",
+      "applies_to": [
+        "Rust alloc-stdlib 0.2.4"
+      ]
+    },
+    {
+      "package": "alloc-stdlib-0.3.0",
+      "source": "https://raw.githubusercontent.com/dropbox/rust-alloc-no-stdlib/0a81fd6928ea3b33c8cd484aa4575d50ffb98012/LICENSE",
+      "sha256": "c0c56f26d9c051cac4d200c34c84e7ae9aaa853e01a982a1df08b09931e518ae",
+      "file": "licenses/supplemental/alloc-stdlib-0.3.0-LICENSE.txt",
+      "applies_to": [
+        "Rust alloc-stdlib 0.3.0"
+      ]
+    },
+    {
+      "package": "defmt-parser",
+      "source": "https://raw.githubusercontent.com/knurling-rs/defmt/4a8cdb44891ed57b8ff5a023b6bec7137c48708f/LICENSE-MIT",
+      "sha256": "2710a622a896bba67356913d4d0492cab5465f61b2ecce6d880aeb483834fb50",
+      "file": "licenses/supplemental/defmt-parser-LICENSE-MIT.txt",
+      "applies_to": [
+        "Rust defmt-parser 1.0.0"
+      ]
+    },
+    {
+      "package": "defmt-parser",
+      "source": "https://raw.githubusercontent.com/knurling-rs/defmt/4a8cdb44891ed57b8ff5a023b6bec7137c48708f/LICENSE-APACHE",
+      "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+      "file": "licenses/supplemental/defmt-parser-LICENSE-APACHE.txt",
+      "applies_to": [
+        "Rust defmt-parser 1.0.0"
+      ]
+    },
+    {
+      "package": "webview2-com",
+      "source": "https://raw.githubusercontent.com/wravery/webview2-rs/edc2caf886175ccaebe86078c9cfe1ae2a187328/LICENSE",
+      "sha256": "0dcf41516e608bbcb6cdc5229feb7b86fe4a643b85e7df251133c93408fdac73",
+      "file": "licenses/supplemental/webview2-com-LICENSE.txt",
+      "applies_to": [
+        "Rust webview2-com 0.39.1",
+        "Rust webview2-com-sys 0.39.1"
+      ]
+    },
+    {
+      "package": "webview2-com-macros",
+      "source": "https://raw.githubusercontent.com/wravery/webview2-rs/dffa41a8a46d3f5565eefbff2de57d38d399f158/LICENSE",
+      "sha256": "0dcf41516e608bbcb6cdc5229feb7b86fe4a643b85e7df251133c93408fdac73",
+      "file": "licenses/supplemental/webview2-com-macros-LICENSE.txt",
+      "applies_to": [
+        "Rust webview2-com-macros 0.8.1"
+      ]
+    },
+    {
+      "package": "uiw-codemirror",
+      "source": "https://github.com/uiwjs/react-codemirror/blob/1e2e11f865860c6bd5029d71a2a09bd894ed5bad/LICENSE",
+      "sha256": "fd1f049b3bb5cbaf5143516b72dbc6805cd30cca0cda94edb37160e37662fd17",
+      "file": "licenses/supplemental/uiw-codemirror-LICENSE.txt",
+      "applies_to": [
+        "npm @uiw/react-codemirror 4.25.12",
+        "npm @uiw/codemirror-extensions-basic-setup 4.25.12"
+      ]
+    },
+    {
+      "package": "selectors",
+      "source": "https://github.com/servo/stylo/tree/572ecba2d1600e7c3d490586692a209faf703baa/selectors",
+      "license_text_source": "Cargo.lock cssparser 0.38.0 LICENSE (full standard MPL-2.0 text)",
+      "corresponding_source": "https://crates.io/api/v1/crates/selectors/0.38.0/download",
+      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85",
+      "file": "licenses/supplemental/selectors-MPL-2.0.txt",
+      "applies_to": [
+        "Rust selectors 0.38.0"
+      ]
+    }
+  ]
+}
