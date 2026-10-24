@@ -57,6 +57,26 @@ Network requests go directly from the user's machine to source providers. Transl
 
 Desktop releases use `vX.Y.Z` tags, exact-source validation, Windows build checks, stable portable/installer names, and `SHA256SUMS.txt`. The GitHub Pages build is generated from the same source and deployed separately. Maintainers own tagging and publication.
 
+Alpha.2 shares one [design-token layer](design-system.md) across shell, Workbench,
+lessons and Studio. It preserves ontology/mathematics and storage contracts.
+Preview destinations require exact provider identity and safe normalized HTTP(S)
+URLs. Falstad iframe URLs are rebuilt from a static HTTPS origin using only parsed
+path/query/fragment setters. Web and native parent `frame-src` CSP restrict frame
+navigation, including redirects, to the approved Falstad origins. External viewer
+windows remain separate and receive no app/media IPC.
+
+Studio's revision scheme 2 uses a canonical path/hash manifest. Run authorization
+is checked against the complete captured tree before launching the normal engine;
+the capture becomes its cwd. Reviewed requirements are compiled from a separate
+temporary copy. Share source is verified against the run's captured manifest.
+These controls close ordinary authorization/content races, not the OS permissions
+of expressly trusted Python. See [ADR 0006](adr/0006-engineering-ui-hardening.md).
+
+The [release checklist](release-checklist.md) separates real native/render/installer
+evidence from contracts. The workflow refuses existing releases and requires the
+tagged merged source's CI, CodeForge and four-language CodeQL results. Experimental
+platforms and unsigned packages must be identified explicitly.
+
 ## v0.3 retrieval and snapshot contract
 
 The canonical ontology also backs glossary translation. Rust and TypeScript consume the same ontology, benchmark labels and golden contract. Candidate retrieval is strict AND across concept groups; graph exploration is explicitly opt-in. Search explanations and the shared diagnostic presenter make zero results distinguishable from failed/disabled providers and filters. See [retrieval.md](retrieval.md).

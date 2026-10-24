@@ -1,7 +1,7 @@
 {
   "name": "panostem",
   "private": true,
-  "version": "0.5.0-alpha.1",
+  "version": "0.5.0-alpha.2",
   "license": "AGPL-3.0-only",
   "type": "module",
   "engines": {
@@ -12,7 +12,7 @@
     "build": "tsc && vite build",
     "build:web": "tsc && vite build --mode web",
     "preview": "vite preview",
-    "test": "node --experimental-strip-types scripts/unit_test.mjs && node --experimental-strip-types scripts/retrieval_test.mjs && node --experimental-strip-types scripts/search_golden.mjs && node scripts/index_baseline_test.mjs && npm run test:learning && npm run test:workbench && npm run test:studio",
+    "test": "node --experimental-strip-types scripts/unit_test.mjs && node --experimental-strip-types scripts/preview_security_test.mjs && node --experimental-strip-types scripts/retrieval_test.mjs && node --experimental-strip-types scripts/search_golden.mjs && node scripts/index_baseline_test.mjs && npm run test:learning && npm run test:workbench && npm run test:studio",
     "test:learning": "node --experimental-strip-types scripts/learning_test.mjs",
     "test:web": "node --experimental-strip-types scripts/web_regression.mjs",
     "test:web:build": "npm run build:web && node --experimental-strip-types scripts/web_build_smoke.mjs",

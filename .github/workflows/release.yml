@@ -13,6 +13,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
 jobs:
   windows:
     runs-on: windows-latest
@@ -27,6 +31,26 @@ jobs:
           node-version: 22
           cache: npm
       - uses: dtolnay/rust-toolchain@stable
+      - name: Refuse an existing release and verify immutable source identity
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          $tag = $env:RELEASE_TAG
+          if ($tag -notmatch '^v\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$') { throw 'Invalid release tag' }
+          $head = git rev-parse HEAD
+          $source = git rev-parse "$tag^{commit}"
+          if ($head -ne $source) { throw 'Checkout differs from the requested tag' }
+          git merge-base --is-ancestor HEAD origin/main
+          if ($LASTEXITCODE -ne 0) { throw 'Release source must be merged into main' }
+          $versions = @((Get-Content package.json | ConvertFrom-Json).version, (Get-Content src-tauri/tauri.conf.json | ConvertFrom-Json).version)
+          $cargoVersion = (Select-String -Path src-tauri/Cargo.toml -Pattern '^version = "([^"]+)"' | Select-Object -First 1).Matches.Groups[1].Value
+          if (($versions + $cargoVersion | Where-Object { "v$_" -ne $tag }).Count) { throw 'Version sources differ from the tag' }
+          # List must succeed: auth/network errors never mean "release absent".
+          $releases = gh api "repos/${{ github.repository }}/releases?per_page=100" --paginate | ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0) { throw 'Cannot verify release absence' }
+          if ($releases | Where-Object { $_.tag_name -eq $tag }) { throw 'Immutable release already exists; publication refused' }
       - run: npm ci
       - run: npm test
       - name: Require successful CI for the tagged source
@@ -36,7 +60,7 @@ jobs:
         run: |
           $sha = git rev-parse HEAD
           $checks = gh api "repos/${{ github.repository }}/commits/$sha/check-runs" --paginate | ConvertFrom-Json
-          foreach ($name in @('Frontend (type-check + build)', 'Windows desktop compile', 'Core logic (Rust tests + clippy)', 'ManimGL real OpenGL render')) {
+          foreach ($name in @('Frontend (type-check + build)', 'Windows desktop compile', 'Core logic (Rust tests + clippy)', 'CodeForge regression', 'Analyze (javascript-typescript)', 'Analyze (python)', 'Analyze (rust)', 'Analyze (actions)', 'ManimGL real OpenGL render', 'Retrieval quality and TS/Rust parity', 'Runtime contracts (windows-latest)', 'Runtime contracts (ubuntu-latest)', 'Runtime contracts (macos-latest)')) {
             if (-not ($checks.check_runs | Where-Object { $_.name -eq $name -and $_.conclusion -eq 'success' })) { throw "Required CI not successful: $name" }
           }
       - name: Build Windows executable and installer
@@ -66,6 +90,7 @@ jobs:
           generate_release_notes: true
           prerelease: ${{ contains(inputs.tag || github.ref_name, '-') }}
           fail_on_unmatched_files: true
+          overwrite_files: false
           files: |
             release-assets/*
       - uses: actions/upload-artifact@v7

@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.5.0-alpha.2
+
+- Unify shell, search/favorites/settings, Workbench/lessons and Studio with shared
+  neutral/teal light/dark tokens, compact navigation and panel proportions. Improve
+  narrow source filters, keyboard focus/dialog handling, localized task states,
+  destructive confirmations and bounded resizable logs. Preserve scientific colors.
+- Replace ambiguous unframed trust fingerprints with canonical path/hash manifests;
+  verify and execute captured local project trees. Capture dependency requirements,
+  verify shared source against the render, reset source opt-in and bind retries to
+  their selected task and current trust. Ordinary Python retains user OS permissions.
+- Rebuild allowlisted iframe URLs from a static HTTPS origin and apply parent
+  frame CSP, with real Workspace payload and server/script redirect regressions.
+- Add real delayed-module-import race coverage alongside five actual OpenGL scenes
+  and FFmpeg formats/decoding, plus 18 locale/theme/viewport interface checks.
+- Require merged exact-source CI/CodeForge/CodeQL and refuse publication over an
+  existing release. Keep unsigned Windows x64 alpha scope; document unavailable
+  installer lifecycle tests, cross-name uninstall-before-install policy, Linux GLib
+  blocker, stale PostCSS alert evidence and historical Pages 404.
+- Add design-system/release-checklist documents, genuine before/after captures and
+  a separate dated audit. Historical tags/assets/audits remain unchanged.
+
 ## 0.5.0-alpha.1
 
 Panostem replaces the public STEM Visual Explorer name. The Tauri application
