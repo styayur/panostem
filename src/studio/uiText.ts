@@ -1,5 +1,21 @@
 import { L } from "../learning/types";
 export const studioText = {
+  running: L("Running", "运行中", "執行中"),
+  completed: L("Completed", "已完成", "已完成"),
+  failed: L("Failed", "失败", "失敗"),
+  cancelled: L("Cancelled", "已取消", "已取消"),
+  renderTask: L("Scene execution", "场景执行", "場景執行"),
+  mediaFile: L("Media file", "媒体文件", "媒體檔案"),
+  confirmTrash: L(
+    "Move this file to the project trash?",
+    "将此文件移至项目回收区？",
+    "將此檔案移至專案回收區？",
+  ),
+  confirmRemove: L(
+    "Delete this render and its captured source? This cannot be undone.",
+    "删除此渲染及其捕获的源码？此操作无法撤销。",
+    "刪除此算繪及其擷取的原始碼？此操作無法復原。",
+  ),
   sourceMismatch: L(
     "Source changed since this render. Save and render again before including source.",
     "源码在渲染后发生变化。请保存并重新渲染，再包含源码。",

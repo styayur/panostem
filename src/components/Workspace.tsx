@@ -46,49 +46,49 @@ export default function Workspace() {
   const gridClass = urls.length <= 1 ? "grid-cols-1 grid-rows-1" : urls.length <= 2 ? "grid-cols-2 grid-rows-1" : "grid-cols-2 grid-rows-2";
 
   return (
-      <div data-resource-workspace className="flex h-screen flex-col bg-zinc-900 text-zinc-100">
-      <div className="flex items-center gap-3 border-b border-zinc-700 px-3 py-2">
+      <div data-resource-workspace className="flex h-screen flex-col bg-panel text-ink">
+      <div className="flex items-center gap-3 border-b border-edge px-3 py-2">
         <span className="text-[13px] font-semibold">{t("workspace.title")}</span>
-        <span className="text-[11px] text-zinc-400">{t("workspace.panes", { n: urls.length })}</span>
+        <span className="text-[11px] text-muted">{t("workspace.panes", { n: urls.length })}</span>
         <button
           type="button"
-          className="ml-auto rounded px-2 py-1 text-[12px] text-zinc-300 hover:bg-zinc-700"
+          className="ml-auto rounded px-2 py-1 text-[12px] text-ink hover:bg-subtle"
           onClick={() => setReload((r) => r + 1)}
         >
           {t("workspace.reloadAll")}
         </button>
         <button
           type="button"
-          className="rounded px-2 py-1 text-[12px] text-zinc-300 hover:bg-zinc-700"
+          className="rounded px-2 py-1 text-[12px] text-ink hover:bg-subtle"
           onClick={() => Promise.all(urls.map((u) => cmd.openExternal(u))).catch((e) => setError(String(e)))}
         >
           {t("workspace.openAll")}
         </button>
-        <button type="button" className="rounded px-2 py-1 text-[12px] text-zinc-300 hover:bg-zinc-700"
+        <button type="button" className="rounded px-2 py-1 text-[12px] text-ink hover:bg-subtle"
           onClick={() => Promise.all(urls.map((u) => cmd.openWindow(u, resources.find((r) => r.url === u)?.title ?? u))).catch((e) => setError(String(e)))}>
           {t("workspace.openViewers")}
         </button>
         <a
           href="?route=search"
-          className="rounded px-2 py-1 text-[12px] text-zinc-300 hover:bg-zinc-700"
+          className="rounded px-2 py-1 text-[12px] text-ink hover:bg-subtle"
         >
           {t("workspace.newSearch")}
         </a>
       </div>
-      {error && <p role="alert" className="px-3 py-2 text-sm text-red-300">{error}</p>}
+      {error && <p role="alert" className="px-3 py-2 text-sm text-danger">{error}</p>}
 
-      <div className={cn("grid min-h-0 flex-1 gap-px bg-zinc-700", gridClass)}>
+      <div className={cn("grid min-h-0 flex-1 gap-px bg-subtle", gridClass)}>
         {urls.map((u, i) => (
           <Pane key={`${u}:${i}`} url={u} resource={resources.find((r) => r.url === u) ?? resourceForUrl(u)} index={i} reload={reload} onError={setError} />
         ))}
         {urls.length === 0 && (
-          <div className="flex items-center justify-center bg-zinc-900 text-sm text-zinc-500">
+          <div className="flex items-center justify-center bg-panel text-sm text-muted">
             {t("workspace.empty")}
           </div>
         )}
       </div>
 
-      <div className="border-t border-zinc-700 p-2">
+      <div className="border-t border-edge p-2">
         <textarea
           value={notes}
           disabled={!ready}
@@ -98,7 +98,7 @@ export default function Workspace() {
             try { localStorage.setItem(notesKey(urls), value); } catch (err) { setError(String(err)); }
           }}
           placeholder={t("workspace.notes")}
-          className="h-20 w-full resize-none rounded bg-zinc-800 p-2 text-[12px] text-zinc-100 outline-none placeholder:text-zinc-500"
+          className="h-20 w-full resize-none rounded bg-subtle p-2 text-[12px] text-ink outline-none placeholder:text-muted"
         />
       </div>
     </div>
@@ -111,23 +111,23 @@ function Pane({ url, resource, index, reload, onError }: { url: string; resource
   const host = useHost(url);
 
   return (
-    <div className="flex min-h-0 flex-col bg-zinc-900">
-      <div className="flex items-center gap-1 border-b border-zinc-800 px-2 py-1">
-        <span className="min-w-0 flex-1 truncate text-[11px] text-zinc-400">{host}</span>
+    <div className="flex min-h-0 flex-col bg-panel">
+      <div className="flex items-center gap-1 border-b border-edge px-2 py-1">
+        <span className="min-w-0 flex-1 truncate text-[11px] text-muted">{host}</span>
         <button
           type="button"
           title={t("preview.reload")}
-          className="rounded p-1 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-100"
+          className="rounded p-1 text-muted hover:bg-subtle hover:text-ink"
           onClick={() => setKey((k) => k + 1)}
         >
           <RotateCw className="h-3.5 w-3.5" />
         </button>
-        <button type="button" title={t("row.openWindow")} className="rounded p-1 text-zinc-400 hover:bg-zinc-700"
+        <button type="button" title={t("row.openWindow")} className="rounded p-1 text-muted hover:bg-subtle"
           onClick={() => cmd.openWindow(url, resource.title).catch((e) => onError(String(e)))}><Maximize2 className="h-3.5 w-3.5" /></button>
         <button
           type="button"
           title={t("preview.browser")}
-          className="rounded p-1 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-100"
+          className="rounded p-1 text-muted hover:bg-subtle hover:text-ink"
           onClick={() => cmd.openExternal(url).catch((e) => onError(String(e)))}
         >
           <ExternalLink className="h-3.5 w-3.5" />

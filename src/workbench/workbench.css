@@ -1,24 +1,24 @@
 /* Existing shell palette; restrained structure, task area receives the space. */
 .concept-workbench {
-  --wb-edge: #e4e4e7;
-  --wb-muted: #52525b;
-  --wb-surface: #fafafa;
-  --wb-accent: #4338ca;
+  --wb-edge: var(--ps-border);
+  --wb-muted: var(--ps-muted);
+  --wb-surface: var(--ps-subtle);
+  --wb-accent: var(--ps-accent);
   display: flex;
   flex-direction: column;
   height: 100%;
   min-width: 0;
-  background: #fff;
-  color: #27272a;
+  background: var(--ps-panel);
+  color: var(--ps-ink);
   font-size: 13px;
 }
 .dark .concept-workbench {
-  --wb-edge: #3f3f46;
-  --wb-muted: #a1a1aa;
-  --wb-surface: #1e1f23;
-  --wb-accent: #a5b4fc;
-  background: #18181b;
-  color: #e4e4e7;
+  --wb-edge: var(--ps-border);
+  --wb-muted: var(--ps-muted);
+  --wb-surface: var(--ps-panel);
+  --wb-accent: var(--ps-accent);
+  background: var(--ps-bg);
+  color: var(--ps-ink);
 }
 .wb-header {
   display: flex;
@@ -44,15 +44,16 @@
 .concept-workbench button,
 .concept-workbench a {
   min-height: 36px;
-  border-radius: 5px;
+  border-radius: var(--ps-radius);
   padding: 7px 9px;
   text-align: left;
 }
 .concept-workbench button:hover {
-  background: #6366f112;
+  background: rgb(var(--ps-accent-rgb) / 0.071);
 }
 .concept-workbench button:disabled {
-  opacity: 0.4;
+  color: var(--ps-muted);
+  background: var(--ps-subtle);
 }
 .wb-header-actions button,
 .wb-resource-tools button,
@@ -79,7 +80,7 @@
 }
 .wb-navigation [aria-current="page"],
 .wb-filters [aria-pressed="true"] {
-  background: #6366f118;
+  background: rgb(var(--ps-accent-rgb) / 0.094);
   color: var(--wb-accent);
   font-weight: 600;
 }
@@ -160,7 +161,7 @@
   color: var(--wb-accent);
 }
 .concept-workbench .wb-primary {
-  background: #4f46e5;
+  background: rgb(var(--ps-solid-rgb));
   color: white;
   margin-top: 20px;
   padding: 10px 15px;
@@ -221,7 +222,7 @@
   text-decoration: underline;
 }
 .wb-resources [aria-pressed="true"] {
-  background: #6366f118;
+  background: rgb(var(--ps-accent-rgb) / 0.094);
 }
 .wb-inspector {
   min-width: 0;
@@ -277,7 +278,7 @@
   padding: 0 14px 12px;
 }
 .wb-graph section:first-child {
-  border-color: #6366f1;
+  border-color: var(--ps-accent);
 }
 .wb-graph button {
   border: 1px solid var(--wb-edge);
@@ -310,7 +311,7 @@
   font-size: 16px;
 }
 .lesson-misconception {
-  border-left: 2px solid #6366f1;
+  border-left: 2px solid var(--ps-accent);
   padding-left: 10px;
   margin: 12px 0;
 }
@@ -318,10 +319,10 @@
   position: sticky;
   bottom: 0;
   z-index: 2;
-  background: #fff;
+  background: var(--ps-panel);
 }
 .dark .concept-workbench .lesson-controls {
-  background: #18181b;
+  background: var(--ps-bg);
 }
 @media (min-width: 1200px) {
   .concept-workbench .lesson-invariant,

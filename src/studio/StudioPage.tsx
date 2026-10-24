@@ -64,7 +64,7 @@ export default function StudioPage() {
     [status, setStatus] = useState("");
   const [activeLog, setActiveLog] = useState("");
   const [consoleText, setConsoleText] = useState("");
-  const lastRequest = useRef<Record<string, unknown> | null>(null),
+  const requests = useRef(new Map<string, Record<string, unknown>>()),
     lastDone = useRef("");
   const activeProject = useRef("");
   const dirty = text !== saved;
@@ -116,6 +116,7 @@ export default function StudioPage() {
                 job.project === activeProject.current
               ) {
                 setOutput(job.result);
+                setIncludeSource(false);
                 setMediaPath(job.result.media[0]?.path ?? "");
                 setHistory((h) => [job.result!, ...h].slice(0, 50));
               }
@@ -174,6 +175,7 @@ export default function StudioPage() {
     setDepConsent(false);
     setValues({});
     setShare(null);
+    setIncludeSource(false);
     setOutput(null);
     setMediaPath("");
     setMediaUrl("");
@@ -250,8 +252,9 @@ export default function StudioPage() {
         trust: trusted,
         revision: project.revision,
       };
-      lastRequest.current = req;
-      setActiveLog(await backend.start(req));
+      const id = await backend.start(req);
+      requests.current.set(id, req);
+      setActiveLog(id);
       setShare(null);
     });
   const imported = async (f: File) => {
@@ -350,8 +353,9 @@ export default function StudioPage() {
         }
         const source = file.endsWith(".py") ? file : output.entry;
         const r = await backend.request<{ text: string }>({
-          action: "read",
+          action: "read_run_source",
           project: project.root,
+          run_id: output.output.split(/[\\/]/).pop(),
           file: source,
         });
         items.push({
@@ -377,7 +381,10 @@ export default function StudioPage() {
   );
 
   return (
-    <div className="studio" data-testid="manimgl-studio">
+    <div
+      className={`studio ${IS_TAURI ? "studio-desktop" : "studio-web"}`}
+      data-testid="manimgl-studio"
+    >
       <header className="studio-heading">
         <div>
           <h1>{t("studio")}</h1>
@@ -597,7 +604,12 @@ export default function StudioPage() {
                   "trash",
                   () =>
                     run(async () => {
-                      if (!file || !confirmDiscard()) return;
+                      if (
+                        !file ||
+                        !confirmDiscard() ||
+                        !window.confirm(`${t("confirmTrash")}\n${file}`)
+                      )
+                        return;
                       const p = await backend.request<Project>({
                         action: "trash",
                         project: project.root,
@@ -655,8 +667,13 @@ export default function StudioPage() {
                 </div>
                 <Suspense fallback={<p>…</p>}>
                   <PythonEditor
+                    readOnly={busy}
                     value={text}
-                    onChange={setText}
+                    onChange={(value) => {
+                      setText(value);
+                      setTrusted(false);
+                      setDepConsent(false);
+                    }}
                     line={line}
                     label={t("editor")}
                   />
@@ -878,240 +895,287 @@ export default function StudioPage() {
           )}
         </>
       )}
-      <section className="studio-playback">
-        <div className="studio-player">
-          <h2>{t("output")}</h2>
-          {!share && history.length > 0 && (
+      <div className="studio-results">
+        <section className="studio-playback">
+          <div className="studio-player">
+            <h2>{t("output")}</h2>
+            {!share && history.length > 0 && (
+              <select
+                aria-label={t("output")}
+                value={output?.output ?? ""}
+                onChange={(e) => {
+                  const r =
+                    history.find((h) => h.output === e.target.value) ?? null;
+                  setOutput(r);
+                  setIncludeSource(false);
+                  setMediaPath(r?.media[0]?.path ?? "");
+                }}
+              >
+                <option value="">—</option>
+                {history.map((h) => (
+                  <option key={h.output} value={h.output}>
+                    {h.scene} {h.output.split(/[\\/]/).pop()}
+                  </option>
+                ))}
+              </select>
+            )}
+            {share ? (
+              <select
+                aria-label={t("output")}
+                value={shareMedia}
+                onChange={(e) => setShareMedia(e.target.value)}
+              >
+                {share.manifest.files
+                  .filter((f) =>
+                    ["video", "thumbnail", "frame"].includes(f.role),
+                  )
+                  .map((f) => (
+                    <option key={f.path}>{f.path}</option>
+                  ))}
+              </select>
+            ) : (
+              output && (
+                <select
+                  value={mediaPath}
+                  aria-label={t("mediaFile")}
+                  onChange={(e) => setMediaPath(e.target.value)}
+                >
+                  {output.media.map((f) => (
+                    <option key={f.path}>{f.path}</option>
+                  ))}
+                </select>
+              )
+            )}
+            {mediaUrl ? (
+              shownPath.endsWith(".png") || shownPath.endsWith(".gif") ? (
+                <img src={mediaUrl} alt={title} />
+              ) : (
+                <video
+                  src={mediaUrl}
+                  controls
+                  preload="metadata"
+                  aria-label={title}
+                />
+              )
+            ) : (
+              <p className="studio-empty">{t("emptyOutput")}</p>
+            )}
+            {output && !share && (
+              <p className="studio-output-path">{output.output}</p>
+            )}
+            {output &&
+              !share &&
+              project &&
+              button(
+                "remove",
+                () =>
+                  run(async () => {
+                    if (
+                      !window.confirm(`${t("confirmRemove")}\n${output.output}`)
+                    )
+                      return;
+                    const id = output.output
+                      .replaceAll("\\", "/")
+                      .split("/")
+                      .pop();
+                    await backend.request({
+                      action: "delete_output",
+                      project: project.root,
+                      file: `renders/${id}`,
+                    });
+                    setOutput(null);
+                    setMediaPath("");
+                    setMediaUrl("");
+                    setHistory(
+                      await backend.request({
+                        action: "outputs",
+                        project: project.root,
+                      }),
+                    );
+                  }),
+                running,
+              )}
+          </div>
+          <div className="studio-sharing">
+            <h2>{t("share")}</h2>
+            <label>
+              {t("title")}
+              <input value={title} onChange={(e) => setTitle(e.target.value)} />
+            </label>
+            <label>
+              {t("license")}
+              <input
+                value={license}
+                onChange={(e) => setLicense(e.target.value)}
+              />
+            </label>
+            {sceneMeta && (
+              <>
+                <p>{sceneMeta.description}</p>
+                <div className="studio-concepts">
+                  {sceneMeta.concept_ids.map((id) => (
+                    <button key={id} type="button" onClick={() => navigate(id)}>
+                      {t("navigate")}:{" "}
+                      {locale === "en"
+                        ? conceptById.get(id)!.en
+                        : locale === "zh-CN"
+                          ? conceptById.get(id)!.zh_cn
+                          : conceptById.get(id)!.zh_tw}
+                    </button>
+                  ))}
+                </div>
+                <ul>
+                  {sceneMeta.learning_objectives.map((x, i) => (
+                    <li key={i}>{x}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+            <label className="studio-check">
+              <input
+                type="checkbox"
+                checked={includeSource}
+                onChange={(e) => setIncludeSource(e.target.checked)}
+              />
+              {t("includeSource")}
+            </label>
+            {button("exportShare", shareExport, !share && !output)}
+            <p className="studio-note">{t("shareNotice")}</p>
+          </div>
+        </section>
+        {share &&
+          share.manifest.files
+            .filter((f) => f.role === "source" || f.role === "notice")
+            .map((f) => (
+              <details key={f.path}>
+                <summary>
+                  {f.path} ({t("source")})
+                </summary>
+                <pre className="studio-shared-source">
+                  {inputText(share.files[f.path])}
+                </pre>
+              </details>
+            ))}
+        {IS_TAURI && jobs.length > 0 && (
+          <section className="studio-tasks">
+            <h2>{t("tasks")}</h2>
             <select
-              aria-label={t("output")}
-              value={output?.output ?? ""}
-              onChange={(e) => {
-                const r =
-                  history.find((h) => h.output === e.target.value) ?? null;
-                setOutput(r);
-                setMediaPath(r?.media[0]?.path ?? "");
-              }}
+              value={chosen?.id ?? ""}
+              aria-label={t("tasks")}
+              onChange={(e) => setActiveLog(e.target.value)}
             >
-              <option value="">—</option>
-              {history.map((h) => (
-                <option key={h.output} value={h.output}>
-                  {h.scene} {h.output.split(/[\\/]/).pop()}
+              {jobs.map((j) => (
+                <option key={j.id} value={j.id}>
+                  {t(
+                    j.action === "run"
+                      ? "renderTask"
+                      : j.action === "install"
+                        ? "install"
+                        : "dependencies",
+                  )}
+                  : {t(j.status)} ({j.elapsed.toFixed(1)}s) {j.id}
                 </option>
               ))}
             </select>
-          )}
-          {share ? (
-            <select
-              aria-label={t("output")}
-              value={shareMedia}
-              onChange={(e) => setShareMedia(e.target.value)}
-            >
-              {share.manifest.files
-                .filter((f) => ["video", "thumbnail", "frame"].includes(f.role))
-                .map((f) => (
-                  <option key={f.path}>{f.path}</option>
-                ))}
-            </select>
-          ) : (
-            output && (
-              <select
-                value={mediaPath}
-                aria-label="Media file"
-                onChange={(e) => setMediaPath(e.target.value)}
-              >
-                {output.media.map((f) => (
-                  <option key={f.path}>{f.path}</option>
-                ))}
-              </select>
-            )
-          )}
-          {mediaUrl ? (
-            shownPath.endsWith(".png") || shownPath.endsWith(".gif") ? (
-              <img src={mediaUrl} alt={title} />
-            ) : (
-              <video
-                src={mediaUrl}
-                controls
-                preload="metadata"
-                aria-label={title}
-              />
-            )
-          ) : (
-            <p className="studio-empty">{t("emptyOutput")}</p>
-          )}
-          {output && !share && (
-            <p className="studio-output-path">{output.output}</p>
-          )}
-          {output &&
-            !share &&
-            project &&
-            button(
-              "remove",
-              () =>
-                run(async () => {
-                  const id = output.output
-                    .replaceAll("\\", "/")
-                    .split("/")
-                    .pop();
-                  await backend.request({
-                    action: "delete_output",
-                    project: project.root,
-                    file: `renders/${id}`,
-                  });
-                  setOutput(null);
-                  setMediaPath("");
-                  setMediaUrl("");
-                  setHistory(
-                    await backend.request({
-                      action: "outputs",
-                      project: project.root,
-                    }),
-                  );
-                }),
-              running,
+            {chosen && (
+              <>
+                <div className="studio-actions">
+                  <span
+                    role="status"
+                    className="studio-task-state"
+                    data-status={chosen.status}
+                  >
+                    {t(chosen.status)}
+                  </span>
+                  <span>{chosen.elapsed.toFixed(1)}s</span>
+                  {button(
+                    "stop",
+                    () => run(() => backend.cancel(chosen.id)),
+                    chosen.status !== "running",
+                  )}
+                  {button(
+                    "retry",
+                    () =>
+                      run(async () => {
+                        const request = requests.current.get(chosen.id);
+                        if (request) {
+                          // Consent belongs to the currently reviewed revision, including retries.
+                          if (
+                            !project ||
+                            dirty ||
+                            !trusted ||
+                            request.project !== project.root ||
+                            request.revision !== project.revision
+                          )
+                            throw new Error(t("saveFirst"));
+                          const id = await backend.start(request);
+                          requests.current.set(id, request);
+                          setActiveLog(id);
+                        }
+                      }),
+                    running ||
+                      !requests.current.has(chosen.id) ||
+                      dirty ||
+                      !trusted,
+                  )}
+                </div>
+                <pre tabIndex={0} className="studio-log">
+                  {chosen.logs.join("")}
+                  {chosen.error && `\n${chosen.error}`}
+                </pre>
+                <div className="studio-tracebacks">
+                  {Array.from(
+                    chosen.logs
+                      .join("")
+                      .matchAll(/File "([^"]+)", line (\d+)/g),
+                  )
+                    .slice(-10)
+                    .map((m, i) => {
+                      const normalized = m[1].replaceAll("\\", "/");
+                      const capturedRoot =
+                        chosen.result?.execution_root ??
+                        (project
+                          ? `${project.root}/renders/${chosen.id}/.execution`
+                          : "");
+                      const roots = [capturedRoot, project?.root ?? ""].map(
+                        (root) => root.replaceAll("\\", "/") + "/",
+                      );
+                      const prefix = roots.find((root) =>
+                        normalized.startsWith(root),
+                      );
+                      const rel = prefix ? normalized.slice(prefix.length) : "";
+                      return project?.files.some((f) => f.path === rel) ? (
+                        <button
+                          key={i}
+                          onClick={() => run(() => loadFile(rel, Number(m[2])))}
+                        >
+                          {rel}:{m[2]}
+                        </button>
+                      ) : null;
+                    })}
+                </div>
+              </>
             )}
-        </div>
-        <div className="studio-sharing">
-          <h2>{t("share")}</h2>
-          <label>
-            {t("title")}
-            <input value={title} onChange={(e) => setTitle(e.target.value)} />
-          </label>
-          <label>
-            {t("license")}
-            <input
-              value={license}
-              onChange={(e) => setLicense(e.target.value)}
-            />
-          </label>
-          {sceneMeta && (
-            <>
-              <p>{sceneMeta.description}</p>
-              <div className="studio-concepts">
-                {sceneMeta.concept_ids.map((id) => (
-                  <button key={id} type="button" onClick={() => navigate(id)}>
-                    {t("navigate")}:{" "}
-                    {locale === "en"
-                      ? conceptById.get(id)!.en
-                      : locale === "zh-CN"
-                        ? conceptById.get(id)!.zh_cn
-                        : conceptById.get(id)!.zh_tw}
-                  </button>
-                ))}
-              </div>
-              <ul>
-                {sceneMeta.learning_objectives.map((x, i) => (
-                  <li key={i}>{x}</li>
-                ))}
-              </ul>
-            </>
-          )}
-          <label className="studio-check">
-            <input
-              type="checkbox"
-              checked={includeSource}
-              onChange={(e) => setIncludeSource(e.target.checked)}
-            />
-            {t("includeSource")}
-          </label>
-          {button("exportShare", shareExport, !share && !output)}
-          <p className="studio-note">{t("shareNotice")}</p>
-        </div>
-      </section>
-      {share &&
-        share.manifest.files
-          .filter((f) => f.role === "source" || f.role === "notice")
-          .map((f) => (
-            <details key={f.path}>
-              <summary>
-                {f.path} ({t("source")})
-              </summary>
-              <pre className="studio-shared-source">
-                {inputText(share.files[f.path])}
-              </pre>
-            </details>
-          ))}
-      {IS_TAURI && jobs.length > 0 && (
-        <section className="studio-tasks">
-          <h2>{t("tasks")}</h2>
-          <select
-            value={chosen?.id ?? ""}
-            aria-label={t("tasks")}
-            onChange={(e) => setActiveLog(e.target.value)}
-          >
-            {jobs.map((j) => (
-              <option key={j.id} value={j.id}>
-                {j.action}: {j.status} ({j.elapsed.toFixed(1)}s) {j.id}
-              </option>
-            ))}
-          </select>
-          {chosen && (
-            <>
-              <div className="studio-actions">
-                <span role="status">
-                  {chosen.status} · {chosen.elapsed.toFixed(1)}s
-                </span>
-                {button(
-                  "stop",
-                  () => run(() => backend.cancel(chosen.id)),
-                  chosen.status !== "running",
-                )}
-                {button(
-                  "retry",
-                  () =>
-                    run(async () => {
-                      if (lastRequest.current)
-                        setActiveLog(await backend.start(lastRequest.current));
-                    }),
-                  running || !lastRequest.current,
+            {chosen?.status === "running" && chosen.action === "run" && (
+              <div className="studio-console">
+                <label>
+                  {t("console")}
+                  <input
+                    value={consoleText}
+                    onChange={(e) => setConsoleText(e.target.value)}
+                  />
+                </label>
+                {button("send", () =>
+                  run(async () => {
+                    await backend.consoleInput(chosen.id, consoleText);
+                    setConsoleText("");
+                  }),
                 )}
               </div>
-              <pre tabIndex={0} className="studio-log">
-                {chosen.logs.join("")}
-                {chosen.error && `\n${chosen.error}`}
-              </pre>
-              <div className="studio-tracebacks">
-                {Array.from(
-                  chosen.logs.join("").matchAll(/File "([^"]+)", line (\d+)/g),
-                )
-                  .slice(-10)
-                  .map((m, i) => {
-                    const rel = project
-                      ? m[1]
-                          .replaceAll("\\", "/")
-                          .replace(project.root.replaceAll("\\", "/") + "/", "")
-                      : "";
-                    return project?.files.some((f) => f.path === rel) ? (
-                      <button
-                        key={i}
-                        onClick={() => run(() => loadFile(rel, Number(m[2])))}
-                      >
-                        {rel}:{m[2]}
-                      </button>
-                    ) : null;
-                  })}
-              </div>
-            </>
-          )}
-          {chosen?.status === "running" && chosen.action === "run" && (
-            <div className="studio-console">
-              <label>
-                {t("console")}
-                <input
-                  value={consoleText}
-                  onChange={(e) => setConsoleText(e.target.value)}
-                />
-              </label>
-              {button("send", () =>
-                run(async () => {
-                  await backend.consoleInput(chosen.id, consoleText);
-                  setConsoleText("");
-                }),
-              )}
-            </div>
-          )}
-        </section>
-      )}
+            )}
+          </section>
+        )}
+      </div>
     </div>
   );
 }

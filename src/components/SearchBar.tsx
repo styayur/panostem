@@ -71,13 +71,13 @@ export default function SearchBar() {
     <div className="relative">
       <div
         className={cn(
-          "flex items-center gap-2 rounded-lg border bg-white px-3 dark:bg-surface-dark",
+          "flex items-center gap-2 rounded-lg border bg-panel px-3 dark:bg-surface-dark",
           focused
-            ? "border-indigo-500/60 ring-2 ring-indigo-500/20"
+            ? "border-accent/60 ring-2 ring-accent/20"
             : "border-edge-light dark:border-edge-dark"
         )}
       >
-        <button type="button" aria-label={t("nav.search")} onClick={() => submit()} className="shrink-0 text-zinc-400 hover:text-indigo-500"><Search className="h-4 w-4" /></button>
+        <button type="button" aria-label={t("nav.search")} onClick={() => submit()} className="shrink-0 text-muted hover:text-accent"><Search className="h-4 w-4" /></button>
         <input
           id="search-input"
           role="combobox"
@@ -116,13 +116,13 @@ export default function SearchBar() {
             }
           }}
           placeholder={t("search.placeholder")}
-          className="h-10 w-full bg-transparent text-sm text-zinc-800 outline-none placeholder:text-zinc-400 dark:text-zinc-100"
+          className="h-10 w-full bg-transparent text-sm text-ink outline-none placeholder:text-muted dark:text-ink"
           spellCheck={false}
         />
       </div>
 
       {open && suggestions.length + objects.length > 0 && (
-        <div id="search-suggestions" role="listbox" className="absolute left-0 right-0 top-11 z-30 max-h-[60vh] overflow-y-auto rounded-lg border border-edge-light bg-white shadow-lg dark:border-edge-dark dark:bg-surface-dark">
+        <div id="search-suggestions" role="listbox" className="absolute left-0 right-0 top-11 z-30 max-h-[60vh] overflow-y-auto rounded-lg border border-edge-light bg-panel shadow-lg dark:border-edge-dark dark:bg-surface-dark">
           {suggestions.map((s, i) => (
             <button
               key={s}
@@ -134,14 +134,14 @@ export default function SearchBar() {
               onClick={() => {
                 submit(s);
               }}
-              className={cn("block w-full px-3 py-2 text-left text-sm text-zinc-700 hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800", i === active && "bg-indigo-500/10")}
+              className={cn("block w-full px-3 py-2 text-left text-sm text-ink hover:bg-subtle dark:text-ink dark:hover:bg-subtle", i === active && "bg-accent/10")}
             >
               {s}
             </button>
           ))}
           {objects.map((o,i)=><button key={o.id} id={`suggestion-${i+suggestions.length}`} role="option" aria-selected={active===i+suggestions.length} type="button" data-object-group={o.group} onMouseDown={e=>e.preventDefault()} onClick={()=>{
             const s=useWorkbenchStore.getState();s.open(o.conceptId,{type:o.group==="resource"?"resource":o.group==="textbook"?"learning-path":o.group==="command"?"command":"search",query});s.surface(o.surface??"overview");s.select(o.capabilityId,o.visualizationId);setOpen(false);inputRef.current?.blur();
-          }} className={cn("block w-full border-t border-edge-light px-3 py-2 text-left text-sm dark:border-edge-dark hover:bg-indigo-500/10",active===i+suggestions.length&&"bg-indigo-500/10")}><span className="block text-[10px] text-zinc-500">{workbenchText[o.group][locale]}</span>{o.title}</button>)}
+          }} className={cn("block w-full border-t border-edge-light px-3 py-2 text-left text-sm dark:border-edge-dark hover:bg-accent/10",active===i+suggestions.length&&"bg-accent/10")}><span className="block text-[11px] text-muted">{workbenchText[o.group][locale]}</span>{o.title}</button>)}
         </div>
       )}
     </div>

@@ -31,6 +31,11 @@ try {
   await main.locator("#search-input").fill("curl");
   await main.locator("#search-input").press("Enter");
   await main.locator('div[role="option"]').first().waitFor({ timeout: 30000 });
+  await main.waitForFunction(async () => {
+    const {useSearchStore} = await import("/src/stores/searchStore.ts");
+    const state = useSearchStore.getState();
+    return !state.loading && state.response?.query === "curl";
+  }, undefined, {timeout:30000});
   const results = await main.evaluate(async () => (await import("/src/stores/searchStore.ts")).useSearchStore.getState().response);
   assert.ok(results.total > 0);
   const providerErrors = results.providers.filter((p) => p.error);

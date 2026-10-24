@@ -105,7 +105,10 @@ export function validateMetadata(input: unknown): SceneMetadata {
     if (typeof m[field] !== "string" || m[field].length > 8192)
       throw new Error(`Invalid metadata field: ${field}`);
   safePath(m.entry);
-  if (!m.entry.endsWith(".py") || !/^[_\p{ID_Start}][\p{ID_Continue}]*$/u.test(m.scene))
+  if (
+    !m.entry.endsWith(".py") ||
+    !/^[_\p{ID_Start}][\p{ID_Continue}]*$/u.test(m.scene)
+  )
     throw new Error("Invalid Python scene entry");
   for (const field of ["concept_ids", "prerequisites"] as const) {
     if (
@@ -146,13 +149,15 @@ export function validateMetadata(input: unknown): SceneMetadata {
 
 export interface Project {
   root: string;
-  files: { path: string; size: number }[];
+  files: { path: string; size: number; sha256?: string }[];
   scenes: { file: string; name: string }[];
   errors: { file: string; line: number; message: string }[];
   metadata: SceneMetadata | null;
   revision: string;
 }
 export interface RunResult {
+  revision_scheme?: number;
+  execution_root?: string;
   revision: string;
   metadata?: SceneMetadata | null;
   media: { path: string; size: number }[];

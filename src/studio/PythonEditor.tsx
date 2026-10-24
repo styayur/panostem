@@ -1,7 +1,7 @@
 import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
 import { useSettingsStore } from "../stores/settingsStore";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ReactCodeMirrorRef } from "@uiw/react-codemirror";
 
 export default function PythonEditor({
@@ -19,6 +19,15 @@ export default function PythonEditor({
 }) {
   const ref = useRef<ReactCodeMirrorRef>(null);
   const theme = useSettingsStore((s) => s.settings.theme);
+  const [systemDark, setSystemDark] = useState(
+    () => matchMedia("(prefers-color-scheme: dark)").matches,
+  );
+  useEffect(() => {
+    const preference = matchMedia("(prefers-color-scheme: dark)");
+    const changed = () => setSystemDark(preference.matches);
+    preference.addEventListener("change", changed);
+    return () => preference.removeEventListener("change", changed);
+  }, []);
   useEffect(() => {
     const view = ref.current?.view;
     if (!view) return;
@@ -34,7 +43,12 @@ export default function PythonEditor({
       onChange={onChange}
       extensions={[python()]}
       readOnly={readOnly}
-      theme={theme === "dark" ? "dark" : "light"}
+      editable={!readOnly}
+      theme={
+        theme === "dark" || (theme === "system" && systemDark)
+          ? "dark"
+          : "light"
+      }
       aria-label={label}
       basicSetup={{
         lineNumbers: true,

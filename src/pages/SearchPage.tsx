@@ -1,5 +1,5 @@
 import SearchContext from "../components/SearchContext";
-import { LayoutGrid } from "lucide-react";
+import { LayoutGrid, SlidersHorizontal } from "lucide-react";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import FilterBar from "../components/FilterBar";
@@ -18,6 +18,8 @@ import { useSearchStore } from "../stores/searchStore";
 
 export default function SearchPage() {
   const t = useT();
+  const [sourcesOpen, setSourcesOpen] = useState(false);
+  const sourcesToggle = useRef<HTMLButtonElement>(null);
   const previewMode = useSettingsStore((s) => s.settings.preview_mode);
   const response = useSearchStore((s) => s.response);
   const session = useWorkbenchStore(s=>s.session);
@@ -52,7 +54,7 @@ export default function SearchPage() {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex items-center gap-3 border-b border-edge-light bg-white px-3 py-2 dark:border-edge-dark dark:bg-surface-dark">
+      <div className="search-command flex items-center gap-3 border-b border-edge-light bg-panel px-3 py-2 dark:border-edge-dark dark:bg-surface-dark">
         <div className="max-w-2xl flex-1">
           <SearchBar />
         </div>
@@ -68,23 +70,24 @@ export default function SearchPage() {
           className={cn(
             "flex shrink-0 items-center gap-1.5 rounded-md border px-2.5 py-2 text-[12px] font-medium transition-colors",
             workspaceSelected.length === 0
-              ? "cursor-not-allowed border-edge-light text-zinc-400 dark:border-edge-dark"
-              : "border-indigo-500/50 bg-indigo-500/10 text-indigo-600 hover:bg-indigo-500/20 dark:text-indigo-300",
+              ? "cursor-not-allowed border-edge-light text-muted dark:border-edge-dark"
+              : "border-accent/50 bg-accent/10 text-accent hover:bg-accent/20 dark:text-accent",
           )}
         >
           <LayoutGrid className="h-4 w-4" />
           <span className="hidden md:inline">{t("workspace.title")}</span>
           {workspaceSelected.length > 0 && (
-            <span className="rounded bg-indigo-500 px-1.5 text-[10px] font-bold text-white">
+            <span className="rounded bg-accent-solid px-1.5 text-[11px] font-bold text-white">
               {workspaceSelected.length}
             </span>
           )}
         </button>
+        {!session && <button ref={sourcesToggle} type="button" className="source-toggle" aria-expanded={sourcesOpen} aria-controls="sources-panel" onClick={() => setSourcesOpen((value) => !value)}><SlidersHorizontal className="h-4 w-4" />{t("sources.title")}</button>}
       </div>
 
       {paletteOpen&&<Suspense fallback={null}><CommandPalette/></Suspense>}
       {!session&&<SearchContext onConcept={openConcept} />}
-      {!session&&resume&&<button className="text-left text-xs px-3 py-1 text-indigo-600 dark:text-indigo-300" onClick={()=>useWorkbenchStore.getState().restore()}>{useSettingsStore.getState().settings.ui_locale==="en"?"Resume Concept Session":useSettingsStore.getState().settings.ui_locale==="zh-CN"?"继续概念会话":"繼續概念工作階段"}</button>}
+      {!session&&resume&&<button className="text-left text-xs px-3 py-1 text-accent dark:text-accent" onClick={()=>useWorkbenchStore.getState().restore()}>{useSettingsStore.getState().settings.ui_locale==="en"?"Resume Concept Session":useSettingsStore.getState().settings.ui_locale==="zh-CN"?"继续概念会话":"繼續概念工作階段"}</button>}
 
       {session ? (
         <div className="min-h-0 flex-1" data-learning-surface>
@@ -92,12 +95,12 @@ export default function SearchPage() {
         </div>
       ) : (
         <>
-          <div className="flex min-h-0 flex-1">
-            <aside className="w-[130px] shrink-0 sm:w-[210px]">
+          <div className="search-layout flex min-h-0 flex-1">
+            <aside id="sources-panel" aria-label={t("sources.title")} data-expanded={sourcesOpen} className="source-pane shrink-0" onKeyDown={(event) => { if (event.key === "Escape") { setSourcesOpen(false); sourcesToggle.current?.focus(); } }}>
               <SourceSidebar />
             </aside>
 
-            <section className="flex min-w-0 flex-1 flex-col">
+            <section className="flex min-h-0 min-w-0 flex-1 flex-col">
               <FilterBar />
               <div className="min-h-0 flex-1">
                 <SearchResults />
@@ -105,7 +108,7 @@ export default function SearchPage() {
             </section>
 
             {previewMode === "side" && wide && (
-              <aside className="hidden w-[38%] min-w-[320px] shrink-0 border-l border-edge-light bg-white dark:border-edge-dark dark:bg-surface-dark lg:block">
+              <aside className="hidden w-[38%] min-w-[320px] shrink-0 border-l border-edge-light bg-panel dark:border-edge-dark dark:bg-surface-dark lg:block">
                 <PreviewPane />
               </aside>
             )}
@@ -126,7 +129,7 @@ export default function SearchPage() {
 
 function InlinePreview() {
   return (
-    <div className="h-[42%] border-t border-edge-light bg-white dark:border-edge-dark dark:bg-surface-dark">
+    <div className="h-[42%] border-t border-edge-light bg-panel dark:border-edge-dark dark:bg-surface-dark">
       <PreviewPane />
     </div>
   );

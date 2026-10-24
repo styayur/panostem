@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 70;
-  background: #0006;
+  background: rgb(0 0 0 / .4);
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -14,17 +14,17 @@
   max-height: 75vh;
   display: flex;
   flex-direction: column;
-  background: white;
-  color: #27272a;
-  border: 1px solid #a1a1aa;
-  border-radius: 9px;
-  box-shadow: 0 12px 40px #0004;
+  background: var(--ps-panel);
+  color: var(--ps-ink);
+  border: 1px solid var(--ps-muted);
+  border-radius: var(--ps-radius);
+  box-shadow: var(--ps-overlay-shadow);
   overflow: hidden;
 }
 .dark .command-dialog {
-  background: #1e1f23;
-  color: #e4e4e7;
-  border-color: #52525b;
+  background: var(--ps-panel);
+  color: var(--ps-ink);
+  border-color: var(--ps-muted);
 }
 .command-dialog header {
   display: flex;
@@ -41,8 +41,8 @@
   padding: 12px 16px;
   font-size: 15px;
   background: transparent;
-  border-top: 1px solid #71717a55;
-  border-bottom: 1px solid #71717a55;
+  border-top: 1px solid var(--ps-border);
+  border-bottom: 1px solid var(--ps-border);
   outline-offset: -3px;
 }
 .command-dialog [role="listbox"] {
@@ -59,11 +59,11 @@
   border-radius: 4px;
 }
 .command-dialog [aria-selected="true"] {
-  background: #6366f121;
-  color: #4338ca;
+  background: rgb(var(--ps-accent-rgb) / 0.129);
+  color: var(--ps-accent);
 }
 .dark .command-dialog [aria-selected="true"] {
-  color: #c7d2fe;
+  color: var(--ps-accent);
 }
 .command-dialog p {
   padding: 12px;
