@@ -8,7 +8,7 @@ A concept-driven STEM learning environment with native ManimGL authoring and ren
 [![Release](https://img.shields.io/github/v/release/styayur/panostem?include_prereleases)](https://github.com/styayur/panostem/releases)
 [![AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
 
-**Alpha.** This source targets prerelease: **[v0.5.0-alpha.2](https://github.com/styayur/panostem/releases/tag/v0.5.0-alpha.2)**. ManimGL integration is experimental. The latest historical stable Windows release is [v0.2.0](https://github.com/styayur/panostem/releases/tag/v0.2.0), which predates Studio and guided lessons. The [delivery audit](docs/audits/panostem-alpha2-20261024.md) records actual verification, release assets and deployment status.
+**Alpha.** Current prerelease: **[v0.5.0-alpha.2](https://github.com/styayur/panostem/releases/tag/v0.5.0-alpha.2)**. ManimGL integration is experimental. The latest historical stable Windows release is [v0.2.0](https://github.com/styayur/panostem/releases/tag/v0.2.0), which predates Studio and guided lessons. The [delivery audit](docs/audits/panostem-alpha2-20261024.md) records actual verification, release assets and deployment status.
 
 ![Actual Panostem Web playback of a real ManimGL render](docs/studio-web.png)
 
