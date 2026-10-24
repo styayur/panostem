@@ -157,14 +157,18 @@ def inspect_project(root):
     root = root.resolve()
     files = inventory(root)
     scenes, classes, errors = [], [], []
-    h = hashlib.sha256()
+    manifest = []
+    metadata_bytes = None
     for item in files:
         path = inside(root, item["path"])
-        h.update(item["path"].encode())
-        h.update(path.read_bytes())
+        content = path.read_bytes()
+        item["sha256"] = digest(content)
+        manifest.append({"path": item["path"], "sha256": item["sha256"]})
+        if path == root / "panostem.json":
+            metadata_bytes = content
         if path.suffix == ".py" and item["size"] <= TEXT_MAX:
             try:
-                tree = ast.parse(path.read_text(encoding="utf-8-sig"), filename=item["path"])
+                tree = ast.parse(content.decode("utf-8-sig"), filename=item["path"])
                 aliases = {alias.asname or alias.name: alias.name for node in tree.body if isinstance(node, ast.ImportFrom) for alias in node.names}
                 for node in tree.body:
                     if isinstance(node, ast.ClassDef):
@@ -183,13 +187,38 @@ def inspect_project(root):
         known.update(added)
     scenes = [{"file":item["file"],"name":item["name"]} for item in classes if any(base in known for base in item["bases"])]
     meta = None
-    if (root / "panostem.json").exists():
+    if metadata_bytes is not None:
         try:
-            meta = validate_metadata(json.loads(inside(root, "panostem.json").read_text(encoding="utf-8")))
+            meta = validate_metadata(json.loads(metadata_bytes.decode("utf-8-sig")))
         except (ValueError, KeyError, TypeError) as e:
             errors.append({"file": "panostem.json", "line": 1, "message": str(e)})
     return {"root": str(root), "files": files, "scenes": scenes, "errors": errors,
-            "metadata": meta, "revision": h.hexdigest()}
+            "metadata": meta, "revision": digest(json.dumps(
+                {"scheme": 2, "files": sorted(manifest, key=lambda item: item["path"])},
+                sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8"))}
+
+
+
+def capture_execution(root, reviewed, destination):
+    """Capture reviewed project bytes without importing any project code.
+
+    The independent tree closes ordinary editor/filesystem mutation races. It is
+    not immutable against arbitrary same-user OS code and is not an OS sandbox.
+    """
+    destination.mkdir(parents=True, exist_ok=False)
+    try:
+        for item in reviewed["files"]:
+            source = inside(root, item["path"])
+            target = inside(destination, item["path"])
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source, target)
+        captured = inspect_project(destination)
+        if captured["revision"] != reviewed["revision"]:
+            raise ValueError("Project changed during capture; review and authorize again")
+        return captured
+    except Exception:
+        shutil.rmtree(destination)
+        raise
 
 
 def create_project(req):
@@ -412,7 +441,13 @@ def run_scene(root, req):
             args += ["--gif"]
         elif fmt == "mov":
             args += ["--transparent"]
+    execution = output / ".execution"
+    captured = capture_execution(root, current, execution)
+    args[3] = str(inside(execution, req["entry"]))
     env = safe_env(req)
+    env["PANOSTEM_PROJECT_DIR"] = str(root)
+    env["PANOSTEM_OUTPUT_DIR"] = str(output)
+    env["PANOSTEM_EXECUTION_DIR"] = str(execution)
     env["PATH"] = str(py.parent) + os.pathsep + env["PATH"]
     env["PANOSTEM_PARAMETERS"] = json.dumps(params, allow_nan=False)
     sys.stdout.write("Launching upstream ManimGL: " + json.dumps(args) + "\n")
@@ -423,12 +458,12 @@ def run_scene(root, req):
         (ipython_dir / "profile_default").mkdir(parents=True, exist_ok=True)
         (ipython_dir / "profile_default/ipython_config.py").write_text("c.TerminalInteractiveShell.simple_prompt = True\n")
         env["IPYTHONDIR"] = str(ipython_dir)
-    proc = subprocess.run(args, cwd=root, env=env, stdin=sys.stdin if mode == "preview" else subprocess.DEVNULL)
+    proc = subprocess.run(args, cwd=execution, env=env, stdin=sys.stdin if mode == "preview" else subprocess.DEVNULL)
     if proc.returncode:
         raise RuntimeError(f"ManimGL exited with code {proc.returncode}. Review traceback and runtime diagnostics.")
     media = []
     for p in sorted(output.rglob("*")):
-        if p.is_file() and p.suffix.lower() in {".mp4", ".gif", ".mov", ".png"} and "partial_movie_files" not in p.parts:
+        if p.is_file() and p.suffix.lower() in {".mp4", ".gif", ".mov", ".png"} and "partial_movie_files" not in p.parts and ".execution" not in p.relative_to(output).parts:
             inside(root, p.relative_to(root).as_posix())
             if p.stat().st_size:
                 media.append({"path": p.relative_to(root).as_posix(), "size": p.stat().st_size})
@@ -445,7 +480,8 @@ def run_scene(root, req):
             media.append({"path": thumb.relative_to(root).as_posix(), "size": thumb.stat().st_size})
     result = {"media": media, "output": str(output), "elapsed": time.monotonic() - started,
               "mode": mode, "entry": req["entry"], "scene": req["scene"], "revision": current["revision"],
-              "metadata": meta, "parameters": params, "resolution": size, "fps": fps, "format": fmt}
+              "metadata": meta, "parameters": params, "resolution": size, "fps": fps, "format": fmt,
+              "revision_scheme": 2, "execution_root": str(execution), "source_manifest": captured["files"]}
     (output / "run.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
     return result
 
@@ -457,24 +493,32 @@ def install_dependencies(root, req):
     if current["revision"] != req.get("revision"):
         raise ValueError("Project changed since dependency review")
     path = inside(root, "requirements.txt")
-    lines = path.read_text(encoding="utf-8").splitlines()
-    # UI offers a deliberately reviewable PyPI-only installer. Advanced arbitrary
-    # build systems remain ordinary external ManimGL workflows, not auto-install.
+    content = path.read_bytes()
+    expected = next(item["sha256"] for item in current["files"] if item["path"] == "requirements.txt")
+    if len(content) > TEXT_MAX or digest(content) != expected:
+        raise ValueError("Requirements changed during review or exceed 2 MiB")
+    lines = content.decode("utf-8-sig").splitlines()
     for line in lines:
         text = line.split("#", 1)[0].strip()
         if text and not re.fullmatch(r"[A-Za-z0-9_.-]+(?:\[[A-Za-z0-9_,.-]+\])?==[A-Za-z0-9_.+!-]+", text):
             raise ValueError("Managed dependency install requires one exact PyPI name==version per line")
-    uv = str(Path(req["runtime_root"]) / ("uv.exe" if os.name == "nt" else "uv"))
+    runtime = Path(req["runtime_root"])
+    uv = str(runtime / ("uv.exe" if os.name == "nt" else "uv"))
     dest = inside(root, ".panostem/venv")
     env = safe_env(req)
     lock = inside(root, ".panostem/project-requirements.lock")
-    for args in ([uv, "venv", "--allow-existing", "--python", str(runtime_python(req)), "--system-site-packages", str(dest)],
-                 [uv, "pip", "compile", str(path), "--python", str(python_for(dest)), "--constraint", str(HERE / "requirements.lock"), "--generate-hashes",
-                  "--only-binary", ":all:", "--index-url", "https://pypi.org/simple", "--output-file", str(lock)],
-                 [uv, "pip", "install", "--python", str(python_for(dest)), "--only-binary", ":all:", "--require-hashes",
-                  "--constraint", str(HERE / "requirements.lock"), "--index-url", "https://pypi.org/simple", "-r", str(lock)]):
-        subprocess.run(args, cwd=HERE, env=env, check=True, stdin=subprocess.DEVNULL)
-    return {"environment": str(dest), "requirements_sha256": digest(path.read_bytes()), "lock": str(lock)}
+    review_root = runtime / "reviews"
+    review_root.mkdir(exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="dependencies-", dir=review_root) as review:
+        spec = Path(review) / "requirements.txt"
+        spec.write_bytes(content)
+        for args in ([uv, "venv", "--allow-existing", "--python", str(runtime_python(req)), "--system-site-packages", str(dest)],
+                     [uv, "pip", "compile", str(spec), "--python", str(python_for(dest)), "--constraint", str(HERE / "requirements.lock"), "--generate-hashes",
+                      "--only-binary", ":all:", "--index-url", "https://pypi.org/simple", "--output-file", str(lock)],
+                     [uv, "pip", "install", "--python", str(python_for(dest)), "--only-binary", ":all:", "--require-hashes",
+                      "--constraint", str(HERE / "requirements.lock"), "--index-url", "https://pypi.org/simple", "-r", str(lock)]):
+            subprocess.run(args, cwd=HERE, env=env, check=True, stdin=subprocess.DEVNULL)
+    return {"environment": str(dest), "requirements_sha256": digest(content), "lock": str(lock)}
 
 
 def sandbox_config(runtime, bundle):
@@ -544,6 +588,22 @@ def main(req):
     root = project_root(req["project"])
     if action == "inspect":
         return inspect_project(root)
+    if action == "read_run_source":
+        run_id = req["run_id"]
+        if not re.fullmatch(r"[a-zA-Z0-9_-]{1,80}", run_id):
+            raise ValueError("Invalid run ID")
+        relative(req["file"])
+        record = json.loads(inside(root, f"renders/{run_id}/run.json").read_text(encoding="utf-8"))
+        if record.get("revision_scheme") != 2:
+            raise ValueError("Re-render this legacy output before sharing attested source")
+        source = next((item for item in record.get("source_manifest", []) if item["path"] == req["file"]), None)
+        path = inside(root, f"renders/{run_id}/.execution/{req['file']}")
+        if not source or path.suffix != ".py" or path.stat().st_size > TEXT_MAX:
+            raise ValueError("Select a captured Python source under 2 MiB")
+        content = path.read_bytes()
+        if digest(content) != source["sha256"]:
+            raise ValueError("Captured source changed; re-render before sharing source")
+        return {"text": content.decode("utf-8-sig")}
     if action == "read":
         path = inside(root, req["file"])
         if path.suffix not in EDITABLE or path.stat().st_size > TEXT_MAX:

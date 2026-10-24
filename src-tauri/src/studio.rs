@@ -266,6 +266,7 @@ impl Studio {
             "import",
             "inspect",
             "read",
+            "read_run_source",
             "save",
             "add_asset",
             "trash",

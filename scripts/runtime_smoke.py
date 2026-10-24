@@ -11,6 +11,7 @@ import shutil
 import subprocess
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 
 parser=argparse.ArgumentParser()
 parser.add_argument("--runtime-root",default=".panostem-runtime")
@@ -55,5 +56,45 @@ for fmt,mode in (("gif","render"),("mov","render"),("mp4","frame")):
     subprocess.run([str(ffmpeg),"-v","error","-i",str(project/media["path"]),"-f","null","-"],check=True,timeout=60)
     formats.append({"format":fmt,"mode":mode,"bytes":media["size"],"decoded":True})
     sys.stdout.write(f"PASS: {fmt}/{mode}: actual media decoded\n"); sys.stdout.flush()
-(runtime/"smoke-evidence.json").write_text(json.dumps({"python":sys.version,"upstream":c.UPSTREAM,"renders":evidence,"formats":formats},indent=2))
+# Exercise a delayed import in the real engine while the editable tree changes.
+# The reviewed module and private PNG must remain in the captured tree only.
+project=runtime/f"smoke-revision-{int(time.time())}"
+c.create_project({"project":str(project),"template":"blank"})
+(project/"helpers.py").write_text("VALUE = 42\n")
+(project/"private.png").write_bytes(b"private project asset, not rendered media")
+(project/"main.py").write_text('''from manimlib import *
+import os, time
+from pathlib import Path
+class RevisionScene(Scene):
+    def construct(self):
+        out = Path(os.environ["PANOSTEM_OUTPUT_DIR"])
+        (out / "ready.txt").write_text("ready")
+        time.sleep(2)
+        from helpers import VALUE
+        (out / "captured-value.txt").write_text(str(VALUE))
+        self.add(Circle())
+        self.wait(0.2)
+''')
+info=c.inspect_project(project)
+request={"runtime_root":str(runtime),"entry":"main.py","scene":"RevisionScene","mode":"render","format":"mp4",
+         "resolution":"854x480","fps":15,"job_id":"revision","trust":True,"revision":info["revision"],"parameters":{}}
+with ThreadPoolExecutor(max_workers=1) as pool:
+    future=pool.submit(c.run_scene,project,request)
+    deadline=time.monotonic()+90
+    while not (project/"renders/revision/ready.txt").exists():
+        if future.done():
+            future.result()
+            raise AssertionError("Engine never reached the delayed import")
+        if time.monotonic()>deadline:
+            raise AssertionError("Real engine revision test timed out")
+        time.sleep(0.05)
+    (project/"helpers.py").write_text("VALUE = 999\n")
+    result=future.result(timeout=90)
+assert (project/"renders/revision/captured-value.txt").read_text()=="42"
+assert not any(".execution" in m["path"] or m["path"].endswith("private.png") for m in result["media"])
+movie=next(m for m in result["media"] if m["path"].endswith(".mp4"))
+subprocess.run([str(ffmpeg),"-v","error","-i",str(project/movie["path"]),"-f","null","-"],check=True,timeout=60)
+(runtime/"smoke-evidence.json").write_text(json.dumps({"python":sys.version,"upstream":c.UPSTREAM,"renders":evidence,"formats":formats,
+    "revision_race":{"captured_value":42,"editable_value":999,"decoded":True,"private_assets_excluded":True}},indent=2))
+sys.stdout.write("PASS: real delayed module import uses captured revision; private assets excluded\n")
 sys.stdout.write("Real ManimGL smoke: all five scenes rendered and decoded\n")

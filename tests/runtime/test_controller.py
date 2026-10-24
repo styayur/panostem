@@ -5,6 +5,7 @@ from pathlib import Path
 import shutil
 import tempfile
 import unittest
+from unittest.mock import patch
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -69,6 +70,70 @@ class ProjectContracts(unittest.TestCase):
         c.export_project(alias, {"archive": str(archive)})
         self.assertTrue(archive.is_file())
 
+    def test_revision_frames_file_names_and_contents(self):
+        # The old concatenated stream was identical after splitting this comment
+        # into a new Python module. A trust fingerprint must distinguish them.
+        (self.project / "a.py").write_text("# b.pyMARKER = 1\n")
+        approved = c.inspect_project(self.project)["revision"]
+        (self.project / "a.py").write_text("# ")
+        (self.project / "b.py").write_text("MARKER = 1\n")
+        self.assertNotEqual(approved, c.inspect_project(self.project)["revision"])
+
+    def test_revision_tracks_modules_assets_configuration_addition_and_deletion(self):
+        for name in ("helpers/local.py", "assets/value.txt", "custom_config.yml", "requirements.txt"):
+            with self.subTest(name=name):
+                path = self.project / name
+                path.parent.mkdir(exist_ok=True, parents=True)
+                before = c.inspect_project(self.project)["revision"]
+                previous = path.read_bytes() if path.exists() else None
+                path.write_bytes((previous or b"") + b"# changed\n")
+                changed = c.inspect_project(self.project)["revision"]
+                self.assertNotEqual(before, changed)
+                path.unlink()
+                self.assertNotEqual(changed, c.inspect_project(self.project)["revision"])
+                if previous is not None:
+                    path.write_bytes(previous)
+
+    def test_execution_capture_is_reviewed_and_independent_of_editor_changes(self):
+        sentinel = self.root / "executed"
+        (self.project / "helpers.py").write_text(f"open({str(sentinel)!r}, 'w').write('bad')\n")
+        approved = c.inspect_project(self.project)
+        dest = self.root / "execution"
+        captured = c.capture_execution(self.project, approved, dest)
+        self.assertEqual(captured["revision"], approved["revision"])
+        self.assertFalse(sentinel.exists(), "capture must not import code")
+        before = (dest / "main.py").read_bytes()
+        (self.project / "main.py").write_text("# edited after review\n")
+        self.assertEqual((dest / "main.py").read_bytes(), before)
+        self.assertNotEqual(c.inspect_project(self.project)["revision"], captured["revision"])
+
+    def test_mutation_during_capture_fails_before_engine_launch_and_cleans_stage(self):
+        approved = c.inspect_project(self.project)
+        dest = self.root / "execution"
+        copy = c.shutil.copyfile
+        def changing(source, target):
+            if Path(source).name == "main.py":
+                Path(source).write_text("# changed during capture\n")
+            return copy(source, target)
+        with patch.object(c.shutil, "copyfile", side_effect=changing), self.assertRaisesRegex(ValueError, "changed during capture"):
+            c.capture_execution(self.project, approved, dest)
+        self.assertFalse(dest.exists())
+
+    def test_shared_source_uses_captured_manifest_and_rejects_tampering(self):
+        approved = c.inspect_project(self.project)
+        run = self.project / "renders" / "test-run"
+        captured = c.capture_execution(self.project, approved, run / ".execution")
+        (run / "run.json").write_text(json.dumps({"revision_scheme":2,"source_manifest":captured["files"]}))
+        request = {"action":"read_run_source","project":str(self.project),"run_id":"test-run","file":"main.py"}
+        expected = (run / ".execution/main.py").read_text()
+        (self.project / "main.py").write_text("# current editor differs\n")
+        self.assertEqual(c.main(request)["text"], expected)
+        (run / ".execution/main.py").write_text("# tampered captured source\n")
+        with self.assertRaisesRegex(ValueError, "Captured source changed"):
+            c.main(request)
+        with self.assertRaises(ValueError):
+            c.main({**request,"run_id":"../escape"})
+
     def test_paths_fail_closed(self):
         for path in ("../x", "/x", "a/../b", "C:/x", "a\\b", "a//b", "a/./b", "NUL.txt", "a.", "a/", "a\x00b"):
             with self.subTest(path=path), self.assertRaises(ValueError):
@@ -131,6 +196,39 @@ class ProjectContracts(unittest.TestCase):
         self.assertNotIn("PANOSTEM_TEST_SECRET",env)
         self.assertNotIn("PYTHONPATH",env)
         self.assertEqual(env["PANOSTEM_PARAMETERS"],"{}")
+
+    def test_dependencies_capture_reviewed_bytes_before_compile(self):
+        requirements = self.project / "requirements.txt"
+        requirements.write_bytes(b"colour==0.1.5\n")
+        approved = c.inspect_project(self.project)
+        runtime = self.root / "runtime"
+        runtime.mkdir()
+        commands = []
+        def launch(args, **kwargs):
+            commands.append(args)
+            requirements.write_bytes(b"unapproved==999\n")
+            if "compile" in args:
+                spec = Path(args[3])
+                self.assertNotEqual(spec, requirements)
+                self.assertEqual(spec.read_bytes(), b"colour==0.1.5\n")
+            self.assertEqual(kwargs["env"]["UV_NO_CONFIG"], "1")
+        with patch.object(c.subprocess, "run", side_effect=launch):
+            result = c.install_dependencies(self.project, {"authorize_dependencies":True,"revision":approved["revision"],"runtime_root":str(runtime)})
+        self.assertEqual(len(commands), 3)
+        self.assertEqual(result["requirements_sha256"], c.digest(b"colour==0.1.5\n"))
+        self.assertEqual(list((runtime / "reviews").iterdir()), [])
+
+    def test_dependencies_reject_change_between_inspection_and_capture(self):
+        requirements = self.project / "requirements.txt"
+        requirements.write_bytes(b"colour==0.1.5\n")
+        approved = c.inspect_project(self.project)
+        def changed(_root):
+            requirements.write_bytes(b"unapproved==999\n")
+            return approved
+        with patch.object(c, "inspect_project", side_effect=changed), patch.object(c.subprocess, "run") as launch:
+            with self.assertRaisesRegex(ValueError, "Requirements changed"):
+                c.install_dependencies(self.project, {"authorize_dependencies":True,"revision":approved["revision"]})
+            launch.assert_not_called()
 
     def test_asset_import_and_recoverable_trash(self):
         source=self.root/"image.png"
