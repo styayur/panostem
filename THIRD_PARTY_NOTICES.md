@@ -21,6 +21,13 @@ registry origins, integrity fields and notice filenames. `Cargo.lock` records Ru
 registry checksums. `licenses/THIRD_PARTY_LICENSE_TEXTS.txt` contains the actual
 collected copyright/license texts. Regenerate with `scripts/collect_licenses.py`.
 Missing/UNDECLARED metadata is disclosed; do not infer a license from a name.
+Some published archives omit their notice files. For the Windows distribution,
+the missing CodeMirror wrapper, alloc-stdlib, defmt-parser, selectors and WebView2
+texts are supplied in `licenses/supplemental/`; exact upstream commits, SHA-256
+and package mappings are in `licenses/supplemental-sources.json`. The selectors
+MPL-2.0 corresponding source is the exact public crate/source commit recorded
+there. Experimental-platform build dependencies are inventoried but not shipped
+as native release binaries.
 
 ## Separately installed ManimGL runtime
 

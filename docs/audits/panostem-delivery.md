@@ -97,6 +97,11 @@ commit. Actual production npm, Rust build and installed Python inventories and
 license texts are supplied. PyOpenGL's missing wheel license is supplemented from
 the SHA-verified exact source archive; FFmpeg's own GPLv3/build output and full
 license text are retained. See [third-party notices](../../THIRD_PARTY_NOTICES.md).
+Final Windows-distribution review also found published archives missing their
+license texts. CodeMirror wrappers and seven Windows Rust package/version entries
+now have supplemental texts from their precise recorded upstream commits (or the
+standard MPL-2.0 text), with file hashes and package mappings. Build-only and
+experimental-platform dependencies remain separately identified in the inventory.
 User content and third-party textbooks/assets are not automatically relicensed.
 
 ## Partial, unavailable and known limitations
