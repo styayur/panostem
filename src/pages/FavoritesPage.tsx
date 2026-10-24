@@ -31,21 +31,21 @@ export default function FavoritesPage() {
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex items-center gap-2 border-b border-edge-light bg-white px-3 py-2 dark:border-edge-dark dark:bg-surface-dark">
+      <div className="flex items-center gap-2 border-b border-edge-light bg-panel px-3 py-2 dark:border-edge-dark dark:bg-surface-dark">
         <div className="flex max-w-md flex-1 items-center gap-2 rounded-md border border-edge-light px-2 dark:border-edge-dark">
-          <Search className="h-4 w-4 text-zinc-400" />
+          <Search className="h-4 w-4 text-muted" />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder={t("fav.searchPlaceholder")}
-            className="h-8 w-full bg-transparent text-sm outline-none placeholder:text-zinc-400 dark:text-zinc-100"
+            className="h-8 w-full bg-transparent text-sm outline-none placeholder:text-muted dark:text-ink"
           />
         </div>
         <select
           aria-label={t("fav.allSources")}
           value={source}
           onChange={(e) => setSource(e.target.value)}
-          className="h-8 rounded-md border border-edge-light bg-white px-2 text-[12px] text-zinc-600 dark:border-edge-dark dark:bg-surface-dark dark:text-zinc-300"
+          className="h-8 rounded-md border border-edge-light bg-panel px-2 text-[12px] text-muted dark:border-edge-dark dark:bg-surface-dark dark:text-ink"
         >
           <option value="all">{t("fav.allSources")}</option>
           {sources.map((s) => (
@@ -54,36 +54,36 @@ export default function FavoritesPage() {
             </option>
           ))}
         </select>
-        <span className="ml-auto text-[12px] text-zinc-400">{t("fav.saved", { n: filtered.length })}</span>
+        <span className="ml-auto text-[12px] text-muted">{t("fav.saved", { n: filtered.length })}</span>
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto">
         {filtered.length === 0 && (
-          <div className="flex h-full items-center justify-center text-sm text-zinc-400">
+          <div className="flex h-full items-center justify-center text-sm text-muted">
             {t("fav.empty")}
           </div>
         )}
         {filtered.map((f) => (
           <div
             key={f.result.id}
-            className="group flex items-start gap-3 border-b border-edge-light/70 px-4 py-3 hover:bg-zinc-100/60 dark:border-edge-dark/70 dark:hover:bg-zinc-800/50"
+            className="group flex items-start gap-3 border-b border-edge-light/70 px-4 py-3 hover:bg-subtle/60 dark:border-edge-dark/70 dark:hover:bg-subtle/50"
           >
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2">
-                <span className="text-[12px] font-semibold text-zinc-500 dark:text-zinc-400">
+                <span className="text-[12px] font-semibold text-muted dark:text-muted">
                   {f.result.source_name}
                 </span>
                 <Badge tone="muted">{t(typeLabelKey(f.result.result_type))}</Badge>
               </div>
-              <div className="truncate text-[14px] font-medium text-zinc-800 dark:text-zinc-100">
+              <div className="truncate text-[14px] font-medium text-ink dark:text-ink">
                 {f.result.title}
               </div>
-              <div className="truncate text-[11px] text-zinc-400">{f.result.url}</div>
+              <div className="truncate text-[11px] text-muted">{f.result.url}</div>
             </div>
             <button
               type="button"
               title={t("row.openWindow")}
-              className="rounded p-1.5 text-zinc-400 hover:bg-zinc-200 hover:text-indigo-500 dark:hover:bg-zinc-700"
+              className="rounded p-1.5 text-muted hover:bg-subtle hover:text-accent dark:hover:bg-subtle"
               onClick={() => attempt(() => cmd.openWindow(f.result.url, `${f.result.title} — ${f.result.source_name}`))}
             >
               <ExternalLink className="h-4 w-4" />
@@ -91,7 +91,7 @@ export default function FavoritesPage() {
             <button
               type="button"
               title={t("row.unfavorite")}
-              className="rounded p-1.5 text-amber-500 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+              className="rounded p-1.5 text-warning hover:bg-subtle dark:hover:bg-subtle"
               onClick={() => toggleFavorite(f.result)}
             >
               <Star className="h-4 w-4" fill="currentColor" />

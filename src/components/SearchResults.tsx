@@ -1,22 +1,13 @@
 import {diagnose,diagnosticMessages} from "../lib/searchDiagnostics";
 import {useSettingsStore} from "../stores/settingsStore";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Sparkles } from "lucide-react";
+import { conceptById } from "../lib/concepts";
 import { useSearchStore, visibleResults } from "../stores/searchStore";
 import type { SearchResult } from "../lib/types";
 import ResultRow, { RESULT_ROW_HEIGHT } from "./SearchResultRow";
 import { useT } from "../lib/i18n";
 
-const SUGGESTED = [
-  "Gradient",
-  "Curl",
-  "Divergence",
-  "Fourier Transform",
-  "Standing Wave",
-  "Electromagnetic Field",
-  "Harmonic Oscillator",
-  "Quantum Well",
-];
+const SUGGESTED = ["gradient", "curl", "divergence", "fourier-transform", "standing-wave", "electromagnetic-field", "harmonic-oscillator", "quantum-well"];
 
 export default function SearchResults() {
   const t = useT();
@@ -38,17 +29,17 @@ export default function SearchResults() {
 
   if (loading) {
     return (
-      <div className="flex h-full items-center justify-center text-sm text-zinc-400">
+      <div className="flex h-full items-center justify-center text-sm text-muted">
         {t("results.searching")}
       </div>
     );
   }
 
-  if (error) return <div role="alert" className="p-6 text-sm text-red-600"><p>{error}</p><button type="button" className="mt-3 underline" onClick={() => runSearch()}>{t("common.retry")}</button></div>;
+  if (error) return <div role="alert" className="p-6 text-sm text-danger"><p>{error}</p><button type="button" className="mt-3 underline" onClick={() => runSearch()}>{t("common.retry")}</button></div>;
 
   if(response && results.length===0) {
     const d=diagnose(response,results.length);
-    return <div role="status" className="p-6 space-y-3 text-sm text-zinc-500">{d.reasons.map(reason=><p key={reason} data-reason={reason}>{diagnosticMessages[reason][locale==="zh-CN"?1:locale==="zh-TW"?2:0]}</p>)}</div>;
+    return <div role="status" className="p-6 space-y-3 text-sm text-muted">{d.reasons.map(reason=><p key={reason} data-reason={reason}>{diagnosticMessages[reason][locale==="zh-CN"?1:locale==="zh-TW"?2:0]}</p>)}</div>;
   }
   if (!response || response.results.length === 0) {
     return <EmptyState query={response?.query ?? ""} onPick={runSearch} />;
@@ -56,7 +47,7 @@ export default function SearchResults() {
 
   if (results.length === 0) {
     return (
-      <div className="flex h-full items-center justify-center text-sm text-zinc-400">
+      <div className="flex h-full items-center justify-center text-sm text-muted">
         {t("results.filteredOut")}
       </div>
     );
@@ -73,30 +64,32 @@ export default function SearchResults() {
 
 function EmptyState({ query, onPick }: { query: string; onPick: (q: string) => void }) {
   const t = useT();
+  const locale = useSettingsStore((state) => state.settings.ui_locale);
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-4 px-8 text-center">
-      <Sparkles className="h-8 w-8 text-indigo-400" />
-      <div className="text-lg font-semibold text-zinc-700 dark:text-zinc-200">
+    <section className="ps-empty">
+      <h2>
         {t("results.explore")}
-      </div>
-      <div className="max-w-sm text-sm text-zinc-500 dark:text-zinc-400">
+      </h2>
+      <p>
         {query.length > 0
           ? t("results.noResults")
           : t("results.emptyHint")}
-      </div>
-      <div className="flex flex-wrap items-center justify-center gap-2">
-        {SUGGESTED.map((s) => (
-          <button
-            key={s}
+      </p>
+      <div className="ps-empty-examples">
+        {SUGGESTED.map((id) => {
+          const concept = conceptById.get(id)!;
+          const label = locale === "zh-CN" ? concept.zh_cn : locale === "zh-TW" ? concept.zh_tw : concept.en;
+          return <button
+            key={id}
             type="button"
-            onClick={() => onPick(s)}
-            className="rounded-full border border-edge-light px-3 py-1.5 text-[13px] text-zinc-600 transition-colors hover:border-indigo-400 hover:text-indigo-500 dark:border-edge-dark dark:text-zinc-300"
+            onClick={() => onPick(label)}
+            className="rounded border border-edge-light px-3 py-1.5 text-[13px] text-muted transition-colors hover:border-accent hover:text-accent dark:border-edge-dark dark:text-ink"
           >
-            {s}
-          </button>
-        ))}
+            {label}
+          </button>;
+        })}
       </div>
-    </div>
+    </section>
   );
 }
 

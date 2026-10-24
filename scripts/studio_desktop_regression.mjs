@@ -12,7 +12,15 @@ assert.equal(await invoke("plugin:app|identifier"),"org.stemvisualexplorer.audit
 const project=resolve(`.panostem-runtime/native-studio-${Date.now()}`);
 const poll=async fn=>{for(let i=0;i<600;i++){const v=await fn();if(v)return v;await new Promise(r=>setTimeout(r,200));}throw new Error("Native Studio operation timed out");};
 const waitTask=async id=>poll(async()=>{const t=(await invoke("studio_tasks")).find(t=>t.id===id);return t&&t.status!=="running"?t:null;});
-const edit=async text=>{await page.locator(".cm-content").click();await page.keyboard.press("Control+a");await page.keyboard.insertText(text);await page.getByRole("button",{name:"Save file",exact:true}).click();await poll(async()=>!(await page.getByText("Unsaved changes",{exact:true}).count()));};
+const edit=async text=>{
+  const save=page.getByRole("button",{name:"Save file",exact:true});
+  await poll(async()=>!(await save.isDisabled()));
+  await page.locator(".cm-content").click();await page.keyboard.press("Control+a");await page.keyboard.insertText(text);
+  await page.getByText("Unsaved changes",{exact:true}).waitFor();
+  assert.equal(await page.getByLabel(/^I trust this project revision/).isChecked(),false,"an unsaved edit revokes trust immediately");
+  await save.click();await poll(async()=>!(await page.getByText("Unsaved changes",{exact:true}).count()));
+  assert.equal((await invoke("studio_request",{request:{action:"read",project,file:"main.py"}})).text,text,"actual saved source must match the editor input");
+};
 let latest;
 try {
   await page.reload();await page.waitForLoadState("networkidle");
@@ -30,8 +38,18 @@ try {
   await page.getByRole("button",{name:"Render video",exact:true}).click();
   latest=await poll(async()=>(await invoke("studio_tasks")).find(t=>t.action==="run"&&t.project===project));
   let task=await waitTask(latest.id);assert.equal(task.status,"completed",task.error??task.logs.join(""));
+  assert.equal(task.result.revision_scheme,2);
+  assert.ok(task.result.execution_root.endsWith(".execution"));
+  const captured=await invoke("studio_request",{request:{action:"read_run_source",project,run_id:task.id,file:"main.py"}});
+  assert.ok(captured.text.includes("Saved through the native editor."));
   await page.locator("video").waitFor();await page.waitForFunction(()=>document.querySelector("video")?.readyState>=2);
   assert.equal(await page.locator("video").evaluate(v=>v.duration),4);
+  page.once("dialog",dialog=>dialog.dismiss());
+  await page.getByRole("button",{name:"Delete selected render output",exact:true}).click();
+  assert.ok((await invoke("studio_request",{request:{action:"outputs",project}})).some(r=>r.output===task.result.output),"dismissing deletion preserves output");
+  page.once("dialog",dialog=>dialog.dismiss());
+  await page.getByRole("button",{name:"Move selected file to project trash",exact:true}).click();
+  assert.ok((await invoke("studio_request",{request:{action:"inspect",project}})).files.some(f=>f.path==="main.py"),"dismissing trash preserves the file");
   const token=await invoke("studio_media",{project,file:task.result.media.find(f=>f.path.endsWith(".mp4")).path});
   assert.match(token,/^[a-f0-9-]{36}$/);
   await page.setViewportSize({width:1440,height:1400});
@@ -44,7 +62,7 @@ try {
   const archive=resolve(`.panostem-runtime/native-project-${Date.now()}.zip`);
   const exported=await invoke("studio_request",{request:{action:"export",project,archive}});assert.match(exported.sha256,/^[a-f0-9]{64}$/);
   const imported=await invoke("studio_request",{request:{action:"import",project:project+"-imported",archive}});assert.ok(imported.files.some(f=>f.path==="main.py"));
-  const nativeSource=`from manimlib import *\nimport subprocess,sys\nfrom pathlib import Path\nclass NativeScene(Scene):\n    def construct(self):\n        self.add(Circle())\n        child=subprocess.Popen([sys.executable,'-c','import time;time.sleep(300)'])\n        Path('preview-child.pid').write_text(str(child.pid))\n        print('PREVIEW_READY',flush=True)\n        self.embed()\n`;
+  const nativeSource=`from manimlib import *\nimport subprocess,sys,os\nfrom pathlib import Path\nclass NativeScene(Scene):\n    def construct(self):\n        self.add(Circle())\n        child=subprocess.Popen([sys.executable,'-c','import time;time.sleep(300)'])\n        (Path(os.environ['PANOSTEM_OUTPUT_DIR'])/'preview-child.pid').write_text(str(child.pid))\n        print('PREVIEW_READY',flush=True)\n        self.embed()\n`;
   await edit(nativeSource);
   assert.equal(await page.getByLabel(/^I trust this project revision/).isChecked(),false,"editing revokes trust");
   await page.getByLabel("Scene class (editable)").fill("NativeScene");
@@ -55,7 +73,7 @@ try {
   await page.getByLabel("Native preview console input").fill("print(40+2)");
   await page.getByRole("button",{name:"Send input",exact:true}).click();
   await poll(async()=>(await invoke("studio_tasks")).find(t=>t.id===latest.id).logs.join("").includes("42"));
-  const pid=Number(await readFile(resolve(project,"preview-child.pid"),"utf8"));assert.ok(Number.isInteger(pid)&&pid>0);
+  const pid=Number(await readFile(resolve(project,"renders",latest.id,"preview-child.pid"),"utf8"));assert.ok(Number.isInteger(pid)&&pid>0);
   await page.getByRole("button",{name:"Stop process tree",exact:true}).click();
   task=await waitTask(latest.id);assert.equal(task.status,"cancelled");
   await poll(async()=>{try{process.kill(pid,0);return false;}catch{return true;}});

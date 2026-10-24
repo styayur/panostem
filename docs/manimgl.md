@@ -84,7 +84,8 @@ my-project/
 
 Use the file list and CodeMirror editor to switch/add/save Python and configuration
 files. Source is syntax-highlighted, with line numbers, search, folding, indentation
-and normal editor keyboard commands. Syntax diagnostics and traceback links select
+and normal editor keyboard commands. The editor is temporarily read-only while
+a file loads or saves so a pending read cannot overwrite new edits. Syntax diagnostics and traceback links select
 the corresponding file/line. New assets are copied only after an explicit source
 and destination selection. File removal moves the file to `.panostem/trash`, so it
 can be restored manually. Unsaved file/project switching asks before discarding.
@@ -93,6 +94,24 @@ Scene candidates are found structurally without execution. Imported/dynamically
 constructed scenes can be typed into the editable entry/class fields; candidate
 discovery is not a restriction on the Python API. Save before running, then grant
 trust for the current source revision. Edits revoke that grant.
+
+Starting in alpha.2, revision scheme 2 hashes a canonical manifest of relative
+paths and per-file SHA-256 values, including modules, assets, configuration and
+requirements. Additions/deletions also change the revision. The old unframed
+filename/content stream is no longer used. A run copies reviewed files to
+`renders/<task-id>/.execution/`, verifies that complete captured manifest before
+starting ManimGL, and runs the ordinary CLI with that directory as its working
+directory. Changes during capture reject execution; later editor changes do not
+alter the captured local modules/assets. No Python is imported during capture.
+
+Relative project assets therefore resolve in the captured tree. `PANOSTEM_PROJECT_DIR`
+identifies the editable project, `PANOSTEM_EXECUTION_DIR` the captured tree and
+`PANOSTEM_OUTPUT_DIR` the task output directory. Code that deliberately reads an
+absolute external path or imports installed/external packages remains ordinary
+trusted Python. Another arbitrary process with the same user's OS permissions can
+also modify files; capture is not an OS security sandbox. Retained captures consume
+render storage, may contain private project content, and are deleted with the
+explicitly selected output. They are excluded from automatic media discovery.
 
 **Native preview** starts the actual engine in a separate window. Use upstream
 mouse/keyboard interactions. For scenes that enter an IPython embed, the Studio
@@ -123,6 +142,17 @@ engine overrides. Only binary wheels are installed; arbitrary VCS URLs/build
 scripts are not an automatic installation feature. Normal user Python modules
 remain unrestricted. Dependency packages can execute code when imported, so this
 is a trust decision even when a wheel install does not run a build script.
+Alpha.2 captures and hashes reviewed requirement bytes, then compiles a private
+temporary copy rather than reopening the editable requirements during resolution.
+Editing source or requirements revokes the UI dependency grant. Historical tasks
+do not persist/replay authorization; an in-session render retry still requires the
+current project's matching revision and current trust checkbox.
+
+Source sharing reads the selected file from a hash-verified captured render, with
+the existing current-revision/unsaved-change guard. Changing the project/output
+resets source opt-in. Alpha.1 outputs remain playable, but lack a captured-source
+attestation; render again with alpha.2 before including their source. Project ZIP
+export still intentionally includes the current project source and assets.
 
 ## Optional metadata and parameters
 

@@ -1,6 +1,6 @@
 [package]
 name = "panostem"
-version = "0.5.0-alpha.1"
+version = "0.5.0-alpha.2"
 description = "Panostem - concept-driven STEM learning and ManimGL authoring"
 authors = ["Yur Stya <yurstya@gmail.com>"]
 license = "AGPL-3.0-only"

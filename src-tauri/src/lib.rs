@@ -107,13 +107,11 @@ pub fn run() {
                     })
                     .unwrap_or((0, size - 1));
                 if start > end || end >= size {
-                    return Some(
-                        tauri::http::Response::builder()
-                            .status(416)
-                            .header("Content-Range", format!("bytes */{size}"))
-                            .body(vec![])
-                            .ok()?,
-                    );
+                    return tauri::http::Response::builder()
+                        .status(416)
+                        .header("Content-Range", format!("bytes */{size}"))
+                        .body(vec![])
+                        .ok();
                 }
                 let mut data = vec![0; (end - start + 1) as usize];
                 file.seek(std::io::SeekFrom::Start(start)).ok()?;

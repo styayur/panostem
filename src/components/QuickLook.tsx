@@ -17,7 +17,14 @@ export default function QuickLook() {
     const previous = document.activeElement as HTMLElement | null;
     closeButton.current?.focus();
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setQuickLook(null);
+      if (e.key === "Escape") { e.preventDefault(); setQuickLook(null); }
+      if (e.key === "Tab") {
+        const dialog = closeButton.current?.closest('[role="dialog"]');
+        const nodes = Array.from(dialog?.querySelectorAll<HTMLElement>('a[href],button:not(:disabled),input:not(:disabled),select:not(:disabled),[tabindex="0"]') ?? []).filter((node) => node.getClientRects().length > 0);
+        const first = nodes[0], last = nodes[nodes.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => { window.removeEventListener("keydown", onKey); previous?.focus(); };
@@ -34,18 +41,18 @@ export default function QuickLook() {
         role="dialog"
         aria-modal="true"
         aria-label={quickLook.title}
-        className="flex h-full max-h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-xl border border-edge-dark bg-surface-dark shadow-2xl dark:bg-surface-dark"
+        className="flex h-full max-h-[85vh] w-full max-w-4xl flex-col overflow-hidden rounded-md border border-edge-dark bg-surface-dark shadow-2xl dark:bg-surface-dark"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-2 border-b border-edge-dark px-3 py-2">
-          <div className="min-w-0 flex-1 truncate text-[13px] font-medium text-zinc-100">
+          <div className="min-w-0 flex-1 truncate text-[13px] font-medium text-ink">
             {quickLook.title}
-            <span className="ml-2 text-[11px] text-zinc-400">{quickLook.source_name}</span>
+            <span className="ml-2 text-[11px] text-muted">{quickLook.source_name}</span>
           </div>
           <button
             type="button"
             title={t("quicklook.openWindow")}
-            className="rounded p-1.5 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-100"
+            className="rounded p-1.5 text-muted hover:bg-subtle hover:text-ink"
             onClick={() => attempt(() => cmd.openWindow(quickLook.url, `${quickLook.title} — ${quickLook.source_name}`))}
           >
             <Maximize2 className="h-4 w-4" />
@@ -53,7 +60,7 @@ export default function QuickLook() {
           <button
             type="button"
             title={t("quicklook.browser")}
-            className="rounded p-1.5 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-100"
+            className="rounded p-1.5 text-muted hover:bg-subtle hover:text-ink"
             onClick={() => attempt(() => cmd.openExternal(quickLook.url))}
           >
             <ExternalLink className="h-4 w-4" />
@@ -62,7 +69,7 @@ export default function QuickLook() {
             type="button"
             title={t("quicklook.close")}
             ref={closeButton}
-            className="rounded p-1.5 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-100"
+            className="rounded p-1.5 text-muted hover:bg-subtle hover:text-ink"
             onClick={() => setQuickLook(null)}
           >
             <X className="h-4 w-4" />

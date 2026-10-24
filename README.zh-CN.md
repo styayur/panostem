@@ -8,7 +8,7 @@
 [![Release](https://img.shields.io/github/v/release/styayur/panostem?include_prereleases)](https://github.com/styayur/panostem/releases)
 [![AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
 
-**Alpha。** 当前预发布版本为 **[v0.5.0-alpha.1](https://github.com/styayur/panostem/releases/tag/v0.5.0-alpha.1)**，ManimGL 集成仍属实验阶段。历史最新稳定 Windows 版本为 [v0.2.0](https://github.com/styayur/panostem/releases/tag/v0.2.0)，不包含此后新增的创作室与引导课程。实际测试、资产和部署状态见[交付审计](docs/audits/panostem-delivery.md)。
+**Alpha。** 本源码面向预发布版本 **[v0.5.0-alpha.2](https://github.com/styayur/panostem/releases/tag/v0.5.0-alpha.2)**，ManimGL 集成仍属实验阶段。历史最新稳定 Windows 版本为 [v0.2.0](https://github.com/styayur/panostem/releases/tag/v0.2.0)，不包含此后新增的创作室与引导课程。实际测试、资产和部署状态见[交付审计](docs/audits/panostem-alpha2-20261024.md)。
 
 ![Panostem 网页版播放真实 ManimGL 视频的实际截图](docs/studio-web.png)
 
@@ -16,7 +16,7 @@
 
 ## 产品能力
 
-Panostem 将 490 个概念的本体与资源发现、学习路径、外部教材引用和三套引导课程连接起来：简谐振动、椭圆、线性变换与行列式。检索使用确定性的概念解析，支持英语、简体中文和繁体中文。JSXGraph 保留数值图元边界、键盘操作和 Reduced Motion 支持。
+Panostem 将 494 个概念的本体与资源发现、学习路径、外部教材引用和三套引导课程连接起来：简谐振动、椭圆、线性变换与行列式。检索使用确定性的概念解析，支持英语、简体中文和繁体中文。JSXGraph 保留数值图元边界、键盘操作和 Reduced Motion 支持。
 
 ManimGL 创作室提供普通多文件 Python 项目、五类模板、CodeMirror 编辑器、原生 OpenGL 预览、渲染任务、日志与本地分享包。可使用标准 ManimGL 类、自定义模块、updater 和三维相机，无需继承专有基类或转换成动画 DSL。
 
@@ -53,13 +53,17 @@ flowchart LR
 
 ## 安装与使用
 
-从 [Releases](https://github.com/styayur/panostem/releases) 下载实际存在的 Windows 安装器或便携 ZIP，运行前对照该版本的 [SHA256SUMS.txt](https://github.com/styayur/panostem/releases/download/v0.5.0-alpha.1/SHA256SUMS.txt) 核查完整 SHA-256。资产命名为 `panostem_<version>_x64-setup.exe` 和 `panostem_<version>_windows-x64.zip`。便携包需完整解压。桌面版需要 WebView2；安装器按其配置处理缺失运行时，便携版需要已有运行时。安装包未进行代码签名。
+从 [Releases](https://github.com/styayur/panostem/releases) 下载实际存在的 Windows 安装器或便携 ZIP，运行前对照该版本的 [SHA256SUMS.txt](https://github.com/styayur/panostem/releases/download/v0.5.0-alpha.2/SHA256SUMS.txt) 核查完整 SHA-256。资产命名为 `panostem_<version>_x64-setup.exe` 和 `panostem_<version>_windows-x64.zip`。便携包需完整解压。桌面版需要 WebView2；安装器按其配置处理缺失运行时，便携版需要已有运行时。安装包未进行代码签名。
 
-Windows 11 x64 是主要已验证目标；Linux/macOS 为实验状态，不宣称提供正式原生发布。在 **ManimGL 创作室**授权**安装 / 修复运行时**，再**检查环境**。安装器管理 CPython **3.11.14**、uv **0.13.5** 和 ManimGL 上游 **v1.7.2** 的不可变提交 `f427fc67df75513be0cd3f3329e327a9a19401c3`。该 tag 的包元数据与启动横幅显示 1.7.1，应以源码提交识别运行时。依赖带哈希锁定。
+Windows 11 x64 是主要渲染与构建目标；Linux/macOS 为实验状态，不宣称提供正式原生发布。在 **ManimGL 创作室**授权**安装 / 修复运行时**，再**检查环境**。安装器管理 CPython **3.11.14**、uv **0.13.5** 和 ManimGL 上游 **v1.7.2** 的不可变提交 `f427fc67df75513be0cd3f3329e327a9a19401c3`。该 tag 的包元数据与启动横幅显示 1.7.1，应以源码提交识别运行时。依赖带哈希锁定。
 
 首次配置需要网络、用户写入/执行权限、约 2–4 GiB 可用磁盘及额外媒体空间，不修改系统 Python 或全局 PATH。渲染需要 OpenGL 3.3。FFmpeg 由固定 wheel 提供并仅加入子进程私有 PATH；Tex 对象可选依赖 LaTeX/dvisvgm，可显式配置原生工具目录。五类模板无需 LaTeX。详见[运行时与平台指南](docs/manimgl.md)。
 
 从模板创建项目、打开普通 ManimGL 目录，或将项目 ZIP 导入新目录。编辑保存源码、选择入口和场景、审阅当前版本信任提示，然后预览或渲染。原生预览使用独立窗口和上游交互；IPython embed 可接收控制台行输入。产物支持应用内播放、缩略图、最终帧和真实路径。任务支持有界日志/历史、取消与重试。项目依赖需单独授权。
+
+本机没有可用的一次性虚拟机或独立 Windows 配置文件运行环境，完整安装升级生命周期尚未验证。跨历史产品名安装请遵循[先卸载后安装流程](docs/migration-panostem.md)，保留应用数据和外部项目。运行采用规范的路径/哈希清单，先验证捕获的本地项目树再启动引擎；分享源码也与该次渲染清单核对。捕获目录仍可能含有私有项目内容，不会自动加入分享包。
+
+[设计系统](docs/design-system.md)说明共享令牌和[真实改版前后截图](docs/ui-alpha2/README.md)；[发布检查表](docs/release-checklist.md)记录源码门禁、签名策略与发布后验证。规范 Web 地址为 https://styayur.github.io/panostem/；历史 Pages 路径返回 404，并不重定向。
 
 ## 本地开发与验证
 

@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import {
   BookMarked,
+  Code2,
   Check,
   Languages,
   Moon,
@@ -74,20 +75,19 @@ export default function App() {
   if (isWorkspace) return <Workspace />;
 
   return (
-    <div className="flex h-screen flex-col bg-canvas-light text-zinc-800 dark:bg-canvas-dark dark:text-zinc-100">
-      <header className="flex items-center gap-2 border-b border-edge-light bg-white px-3 py-2 dark:border-edge-dark dark:bg-surface-dark">
-        <div className="mr-2 flex items-center gap-2">
-          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-teal-700 text-[14px] font-bold text-white">
-            P
-          </div>
+    <div className="app-shell flex h-screen flex-col bg-canvas-light text-ink dark:bg-canvas-dark dark:text-ink">
+      <a className="skip-link" href="#main-content">{t("common.skipContent")}</a>
+      <header className="app-header flex items-center gap-2 border-b border-edge-light bg-panel px-3 py-2 dark:border-edge-dark dark:bg-surface-dark">
+        <div className="app-brand mr-2 flex items-center gap-2">
+          <img className="h-7 w-7" src={`${import.meta.env.BASE_URL}panostem.svg`} alt="" aria-hidden="true" />
           <div className="leading-tight">
             <div className="text-[13px] font-semibold">Panostem</div>
-            <div className="hidden text-[10px] text-zinc-400 sm:block">{t("app.subtitle")}</div>
+            <div className="hidden text-[11px] text-muted sm:block">{t("app.subtitle")}</div>
           </div>
         </div>
 
-        <nav className="flex items-center gap-1">
-          <NavButton active={page === "studio"} onClick={() => setPage("studio")} icon={<span aria-hidden="true">⌘</span>} label={localize(studioText.studio,locale)} />
+        <nav aria-label={t("app.navigation")} className="app-nav flex items-center gap-1">
+          <NavButton active={page === "studio"} onClick={() => setPage("studio")} icon={<Code2 className="h-3.5 w-3.5" />} label={localize(studioText.studio,locale)} />
           <NavButton
             active={page === "search"}
             onClick={() => setPage("search")}
@@ -108,7 +108,7 @@ export default function App() {
           />
         </nav>
 
-        <div className="ml-auto flex items-center gap-1">
+        <div className="app-tools ml-auto flex items-center gap-1">
           <LanguageMenu />
           <ThemeButton
             theme={theme}
@@ -125,8 +125,8 @@ export default function App() {
         </div>
       </header>
 
-      <main className="min-h-0 flex-1">
-        {notice && <div role="alert" className="fixed bottom-4 left-4 right-4 z-[60] flex items-center gap-3 rounded-lg border border-red-400 bg-white p-3 text-sm text-red-700 shadow-lg dark:bg-zinc-900 dark:text-red-300">
+      <main id="main-content" tabIndex={-1} className="min-h-0 flex-1">
+        {notice && <div role="alert" className="fixed bottom-4 left-4 right-4 z-[60] flex items-center gap-3 rounded-lg border border-danger bg-panel p-3 text-sm text-danger shadow-lg dark:bg-panel dark:text-danger">
           <span className="min-w-0 flex-1 break-words">{notice}</span>
           <button type="button" onClick={clearNotice} aria-label={t("common.close")}>×</button>
         </div>}
@@ -159,12 +159,12 @@ function NavButton({
       className={cn(
         "flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-[12px] font-medium transition-colors",
         active
-          ? "bg-indigo-500/10 text-indigo-600 dark:text-indigo-300"
-          : "text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+          ? "bg-accent/10 text-accent dark:text-accent"
+          : "text-muted hover:bg-subtle dark:text-muted dark:hover:bg-subtle"
       )}
     >
       {icon}
-      <span className="hidden sm:inline">{label}</span>
+      <span className="nav-label hidden sm:inline">{label}</span>
     </button>
   );
 }
@@ -206,8 +206,12 @@ function LanguageMenu() {
     const onClick = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
     };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { event.preventDefault(); setOpen(false); ref.current?.querySelector("button")?.focus(); }
+    };
     window.addEventListener("mousedown", onClick);
-    return () => window.removeEventListener("mousedown", onClick);
+    window.addEventListener("keydown", onKey);
+    return () => { window.removeEventListener("mousedown", onClick); window.removeEventListener("keydown", onKey); };
   }, [open]);
 
   return (
@@ -216,8 +220,8 @@ function LanguageMenu() {
         <Languages className="h-4 w-4" />
       </IconButton>
       {open && (
-        <div className="absolute right-0 top-9 z-50 w-[268px] rounded-lg border border-edge-light bg-white p-3 text-[13px] shadow-xl dark:border-edge-dark dark:bg-surface-dark">
-          <div className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
+        <div className="absolute right-0 top-9 z-50 w-[268px] rounded-lg border border-edge-light bg-panel p-3 text-[13px] shadow-xl dark:border-edge-dark dark:bg-surface-dark">
+          <div className="mb-1 text-[11px] font-semibold text-muted">
             {t("settings.uiLanguage")}
           </div>
           <div className="mb-3 space-y-1">
@@ -229,8 +233,8 @@ function LanguageMenu() {
                 className={cn(
                   "flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left",
                   settings.ui_locale === l.code
-                    ? "bg-indigo-500/10 text-indigo-600 dark:text-indigo-300"
-                    : "hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                    ? "bg-accent/10 text-accent dark:text-accent"
+                    : "hover:bg-subtle dark:hover:bg-subtle"
                 )}
               >
                 <span>{l.label}</span>
@@ -239,13 +243,13 @@ function LanguageMenu() {
             ))}
           </div>
 
-          <div className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-zinc-400">
+          <div className="mb-1 text-[11px] font-semibold text-muted">
             {t("settings.targetLanguage")}
           </div>
           <select
             value={settings.translate_target}
             onChange={(e) => update({ translate_target: e.target.value })}
-            className="mb-3 w-full rounded-md border border-edge-light bg-white px-2 py-1.5 text-[12px] dark:border-edge-dark dark:bg-surface-dark dark:text-zinc-200"
+            className="mb-3 w-full rounded-md border border-edge-light bg-panel px-2 py-1.5 text-[12px] dark:border-edge-dark dark:bg-surface-dark dark:text-ink"
           >
             {TARGET_LANGUAGES.map((l) => (
               <option key={l.code} value={l.code}>
@@ -259,7 +263,7 @@ function LanguageMenu() {
               type="checkbox"
               checked={settings.translate_results}
               onChange={(e) => update({ translate_results: e.target.checked })}
-              className="mt-0.5 h-3.5 w-3.5 accent-indigo-500"
+              className="mt-0.5 h-3.5 w-3.5 accent-accent"
             />
             <span className="text-[12px] leading-snug">{t("settings.translateResults")}</span>
           </label>

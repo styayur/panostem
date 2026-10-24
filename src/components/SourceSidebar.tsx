@@ -45,7 +45,7 @@ export default function SourceSidebar() {
   };
 
   return (
-    <div className="flex h-full flex-col overflow-y-auto border-r border-edge-light bg-canvas-light dark:border-edge-dark dark:bg-canvas-dark">
+    <div className="source-sidebar flex h-full flex-col overflow-y-auto border-r border-edge-light bg-canvas-light dark:border-edge-dark dark:bg-canvas-dark">
       <div className="px-3 py-2.5">
         <button
           type="button"
@@ -53,8 +53,8 @@ export default function SourceSidebar() {
           className={cn(
             "w-full rounded-md px-2 py-1.5 text-left text-[13px] font-semibold",
             siteFilter === null
-              ? "bg-indigo-500/10 text-indigo-600 dark:text-indigo-300"
-              : "text-zinc-600 hover:bg-zinc-200/60 dark:text-zinc-300 dark:hover:bg-zinc-800"
+              ? "bg-accent/10 text-accent dark:text-accent"
+              : "text-muted hover:bg-subtle/60 dark:text-ink dark:hover:bg-subtle"
           )}
         >
           {t("sources.all")}
@@ -68,7 +68,7 @@ export default function SourceSidebar() {
         if (!members.length) return null;
         return (
           <div key={group.key} className="px-3 pb-2">
-            <div className="px-1 pb-1 pt-2 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
+            <div className="px-1 pb-1 pt-2 text-[11px] font-semiboldr text-muted">
               {t(group.key)}
             </div>
             {members.map(({ id, name }) => (
@@ -117,8 +117,8 @@ const SourceRow = memo(function SourceRow({
       className={cn(
         "group flex cursor-pointer items-center gap-2 rounded-md px-1 py-1.5 text-[13px]",
         selected
-          ? "bg-indigo-500/10 text-zinc-800 dark:text-zinc-100"
-          : "text-zinc-600 hover:bg-zinc-200/50 dark:text-zinc-300 dark:hover:bg-zinc-800"
+          ? "bg-accent/10 text-ink dark:text-ink"
+          : "text-muted hover:bg-subtle/50 dark:text-ink dark:hover:bg-subtle"
       )}
       onClick={onSelect}
     >
@@ -131,13 +131,13 @@ const SourceRow = memo(function SourceRow({
           e.stopPropagation();
           onToggle(e.target.checked);
         }}
-        className="h-3.5 w-3.5 accent-indigo-500"
+        className="h-3.5 w-3.5 accent-accent"
       />
       <button type="button" onClick={(e) => { e.stopPropagation(); onSelect(); }} aria-pressed={selected} className="min-w-0 flex-1 truncate text-left">{name}</button>
-      {loading && <Loader2 className="h-3.5 w-3.5 animate-spin text-zinc-400" />}
-      {!loading && error && <span title={error} aria-label={error}><AlertTriangle className="h-3.5 w-3.5 text-amber-500" /></span>}
+      {loading && <Loader2 className="h-3.5 w-3.5 animate-spin text-muted" />}
+      {!loading && error && <span title={error} aria-label={error}><AlertTriangle className="h-3.5 w-3.5 text-warning" /></span>}
       {!loading && !error && enabled && (
-        <span className="text-[11px] tabular-nums text-zinc-400">{count}</span>
+        <span className="text-[11px] tabular-nums text-muted">{count}</span>
       )}
     </div>
   );

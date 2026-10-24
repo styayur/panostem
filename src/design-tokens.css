@@ -1,0 +1,59 @@
+/* Panostem application chrome. Scientific plot colors are independent data. */
+:root {
+  color-scheme: light;
+  --ps-bg-rgb: 244 247 247;
+  --ps-panel-rgb: 255 255 255;
+  --ps-subtle-rgb: 236 241 242;
+  --ps-ink-rgb: 25 43 47;
+  --ps-muted-rgb: 79 100 106;
+  --ps-border-rgb: 203 215 218;
+  --ps-accent-rgb: 10 108 99;
+  --ps-solid-rgb: 10 108 99;
+  --ps-danger-rgb: 171 38 32;
+  --ps-warning-rgb: 132 76 12;
+  --ps-success-rgb: 24 106 70;
+  --ps-code-bg: #152126;
+  --ps-code-ink: #e2edef;
+  --ps-font: "Segoe UI", "Noto Sans", "Microsoft YaHei", system-ui, sans-serif;
+  --ps-mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+  --ps-type-small: 12px;
+  --ps-type-body: 13px;
+  --ps-type-title: 21px;
+  --ps-leading: 1.5;
+  --ps-space-1: 4px;
+  --ps-space-2: 8px;
+  --ps-space-3: 12px;
+  --ps-space-4: 16px;
+  --ps-space-5: 24px;
+  --ps-control-height: 34px;
+  --ps-radius: 4px;
+  --ps-radius-overlay: 6px;
+  --ps-overlay-shadow: 0 12px 36px rgb(14 33 37 / 0.18);
+}
+.dark {
+  color-scheme: dark;
+  --ps-bg-rgb: 17 26 29;
+  --ps-panel-rgb: 25 37 41;
+  --ps-subtle-rgb: 33 48 53;
+  --ps-ink-rgb: 225 235 237;
+  --ps-muted-rgb: 166 185 191;
+  --ps-border-rgb: 65 87 94;
+  --ps-accent-rgb: 104 218 201;
+  --ps-solid-rgb: 12 106 97;
+  --ps-danger-rgb: 255 164 155;
+  --ps-warning-rgb: 237 192 108;
+  --ps-success-rgb: 120 220 172;
+  --ps-overlay-shadow: 0 14px 40px rgb(0 0 0 / 0.4);
+}
+:root {
+  --ps-bg: rgb(var(--ps-bg-rgb));
+  --ps-panel: rgb(var(--ps-panel-rgb));
+  --ps-subtle: rgb(var(--ps-subtle-rgb));
+  --ps-ink: rgb(var(--ps-ink-rgb));
+  --ps-muted: rgb(var(--ps-muted-rgb));
+  --ps-border: rgb(var(--ps-border-rgb));
+  --ps-accent: rgb(var(--ps-accent-rgb));
+  --ps-danger: rgb(var(--ps-danger-rgb));
+  --ps-warning: rgb(var(--ps-warning-rgb));
+  --ps-success: rgb(var(--ps-success-rgb));
+}

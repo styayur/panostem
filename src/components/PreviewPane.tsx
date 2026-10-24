@@ -32,7 +32,7 @@ export default function PreviewPane() {
 
   if (!result) {
     return (
-      <div className="flex h-full items-center justify-center px-6 text-center text-sm text-zinc-400">
+      <div className="flex h-full items-center justify-center px-6 text-center text-sm text-muted">
         {t("preview.empty")}
       </div>
     );
@@ -46,7 +46,7 @@ export default function PreviewPane() {
       <div className="flex flex-wrap items-center gap-1 border-b border-edge-light px-3 py-2 dark:border-edge-dark">
         <div className="min-w-0 basis-full pb-1">
           <div className="flex items-center gap-2 overflow-hidden">
-            <span className="truncate text-[12px] font-semibold text-zinc-500 dark:text-zinc-400">
+            <span className="truncate text-[12px] font-semibold text-muted dark:text-muted">
               {result.source_name}
             </span>
             <Badge tone="muted">{t(typeLabelKey(result.result_type))}</Badge>
@@ -55,7 +55,7 @@ export default function PreviewPane() {
             )}
           </div>
           <div
-            className="truncate text-[13px] font-medium text-zinc-800 dark:text-zinc-100"
+            className="truncate text-[13px] font-medium text-ink dark:text-ink"
             title={result.title}
           >
             {translatedTitle}
@@ -69,8 +69,8 @@ export default function PreviewPane() {
           className={cn(
             "flex items-center gap-1 rounded-md border px-2 py-1 text-[11px] font-medium",
             view === "translated"
-              ? "border-indigo-500/50 bg-indigo-500/10 text-indigo-600 dark:text-indigo-300"
-              : "border-edge-light text-zinc-500 dark:border-edge-dark dark:text-zinc-400"
+              ? "border-accent/50 bg-accent/10 text-accent dark:text-accent"
+              : "border-edge-light text-muted dark:border-edge-dark dark:text-muted"
           )}
         >
           <Languages className="h-3.5 w-3.5" />
@@ -101,12 +101,12 @@ export default function PreviewPane() {
       </div>
 
       {view === "translated" && (
-        <div className="border-b border-edge-light bg-indigo-500/5 px-3 py-2 text-[12px] text-zinc-600 dark:border-edge-dark dark:text-zinc-300">
+        <div className="border-b border-edge-light bg-accent/5 px-3 py-2 text-[12px] text-muted dark:border-edge-dark dark:text-ink">
           <div className="mb-1 flex items-center gap-2">
             <Badge tone="accent">{t("common.translated")}</Badge>
             <button
               type="button"
-              className="text-[11px] text-indigo-600 underline dark:text-indigo-300"
+              className="text-[11px] text-accent underline dark:text-accent"
               onClick={() => cmd.openExternal(buildTranslatedPageUrl(result.url, target, proxy))}
             >
               {t("preview.openTranslated")}
@@ -116,11 +116,11 @@ export default function PreviewPane() {
         </div>
       )}
 
-      <div className="relative min-h-0 flex-1 bg-white dark:bg-zinc-900">
+      <div className="relative min-h-0 flex-1 bg-panel dark:bg-panel">
         <ResourcePreview key={result.id} result={result} reloadKey={iframeKey} />
       </div>
 
-      <div className="border-t border-edge-light px-3 py-1.5 text-[11px] text-zinc-400 dark:border-edge-dark">
+      <div className="border-t border-edge-light px-3 py-1.5 text-[11px] text-muted dark:border-edge-dark">
         {view === "translated"
           ? `${t("preview.translationExternal")} `
           : ""}

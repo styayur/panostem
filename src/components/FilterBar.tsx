@@ -23,16 +23,16 @@ export default function FilterBar() {
           onClick={() => setTypeFilter(chip.value)}
           aria-pressed={typeFilter === chip.value}
           className={cn(
-            "whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors",
+            "whitespace-nowrap rounded border px-2.5 py-1 text-[11px] font-medium transition-colors",
             typeFilter === chip.value
-              ? "border-indigo-500/50 bg-indigo-500/10 text-indigo-600 dark:text-indigo-300"
-              : "border-edge-light text-zinc-500 hover:bg-zinc-100 dark:border-edge-dark dark:text-zinc-400 dark:hover:bg-zinc-800"
+              ? "border-accent/50 bg-accent/10 text-accent dark:text-accent"
+              : "border-edge-light text-muted hover:bg-subtle dark:border-edge-dark dark:text-muted dark:hover:bg-subtle"
           )}
         >
           {chip.label}
         </button>
       ))}
-      <span className="ml-auto shrink-0 text-[11px] text-zinc-400">
+      <span className="ml-auto shrink-0 text-[11px] text-muted">
         {t("filter.count", { n: total })}
       </span>
     </div>

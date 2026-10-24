@@ -64,19 +64,19 @@ const ResultRow = memo(function ResultRow({
         setMenu({ x: e.clientX, y: e.clientY });
       }}
       className={cn(
-        "group cursor-default border-b border-edge-light/70 px-3 py-2 transition-colors dark:border-edge-dark/70",
+        "result-row group cursor-default border-b border-edge-light/70 px-3 py-1.5 transition-colors dark:border-edge-dark/70",
         selected
-          ? "sve-selected bg-indigo-500/5 dark:bg-indigo-500/10"
-          : "hover:bg-zinc-100/70 dark:hover:bg-zinc-800/50"
+          ? "sve-selected bg-accent/5 dark:bg-accent/10"
+          : "hover:bg-subtle/70 dark:hover:bg-subtle/50"
       )}
       style={{ height: RESULT_ROW_HEIGHT }}
     >
       <div className="flex items-center gap-2">
-        <span className="min-w-0 truncate text-[12px] font-semibold text-zinc-500 dark:text-zinc-400">
+        <span className="min-w-0 truncate text-[12px] font-semibold text-muted dark:text-muted">
           {result.source_name}
         </span>
         <Badge tone="muted">{t(typeLabelKey(result.result_type))}</Badge>
-        {result.explanation?.matched.some(m=>m.tier==="exploratory") && <Badge tone="muted">Related</Badge>}
+        {result.explanation?.matched.some(m=>m.tier==="exploratory") && <Badge tone="muted">{t("resource.related")}</Badge>}
         {translated && <Badge tone="accent">{t("common.translated")}</Badge>}
         <button
           type="button"
@@ -88,8 +88,8 @@ const ResultRow = memo(function ResultRow({
           className={cn(
             "ml-auto rounded p-1 transition-colors",
             isFav
-              ? "text-amber-500"
-              : "text-zinc-400 hover:text-amber-500 dark:text-zinc-500"
+              ? "text-warning"
+              : "text-muted hover:text-warning dark:text-muted"
           )}
         >
           <Star className="h-3.5 w-3.5" fill={isFav ? "currentColor" : "none"} />
@@ -103,7 +103,7 @@ const ResultRow = memo(function ResultRow({
             e.stopPropagation();
             toggleWorkspace(result);
           }}
-          className={cn("rounded p-1 text-zinc-400 hover:text-indigo-500 disabled:opacity-30", inWorkspace && "bg-indigo-500/15 text-indigo-500")}
+          className={cn("rounded p-1 text-muted hover:text-accent disabled:opacity-100", inWorkspace && "bg-accent/15 text-accent")}
         >
           <LayoutPanelTop className="h-3.5 w-3.5" />
         </button>
@@ -114,7 +114,7 @@ const ResultRow = memo(function ResultRow({
             e.stopPropagation();
             openWindow();
           }}
-          className="rounded p-1 text-zinc-400 hover:text-indigo-500"
+          className="rounded p-1 text-muted hover:text-accent"
         >
           <ExternalLink className="h-3.5 w-3.5" />
         </button>
@@ -122,20 +122,20 @@ const ResultRow = memo(function ResultRow({
 
       <div
         title={translated ? result.title : undefined}
-        className="mt-0.5 line-clamp-2 text-[14px] font-medium leading-snug text-zinc-800 dark:text-zinc-100"
+        className="result-title mt-0.5 line-clamp-2 text-[14px] font-medium leading-snug text-ink dark:text-ink"
       >
         {title}
       </div>
       {description && (
         <div
           title={translated ? result.description ?? undefined : undefined}
-          className="line-clamp-1 text-[12px] text-zinc-500 dark:text-zinc-400"
+          className="line-clamp-1 text-[12px] text-muted dark:text-muted"
         >
           {description}
         </div>
       )}
       {result.tags.length > 0 && (
-        <div className="mt-0.5 flex items-center gap-1 overflow-hidden text-[11px] text-zinc-400 dark:text-zinc-500">
+        <div className="result-tags mt-0.5 flex items-center gap-1 overflow-hidden text-[11px] text-muted dark:text-muted">
           {result.tags.slice(0, 4).map((tag) => (
             <span key={tag} className="truncate">
               {tag}
@@ -200,7 +200,7 @@ function ResultMenu({
       />
       <div
         role="menu"
-        className="fixed z-50 min-w-[190px] rounded-lg border border-edge-light bg-white py-1 shadow-xl dark:border-edge-dark dark:bg-surface-dark"
+        className="fixed z-50 min-w-[190px] rounded-lg border border-edge-light bg-panel py-1 shadow-xl dark:border-edge-dark dark:bg-surface-dark"
         style={{
           left: Math.max(0, Math.min(x, window.innerWidth - 210)),
           top: Math.max(0, Math.min(y, window.innerHeight - 220)),
@@ -211,7 +211,7 @@ function ResultMenu({
             key={item.label}
             role="menuitem"
             type="button"
-            className="block w-full px-3 py-1.5 text-left text-[13px] text-zinc-700 hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800"
+            className="block w-full px-3 py-1.5 text-left text-[13px] text-ink hover:bg-subtle dark:text-ink dark:hover:bg-subtle"
             onClick={() => {
               void attempt(async () => item.run());
               onClose();

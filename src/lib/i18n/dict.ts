@@ -5,7 +5,11 @@ import type { UiLocale } from "../types";
 export type Dict = Record<string, string>;
 
 const en: Dict = {
-  "preview.translationExternal": "Page translation opens externally. The resource preview keeps its declared capability.",
+  "common.skipContent": "Skip to content",
+  "app.navigation": "Primary navigation",
+  "sources.title": "Sources",
+  "preview.translationExternal":
+    "Page translation opens externally. The resource preview keeps its declared capability.",
   "resource.unmapped": "Not mapped",
   "resource.useCard": "Preview unavailable? Show resource card",
   "resource.noSummary": "No summary supplied by this source.",
@@ -13,9 +17,12 @@ const en: Dict = {
   "resource.concepts": "Concepts",
   "resource.related": "Related concepts",
   "resource.prerequisites": "Prerequisite concepts",
-  "resource.graphNote": "Concept links are suggestions from the local STEM dictionary.",
-  "resource.externalOnly": "This provider is opened in a separate viewer or browser.",
-  "resource.nativeCard": "This provider uses a native resource card; no embedded page is requested.",
+  "resource.graphNote":
+    "Concept links are suggestions from the local STEM dictionary.",
+  "resource.externalOnly":
+    "This provider is opened in a separate viewer or browser.",
+  "resource.nativeCard":
+    "This provider uses a native resource card; no embedded page is requested.",
   "workspace.openViewers": "Open all in WebViewers",
 
   "app.subtitle": "Concept-driven STEM learning workbench.",
@@ -27,7 +34,8 @@ const en: Dict = {
   "theme.dark": "Dark",
   "theme.tooltip": "Theme: {theme}",
 
-  "search.placeholder": "Search math & physics visually — try curl, 旋度, standing wave…",
+  "search.placeholder":
+    "Search math & physics visually — try curl, 旋度, standing wave…",
   "search.expanded": "expanded",
 
   "filter.all": "All",
@@ -48,10 +56,10 @@ const en: Dict = {
 
   "results.searching": "Searching across sources…",
   "results.filteredOut": "No results match the current filters.",
-  "results.explore": "Explore visually",
-  "results.emptyHint":
-    "Search mathematics and physics resources from multiple interactive sites.",
-  "results.noResults": "No results for that query. Try one of the suggestions below.",
+  "results.explore": "Search concepts and resources",
+  "results.emptyHint": "Enter a concept, or choose an example below.",
+  "results.noResults":
+    "No results for that query. Try one of the suggestions below.",
 
   "row.favorite": "Add favorite",
   "row.unfavorite": "Remove favorite",
@@ -75,7 +83,8 @@ const en: Dict = {
   "preview.translatePage": "Translate page",
   "preview.openTranslated": "Open translated page",
   "preview.translating": "Translating…",
-  "preview.translateFailed": "Translation unavailable — showing the original page.",
+  "preview.translateFailed":
+    "Translation unavailable — showing the original page.",
 
   "quicklook.openWindow": "Open in new window",
   "quicklook.browser": "Open in system browser",
@@ -111,7 +120,8 @@ const en: Dict = {
   "settings.about": "About",
   "settings.aboutText":
     "Panostem is a deterministic local search client. It performs no AI ranking, requires no account, sends no telemetry and never talks to a cloud database. Network requests go directly to the source websites you search.",
-  "settings.license": "Licensed under the GNU Affero General Public License v3.0.",
+  "settings.license":
+    "Licensed under the GNU Affero General Public License v3.0.",
 
   "settings.translation": "Language & translation",
   "settings.uiLanguage": "Interface language",
@@ -132,7 +142,11 @@ const en: Dict = {
 };
 
 const zhCN: Dict = {
-  "preview.translationExternal": "网页翻译将在外部打开，资源预览仍遵循来源的能力声明。",
+  "common.skipContent": "跳转到内容",
+  "app.navigation": "主导航",
+  "sources.title": "来源",
+  "preview.translationExternal":
+    "网页翻译将在外部打开，资源预览仍遵循来源的能力声明。",
   "resource.unmapped": "暂无映射",
   "resource.useCard": "预览不可用？显示资源卡片",
   "resource.noSummary": "来源未提供摘要。",
@@ -175,8 +189,8 @@ const zhCN: Dict = {
 
   "results.searching": "正在并发搜索各来源…",
   "results.filteredOut": "当前筛选条件下没有结果。",
-  "results.explore": "开始可视化探索",
-  "results.emptyHint": "同时检索多个数学与物理互动网站资源。",
+  "results.explore": "检索概念与资源",
+  "results.emptyHint": "输入概念，或选择下方示例。",
   "results.noResults": "没有找到相关结果，试试下面的建议关键词。",
 
   "row.favorite": "加入收藏",
@@ -258,7 +272,11 @@ const zhCN: Dict = {
 };
 
 const zhTW: Dict = {
-  "preview.translationExternal": "網頁翻譯將在外部開啟，資源預覽仍遵循來源的能力宣告。",
+  "common.skipContent": "跳至內容",
+  "app.navigation": "主導覽",
+  "sources.title": "來源",
+  "preview.translationExternal":
+    "網頁翻譯將在外部開啟，資源預覽仍遵循來源的能力宣告。",
   "resource.unmapped": "暫無映射",
   "resource.useCard": "預覽不可用？顯示資源卡片",
   "resource.noSummary": "來源未提供摘要。",
@@ -301,8 +319,8 @@ const zhTW: Dict = {
 
   "results.searching": "正在同時搜尋各來源…",
   "results.filteredOut": "目前篩選條件下沒有結果。",
-  "results.explore": "開始視覺化探索",
-  "results.emptyHint": "同時檢索多個數學與物理互動網站資源。",
+  "results.explore": "搜尋概念與資源",
+  "results.emptyHint": "輸入概念，或選擇下方範例。",
   "results.noResults": "找不到相關結果，試試下面的建議關鍵字。",
 
   "row.favorite": "加入收藏",
@@ -390,28 +408,49 @@ export const DICTS: Record<UiLocale, Dict> = {
 };
 
 Object.assign(en, {
-  "common.close": "Dismiss", "cat.other": "Other sources", "history.title": "Search history",
-  "history.clear": "Clear history", "history.empty": "No search history yet.",
-  "settings.refreshed": "Index refreshed.", "settings.cleared": "Index cache cleared.",
-  "row.removeWorkspace": "Remove from workspace", "workspace.limit": "Maximum four pages",
+  "common.close": "Dismiss",
+  "cat.other": "Other sources",
+  "history.title": "Search history",
+  "history.clear": "Clear history",
+  "history.empty": "No search history yet.",
+  "settings.refreshed": "Index refreshed.",
+  "settings.cleared": "Index cache cleared.",
+  "row.removeWorkspace": "Remove from workspace",
+  "workspace.limit": "Maximum four pages",
   "workspace.select": "Select up to four results to build a workspace",
-  "preview.mode.side": "Side", "preview.mode.inline": "Inline", "preview.mode.off": "Off",
+  "preview.mode.side": "Side",
+  "preview.mode.inline": "Inline",
+  "preview.mode.off": "Off",
 });
 Object.assign(zhCN, {
-  "common.close": "关闭提示", "cat.other": "其他来源", "history.title": "搜索历史",
-  "history.clear": "清空历史", "history.empty": "暂无搜索历史。",
-  "settings.refreshed": "索引已刷新。", "settings.cleared": "索引缓存已清除。",
-  "row.removeWorkspace": "从工作区移除", "workspace.limit": "最多选择四个页面",
+  "common.close": "关闭提示",
+  "cat.other": "其他来源",
+  "history.title": "搜索历史",
+  "history.clear": "清空历史",
+  "history.empty": "暂无搜索历史。",
+  "settings.refreshed": "索引已刷新。",
+  "settings.cleared": "索引缓存已清除。",
+  "row.removeWorkspace": "从工作区移除",
+  "workspace.limit": "最多选择四个页面",
   "workspace.select": "选择最多四条结果创建工作区",
-  "preview.mode.side": "分栏", "preview.mode.inline": "底部", "preview.mode.off": "关闭",
+  "preview.mode.side": "分栏",
+  "preview.mode.inline": "底部",
+  "preview.mode.off": "关闭",
 });
 Object.assign(zhTW, {
-  "common.close": "關閉提示", "cat.other": "其他來源", "history.title": "搜尋歷史",
-  "history.clear": "清空歷史", "history.empty": "暫無搜尋歷史。",
-  "settings.refreshed": "索引已重新整理。", "settings.cleared": "索引快取已清除。",
-  "row.removeWorkspace": "從工作區移除", "workspace.limit": "最多選擇四個頁面",
+  "common.close": "關閉提示",
+  "cat.other": "其他來源",
+  "history.title": "搜尋歷史",
+  "history.clear": "清空歷史",
+  "history.empty": "暫無搜尋歷史。",
+  "settings.refreshed": "索引已重新整理。",
+  "settings.cleared": "索引快取已清除。",
+  "row.removeWorkspace": "從工作區移除",
+  "workspace.limit": "最多選擇四個頁面",
   "workspace.select": "選擇最多四筆結果建立工作區",
-  "preview.mode.side": "分欄", "preview.mode.inline": "底部", "preview.mode.off": "關閉",
+  "preview.mode.side": "分欄",
+  "preview.mode.inline": "底部",
+  "preview.mode.off": "關閉",
 });
 
 export const UI_LOCALES: Array<{ code: UiLocale; label: string }> = [
