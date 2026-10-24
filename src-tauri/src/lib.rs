@@ -71,14 +71,13 @@ pub fn run() {
         .register_uri_scheme_protocol("panostem-media", |context, request| {
             use std::io::{Read, Seek};
             if !crate::util::is_app_window(context.webview_label()) {
-                return tauri::http::Response::builder()
-                    .status(403)
-                    .body(vec![])
-                    .unwrap();
+                let mut denied = tauri::http::Response::new(vec![]);
+                *denied.status_mut() = tauri::http::StatusCode::FORBIDDEN;
+                return denied;
             }
             let state = context.app_handle().state::<studio::Studio>();
             let token = request.uri().path().trim_start_matches('/');
-            let path = state.media.lock().unwrap().get(token).cloned();
+            let path = studio::state_lock(&state.media).get(token).cloned();
             let serve = || -> Option<tauri::http::Response<Vec<u8>>> {
                 let path = path?;
                 if std::fs::canonicalize(&path).ok()? != path {
@@ -139,10 +138,9 @@ pub fn run() {
                 builder.body(data).ok()
             };
             serve().unwrap_or_else(|| {
-                tauri::http::Response::builder()
-                    .status(404)
-                    .body(vec![])
-                    .unwrap()
+                let mut missing = tauri::http::Response::new(vec![]);
+                *missing.status_mut() = tauri::http::StatusCode::NOT_FOUND;
+                missing
             })
         })
         .build(tauri::generate_context!())

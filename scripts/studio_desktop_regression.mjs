@@ -67,7 +67,7 @@ try {
   task=await waitTask(latest.id);assert.equal(task.status,"failed");assert.ok(task.logs.join("").includes("intentional failure diagnostic"));
   await assert.rejects(access(resolve(project,"renders",latest.id)));
   assert.ok(task.logs.join("").length<=256*1024);
-  console.log("NATIVE STUDIO: managed runtime identity, real editor save, trust revision, render/player, project ZIP, random media token, real OpenGL/IPython preview, child-tree cancellation and failure cleanup PASS");
+  process.stdout.write(String("NATIVE STUDIO: managed runtime identity, real editor save, trust revision, render/player, project ZIP, random media token, real OpenGL/IPython preview, child-tree cancellation and failure cleanup PASS")+"\n");
   await mkdir("artifacts",{recursive:true});
 } catch(error) {await page.screenshot({path:"artifacts/studio-desktop-failure.png"}).catch(()=>{});console.error(await page.locator("body").innerText());throw error;}
 finally {if(latest)await invoke("studio_cancel",{id:latest.id}).catch(()=>{});await browser.close();}

@@ -60,6 +60,15 @@ class ProjectContracts(unittest.TestCase):
         self.assertEqual(before,(self.project/"main.py").read_bytes())
         self.assertEqual(c.main({"action":"read","project":str(self.project),"file":"helpers/math.py"})["text"],"VALUE = 2\n")
 
+    def test_root_alias_is_canonical_before_containment_checks(self):
+        alias = self.project / ".." / self.project.name
+        info = c.inspect_project(alias)
+        self.assertEqual(info["revision"], self.info["revision"])
+        self.assertEqual(c.inside(alias, "main.py"), (self.project / "main.py").resolve())
+        archive = self.root / "alias.zip"
+        c.export_project(alias, {"archive": str(archive)})
+        self.assertTrue(archive.is_file())
+
     def test_paths_fail_closed(self):
         for path in ("../x", "/x", "a/../b", "C:/x", "a\\b", "a//b", "a/./b", "NUL.txt", "a.", "a/", "a\x00b"):
             with self.subTest(path=path), self.assertRaises(ValueError):

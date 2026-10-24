@@ -31,4 +31,4 @@ const commands=await readFile("src/lib/commands.ts","utf8");
 for(const key of ["sve.settings","sve.favorites","sve.history"])assert.ok(commands.includes(key),`preserve ${key}`);
 assert.throws(()=>requireDesktop(false),/only in the desktop app/,"Web may never invoke Python execution");
 assert.doesNotThrow(()=>requireDesktop(true));
-console.log("STUDIO: metadata, canonical concepts, parameters, archive versions/paths/hashes/types, opt-in source, execution boundary and storage identity PASS");
+process.stdout.write(String("STUDIO: metadata, canonical concepts, parameters, archive versions/paths/hashes/types, opt-in source, execution boundary and storage identity PASS")+"\n");

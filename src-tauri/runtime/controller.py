@@ -64,6 +64,7 @@ def project_root(value):
 
 
 def inside(root, name):
+    root = root.resolve()
     rel = relative(name)
     target = root.joinpath(*rel.parts)
     for parent in [target, *target.parents]:
@@ -77,6 +78,7 @@ def inside(root, name):
 
 
 def inventory(root, outputs=False):
+    root = root.resolve()
     files, total = [], 0
     for base, dirs, names in os.walk(root, followlinks=False):
         dirs[:] = sorted(d for d in dirs if d.lower() not in IGNORED and (outputs or d.lower() != "renders"))
@@ -152,6 +154,7 @@ def parameter_values(specs, values):
 
 
 def inspect_project(root):
+    root = root.resolve()
     files = inventory(root)
     scenes, classes, errors = [], [], []
     h = hashlib.sha256()
@@ -263,6 +266,7 @@ def import_project(req):
 
 
 def export_project(root, req):
+    root = root.resolve()
     target = Path(req["archive"])
     if not target.is_absolute() or target.exists() or target.resolve().is_relative_to(root):
         raise ValueError("Export requires a new absolute ZIP path outside the project")
@@ -283,7 +287,7 @@ def runtime_python(req):
 
 def safe_env(req):
     keys = {"SYSTEMROOT", "WINDIR", "COMSPEC", "TEMP", "TMP", "HOME", "USERPROFILE", "LOCALAPPDATA", "APPDATA",
-            "DISPLAY", "WAYLAND_DISPLAY", "XDG_RUNTIME_DIR", "LANG", "LC_ALL"}
+            "DISPLAY", "XAUTHORITY", "LIBGL_ALWAYS_SOFTWARE", "WAYLAND_DISPLAY", "XDG_RUNTIME_DIR", "LANG", "LC_ALL"}
     env = {k: v for k, v in os.environ.items() if k.upper() in keys}
     base_python = runtime_python(req)
     tool_file = Path(req["runtime_root"]) / "tools.json"
@@ -411,7 +415,8 @@ def run_scene(root, req):
     env = safe_env(req)
     env["PATH"] = str(py.parent) + os.pathsep + env["PATH"]
     env["PANOSTEM_PARAMETERS"] = json.dumps(params, allow_nan=False)
-    print("Launching upstream ManimGL: " + json.dumps(args), flush=True)
+    sys.stdout.write("Launching upstream ManimGL: " + json.dumps(args) + "\n")
+    sys.stdout.flush()
     started = time.monotonic()
     if mode == "preview":
         ipython_dir = Path(req["runtime_root"]) / "ipython"
@@ -614,7 +619,9 @@ if __name__ == "__main__":
     try:
         request = json.loads(sys.stdin.readline(TEXT_MAX * 2))
         result = main(request)
-        print("PANOSTEM_RESULT:" + json.dumps({"ok": True, "data": result}), flush=True)
+        sys.stdout.write("PANOSTEM_RESULT:" + json.dumps({"ok": True, "data": result}) + "\n")
+        sys.stdout.flush()
     except Exception as error:
-        print("PANOSTEM_RESULT:" + json.dumps({"ok": False, "error": str(error)}), flush=True)
+        sys.stdout.write("PANOSTEM_RESULT:" + json.dumps({"ok": False, "error": str(error)}) + "\n")
+        sys.stdout.flush()
         sys.exit(1)

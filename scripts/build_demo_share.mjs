@@ -12,4 +12,4 @@ const bytes=await exportShare(scene,[
 {path:"NOTICE.txt",role:"notice",data:new TextEncoder().encode("Panostem demonstration. Source and rendered demonstration distributed under AGPL-3.0-only. Upstream ManimGL is MIT. No external assets or textbooks are included. See https://github.com/styayur/panostem for corresponding source and license.")}
 ]);
 await mkdir("public/examples",{recursive:true});await writeFile("public/examples/oscillator.panostem.zip",bytes);
-console.log(`Built actual rendered oscillator share: ${bytes.length} bytes`);
+process.stdout.write(String(`Built actual rendered oscillator share: ${bytes.length} bytes`)+"\n");

@@ -96,7 +96,10 @@ trust for the current source revision. Edits revoke that grant.
 
 **Native preview** starts the actual engine in a separate window. Use upstream
 mouse/keyboard interactions. For scenes that enter an IPython embed, the Studio
-console forwards line input using IPython's simple prompt mode. It is not a full
+console forwards line input using IPython's simple prompt mode. Upstream IPython
+reports that its Manim input hook is unavailable in this mode; while idle at an
+embedded prompt, continuous window refresh is not guaranteed. Normal scene
+execution uses ManimGL's native window loop. This console is not a full
 terminal emulator. **Stop process tree** stops the worker, engine and descendants.
 There is no generic frame-seek or pause promise for arbitrary native scenes.
 

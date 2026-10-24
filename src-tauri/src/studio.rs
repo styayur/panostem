@@ -7,7 +7,7 @@ use std::io::{BufRead, BufReader, Read, Write};
 use std::path::PathBuf;
 use std::process::{Command, Stdio};
 use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex, MutexGuard};
 use std::time::{Duration, Instant};
 
 const LOG_LIMIT: usize = 256 * 1024;
@@ -16,6 +16,14 @@ const UV_URL: &str =
 const UV_SHA: &str = "a38b8d1902b7cfbc76b423ba1bb456f623f42064cdc72628b6075b89afd1019a";
 const PYTHON: &str = "3.11.14";
 static NEXT: AtomicU64 = AtomicU64::new(1);
+
+/// Recover owned task state after a worker panic so cancellation stays available.
+pub fn state_lock<T>(mutex: &Mutex<T>) -> MutexGuard<'_, T> {
+    match mutex.lock() {
+        Ok(guard) => guard,
+        Err(poisoned) => poisoned.into_inner(),
+    }
+}
 
 #[derive(Clone, Serialize, Deserialize)]
 pub struct Task {
@@ -116,11 +124,11 @@ impl Studio {
     }
 
     pub fn snapshot(&self) -> Vec<Task> {
-        self.tasks.lock().unwrap().iter().cloned().collect()
+        state_lock(&self.tasks).iter().cloned().collect()
     }
 
     fn update(&self, id: &str, f: impl FnOnce(&mut Task)) {
-        if let Some(task) = self.tasks.lock().unwrap().iter_mut().find(|t| t.id == id) {
+        if let Some(task) = state_lock(&self.tasks).iter_mut().find(|t| t.id == id) {
             f(task);
         }
     }
@@ -135,7 +143,7 @@ impl Studio {
     }
 
     pub fn cancel(&self, id: &str) -> Result<(), String> {
-        let tasks = self.tasks.lock().unwrap();
+        let tasks = state_lock(&self.tasks);
         let t = tasks.iter().find(|t| t.id == id).ok_or("Unknown task")?;
         if t.status == "running" {
             t.cancel.store(true, Ordering::SeqCst);
@@ -144,7 +152,7 @@ impl Studio {
     }
 
     pub fn stop_all(&self) {
-        for task in self.tasks.lock().unwrap().iter() {
+        for task in state_lock(&self.tasks).iter() {
             task.cancel.store(true, Ordering::SeqCst);
         }
     }
@@ -153,7 +161,7 @@ impl Studio {
         if text.len() > 8192 {
             return Err("Console input exceeds 8 KiB".into());
         }
-        let mut inputs = self.inputs.lock().unwrap();
+        let mut inputs = state_lock(&self.inputs);
         let stdin = inputs
             .get_mut(id)
             .ok_or("This task has no active native-preview console")?;
@@ -172,7 +180,7 @@ impl Studio {
         if action == "install" && req["authorize_install"] != true {
             return Err("Runtime installation requires authorization".into());
         }
-        let mut tasks = self.tasks.lock().unwrap();
+        let mut tasks = state_lock(&self.tasks);
         // A single active task bounds CPU/GPU usage and makes install/run mutually exclusive.
         if tasks.iter().any(|t| t.status == "running") {
             return Err("A Studio task is already running; stop or wait for it".into());
@@ -181,7 +189,7 @@ impl Studio {
             "{}-{}",
             std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)
-                .unwrap()
+                .unwrap_or_default()
                 .as_millis(),
             NEXT.fetch_add(1, Ordering::Relaxed)
         );
@@ -342,7 +350,7 @@ impl Studio {
             serde_json::to_writer(&mut stdin, input).map_err(|e| e.to_string())?;
             stdin.write_all(b"\n").map_err(|e| e.to_string())?;
             if input["action"] == "run" && input["mode"] == "preview" {
-                self.inputs.lock().unwrap().insert(id.to_string(), stdin);
+                state_lock(&self.inputs).insert(id.to_string(), stdin);
             }
         }
         let result = Arc::new(Mutex::new(None));
@@ -350,11 +358,13 @@ impl Studio {
         for (label, pipe) in [
             (
                 "stdout",
-                Box::new(child.stdout.take().unwrap()) as Box<dyn Read + Send>,
+                Box::new(child.stdout.take().ok_or("Missing child stdout pipe")?)
+                    as Box<dyn Read + Send>,
             ),
             (
                 "stderr",
-                Box::new(child.stderr.take().unwrap()) as Box<dyn Read + Send>,
+                Box::new(child.stderr.take().ok_or("Missing child stderr pipe")?)
+                    as Box<dyn Read + Send>,
             ),
         ] {
             let me = self.clone();
@@ -383,7 +393,7 @@ impl Studio {
                             let line = String::from_utf8_lossy(&chunk).to_string();
                             if let Some(json) = line.trim().strip_prefix("PANOSTEM_RESULT:") {
                                 if let Ok(value) = serde_json::from_str(json) {
-                                    *capture.lock().unwrap() = Some(value);
+                                    *state_lock(&capture) = Some(value);
                                 }
                             } else {
                                 me.log(&task_id, format!("[{label}] {line}"));
@@ -417,11 +427,11 @@ impl Studio {
         };
         // Kill surviving grandchildren before joining pipe readers.
         containment.terminate();
-        self.inputs.lock().unwrap().remove(id);
+        state_lock(&self.inputs).remove(id);
         for reader in readers {
             let _ = reader.join();
         }
-        let value = result.lock().unwrap().take();
+        let value = state_lock(&result).take();
         if let Some(failure) = failure {
             return Err(failure);
         }
@@ -522,7 +532,7 @@ impl Studio {
     pub fn register_media(&self, project: &str, file: &str) -> Result<String, String> {
         let result = self.request(json!({"action":"media","project":project,"file":file}))?;
         let token = uuid::Uuid::new_v4().to_string();
-        let mut media = self.media.lock().unwrap();
+        let mut media = state_lock(&self.media);
         if media.len() >= 64 {
             media.clear();
         }
@@ -551,6 +561,8 @@ pub fn clean_command(program: &std::ffi::OsStr) -> Command {
             "LOCALAPPDATA",
             "APPDATA",
             "DISPLAY",
+            "XAUTHORITY",
+            "LIBGL_ALWAYS_SOFTWARE",
             "WAYLAND_DISPLAY",
             "XDG_RUNTIME_DIR",
             "LANG",
@@ -579,57 +591,40 @@ pub fn clean_command(program: &std::ffi::OsStr) -> Command {
 }
 
 #[cfg(windows)]
-struct ProcessTree(windows_sys::Win32::Foundation::HANDLE);
+struct ProcessTree(Mutex<Option<win32job::Job>>);
 #[cfg(windows)]
 impl ProcessTree {
     fn new(child: &std::process::Child) -> Result<Self, String> {
         use std::os::windows::io::AsRawHandle;
-        use windows_sys::Win32::System::JobObjects::*;
-        unsafe {
-            let handle = CreateJobObjectW(std::ptr::null(), std::ptr::null());
-            if handle.is_null() {
-                return Err(std::io::Error::last_os_error().to_string());
-            }
-            let job = Self(handle);
-            let mut limits: JOBOBJECT_EXTENDED_LIMIT_INFORMATION = std::mem::zeroed();
-            limits.BasicLimitInformation.LimitFlags = JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE;
-            if SetInformationJobObject(
-                handle,
-                JobObjectExtendedLimitInformation,
-                &limits as *const _ as *const _,
-                std::mem::size_of_val(&limits) as u32,
-            ) == 0
-                || AssignProcessToJobObject(handle, child.as_raw_handle() as _) == 0
-            {
-                return Err(std::io::Error::last_os_error().to_string());
-            }
-            Ok(job)
-        }
+        let mut limits = win32job::ExtendedLimitInfo::new();
+        limits.limit_kill_on_job_close();
+        let job = win32job::Job::create_with_limit_info(&limits).map_err(|e| e.to_string())?;
+        // The child is blocked on its initial request until assignment succeeds.
+        job.assign_process(child.as_raw_handle() as isize)
+            .map_err(|e| e.to_string())?;
+        Ok(Self(Mutex::new(Some(job))))
     }
     fn terminate(&self) {
-        unsafe {
-            windows_sys::Win32::System::JobObjects::TerminateJobObject(self.0, 1);
-        }
-    }
-}
-#[cfg(windows)]
-impl Drop for ProcessTree {
-    fn drop(&mut self) {
-        unsafe {
-            windows_sys::Win32::Foundation::CloseHandle(self.0);
-        }
+        drop(state_lock(&self.0).take());
     }
 }
 #[cfg(unix)]
-struct ProcessTree(u32);
+struct ProcessTree {
+    pid: nix::unistd::Pid,
+    terminated: AtomicBool,
+}
 #[cfg(unix)]
 impl ProcessTree {
     fn new(child: &std::process::Child) -> Result<Self, String> {
-        Ok(Self(child.id()))
+        let pid = i32::try_from(child.id()).map_err(|_| "Child PID outside POSIX range")?;
+        Ok(Self {
+            pid: nix::unistd::Pid::from_raw(pid),
+            terminated: AtomicBool::new(false),
+        })
     }
     fn terminate(&self) {
-        unsafe {
-            libc::kill(-(self.0 as i32), libc::SIGKILL);
+        if !self.terminated.swap(true, Ordering::SeqCst) {
+            let _ = nix::sys::signal::killpg(self.pid, nix::sys::signal::Signal::SIGKILL);
         }
     }
 }
@@ -709,15 +704,16 @@ mod tests {
         assert_eq!(PYTHON, "3.11.14");
     }
     #[test]
-    fn log_is_bounded_and_cancel_is_explicit() {
+    fn log_is_bounded_and_cancel_is_explicit() -> Result<(), Box<dyn std::error::Error>> {
         let dir = std::env::temp_dir().join(format!(
             "panostem-rust-{}",
             NEXT.fetch_add(1, Ordering::Relaxed)
         ));
-        let studio = Studio::new(dir.clone()).unwrap();
+        let studio = Studio::new(dir.clone())?;
         assert!(studio.start(json!({"action":"install"})).is_err());
         assert!(studio.start(json!({"action":"shell"})).is_err());
         assert!(studio.cancel("missing").is_err());
-        std::fs::remove_dir_all(dir).unwrap();
+        std::fs::remove_dir_all(dir)?;
+        Ok(())
     }
 }

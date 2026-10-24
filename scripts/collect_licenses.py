@@ -59,4 +59,4 @@ print(json.dumps(sorted(out,key=lambda x:x['name'].lower())))
         pkg["texts"]=[entry["name"] for entry in pkg["texts"]]
     (dest/"python-runtime-inventory.json").write_text(json.dumps(python,indent=2),encoding="utf-8")
 (dest/"THIRD_PARTY_LICENSE_TEXTS.txt").write_text("Actual installed dependency license and notice texts.\nRust inventory includes build/platform dependencies; not all are distributed.\n"+"".join(texts),encoding="utf-8")
-print(f"Collected {len(npm)} npm dependencies, {len(rust)} Rust build dependencies and actual runtime metadata/texts")
+sys.stdout.write(f"Collected {len(npm)} npm dependencies, {len(rust)} Rust build dependencies and actual runtime metadata/texts\n")

@@ -43,7 +43,7 @@ for template in ("blank","curves","geometry3d","physics","updater"):
     ffmpeg=runtime/"bin"/("ffmpeg.exe" if sys.platform=="win32" else "ffmpeg")
     subprocess.run([str(ffmpeg),"-v","error","-i",str(project/movie["path"]),"-f","null","-"],check=True,timeout=60)
     evidence.append({"template":template,"movie":str(project/movie["path"]),"bytes":movie["size"],"elapsed":result["elapsed"],"decoded":True})
-    print(f"PASS: {template}: {movie['size']} bytes, decoded by real FFmpeg",flush=True)
+    sys.stdout.write(f"PASS: {template}: {movie['size']} bytes, decoded by real FFmpeg\n"); sys.stdout.flush()
 formats=[]
 project=Path(evidence[0]["movie"]).parents[2]
 info=c.inspect_project(project)
@@ -54,6 +54,6 @@ for fmt,mode in (("gif","render"),("mov","render"),("mp4","frame")):
     media=next(m for m in result["media"] if not m["path"].endswith("thumbnail.png"))
     subprocess.run([str(ffmpeg),"-v","error","-i",str(project/media["path"]),"-f","null","-"],check=True,timeout=60)
     formats.append({"format":fmt,"mode":mode,"bytes":media["size"],"decoded":True})
-    print(f"PASS: {fmt}/{mode}: actual media decoded",flush=True)
+    sys.stdout.write(f"PASS: {fmt}/{mode}: actual media decoded\n"); sys.stdout.flush()
 (runtime/"smoke-evidence.json").write_text(json.dumps({"python":sys.version,"upstream":c.UPSTREAM,"renders":evidence,"formats":formats},indent=2))
-print("Real ManimGL smoke: all five scenes rendered and decoded")
+sys.stdout.write("Real ManimGL smoke: all five scenes rendered and decoded\n")

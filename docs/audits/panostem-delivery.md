@@ -53,7 +53,7 @@ first setup. Runtime/package sources, wheel hashes and actual notices are retain
 - New share/metadata/parameter/path/version/hash/storage/execution contracts pass.
 - ESLint for the new Studio TypeScript/React surface and TypeScript build pass.
 - Rust: 41 tests pass; pure-core Clippy passes with warnings denied; desktop compiles.
-- All 16 Python project/runtime contracts pass, including assets, recoverable trash,
+- All 17 Python project/runtime contracts pass, including assets, recoverable trash,
   invalid render options and Sandbox configuration.
 - Browser: 23 existing groups, all guided-lesson/Workbench groups and Studio
   sharing/localization/narrow-screen regression pass.
@@ -69,6 +69,14 @@ the existing assertions intact. A Vite SharedWorker/CDP tooling incompatibility 
 avoided by testing Studio against the production frontend, rather than modifying
 Playwright or weakening application checks. A save/authorization race found by that
 test was fixed by disabling trust grants while saves are pending or buffers dirty.
+
+The first CI run exposed canonical temporary-path aliases on macOS/Windows and
+missing Xauthority in Linux render subprocesses. Root normalization and an
+explicit XAUTHORITY graphics environment fix address those causes. CodeForge
+findings were fixed with poison-aware task state, error propagation and safe
+win32job/nix process wrappers, without changing its baseline or checks. The
+complete PR scan now has no new findings. Native cancellation is revalidated
+after changing process wrappers.
 
 CI includes real Xvfb/Mesa rendering and cross-platform contracts. A configured CI
 job is not claimed passed here before its actual run. Publication is gated on the
@@ -99,6 +107,8 @@ User content and third-party textbooks/assets are not automatically relicensed.
 - Linux/macOS are experimental; there are no unverified native release claims.
 - Optional LaTeX/Tex rendering was not validated on this host; templates avoid it.
 - Native preview console is line-oriented, not a complete terminal emulator.
+  IPython simple-prompt mode has no Manim input hook; idle embedded-prompt window
+  refresh is not guaranteed. Normal scenes use the native ManimGL window loop.
 - MOV playback is codec-dependent; MP4 is the portable share choice.
 - The app has no automatic updater or signing certificate. Cross-name installer
   migration may leave old shortcuts; existing application data identity is retained.

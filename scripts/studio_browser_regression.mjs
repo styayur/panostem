@@ -55,6 +55,6 @@ export async function studioRegression(browser,base) {
     await page.keyboard.press("Tab");
     assert.ok(await page.evaluate(()=>document.activeElement!==document.body));
     assert.deepEqual(errors,[]);
-    console.log("STUDIO BROWSER: actual video decode/seek, source opt-in, share download/re-import, corruption rejection, concept navigation, three locales, 390px and reduced motion PASS");
+    process.stdout.write(String("STUDIO BROWSER: actual video decode/seek, source opt-in, share download/re-import, corruption rejection, concept navigation, three locales, 390px and reduced motion PASS")+"\n");
   } finally {await context.close();}
 }
