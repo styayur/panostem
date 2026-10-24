@@ -84,7 +84,9 @@ export async function previewSecurityRegression(browser, base) {
       page
         .frames()
         .every(
-          (frame) => !frame.url().startsWith("https://unapproved.invalid"),
+          (frame) =>
+            new URL(frame.url() || "about:blank").origin !==
+            "https://unapproved.invalid",
         ),
     );
   }
