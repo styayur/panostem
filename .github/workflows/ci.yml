@@ -124,7 +124,12 @@ jobs:
             .panostem-runtime/smoke-*/renders/smoke/scene.mp4
             .panostem-runtime/smoke-*/renders/smoke/thumbnail.png
             .panostem-runtime/model-regression.json
-            .panostem-runtime/model-regression/*/renders/ci-*/scene.mp4
+            .panostem-runtime/model-regression/newton-*/renders/ci-*/scene.mp4
+            .panostem-runtime/model-regression/bisection-*/renders/ci-*/scene.mp4
+            .panostem-runtime/model-regression/oscillator-*/renders/ci-*/scene.mp4
+            .panostem-runtime/model-regression/gradient-*/renders/ci-*/scene.mp4
+            .panostem-runtime/model-regression/wave-*/renders/ci-*/scene.mp4
+            .panostem-runtime/model-regression/heat-*/renders/ci-*/scene.mp4
 
   retrieval:
     name: Retrieval quality and TS/Rust parity
