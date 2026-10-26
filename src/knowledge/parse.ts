@@ -105,7 +105,7 @@ export function parseDocument(input: DocumentInput): KnowledgeUnit[] {
         return;
       }
       if (["script", "style", "nav", "footer", "header", "template", "iframe", "noscript"].includes(el.nodeName)) return;
-      if (el.nodeName === "#text" && el.value?.trim()) parts.push({ text: el.value.trim(), line: el.sourceCodeLocation?.startLine ?? 1 });
+      if (el.nodeName === "#text" && el.value?.trim()) parts.push({ text: el.value.trim(), line: (el.sourceCodeLocation?.startLine ?? 1)+(el.value.match(/^\s*/)?.[0].match(/\n/g)?.length??0) });
       if (el.nodeName === "a") { const href = el.attrs?.find(a => a.name === "href")?.value; if (href) refs.push({ target: href, kind: "link" }); }
       for (const child of el.childNodes ?? []) walk(child);
     }

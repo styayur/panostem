@@ -35,6 +35,25 @@ class ProjectContracts(unittest.TestCase):
             self.assertEqual(info["errors"], [])
             c.validate_metadata(info["metadata"])
 
+    def test_reviewed_knowledge_templates_are_ordinary_nonexecuting_projects(self):
+        catalog=json.loads((c.HERE/"examples/knowledge_catalog.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(catalog),14)
+        with patch("subprocess.run",side_effect=AssertionError("Creating a template must not execute anything")):
+            for template in catalog:
+                project=self.root/template
+                info=c.create_project({"project":str(project),"template":template})
+                self.assertEqual(info["errors"],[])
+                self.assertIn({"file":"main.py","name":"ModelScene"},info["scenes"])
+                c.validate_metadata(info["metadata"])
+                for name in ("model.json","intent.json","helpers.py"):
+                    self.assertTrue((project/name).is_file())
+                model=json.loads((project/"model.json").read_text(encoding="utf-8"))
+                self.assertEqual(model["verification"]["status"],"passed")
+                self.assertEqual(model["conceptIds"],info["metadata"]["concept_ids"])
+        for template in ("knowledge-../../outside","knowledge-unknown"):
+            with self.assertRaises(ValueError):c.create_project({"project":str(self.root/"unknown"),"template":template})
+        self.assertFalse((self.root/"unknown").exists())
+
     def test_open_and_discovery_never_execute_project(self):
         sentinel = self.root / "executed"
         (self.project/"main.py").write_text(f"open({str(sentinel)!r}, 'w').write('bad')\nclass Custom(Scene):\n    pass\n")

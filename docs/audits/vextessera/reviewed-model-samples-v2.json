@@ -1,0 +1,88 @@
+[
+  {
+    "model": "newton",
+    "sourceHashes": {
+      "github:djeada/numerical-methods:notes%2F1_root_and_extrema_finding%2Fnewtons_method.md%23161": "20be4002b4a284f395708759f50bc1f64ea08c0d9b05c773d060608659fb7f42"
+    }
+  },
+  {
+    "model": "bisection",
+    "sourceHashes": {
+      "github:djeada/numerical-methods:notes%2F1_root_and_extrema_finding%2Fbisection_method.md%23150": "7436e7743a937555d6947d9579579ff4490d3ba7cb5da79e85bfa4413ab49dc8"
+    }
+  },
+  {
+    "model": "oscillator",
+    "sourceHashes": {
+      "github:djeada/numerical-methods:notes%2F7_ordinary_differential_equations%2Fordinary_differential_equations.md%23302": "1f7a9c24cf675593d244cd9892623dafd417af645c487370165ecbf8a400b5df"
+    }
+  },
+  {
+    "model": "gradient",
+    "sourceHashes": {
+      "github:djeada/numerical-methods:notes%2F1_root_and_extrema_finding%2Fgradient_descent.md%2340": "47385d942e5a444400e0b78280fc70e58ab16bf906ec1904a2e15d2a81c7c22c"
+    }
+  },
+  {
+    "model": "square",
+    "sourceHashes": {
+      "github:pkm-er/pkmer-math:Other%2F%E5%A4%8D%E5%88%86%E6%9E%90%2F%E5%85%B1%E5%BD%A2%E6%98%A0%E5%B0%84%2F%E5%85%B1%E5%BD%A2%E6%98%A0%E5%B0%84.md%2315": "c6fe54c13a431543137f75b7123d53cedcef4e5c7855a11ccbe92cdf0ca91e3b"
+    }
+  },
+  {
+    "model": "polar",
+    "sourceHashes": {
+      "github:theophilec/complex-analysis:chapter-1.tex%231": "d96265d36b581513e8300b892633684a8531be19c7a416b35246934926072bf0"
+    }
+  },
+  {
+    "model": "linear",
+    "sourceHashes": {
+      "github:pkm-er/pkmer-math:%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%2F%E8%A1%8C%E5%88%97%E5%BC%8F%2F%E8%A1%8C%E5%88%97%E5%BC%8F%E6%A6%82%E8%BF%B0.md%231": "46a6fc91e9c2a07e3009b59c22948afe5e7e0a5ec90c461d7e7d0cf00cc8ccae",
+      "github:apurbakumarnath/numerical-methods-python:01_Solving_Linear_Systems%2FGaussian_Elimination_and_Matrix_Inverse.ipynb%23cell-0%3A11": "dfc5811620cef047cea20b9d2fc0000718abd21dc61d3be80d876cf90ada7fee"
+    }
+  },
+  {
+    "model": "union",
+    "sourceHashes": {
+      "github:maksimim/jaynesprobabilitytheory:chapter2.md%23487": "63a34387ef495abf4981e9a692d61f673ea6d801266d5846ad064d6a38057371",
+      "github:vincentc75/mit_sdsmm:MIT_Probability_Statistics.Rmd%231": "7eb566a592f057b70a565405ed321681d035cf117e423ed7f30fafad319a20a0"
+    }
+  },
+  {
+    "model": "means",
+    "sourceHashes": {
+      "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E5%B8%B8%E7%94%A8%E5%AE%9A%E7%90%86.md%239": "03e5760fa4a88b8b5ecbf2354754619617985c62e10c97723ddaba27d64b4783"
+    }
+  },
+  {
+    "model": "wave",
+    "sourceHashes": {
+      "github:djeada/numerical-methods:notes%2F7_ordinary_differential_equations%2Fpartial_differential_equations.md%23110": "c516614bc9e87e8f305e7f78f00b0adde6f3505989279bfaa8988a69925aa5a8"
+    }
+  },
+  {
+    "model": "heat",
+    "sourceHashes": {
+      "github:djeada/numerical-methods:notes%2F7_ordinary_differential_equations%2Fpartial_differential_equations.md%2390": "c516614bc9e87e8f305e7f78f00b0adde6f3505989279bfaa8988a69925aa5a8"
+    }
+  },
+  {
+    "model": "beam",
+    "sourceHashes": {
+      "github:pizofreude/thefeaman:docs%2FTM_Formelsammlung%2FTM2_Biegelinien.pdf%23page-1-row-3": "f2eec083f67b3984fc9a0511c861d6365e5192bffaa7d990e00e2b8bc612d299"
+    }
+  },
+  {
+    "model": "electric",
+    "sourceHashes": {
+      "physicsfundamentals:b9467320349fe99421f73db280112485eaf88eac5aa9f04b2b37761586de3ece.html%231": "89840ab671145c0ca69626fa23df3a1eca515b371ac79e30804c5b3b7fdbe1b3"
+    }
+  },
+  {
+    "model": "control",
+    "sourceHashes": {
+      "github:djeada/numerical-methods:notes%2F7_ordinary_differential_equations%2Fordinary_differential_equations.md%23111": "1f7a9c24cf675593d244cd9892623dafd417af645c487370165ecbf8a400b5df"
+    }
+  }
+]

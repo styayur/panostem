@@ -6,6 +6,9 @@ import { useWorkbenchStore } from "../workbench/workbenchStore";
 import { conceptById } from "../lib/concepts";
 import { L, localize } from "../learning/types";
 import "./knowledge.css";
+import ModelWorkbench from "./ModelWorkbench";
+import { useModelSelection } from "./selection";
+import { knowledgeModels } from "./catalog";
 const strings = {
   title: L("Knowledge sources", "知识来源", "知識來源"),
   import: L("Read documents", "读取文档", "讀取文件"),
@@ -27,10 +30,13 @@ export default function KnowledgePage() {
   const locale = useSettingsStore(s => s.settings.ui_locale);
   const t = (key: keyof typeof strings) => localize(strings[key], locale);
   const [query, setQuery] = useState(""), [busy, setBusy] = useState(false), [errors, setErrors] = useState<string[]>([]);
+  const focusedModel=useModelSelection(s=>s.model);
+  const [showModels,setShowModels]=useState(!!focusedModel);
   const found = findKnowledge(units, query), selected = found.find(u => u.id === selectedId) ?? found[0];
   async function read(files: FileList | null) {
     if (!files || busy) return;
     setBusy(true); const next = new Map(units.map(u => [u.id, u])); const failures: string[] = [];
+    setShowModels(false);
     try {
       if (files.length > 5000 || [...files].reduce((sum, f) => sum + f.size, 0) > 64_000_000) throw new Error("Import scope exceeds 5,000 files or 64 MB; narrow the selection");
       for (const file of files) {
@@ -60,11 +66,12 @@ export default function KnowledgePage() {
         <button disabled={!units.length || busy} onClick={() => replace([])}>{t("clear")}</button>
         <button disabled={!previous.length || busy} onClick={undo}>{t("undo")}</button>
         <span role="status">{found.length} / {units.length}</span>
+        <button aria-pressed={showModels} onClick={()=>setShowModels(v=>!v)}>{locale==="en"?"Mathematical models":locale==="zh-CN"?"数学模型":"數學模型"} ({knowledgeModels.length})</button>
       </div>
       <label>{t("search")}<input type="search" value={query} onChange={e => setQuery(e.target.value)} /></label>
       {errors.length > 0 && <details open><summary role="alert">{t("errors")} ({errors.length})</summary>{errors.map((error, i) => <pre key={i}>{error}</pre>)}</details>}
     </header>
-    {!units.length ? <p className="knowledge-empty">{t("empty")}</p> : <div className="knowledge-layout">
+    {showModels?<ModelWorkbench initialId={focusedModel}/>:!units.length ? <p className="knowledge-empty">{t("empty")}</p> : <div className="knowledge-layout">
       <aside aria-label={t("search")}>{found.slice(0, 200).map(u => <button key={u.id} aria-pressed={selected?.id === u.id} onClick={() => select(u.id)}><strong>{u.title}</strong><small>{u.location.path}:{u.location.startLine}</small></button>)}{found.length > 200 && <p>200 / {found.length}</p>}</aside>
       {selected && <article><h2>{selected.title}</h2><p className="knowledge-state">{t("state")}</p><h3>{t("source")}</h3><p>{selected.location.path}:{selected.location.startLine}–{selected.location.endLine}{selected.location.cell === undefined ? "" : ` [cell ${selected.location.cell}]`}</p><code>{selected.contentHash}</code>
         <pre className="knowledge-document">{selected.text}</pre>

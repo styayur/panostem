@@ -19,6 +19,10 @@
 .knowledge-document { padding: 16px; margin: 16px 0; background: var(--ps-code-bg); color: var(--ps-code-ink); }
 .knowledge-empty { padding: 24px; }
 .knowledge-state { color: rgb(var(--ps-warning-rgb)); }
+.knowledge-models video { display: block; width: min(100%, 854px); margin: 16px 0; background: var(--ps-code-bg); }
+.knowledge-models dl > div { display: grid; grid-template-columns: minmax(100px, 28%) minmax(0, 1fr); padding: 4px 0; border-bottom: 1px solid rgb(var(--ps-border-rgb)); }
+.knowledge-models ul { list-style: disc; padding-left: 20px; }
+.knowledge-models a { color: rgb(var(--ps-accent-rgb)); text-decoration: underline; overflow-wrap: anywhere; }
 .knowledge-matches { padding: 8px 12px; border-bottom: 1px solid rgb(var(--ps-border-rgb)); font-size: 12px; }
 .knowledge-matches button { display: block; text-align: left; margin-top: 4px; color: rgb(var(--ps-accent-rgb)); overflow-wrap: anywhere; }
 @media (max-width: 640px) { .knowledge-layout { grid-template-columns: minmax(0, 1fr); } .knowledge-layout > aside { max-height: 220px; overflow: auto; border-right: 0; border-bottom: 1px solid rgb(var(--ps-border-rgb)); } .knowledge-layout article, .knowledge-page > header { padding: 12px; } }

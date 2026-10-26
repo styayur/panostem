@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T10:18:41.339Z",
+  "generatedAt": "2026-10-26T13:40:19.443Z",
   "baselineCommit": "bce6e55198d59fef4ace05162f2114fcedf53f3f",
   "conceptCount": 494,
   "sourceCount": 22,
@@ -8,14 +8,14 @@
   "unavailableRepositories": 3,
   "websiteResources": 1555,
   "files": 18402,
-  "parsedFiles": 3658,
-  "units": 13976,
+  "parsedFiles": 3659,
+  "units": 13977,
   "dispositions": {
-    "visualized": 9,
+    "visualized": 12,
     "reused": 4,
     "parameterized": 0,
-    "needs-modeling": 5766,
-    "needs-review": 8197,
+    "needs-modeling": 5765,
+    "needs-review": 8196,
     "unsupported": 0,
     "rights-restricted": 0,
     "source-unavailable": 0,
@@ -28,7 +28,7 @@
     "parameterized": 0,
     "needs-modeling": 0,
     "needs-review": 0,
-    "unsupported": 14642,
+    "unsupported": 14641,
     "rights-restricted": 101,
     "source-unavailable": 1,
     "failed": 0,
@@ -40,16 +40,16 @@
       "denominator": 22
     },
     "fileParsing": {
-      "numerator": 3658,
+      "numerator": 3659,
       "denominator": 18402
     },
     "canonicalConceptResolution": {
-      "numerator": 8364,
-      "denominator": 13976
+      "numerator": 8365,
+      "denominator": 13977
     },
     "formulaBearingUnits": {
-      "numerator": 6605,
-      "denominator": 13976,
+      "numerator": 6789,
+      "denominator": 13977,
       "note": "Formula-bearing is not a suitability or correctness decision"
     },
     "suitableForVisualization": {
@@ -58,21 +58,21 @@
       "reason": "Whole-corpus mathematical suitability review is incomplete"
     },
     "verifiedSceneAssociation": {
-      "numerator": 13,
-      "denominator": 13976
+      "numerator": 16,
+      "denominator": 13977
     },
     "latestReviewedRenderPass": {
-      "numerator": 11,
-      "denominator": 11
+      "numerator": 14,
+      "denominator": 14
     },
     "mediaRedistribution": {
-      "numerator": 0,
-      "denominator": 11
+      "numerator": 6,
+      "denominator": 14
     }
   },
-  "renderedScenes": 11,
-  "verifiedSceneLinks": 13,
-  "publiclyDistributableScenes": 0,
+  "renderedScenes": 14,
+  "verifiedSceneLinks": 16,
+  "publiclyDistributableScenes": 6,
   "notYetProcessedUnits": 0,
   "unprocessedSources": [],
   "errors": [],
@@ -80,10 +80,13 @@
   "releaseReady": false,
   "frozenCorpusHash": "03b27273a01e1180c66158c4d7476cdaaac0a6d6f3c00a840682fe921b42c075",
   "reviewedSampleHash": "a3b6f5eeee53916823697ce452e84918716baa7da9a38940bb631aba91bfc4c0",
-  "averageGenerationSeconds": 0.052454545456302265,
-  "averageRenderSeconds": 7.029636363636448,
-  "sampleMediaBytes": 173090,
-  "batchPeakResidentSetKb": 387928,
+  "activeReviewedSamples": "reviewed-model-samples-v2.json",
+  "activeReviewedSampleHash": "de06137de4c13193239b3d93bcad86c359eabd348841bdbc4f4a5492c7ffc366",
+  "releaseReadyMeaning": "Complete corpus discovery and mathematical visualization, not the release approval of a scoped architecture alpha",
+  "averageGenerationSeconds": 0.18757142856442702,
+  "averageRenderSeconds": 9.140642857145783,
+  "sampleMediaBytes": 228773,
+  "batchPeakResidentSetKb": 442460,
   "rendererPeakResourceUsage": null,
   "sourceModelCorrespondence": "Exact reviewed formula and content-hash checks; no independent whole-corpus accuracy percentage claimed",
   "sources": [
@@ -619,7 +622,7 @@
       "url": "https://github.com/mikeroyal/Physics-Guide",
       "access": "accessible",
       "localRevision": "4fac548579ea41fef265d4d5382aaf4a47286229",
-      "localDirty": false,
+      "localDirty": true,
       "remote": {
         "canonicalName": "mikeroyal/Physics-Guide",
         "defaultBranch": "main",
@@ -658,8 +661,8 @@
         "archived": false
       },
       "files": 73,
-      "parsedFiles": 3,
-      "units": 32,
+      "parsedFiles": 4,
+      "units": 33,
       "formats": {
         "(none)": 4,
         ".yml": 3,
@@ -672,13 +675,15 @@
         ".xlsx": 1
       },
       "fileDispositions": {
-        "unsupported": 70,
-        "needs-review": 3
+        "unsupported": 69,
+        "needs-review": 4
       },
       "rights": "review-required",
       "discoveryComplete": true,
       "discoveryScope": "All files in verified local clone at recorded revision",
-      "independentSourceModels": [],
+      "independentSourceModels": [
+        "beam"
+      ],
       "limitations": [
         "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
       ]
@@ -722,7 +727,8 @@
         "oscillator",
         "gradient",
         "wave",
-        "heat"
+        "heat",
+        "control"
       ],
       "limitations": [
         "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
@@ -927,7 +933,9 @@
       "rights": "review-required",
       "discoveryComplete": false,
       "discoveryScope": "All resources found by current ProviderRegistry discovery; site-wide hidden/unlinked resources unproven",
-      "independentSourceModels": [],
+      "independentSourceModels": [
+        "electric"
+      ],
       "limitations": [
         "All ProviderRegistry-discovered URLs are recorded; unlinked/site-wide completeness is not proven",
         "Static HTML is not execution or verification of the original interactive solver"

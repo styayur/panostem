@@ -125,3 +125,5 @@ Panostem 替换原 STEM Visual Explorer 公开名称，Tauri 标识和旧存储�
 
 本阶段不宣称全量语料已完成可视化，也不冒充 Vextessera 已发布。
 实际数量及限制见[机器可读来源报告](docs/audits/vextessera/source-census.json)。
+
+十四个可追溯模型提供公式、单位、假设和独立验证结果。Web 可播放六个已完成许可核对的自制场景并下载普通源码分享包；十四个模板均可在桌面创作室中创建项目，运行前仍须信任具体版本。

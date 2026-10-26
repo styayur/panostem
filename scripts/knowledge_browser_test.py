@@ -54,8 +54,19 @@ with sync_playwright() as p:
         assert not any(secret in r['url'] or secret in (r['body'] or '') for r in requests)
         assert not any(r['url'].startswith('https://api.mymemory.translated.net/') for r in requests),'Local knowledge must not enter translation requests'
         page.reload();page.wait_for_load_state('networkidle');assert page.locator('.knowledge-document').count()==0
+        model_button={'en':'Mathematical models','zh-CN':'数学模型','zh-TW':'數學模型'}[locale]
+        page.get_by_role('button',name=model_button+' (14)',exact=True).click()
+        page.locator('[data-model-id="newton"]').wait_for()
+        page.wait_for_function('document.querySelector("video")?.readyState>=2')
+        assert page.locator('.knowledge-models a[href*="github.com"]').count()>0
+        playback={'en':'Open playback and source in Studio','zh-CN':'在创作室查看播放与源码','zh-TW':'在創作室檢視播放與原始碼'}[locale]
+        page.get_by_role('button',name=playback,exact=True).click();page.locator('[data-testid="manimgl-studio"] video').wait_for()
+        page.wait_for_function('document.querySelector("video")?.readyState>=2')
+        assert page.get_by_role('button',name='Render video',exact=True).count()==0
+        assert page.locator('.studio-shared-source').count()>0,'Included ordinary Python must be readable without execution'
         assert not errors,errors
-        results.append({'locale':locale,'importReadOnly':True,'formulaAndSourceVisible':True,'conceptRoundTrip':True,'clearUndo':True,'noPrivateNetworkRequests':True,'responsive':[390,768,1440],'reducedMotion':True})
+        assert not errors,errors
+        results.append({'locale':locale,'importReadOnly':True,'formulaAndSourceVisible':True,'conceptRoundTrip':True,'clearUndo':True,'noPrivateNetworkRequests':True,'responsive':[390,768,1440],'reducedMotion':True,'modelAndStudioPlayback':True,'webPythonUnavailable':True})
         context.close()
     browser.close()
 (out/'knowledge-browser-results.json').write_text(json.dumps(results,indent=2),encoding='utf-8')

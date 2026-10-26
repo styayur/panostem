@@ -111,7 +111,8 @@ for (const source of report.sources) for (const record of source.records ?? []) 
 report.maxResidentSetKb = process.resourceUsage().maxRSS;
 report.cancelled = cancelled; report.unprocessedSources = queue.map(s => s.id); report.elapsedMs = Date.now() - started;
 report.processingCompleteWithinDiscovery = !cancelled && !report.errors.length && !report.dispositions['not-yet-processed'];
-report.releaseReady = report.discoveryComplete && report.processingCompleteWithinDiscovery && report.dispositions['needs-modeling'] === 0 && report.dispositions['needs-review'] === 0;
+report.fullScope = !sourceFilter.length&&!conceptFilter.length&&!typeFilter.length&&!statusFilter.length&&!subjectFilter.length;
+report.releaseReady = report.fullScope && report.sources.length===census.sources.length && report.discoveryComplete && report.processingCompleteWithinDiscovery && report.dispositions['needs-modeling'] === 0 && report.dispositions['needs-review'] === 0;
 await writeJson(path.join(output, 'report.json'), report);
 const summary = { ...report, sources: report.sources.map(({ records, ...s }) => ({ ...s, decisions: records?.flatMap(r => r.units).length ?? 0 })) };
 await writeJson(path.join(output, 'summary.json'), summary);

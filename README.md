@@ -125,3 +125,7 @@ reviewed mathematical recipes and checkpointed corpus ledger are documented in
 
 This engineering stage does not declare the full corpus visualized or publish a
 Vextessera release. See the machine-readable [source report](docs/audits/vextessera/source-census.json).
+
+Fourteen source-grounded models expose equations, units, assumptions and independent
+verification. Six cleared self-rendered movies and ordinary source share packages
+play in Web; all fourteen templates open in native Studio with revision trust.

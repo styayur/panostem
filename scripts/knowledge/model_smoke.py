@@ -23,10 +23,10 @@ c.prepare_runtime({'runtime_root':str(runtime)})
 results=[]
 for kind in MODEL_SPECS:
     data=verify(kind)
-    project=runtime/'model-regression'/kind;project.mkdir(parents=True,exist_ok=True)
-    (project/'main.py').write_text(scene_code(kind,kind,data),encoding='utf-8')
-    (project/'helpers.py').write_text(HELPER,encoding='utf-8')
-    info=c.inspect_project(project)
+    project=runtime/'model-regression'/f'{kind}-{time.time_ns()}'
+    info=c.create_project({'project':str(project),'template':f'knowledge-{kind}'})
+    assert (project/'main.py').read_bytes().decode('utf-8')==scene_code(kind,info['metadata']['title'],data),'Bundled scene differs from independently checked recipe data'
+    assert (project/'helpers.py').read_bytes().decode('utf-8')==HELPER
     result=c.run_scene(project,{'runtime_root':str(runtime),'entry':'main.py','scene':'ModelScene','mode':'render','format':'mp4',
                                'resolution':'854x480','fps':15,'job_id':f'ci-{time.time_ns()}','trust':True,'revision':info['revision'],'parameters':{}})
     movie=next(m for m in result['media'] if m['path'].endswith('.mp4'))

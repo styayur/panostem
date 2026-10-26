@@ -4,6 +4,11 @@ import { writeJson, hash } from './local.mjs';
 const root = path.resolve(import.meta.dirname, '../..'), corpus = path.join(root, '.panostem-runtime/vextessera-corpus');
 const read = async file => JSON.parse(await fs.readFile(path.join(corpus, file)));
 const census = await read('census.json'), batch = await read('batch/report.json'), frozen = await read('frozen-samples.json'), models = await read('sample-results.json');
+const reviewedV1 = await read('reviewed-model-samples.json'), reviewedV2 = await read('reviewed-model-samples-v2.json');
+if (reviewedV1.some(entry => !reviewedV2.some(candidate => JSON.stringify(candidate) === JSON.stringify(entry)))) throw new Error('Original reviewed samples changed');
+const rendered = models.filter(m => m.mathVerified && m.rendered && m.decoded);
+const catalog = JSON.parse(await fs.readFile(path.join(root, 'src/knowledge/models.json')));
+const publicScenes = rendered.filter(m => m.rightsCleared && catalog.some(item => item.id === m.model && item.mediaPath && item.sharePath));
 const output = path.join(root, 'docs/audits/vextessera');
 const unitMap = new Map(), recordMap = new Map();
 const sources = [];
@@ -41,12 +46,14 @@ const summary = { schemaVersion: 1, generatedAt: new Date().toISOString(), basel
     suitableForVisualization: { numerator: null, denominator: null, reason: 'Whole-corpus mathematical suitability review is incomplete' },
     verifiedSceneAssociation: { numerator: batch.verifiedSceneLinks, denominator: batch.units },
     latestReviewedRenderPass: { numerator: models.filter(m => m.mathVerified && m.rendered && m.decoded).length, denominator: models.length },
-    mediaRedistribution: { numerator: batch.publiclyDistributable, denominator: batch.rendered },
+    mediaRedistribution: { numerator: publicScenes.length, denominator: rendered.length },
   },
   renderedScenes: models.filter(m => m.rendered && m.decoded && m.mathVerified).length, verifiedSceneLinks: batch.verifiedSceneLinks,
-  publiclyDistributableScenes: batch.publiclyDistributable, notYetProcessedUnits: batch.dispositions['not-yet-processed'],
+  publiclyDistributableScenes: publicScenes.length, notYetProcessedUnits: batch.dispositions['not-yet-processed'],
   unprocessedSources: batch.unprocessedSources, errors: batch.errors, discoveryComplete: batch.discoveryComplete, releaseReady: batch.releaseReady,
-  frozenCorpusHash: frozen.corpusHash, reviewedSampleHash: hash(JSON.stringify(await read('reviewed-model-samples.json'))),
+  frozenCorpusHash: frozen.corpusHash, reviewedSampleHash: hash(JSON.stringify(reviewedV1)),
+  activeReviewedSamples: 'reviewed-model-samples-v2.json', activeReviewedSampleHash: hash(JSON.stringify(reviewedV2)),
+  releaseReadyMeaning: 'Complete corpus discovery and mathematical visualization, not the release approval of a scoped architecture alpha',
   averageGenerationSeconds: models.reduce((n, m) => n + (m.generationSeconds ?? 0), 0) / models.length,
   averageRenderSeconds: models.reduce((n, m) => n + (m.renderSeconds ?? 0), 0) / models.length,
   sampleMediaBytes: models.reduce((n, m) => n + (m.bytes ?? 0), 0), batchPeakResidentSetKb: batch.maxResidentSetKb,
@@ -54,7 +61,8 @@ const summary = { schemaVersion: 1, generatedAt: new Date().toISOString(), basel
   sources };
 await writeJson(path.join(output, 'source-census.json'), summary);
 await writeJson(path.join(output, 'frozen-samples.json'), { ...frozen, evaluations: sourceSamples });
-await writeJson(path.join(output, 'rendered-samples.json'), models.map(({ movie, python, ...m }) => ({ ...m, localArtifacts: `ignored runtime corpus/samples/${m.model}; media is not publicly redistributed` })));
-await writeJson(path.join(output, 'reviewed-model-samples.json'), await read('reviewed-model-samples.json'));
+await writeJson(path.join(output, 'rendered-samples.json'), models.map(({ movie, python, ...m }) => ({ ...m, localArtifacts: `ignored runtime corpus/samples/${m.model}`, distribution: publicScenes.some(scene => scene.model === m.model) ? 'Reviewed self-rendered media and ordinary source share in public/knowledge' : 'Local generation only; source rights review required' })));
+await writeJson(path.join(output, 'reviewed-model-samples.json'), reviewedV1);
+await writeJson(path.join(output, 'reviewed-model-samples-v2.json'), reviewedV2);
 await writeJson(path.join(output, 'reference-review.json'), { repositories: census.references, modules: (await read('references/module-review.json')).map(({ interfaceLines, ...module }) => module) });
 process.stdout.write(JSON.stringify({ sources: sources.length, units: summary.units, rendered: summary.renderedScenes, releaseReady: summary.releaseReady }) + '\n');

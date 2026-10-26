@@ -1,7 +1,7 @@
 export const dispositions = ["visualized", "reused", "parameterized", "needs-modeling", "needs-review", "unsupported", "rights-restricted", "source-unavailable", "failed", "not-yet-processed"] as const;
 export type Disposition = typeof dispositions[number];
 export interface SourceLocation {
-  path: string; startLine: number; endLine: number; heading: string[]; cell?: number;
+  path: string; startLine: number; endLine: number; heading: string[]; cell?: number; page?:number; region?:string;
 }
 export interface Formula { expression: string; location: SourceLocation; evidence: "document-explicit"; representation?: "tex" | "mathml" }
 export interface KnowledgeUnit {

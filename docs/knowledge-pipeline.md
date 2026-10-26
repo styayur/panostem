@@ -57,10 +57,11 @@ assumptions, solver, invariants and source evidence. Evidence distinguishes
 explicit statements, derivations, inference and unverified claims. Intents select
 ordinary ManimGL producers; they do not restrict Python scene authoring.
 
-Eleven application-owned recipes currently have independent symbolic, analytic
+Fourteen application-owned recipes currently have independent symbolic, analytic
 or numerical checks and actual ManimGL/FFmpeg evidence. They include a 3D gradient
 surface, ODE/PDE time evolution, complex maps, linear transforms, root finding and
-probability. Each has ordinary `main.py`, a custom `helpers.py`, `scene.json`,
+probability, electrostatics, reviewed beam/FEM convergence and an explicitly
+authored filtered PID model. Each has ordinary `main.py`, a custom `helpers.py`, `scene.json`,
 `model.json`, `intent.json`, captured project revision and media. Binding scope is
 the listed equation/derived example, not verification of every claim in a source.
 Unknown models remain in a review/modeling queue. Render success alone never
@@ -117,6 +118,25 @@ See [the census](audits/vextessera/source-census.json),
 [dependency decisions](audits/vextessera/dependency-decisions.md).
 The reports separate source, file, unit, scene and publicly distributable media
 counts. A classified queue is not a completed visualization corpus. Website-wide
-discovery beyond linked ProviderRegistry endpoints is not proven; control,
-electromagnetism, finite-element and several per-source model/render requirements
-remain incomplete. No Vextessera release success is claimed by this stage.
+discovery beyond linked ProviderRegistry endpoints is not proven; many per-source
+model/render requirements remain queued. A manually reviewed beam PDF unit does
+not establish general PDF parsing. The control plant and law are authored
+assumptions, not attributed to unavailable control repositories. No Vextessera release success is claimed by this stage.
+
+## Model reader and ordinary Studio templates
+
+Search and the Knowledge workspace expose fourteen reviewed model contracts,
+immutable source locators, units, assumptions, parameters and verification results.
+Six cleared, self-rendered movies and source share packages are available in Web;
+the other eight models explicitly require local generation. The native Studio
+selector creates the same ordinary multi-file Python project without executing
+it. Running still requires trust in that exact captured revision. Source/helper,
+catalog, media and share hashes are checked against the generated packages and
+embedded build identity.
+
+After source sampling, run `node scripts/knowledge/package_models.mjs` to create
+the verified catalog and distributable packages. It reads captured `.execution`
+bytes, validates the project revision and re-decodes the actual copied media.
+`model_smoke.py` independently verifies and renders all bundled templates.
+`reviewed-model-samples-v2.json` extends the immutable original eleven-entry freeze
+to fourteen; both are retained in the audit directory.

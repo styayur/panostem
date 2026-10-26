@@ -226,6 +226,27 @@ def create_project(req):
     if not root.is_absolute() or root.exists():
         raise ValueError("Create requires a new absolute directory; existing files are never overwritten")
     template = req.get("template", "blank")
+    if isinstance(template,str) and template.startswith("knowledge-"):
+        catalog = json.loads((HERE/"examples/knowledge_catalog.json").read_text(encoding="utf-8"))
+        if template not in catalog:
+            raise ValueError("Unknown knowledge template")
+        item = catalog[template]
+        file = item["file"]
+        if not re.fullmatch(r"knowledge_[a-z]+\.py",file):
+            raise ValueError("Invalid bundled knowledge template path")
+        meta = validate_metadata(item["metadata"])
+        # Copy ordinary application-owned Python; creating/inspecting never imports it.
+        source = inside(HERE/"examples",file).read_bytes()
+        helper = inside(HERE/"examples","knowledge_helpers.py").read_bytes()
+        root.mkdir(parents=True)
+        (root/"main.py").write_bytes(source)
+        (root/"helpers.py").write_bytes(helper)
+        (root/"assets").mkdir()
+        (root/"panostem.json").write_text(json.dumps(meta,indent=2),encoding="utf-8")
+        for name in ("model","intent"):
+            (root/f"{name}.json").write_text(json.dumps(item[name],indent=2),encoding="utf-8")
+        (root/"requirements.txt").write_text("# Uses only the application-managed ManimGL runtime.\n",encoding="utf-8")
+        return inspect_project(root.resolve())
     if template not in {"blank", "curves", "geometry3d", "physics", "updater"}:
         raise ValueError("Unknown template")
     root.mkdir(parents=True)
