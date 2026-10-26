@@ -1,0 +1,219 @@
+{
+  "stages": [
+    {
+      "stage": "initial eleven-model baseline",
+      "models": 11,
+      "mathPassed": 11,
+      "renderPassed": 11,
+      "decodePassed": 11,
+      "results": [
+        {
+          "model": "newton",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "bisection",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "oscillator",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "gradient",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "square",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "polar",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "linear",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "union",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "means",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "wave",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "heat",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        }
+      ]
+    },
+    {
+      "stage": "same frozen samples: output directory collision",
+      "models": 11,
+      "mathPassed": 11,
+      "renderPassed": 0,
+      "decodePassed": 0,
+      "results": [
+        {
+          "model": "newton",
+          "status": "failed",
+          "failureCategory": "immutable-output-directory-already-exists"
+        },
+        {
+          "model": "bisection",
+          "status": "failed",
+          "failureCategory": "immutable-output-directory-already-exists"
+        },
+        {
+          "model": "oscillator",
+          "status": "failed",
+          "failureCategory": "immutable-output-directory-already-exists"
+        },
+        {
+          "model": "gradient",
+          "status": "failed",
+          "failureCategory": "immutable-output-directory-already-exists"
+        },
+        {
+          "model": "square",
+          "status": "failed",
+          "failureCategory": "immutable-output-directory-already-exists"
+        },
+        {
+          "model": "polar",
+          "status": "failed",
+          "failureCategory": "immutable-output-directory-already-exists"
+        },
+        {
+          "model": "linear",
+          "status": "failed",
+          "failureCategory": "immutable-output-directory-already-exists"
+        },
+        {
+          "model": "union",
+          "status": "failed",
+          "failureCategory": "immutable-output-directory-already-exists"
+        },
+        {
+          "model": "means",
+          "status": "failed",
+          "failureCategory": "immutable-output-directory-already-exists"
+        },
+        {
+          "model": "wave",
+          "status": "failed",
+          "failureCategory": "immutable-output-directory-already-exists"
+        },
+        {
+          "model": "heat",
+          "status": "failed",
+          "failureCategory": "immutable-output-directory-already-exists"
+        }
+      ]
+    },
+    {
+      "stage": "final fourteen-model replay",
+      "models": 14,
+      "mathPassed": 14,
+      "renderPassed": 14,
+      "decodePassed": 14,
+      "results": [
+        {
+          "model": "newton",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "bisection",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "oscillator",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "gradient",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "square",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "polar",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "linear",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "union",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "means",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "wave",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "heat",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "beam",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "electric",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        },
+        {
+          "model": "control",
+          "status": "verified-local-scene",
+          "failureCategory": null
+        }
+      ]
+    }
+  ],
+  "repair": "Unique output job identifiers; preserved original source hashes; replayed original eleven plus three version-two additions",
+  "otherRefinements": [
+    "3D title placement",
+    "explicit wave/heat playback versus model time",
+    "beam display magnification label",
+    "electric direction-only arrows",
+    "authored control model attribution"
+  ]
+}

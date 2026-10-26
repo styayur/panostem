@@ -7,7 +7,7 @@ import { visualLearningRegression } from "./visual_learning_regression.mjs";
 import { workbenchRegression } from "./workbench_regression.mjs";
 import { checkVisualBundle } from "./visual_bundle_security.mjs";
 
-const base = "http://127.0.0.1:1422/panostem/";
+const base = "http://127.0.0.1:1422/vextessera/";
 const server = spawn(process.execPath, ["node_modules/vite/bin/vite.js", "preview", "--mode", "web", "--host", "127.0.0.1", "--port", "1422", "--strictPort"], { stdio: "pipe" });
 let browser;
 try {

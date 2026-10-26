@@ -66,7 +66,7 @@ behavior. This independent runtime evidence is not added to source coverage.
 - Existing Web suite: 23 groups plus Workbench/Studio/lesson/preview security and
   18 design locale/theme/viewport combinations passed. Production Pages build
   passed executable-AST prohibition and numeric-only JSXGraph provenance.
-- Windows Tauri compile, Rust formatting/core Clippy and 44 Rust tests passed;
+- Windows Tauri compile, Rust formatting/core Clippy and 45 Rust tests passed;
   25 Python runtime contracts passed. npm audit reports zero vulnerabilities.
 - CodeForge v0.2.1 local changed-code gate passed with no new SARIF findings. Its
   configured build/test runner is unavailable on this Windows invocation; those
@@ -75,7 +75,9 @@ behavior. This independent runtime evidence is not added to source coverage.
 PR [#38](https://github.com/styayur/panostem/pull/38) passed all hosted checks,
 including CodeQL, CodeForge and real OpenGL rendering, and merged through the
 protected ruleset at `f4512e16c44d038b34fe2aae0b97c059aa4f309d`.
-The model-workbench follow-up still requires its own protected PR and checks.
+PR [#40](https://github.com/styayur/panostem/pull/40) also passed every hosted
+check, including all four CodeQL analyses and fourteen real model renders, and
+merged normally at `ee33f64cff7902900a83da2043c68b94ad718dea`.
 
 ## Remaining work and publication gate
 
@@ -86,7 +88,7 @@ The model-workbench follow-up still requires its own protected PR and checks.
 | Required full per-source stratified modeling/render evaluation | **Incomplete**; frozen plans are retained, many samples need modeling/review |
 | Full discovered-corpus classification and recovery | Implemented; site-wide discovery and actual visualization coverage remain incomplete |
 | Local knowledge/search/Concept Workbench connection | Implemented; model reader, source/validation details, six Web movies/share packages, fourteen native Studio templates |
-| Vextessera branding and upgrade migration | **Not yet performed**; gated after the main feature and compatibility work |
+| Vextessera branding and upgrade migration | Implemented on migration branch; public identity changes preserve data/protocol IDs |
 | Windows build/package/release and new Pages migration | **Not yet performed** for v0.6.0-alpha.1 |
 
 Six independently authored model movies and ordinary source share packages are
@@ -129,3 +131,21 @@ No signing, updater, OS Python sandbox, or formal Linux/macOS support is claimed
 The full private ledger, raw evidence, generated projects and decoded media are
 under `.panostem-runtime/vextessera-corpus/`. Public JSON reports contain only
 registered-source metadata, aggregate decisions and reviewed mathematical evidence.
+
+## Migration review
+
+The public migration prepares version 0.6.0-alpha.1, Vextessera package/executable/
+asset names, a new vector icon, genuine model/native screenshots, updated active
+guides and dynamic repository-derived Pages base. Historical reports/tags/releases
+retain their identity. Genuine alpha.2 share bytes round-trip through the new reader;
+synthetic historical browser and SQLite schemas exercise real persistence reads/
+writes without touching user profiles. Native audit builds use a separate bundle
+identifier and prove the latest product/version plus embedded fourteen-template
+identity. They do not prove the installer lifecycle.
+
+The existing open Dependabot alert is `GHSA-wrw7-89jp-8q8g`, GLib 0.18.5 in the
+experimental Linux GTK dependency graph; patched upstream API starts at 0.20.0.
+No alert dismissal or broad incompatible GTK migration is included. npm audit
+reports zero findings and CodeQL open-alert count was zero at the final feature
+merge. Publication remains contingent on the migration PR, merged-source checks,
+actual Windows packages and post-rename Pages/download tests.

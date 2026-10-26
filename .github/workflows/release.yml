@@ -66,7 +66,7 @@ jobs:
       - name: Build Windows executable and installer
         run: npm run tauri build -- --bundles nsis
       - name: Verify embedded executable identity
-        run: python scripts/verify_binary.py src-tauri/target/release/panostem.exe
+        run: python scripts/verify_binary.py src-tauri/target/release/vextessera.exe
       - name: Package portable application and checksums
         shell: pwsh
         run: |
@@ -77,8 +77,8 @@ jobs:
           if ($tag -ne "v$version") { throw 'Tag and package version do not match' }
           git describe --exact-match --tags HEAD
           New-Item -ItemType Directory release-assets
-          Compress-Archive -Path src-tauri/target/release/panostem.exe,README.md,README.zh-CN.md,LICENSE,THIRD_PARTY_NOTICES.md,licenses,docs -DestinationPath "release-assets/panostem_${version}_windows-x64.zip"
-          Copy-Item src-tauri/target/release/bundle/nsis/*.exe "release-assets/panostem_${version}_x64-setup.exe"
+          Compress-Archive -Path src-tauri/target/release/vextessera.exe,README.md,README.zh-CN.md,LICENSE,THIRD_PARTY_NOTICES.md,licenses,docs -DestinationPath "release-assets/vextessera_${version}_windows-x64.zip"
+          Copy-Item src-tauri/target/release/bundle/nsis/*.exe "release-assets/vextessera_${version}_x64-setup.exe"
           Get-ChildItem release-assets -File | Sort-Object Name | ForEach-Object {
             $hash = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
             "$hash  $($_.Name)"

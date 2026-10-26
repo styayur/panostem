@@ -103,6 +103,56 @@ impl Drop for Temp {
     }
 }
 
+#[test]
+fn historical_sqlite_and_settings_survive_public_product_rename(
+) -> Result<(), Box<dyn std::error::Error>> {
+    // Synthetic data in the v0.2.0/alpha.2 schema; never opens the user's profile.
+    let dir = Temp::new();
+    std::fs::create_dir_all(&dir.0)?;
+    let db_path = dir.0.join("sve.db");
+    let connection = rusqlite::Connection::open(&db_path)?;
+    connection.execute_batch("CREATE TABLE favorites (id TEXT PRIMARY KEY, result_json TEXT NOT NULL, created_at INTEGER NOT NULL); CREATE TABLE history (id INTEGER PRIMARY KEY AUTOINCREMENT, query TEXT NOT NULL, result_count INTEGER NOT NULL, created_at INTEGER NOT NULL);")?;
+    let legacy_result = r#"{"id":"legacy-curl","source_id":"mathinsight","source_name":"Math Insight","title":"Curl","description":null,"url":"https://mathinsight.org/curl","result_type":"article","tags":["curl"],"thumbnail":null,"score":1}"#;
+    connection.execute(
+        "INSERT INTO favorites VALUES (?1, ?2, ?3)",
+        rusqlite::params!["legacy-curl", legacy_result, 100],
+    )?;
+    connection.execute(
+        "INSERT INTO history (query,result_count,created_at) VALUES ('curl',1,100)",
+        [],
+    )?;
+    drop(connection);
+    let settings = br#"{"theme":"dark","preview_mode":"off","ui_locale":"zh-TW","enabled_providers":["mathinsight"]}"#;
+    std::fs::write(dir.0.join("settings.json"), settings)?;
+    {
+        let state = crate::state::AppState::load(&dir.0)?;
+        assert_eq!(state.db.list_favorites()?[0].result.id, "legacy-curl");
+        assert_eq!(state.db.list_history(10)?[0].query, "curl");
+        assert_eq!(
+            state
+                .settings
+                .lock()
+                .map_err(|_| "Fixture settings mutex poisoned")?
+                .ui_locale,
+            "zh-TW"
+        );
+        state.update_settings(|value| value.theme = "light".into())?;
+        state.db.add_history("gradient", 2, 101)?;
+    }
+    let state = crate::state::AppState::load(&dir.0)?;
+    assert_eq!(
+        state
+            .settings
+            .lock()
+            .map_err(|_| "Fixture settings mutex poisoned")?
+            .theme,
+        "light"
+    );
+    assert_eq!(state.db.list_favorites()?.len(), 1);
+    assert_eq!(state.db.list_history(10)?.len(), 2);
+    Ok(())
+}
+
 #[tokio::test]
 async fn cache_survives_restart_and_failed_refresh() {
     let dir = Temp::new();

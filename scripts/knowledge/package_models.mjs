@@ -61,7 +61,7 @@ for (const r of results) {
     const reviewMovie=path.join(corpus,'packaging-check',`${hash(bytes)}.mp4`);await fs.mkdir(path.dirname(reviewMovie),{recursive:true});await fs.writeFile(reviewMovie,bytes);
     const decoder=path.join(root,'.panostem-runtime/bin',process.platform==='win32'?'ffmpeg.exe':'ffmpeg');
     await promisify(execFile)(decoder,['-v','error','-i',reviewMovie,'-f','null','-'],{timeout:60000,maxBuffer:1000000});
-    const notice = `Original application-owned scene, helper and rendered expression: AGPL-3.0-only. No external images, video, animation code or textbook body is included.\nMathematical source attribution: ${sources.map(s=>s.url).join('\n')}\nSource notes copyright (c) 2021 Adam Djellouli, MIT:\n${sourceLicense}\nApplication source: https://github.com/styayur/panostem\n`;
+    const notice = `Original application-owned scene, helper and rendered expression: AGPL-3.0-only. No external images, video, animation code or textbook body is included.\nMathematical source attribution: ${sources.map(s=>s.url).join('\n')}\nSource notes copyright (c) 2021 Adam Djellouli, MIT:\n${sourceLicense}\nApplication source: https://github.com/styayur/vextessera\n`;
     const archive = await exportShare(metadata,[{path:'media/scene.mp4',role:'video',data:new Uint8Array(bytes)},
       {path:'source/main.py',role:'source',data:new Uint8Array(source)},{path:'source/helpers.py',role:'source',data:new Uint8Array(helper)},
       {path:'model.txt',role:'notice',data:new TextEncoder().encode(JSON.stringify(model,null,2))},{path:'NOTICE.txt',role:'notice',data:new TextEncoder().encode(notice)}]);

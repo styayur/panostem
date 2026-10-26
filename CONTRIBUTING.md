@@ -1,6 +1,6 @@
 # Contributing
 
-Panostem connects concept-driven STEM discovery and guided lessons with native ManimGL scene authoring. Keep the two execution engines independent and use the existing ontology as the concept authority.
+Vextessera connects concept-driven STEM discovery and guided lessons with native ManimGL scene authoring. Keep the two execution engines independent and use the existing ontology as the concept authority.
 
 ## Development
 

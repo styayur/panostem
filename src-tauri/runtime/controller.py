@@ -1,4 +1,4 @@
-"""Panostem local worker. No project code is imported by inspect/save/archive.
+"""Vextessera local worker. No project code is imported by inspect/save/archive.
 
 This process is NOT an OS sandbox. Run and dependency operations require explicit
 consent. Protocol uses a single JSON request on stdin and a final marked result.

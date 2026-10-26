@@ -61,3 +61,14 @@ authentication. Future signing requires a maintainer-controlled certificate or
 trusted signing service, protected secrets/environment approval, timestamping,
 independent signature verification and certificate rotation/revocation policy.
 No certificate, signature or updater is implied by this checklist.
+
+## Vextessera source/model publication regression
+
+Run `npm run test:publication -- --base https://styayur.github.io/vextessera/`.
+The same test runs against the actual local app in CI. The post-deploy run checks
+the public response and seven-provider counts, multilingual search, search-to-model
+navigation, all fourteen exact citation links, six served media/share SHA-256 values
+and browser decoding/playback, Studio source viewing, default source exclusion,
+explicit source inclusion and downloaded-share reimport, three locales, 390px and
+Reduced Motion. It refuses a Web Python/runtime execution interface. Retain the
+returned JSON and screenshots as actual deployment evidence.

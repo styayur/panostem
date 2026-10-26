@@ -16,7 +16,7 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
-DEFAULT_BASE = "http://localhost:4173/panostem/"
+DEFAULT_BASE = "http://localhost:4173/vextessera/"
 BASE = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("SVE_BASE", DEFAULT_BASE)
 REPO = Path(__file__).resolve().parent.parent
 SHOT = REPO / "docs" / "screenshot.png"
@@ -70,7 +70,7 @@ def main() -> int:
 
         page.goto(BASE)
         page.wait_for_load_state("networkidle")
-        assert page.get_by_text("Panostem").first.is_visible(), "header missing"
+        assert page.get_by_text("Vextessera").first.is_visible(), "header missing"
 
         # 1. English query
         run_query(page, "curl")

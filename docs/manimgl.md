@@ -1,6 +1,6 @@
 # ManimGL authoring and runtime
 
-Panostem runs **3b1b/manim (ManimGL)** as a separate process. It does not use Manim
+Vextessera runs **3b1b/manim (ManimGL)** as a separate process. It does not use Manim
 Community, rewrite Python as JSON, require a proprietary Scene base class, or
 patch upstream internals. Native preview is an OpenGL window. Rendered media is
 shown in the app's player. JSXGraph remains the independent guided-lesson engine.
@@ -29,7 +29,7 @@ Runtime identity:
 - Transitive packages and wheel/source hashes: `src-tauri/runtime/requirements.lock`.
 
 The tagged CLI's `--fps` option leaves a string in camera configuration and fails
-during animation. Panostem supplies integer FPS through the official `--config_file`
+during animation. Vextessera supplies integer FPS through the official `--config_file`
 overlay. `--resolution`, `--write_file`, `--video_dir`, `--file_name`,
 `--skip_animations`, `--gif` and `--transparent` map to that exact source's parser.
 The overlay disables mirrored output paths for predictable task directories while

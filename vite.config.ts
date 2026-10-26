@@ -16,7 +16,7 @@ const disabledParser = fileURLToPath(
 // mode === "web" builds the static GitHub Pages site (served from a repo
 // sub-path); the default mode builds the frontend for the Tauri desktop app.
 export default defineConfig(({ mode }) => ({
-  base: mode === "web" ? (process.env.PANOSTEM_BASE || "/panostem/") : "/",
+  base: mode === "web" ? (process.env.VEXTESSERA_BASE || process.env.PANOSTEM_BASE || "/vextessera/") : "/",
   plugins: [
     {
       name: "knowledge-no-dynamic-global-probe",

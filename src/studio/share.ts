@@ -161,7 +161,7 @@ export async function importShare(bytes: Uint8Array): Promise<Share> {
     strFromU8(files["manifest.json"]),
   ) as ShareManifest;
   if (manifest.format !== "panostem-share" || manifest.version !== 1)
-    throw new Error("Unsupported Panostem share version");
+    throw new Error("Unsupported Vextessera share version");
   validateMetadata(manifest.scene);
   if (!Array.isArray(manifest.files) || manifest.files.length >= MAX_FILES)
     throw new Error("Invalid share file list");

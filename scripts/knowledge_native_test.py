@@ -23,6 +23,9 @@ with sync_playwright() as p:
     def invoke(command,**arguments):
         return page.evaluate('async p => window.__TAURI_INTERNALS__.invoke(p.command,p.arguments)',{'command':command,'arguments':arguments})
     assert invoke('plugin:app|identifier')=='org.stemvisualexplorer.audit20260929','Refusing to change a production profile'
+    product=invoke('plugin:app|name')
+    version=invoke('plugin:app|version')
+    assert product=='Vextessera' and version==json.loads((root/'package.json').read_text())['version']
     page.goto(args.base+'/?route=knowledge');page.wait_for_load_state('networkidle')
     page.evaluate('async ()=>{const {useSettingsStore}=await import("/src/stores/settingsStore.ts");await useSettingsStore.getState().update({ui_locale:"en"});}')
     page.get_by_role('button',name='Mathematical models (14)',exact=True).click()
@@ -55,7 +58,7 @@ with sync_playwright() as p:
     subprocess.run([str(root/'.panostem-runtime/bin/ffmpeg.exe'),'-v','error','-i',str(project/movie['path']),'-f','null','-'],check=True,timeout=60,capture_output=True)
     page.locator('video').wait_for();page.wait_for_function('document.querySelector("video")?.readyState>=2')
     page.screenshot(path=str(root/'.panostem-runtime/vextessera-audit/native-knowledge.png'))
-    evidence={'identifier':'org.stemvisualexplorer.audit20260929','project':str(project),'projectRevision':info['revision'],'sourceHash':expected['sourceHash'],'model':'newton','createdWithoutExecution':True,'untrustedRunDisabled':True,'nativeRender':job['result'],'playback':True}
+    evidence={'identifier':'org.stemvisualexplorer.audit20260929','product':product,'version':version,'project':str(project),'projectRevision':info['revision'],'sourceHash':expected['sourceHash'],'model':'newton','createdWithoutExecution':True,'untrustedRunDisabled':True,'nativeRender':job['result'],'playback':True}
     (root/'.panostem-runtime/vextessera-audit/native-knowledge.json').write_text(json.dumps(evidence,indent=2),encoding='utf-8')
     browser.close()
 sys.stdout.write('Native knowledge: model -> ordinary project -> revision trust -> actual embedded-template render and video playback PASS\n')

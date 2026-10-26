@@ -142,7 +142,7 @@ pub fn run() {
             })
         })
         .build(tauri::generate_context!())
-        .expect("error while building Panostem")
+        .expect("error while building Vextessera")
         .run(|app, event| {
             if matches!(
                 event,

@@ -1,6 +1,6 @@
 # Third-party notices
 
-Panostem application source remains **AGPL-3.0-only**. The desktop bundle identifier
+Vextessera application source remains **AGPL-3.0-only**. The desktop bundle identifier
 and existing copyright notices are preserved. The complete application license is
 in `LICENSE`, and the corresponding source is available in this repository/tag.
 
