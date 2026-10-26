@@ -19,6 +19,20 @@ export default defineConfig(({ mode }) => ({
   base: mode === "web" ? (process.env.PANOSTEM_BASE || "/panostem/") : "/",
   plugins: [
     {
+      name: "knowledge-no-dynamic-global-probe",
+      enforce: "pre",
+      transform(code, id) {
+        if (id.replaceAll("\\", "/").endsWith("/format/format.js")) {
+          // remark-frontmatter -> fault -> format has an obsolete ES3 global probe.
+          // ES2021 supplies globalThis. Keep the existing executable-AST gate intact.
+          const probe = "(1,eval)('this')";
+          const version = JSON.parse(readFileSync(new URL("./node_modules/format/package.json", import.meta.url), "utf8")).version;
+          if (version !== "0.2.2" || !code.includes(probe)) throw new Error("Review format's global probe before upgrading");
+          return { code: code.replace(probe, "globalThis"), map: null };
+        }
+      },
+    },
+    {
       name: "jsxgraph-numeric-only",
       enforce: "pre",
       resolveId(id, importer) {

@@ -17,7 +17,7 @@
 Regenerate installed-package evidence with:
 
 ```sh
-python scripts/collect_licenses.py --runtime-python <managed-python>
+python scripts/collect_licenses.py --preserve-base-notices --runtime-python <managed-python>
 ```
 
 Preserve supplemental files/provenance when regenerating. Bundled wheels retain
@@ -25,3 +25,8 @@ their own `.dist-info` notices. Runtime setup writes `THIRD_PARTY_LICENSES.txt` 
 the managed runtime, including CPython/package notices and installed FFmpeg output.
 The application's AGPL-3.0-only terms are in the root LICENSE. The inventory does
 not relicense user scenes, rendered outputs, textbooks or other external content.
+
+`KNOWLEDGE_DEPENDENCY_LICENSE_TEXTS.txt` supplies actual additional package
+notices without rewriting the large historical notice file. The corresponding
+supplemental entries include format's declared MIT grant and remark-math's exact
+monorepo license; see `supplemental-sources.json` for sources and hashes.

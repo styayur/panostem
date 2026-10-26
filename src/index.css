@@ -259,16 +259,18 @@ summary:focus-visible,
   .app-nav {
     grid-column: 1/-1;
     grid-row: 2;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 2px;
   }
   .app-nav button {
     flex: 1 1 auto;
+    min-width: 0;
+    flex-direction: column;
     justify-content: center;
-    padding: 6px 5px;
-    gap: 4px;
-    font-size: 12px;
+    padding: 6px 2px;
+    gap: 2px;
+    font-size: 11px;
   }
   .app-nav .nav-label {
     display: inline;

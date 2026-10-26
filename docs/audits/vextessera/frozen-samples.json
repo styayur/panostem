@@ -1,0 +1,1038 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-26T09:09:28.751Z",
+  "sources": [
+    {
+      "id": "github:hitsz-openauto/math1005",
+      "samples": [
+        "github:hitsz-openauto/math1005:README.md%237",
+        "github:hitsz-openauto/math1005:exams%2FREADME.md%231",
+        "github:hitsz-openauto/math1005:README.md%231"
+      ]
+    },
+    {
+      "id": "github:pkuanonym/rekcarc-tsc-uht",
+      "samples": [
+        "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E4%BA%8C%E4%B8%8A%2F%E7%94%B5%E5%AD%90%E5%AD%A6%E5%9F%BA%E7%A1%80%2Fhw%2F2019%2Ftex%2Fh1%2Fh1.tex%231",
+        "github:pkuanonym/rekcarc-tsc-uht:%E5%8F%82%E8%80%83%E4%B9%A6%E7%9B%AE.md%231",
+        "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E4%BA%8C%E4%B8%8A%2F%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8CB(1)%2Fhw%2F%E4%BC%8F%2F1.html%231",
+        "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E5%9B%9B%E4%B8%8A%2F%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E6%8A%80%E6%9C%AF%2Freadme.md%231",
+        "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E4%B8%80%E5%B0%8F%E5%AD%A6%E6%9C%9F%2FWeek_3-Python%2Fdocs%2Fcrawler%2Fcrawler.ipynb%23cell-0%3A1"
+      ]
+    },
+    {
+      "id": "github:theophilec/complex-analysis",
+      "samples": [
+        "github:theophilec/complex-analysis:chapter-1.tex%231",
+        "github:theophilec/complex-analysis:main.tex%231",
+        "github:theophilec/complex-analysis:README.md%231"
+      ]
+    },
+    {
+      "id": "github:pkm-er/pkmer-math",
+      "samples": [
+        "github:pkm-er/pkmer-math:%E6%A6%82%E7%8E%87%E8%AE%BA%2F%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1%2F0-1%E5%88%86%E5%B8%83%E5%8F%82%E6%95%B0%E7%9A%84%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1.md%231",
+        "github:pkm-er/pkmer-math:_assets_%2FCallouts%2FCallouts%E8%AF%AD%E6%B3%95.md%23129",
+        "github:pkm-er/pkmer-math:_assets_%2F%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91%E5%99%A8.md%231",
+        "github:pkm-er/pkmer-math:_assets_%2FCallouts%2FCallouts-Abstract.md%231"
+      ]
+    },
+    {
+      "id": "github:e0328/essence-of-linear-algebra",
+      "samples": []
+    },
+    {
+      "id": "github:mikeroyal/calculus-guide",
+      "samples": [
+        "github:mikeroyal/calculus-guide:README.md%2316",
+        "github:mikeroyal/calculus-guide:README.md%231",
+        "github:mikeroyal/calculus-guide:README.md%237"
+      ]
+    },
+    {
+      "id": "github:gorcat/note_math",
+      "samples": [
+        "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E5%B8%B8%E7%94%A8%E5%AE%9A%E7%90%86.md%239",
+        "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%26%E5%8F%8D%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0.md%233",
+        "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E5%B8%B8%E7%94%A8%E5%AE%9A%E7%90%86.md%231"
+      ]
+    },
+    {
+      "id": "github:maksimim/jaynesprobabilitytheory",
+      "samples": [
+        "github:maksimim/jaynesprobabilitytheory:chapter1.html%231",
+        "github:maksimim/jaynesprobabilitytheory:book_review.html%231",
+        "github:maksimim/jaynesprobabilitytheory:appendixB.html%231",
+        "github:maksimim/jaynesprobabilitytheory:appendixB.md%231",
+        "github:maksimim/jaynesprobabilitytheory:Python%20notebooks%2FExercise_3_2_code.ipynb%23cell-0%3A1"
+      ]
+    },
+    {
+      "id": "github:vincentc75/mit_sdsmm",
+      "samples": [
+        "github:vincentc75/mit_sdsmm:MIT_Machine_Learning.Rmd%231",
+        "github:vincentc75/mit_sdsmm:README.md%231",
+        "github:vincentc75/mit_sdsmm:MIT_Probability_Statistics.Rmd%231"
+      ]
+    },
+    {
+      "id": "github:mikeroyal/physics-guide",
+      "samples": [
+        "github:mikeroyal/physics-guide:README.md%2316",
+        "github:mikeroyal/physics-guide:README.md%231",
+        "github:mikeroyal/physics-guide:README.md%237"
+      ]
+    },
+    {
+      "id": "github:pizofreude/thefeaman",
+      "samples": [
+        "github:pizofreude/thefeaman:docs%2Findex.md%2371",
+        "github:pizofreude/thefeaman:docs%2Fdocs.md%231",
+        "github:pizofreude/thefeaman:docs%2Fdocs.md%2311"
+      ]
+    },
+    {
+      "id": "github:djeada/numerical-methods",
+      "samples": [
+        "github:djeada/numerical-methods:notes%2F1_root_and_extrema_finding%2Fbisection_method.md%231",
+        "github:djeada/numerical-methods:notes%2F8_optimization%2Foptimization.md%2319",
+        "github:djeada/numerical-methods:notes%2F4_integration%2Fresources%2Fsimpsons_method.tex%231",
+        "github:djeada/numerical-methods:notes%2F8_optimization%2Fconstrained_optimization.md%231",
+        "github:djeada/numerical-methods:src%2F2_systems_of_equations%2Fgauss_seidel%2Fexamples%2Fexample.ipynb%23cell-1%3A1"
+      ]
+    },
+    {
+      "id": "github:apurbakumarnath/numerical-methods-python",
+      "samples": [
+        "github:apurbakumarnath/numerical-methods-python:01_Solving_Linear_Systems%2FGaussian_Elimination_and_Matrix_Inverse.ipynb%23cell-0%3A3",
+        "github:apurbakumarnath/numerical-methods-python:README.md%2318",
+        "github:apurbakumarnath/numerical-methods-python:00_Foundations%2FNumPy_and_Pandas_Basics.ipynb%23cell-0%3A1",
+        "github:apurbakumarnath/numerical-methods-python:README.md%231"
+      ]
+    },
+    {
+      "id": "github:mickychiang/control-systems-notes",
+      "samples": []
+    },
+    {
+      "id": "github:alexander-yakovlev/control-theory",
+      "samples": []
+    },
+    {
+      "id": "mathinsight",
+      "samples": [
+        "mathinsight:739dc25a5164fab4db584b1dc13ff1cdf59717fb3045fa2b26e52dd3c52a00c0",
+        "mathinsight:d05b260c6a89ff5adfacb149d081ced2b1ca9acae108dbe00c0217ed4916a794",
+        "mathinsight:3f8d44f783a43421ffb0f537f2048e9ff63f3626fa308ccddd65057501ad98e3"
+      ]
+    },
+    {
+      "id": "falstad",
+      "samples": [
+        "falstad:86670ebac295f0b98f2d599ad5d355af6c8edf390ddd93d3a64a7a7648de590b",
+        "falstad:d11360f1789bf555aff08d2c904b3ee9e95a5d522cdc1b9c30f9ef4c81921cda",
+        "falstad:06f00881477c710affbb5f3cdd5af9de22f01696529dbd656c980fbe867183f3"
+      ]
+    },
+    {
+      "id": "phet",
+      "samples": [
+        "phet:0bf641a8a5019f5cfe35d29b95066d24f694ab8d073125b55b94a3f1c568a02c",
+        "phet:1f06f6ce5c0c777fd4d3124ffcbc03218de8380b6ce08321d62f06b2733540d8",
+        "phet:b2a0c4a17b33e915f63476953f471e7a09c2b18a42eeba6fcbdb8c0476d33f84"
+      ]
+    },
+    {
+      "id": "betterexplained",
+      "samples": [
+        "betterexplained:c808423c2a2363894928f4bb9b9c6d671ddf35c4176a418a74c398c52ab2a782",
+        "betterexplained:082fa3c5e58268881a3f1d3087c12116be649b6fcc13b6a154756c6db73b3841",
+        "betterexplained:fb50a9a30ddd6637cfd61b99f853f56c63939c83eb6413764d0460a69b72bb4f"
+      ]
+    },
+    {
+      "id": "physicsfundamentals",
+      "samples": [
+        "physicsfundamentals:941e0f5ef364347932d20aa493a22f42a410e14b7604832d6de2de78193793cc",
+        "physicsfundamentals:541a91642791fb2a324691897b2818cc30b1e32379a00eafcb3fa464ccc908f5",
+        "physicsfundamentals:2ff67e5c4b1d418baca7d32077e7f06fb5337e7838bdce617f703824a6efb21b"
+      ]
+    },
+    {
+      "id": "physicstuff",
+      "samples": [
+        "physicstuff:f916c37bf04fe7e67acef960b9b74d1e039ca15c6efc17ae0850c00b0ccb4889",
+        "physicstuff:2f6250bffb2e098a0dbe922cbe3adf3c71e4964437ef64f7979ca29f360632a5",
+        "physicstuff:6ac19a5c8670405e7995b901e76e7cdece9ad6a9c71ef24ee21561a1fb9943c4"
+      ]
+    },
+    {
+      "id": "maotian",
+      "samples": [
+        "maotian:3a42717852b27f2ad03222f5be9ade5fd50c0c88769fa5fa333fa94284e26aa4",
+        "maotian:c43cde967edda5abc4b30c2eef7444199f6fd0019a5d43b97d709ba23b3a3cd4",
+        "maotian:4936897bd9bff3f363dd3cac0c817e661bcbb90a4eaa0baad52555ff545061fa"
+      ]
+    }
+  ],
+  "corpusHash": "03b27273a01e1180c66158c4d7476cdaaac0a6d6f3c00a840682fe921b42c075",
+  "evaluations": [
+    {
+      "id": "github:hitsz-openauto/math1005",
+      "frozenIds": [
+        "github:hitsz-openauto/math1005:README.md%237",
+        "github:hitsz-openauto/math1005:exams%2FREADME.md%231",
+        "github:hitsz-openauto/math1005:README.md%231"
+      ],
+      "samples": [
+        {
+          "id": "github:hitsz-openauto/math1005:README.md%237",
+          "parsedUnitId": "github:hitsz-openauto/math1005:README.md%237",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:hitsz-openauto/math1005:exams%2FREADME.md%231",
+          "parsedUnitId": "github:hitsz-openauto/math1005:exams%2FREADME.md%231",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:hitsz-openauto/math1005:README.md%231",
+          "parsedUnitId": "github:hitsz-openauto/math1005:README.md%231",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        }
+      ]
+    },
+    {
+      "id": "github:pkuanonym/rekcarc-tsc-uht",
+      "frozenIds": [
+        "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E4%BA%8C%E4%B8%8A%2F%E7%94%B5%E5%AD%90%E5%AD%A6%E5%9F%BA%E7%A1%80%2Fhw%2F2019%2Ftex%2Fh1%2Fh1.tex%231",
+        "github:pkuanonym/rekcarc-tsc-uht:%E5%8F%82%E8%80%83%E4%B9%A6%E7%9B%AE.md%231",
+        "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E4%BA%8C%E4%B8%8A%2F%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8CB(1)%2Fhw%2F%E4%BC%8F%2F1.html%231",
+        "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E5%9B%9B%E4%B8%8A%2F%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E6%8A%80%E6%9C%AF%2Freadme.md%231",
+        "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E4%B8%80%E5%B0%8F%E5%AD%A6%E6%9C%9F%2FWeek_3-Python%2Fdocs%2Fcrawler%2Fcrawler.ipynb%23cell-0%3A1"
+      ],
+      "samples": [
+        {
+          "id": "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E4%BA%8C%E4%B8%8A%2F%E7%94%B5%E5%AD%90%E5%AD%A6%E5%9F%BA%E7%A1%80%2Fhw%2F2019%2Ftex%2Fh1%2Fh1.tex%231",
+          "parsedUnitId": "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E4%BA%8C%E4%B8%8A%2F%E7%94%B5%E5%AD%90%E5%AD%A6%E5%9F%BA%E7%A1%80%2Fhw%2F2019%2Ftex%2Fh1%2Fh1.tex%231",
+          "format": "latex",
+          "formulaCount": 152,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "Static TeX extraction; macros, includes and compilation are not evaluated"
+        },
+        {
+          "id": "github:pkuanonym/rekcarc-tsc-uht:%E5%8F%82%E8%80%83%E4%B9%A6%E7%9B%AE.md%231",
+          "parsedUnitId": "github:pkuanonym/rekcarc-tsc-uht:%E5%8F%82%E8%80%83%E4%B9%A6%E7%9B%AE.md%231",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E4%BA%8C%E4%B8%8A%2F%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8CB(1)%2Fhw%2F%E4%BC%8F%2F1.html%231",
+          "parsedUnitId": "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E4%BA%8C%E4%B8%8A%2F%E7%89%A9%E7%90%86%E5%AE%9E%E9%AA%8CB(1)%2Fhw%2F%E4%BC%8F%2F1.html%231",
+          "format": "html",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E5%9B%9B%E4%B8%8A%2F%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E6%8A%80%E6%9C%AF%2Freadme.md%231",
+          "parsedUnitId": "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E5%9B%9B%E4%B8%8A%2F%E7%8E%B0%E4%BB%A3%E6%8E%A7%E5%88%B6%E6%8A%80%E6%9C%AF%2Freadme.md%231",
+          "format": "obsidian-markdown",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E4%B8%80%E5%B0%8F%E5%AD%A6%E6%9C%9F%2FWeek_3-Python%2Fdocs%2Fcrawler%2Fcrawler.ipynb%23cell-0%3A1",
+          "parsedUnitId": "github:pkuanonym/rekcarc-tsc-uht:%E5%A4%A7%E4%B8%80%E5%B0%8F%E5%AD%A6%E6%9C%9F%2FWeek_3-Python%2Fdocs%2Fcrawler%2Fcrawler.ipynb%23cell-0%3A1",
+          "format": "notebook-markdown",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        }
+      ]
+    },
+    {
+      "id": "github:theophilec/complex-analysis",
+      "frozenIds": [
+        "github:theophilec/complex-analysis:chapter-1.tex%231",
+        "github:theophilec/complex-analysis:main.tex%231",
+        "github:theophilec/complex-analysis:README.md%231"
+      ],
+      "samples": [
+        {
+          "id": "github:theophilec/complex-analysis:chapter-1.tex%231",
+          "parsedUnitId": "github:theophilec/complex-analysis:chapter-1.tex%231",
+          "format": "latex",
+          "formulaCount": 122,
+          "parseStatus": "partial",
+          "verifiedModels": [
+            "polar"
+          ],
+          "disposition": "verified-local-scene",
+          "reason": "Exact source hash and listed equation checked; scene rendered and decoded"
+        },
+        {
+          "id": "github:theophilec/complex-analysis:main.tex%231",
+          "parsedUnitId": "github:theophilec/complex-analysis:main.tex%231",
+          "format": "latex",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "Static TeX extraction; macros, includes and compilation are not evaluated"
+        },
+        {
+          "id": "github:theophilec/complex-analysis:README.md%231",
+          "parsedUnitId": "github:theophilec/complex-analysis:README.md%231",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        }
+      ]
+    },
+    {
+      "id": "github:pkm-er/pkmer-math",
+      "frozenIds": [
+        "github:pkm-er/pkmer-math:%E6%A6%82%E7%8E%87%E8%AE%BA%2F%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1%2F0-1%E5%88%86%E5%B8%83%E5%8F%82%E6%95%B0%E7%9A%84%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1.md%231",
+        "github:pkm-er/pkmer-math:_assets_%2FCallouts%2FCallouts%E8%AF%AD%E6%B3%95.md%23129",
+        "github:pkm-er/pkmer-math:_assets_%2F%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91%E5%99%A8.md%231",
+        "github:pkm-er/pkmer-math:_assets_%2FCallouts%2FCallouts-Abstract.md%231"
+      ],
+      "samples": [
+        {
+          "id": "github:pkm-er/pkmer-math:%E6%A6%82%E7%8E%87%E8%AE%BA%2F%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1%2F0-1%E5%88%86%E5%B8%83%E5%8F%82%E6%95%B0%E7%9A%84%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1.md%231",
+          "parsedUnitId": "github:pkm-er/pkmer-math:%E6%A6%82%E7%8E%87%E8%AE%BA%2F%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1%2F0-1%E5%88%86%E5%B8%83%E5%8F%82%E6%95%B0%E7%9A%84%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1.md%231",
+          "format": "obsidian-markdown",
+          "formulaCount": 5,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:pkm-er/pkmer-math:_assets_%2FCallouts%2FCallouts%E8%AF%AD%E6%B3%95.md%23129",
+          "parsedUnitId": "github:pkm-er/pkmer-math:_assets_%2FCallouts%2FCallouts%E8%AF%AD%E6%B3%95.md%23129",
+          "format": "obsidian-markdown",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:pkm-er/pkmer-math:_assets_%2F%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91%E5%99%A8.md%231",
+          "parsedUnitId": "github:pkm-er/pkmer-math:_assets_%2F%E5%85%AC%E5%BC%8F%E7%BC%96%E8%BE%91%E5%99%A8.md%231",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:pkm-er/pkmer-math:_assets_%2FCallouts%2FCallouts-Abstract.md%231",
+          "parsedUnitId": "github:pkm-er/pkmer-math:_assets_%2FCallouts%2FCallouts-Abstract.md%231",
+          "format": "obsidian-markdown",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        }
+      ]
+    },
+    {
+      "id": "github:e0328/essence-of-linear-algebra",
+      "frozenIds": [],
+      "samples": []
+    },
+    {
+      "id": "github:mikeroyal/calculus-guide",
+      "frozenIds": [
+        "github:mikeroyal/calculus-guide:README.md%2316",
+        "github:mikeroyal/calculus-guide:README.md%231",
+        "github:mikeroyal/calculus-guide:README.md%237"
+      ],
+      "samples": [
+        {
+          "id": "github:mikeroyal/calculus-guide:README.md%2316",
+          "parsedUnitId": "github:mikeroyal/calculus-guide:README.md%2316",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:mikeroyal/calculus-guide:README.md%231",
+          "parsedUnitId": "github:mikeroyal/calculus-guide:README.md%231",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:mikeroyal/calculus-guide:README.md%237",
+          "parsedUnitId": "github:mikeroyal/calculus-guide:README.md%237",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        }
+      ]
+    },
+    {
+      "id": "github:gorcat/note_math",
+      "frozenIds": [
+        "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E5%B8%B8%E7%94%A8%E5%AE%9A%E7%90%86.md%239",
+        "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%26%E5%8F%8D%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0.md%233",
+        "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E5%B8%B8%E7%94%A8%E5%AE%9A%E7%90%86.md%231"
+      ],
+      "samples": [
+        {
+          "id": "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E5%B8%B8%E7%94%A8%E5%AE%9A%E7%90%86.md%239",
+          "parsedUnitId": "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E5%B8%B8%E7%94%A8%E5%AE%9A%E7%90%86.md%239",
+          "format": "commonmark",
+          "formulaCount": 6,
+          "parseStatus": "parsed",
+          "verifiedModels": [
+            "means"
+          ],
+          "disposition": "verified-local-scene",
+          "reason": "Exact source hash and listed equation checked; scene rendered and decoded"
+        },
+        {
+          "id": "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%26%E5%8F%8D%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0.md%233",
+          "parsedUnitId": "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%26%E5%8F%8D%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0.md%233",
+          "format": "commonmark",
+          "formulaCount": 6,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E5%B8%B8%E7%94%A8%E5%AE%9A%E7%90%86.md%231",
+          "parsedUnitId": "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E5%B8%B8%E7%94%A8%E5%AE%9A%E7%90%86.md%231",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        }
+      ]
+    },
+    {
+      "id": "github:maksimim/jaynesprobabilitytheory",
+      "frozenIds": [
+        "github:maksimim/jaynesprobabilitytheory:chapter1.html%231",
+        "github:maksimim/jaynesprobabilitytheory:book_review.html%231",
+        "github:maksimim/jaynesprobabilitytheory:appendixB.html%231",
+        "github:maksimim/jaynesprobabilitytheory:appendixB.md%231",
+        "github:maksimim/jaynesprobabilitytheory:Python%20notebooks%2FExercise_3_2_code.ipynb%23cell-0%3A1"
+      ],
+      "samples": [
+        {
+          "id": "github:maksimim/jaynesprobabilitytheory:chapter1.html%231",
+          "parsedUnitId": "github:maksimim/jaynesprobabilitytheory:chapter1.html%231",
+          "format": "html",
+          "formulaCount": 15,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "github:maksimim/jaynesprobabilitytheory:book_review.html%231",
+          "parsedUnitId": "github:maksimim/jaynesprobabilitytheory:book_review.html%231",
+          "format": "html",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "github:maksimim/jaynesprobabilitytheory:appendixB.html%231",
+          "parsedUnitId": "github:maksimim/jaynesprobabilitytheory:appendixB.html%231",
+          "format": "html",
+          "formulaCount": 1,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "github:maksimim/jaynesprobabilitytheory:appendixB.md%231",
+          "parsedUnitId": "github:maksimim/jaynesprobabilitytheory:appendixB.md%231",
+          "format": "commonmark",
+          "formulaCount": 1,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:maksimim/jaynesprobabilitytheory:Python%20notebooks%2FExercise_3_2_code.ipynb%23cell-0%3A1",
+          "parsedUnitId": "github:maksimim/jaynesprobabilitytheory:Python%20notebooks%2FExercise_3_2_code.ipynb%23cell-0%3A1",
+          "format": "notebook-markdown",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        }
+      ]
+    },
+    {
+      "id": "github:vincentc75/mit_sdsmm",
+      "frozenIds": [
+        "github:vincentc75/mit_sdsmm:MIT_Machine_Learning.Rmd%231",
+        "github:vincentc75/mit_sdsmm:README.md%231",
+        "github:vincentc75/mit_sdsmm:MIT_Probability_Statistics.Rmd%231"
+      ],
+      "samples": [
+        {
+          "id": "github:vincentc75/mit_sdsmm:MIT_Machine_Learning.Rmd%231",
+          "parsedUnitId": "github:vincentc75/mit_sdsmm:MIT_Machine_Learning.Rmd%231",
+          "format": "r-markdown",
+          "formulaCount": 110,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:vincentc75/mit_sdsmm:README.md%231",
+          "parsedUnitId": "github:vincentc75/mit_sdsmm:README.md%231",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:vincentc75/mit_sdsmm:MIT_Probability_Statistics.Rmd%231",
+          "parsedUnitId": "github:vincentc75/mit_sdsmm:MIT_Probability_Statistics.Rmd%231",
+          "format": "r-markdown",
+          "formulaCount": 249,
+          "parseStatus": "parsed",
+          "verifiedModels": [
+            "union"
+          ],
+          "disposition": "verified-local-scene",
+          "reason": "Exact source hash and listed equation checked; scene rendered and decoded"
+        }
+      ]
+    },
+    {
+      "id": "github:mikeroyal/physics-guide",
+      "frozenIds": [
+        "github:mikeroyal/physics-guide:README.md%2316",
+        "github:mikeroyal/physics-guide:README.md%231",
+        "github:mikeroyal/physics-guide:README.md%237"
+      ],
+      "samples": [
+        {
+          "id": "github:mikeroyal/physics-guide:README.md%2316",
+          "parsedUnitId": "github:mikeroyal/physics-guide:README.md%2316",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:mikeroyal/physics-guide:README.md%231",
+          "parsedUnitId": "github:mikeroyal/physics-guide:README.md%231",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:mikeroyal/physics-guide:README.md%237",
+          "parsedUnitId": "github:mikeroyal/physics-guide:README.md%237",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        }
+      ]
+    },
+    {
+      "id": "github:pizofreude/thefeaman",
+      "frozenIds": [
+        "github:pizofreude/thefeaman:docs%2Findex.md%2371",
+        "github:pizofreude/thefeaman:docs%2Fdocs.md%231",
+        "github:pizofreude/thefeaman:docs%2Fdocs.md%2311"
+      ],
+      "samples": [
+        {
+          "id": "github:pizofreude/thefeaman:docs%2Findex.md%2371",
+          "parsedUnitId": "github:pizofreude/thefeaman:docs%2Findex.md%2371",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:pizofreude/thefeaman:docs%2Fdocs.md%231",
+          "parsedUnitId": "github:pizofreude/thefeaman:docs%2Fdocs.md%231",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:pizofreude/thefeaman:docs%2Fdocs.md%2311",
+          "parsedUnitId": "github:pizofreude/thefeaman:docs%2Fdocs.md%2311",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        }
+      ]
+    },
+    {
+      "id": "github:djeada/numerical-methods",
+      "frozenIds": [
+        "github:djeada/numerical-methods:notes%2F1_root_and_extrema_finding%2Fbisection_method.md%231",
+        "github:djeada/numerical-methods:notes%2F8_optimization%2Foptimization.md%2319",
+        "github:djeada/numerical-methods:notes%2F4_integration%2Fresources%2Fsimpsons_method.tex%231",
+        "github:djeada/numerical-methods:notes%2F8_optimization%2Fconstrained_optimization.md%231",
+        "github:djeada/numerical-methods:src%2F2_systems_of_equations%2Fgauss_seidel%2Fexamples%2Fexample.ipynb%23cell-1%3A1"
+      ],
+      "samples": [
+        {
+          "id": "github:djeada/numerical-methods:notes%2F1_root_and_extrema_finding%2Fbisection_method.md%231",
+          "parsedUnitId": "github:djeada/numerical-methods:notes%2F1_root_and_extrema_finding%2Fbisection_method.md%231",
+          "format": "commonmark",
+          "formulaCount": 13,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:djeada/numerical-methods:notes%2F8_optimization%2Foptimization.md%2319",
+          "parsedUnitId": "github:djeada/numerical-methods:notes%2F8_optimization%2Foptimization.md%2319",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:djeada/numerical-methods:notes%2F4_integration%2Fresources%2Fsimpsons_method.tex%231",
+          "parsedUnitId": "github:djeada/numerical-methods:notes%2F4_integration%2Fresources%2Fsimpsons_method.tex%231",
+          "format": "latex",
+          "formulaCount": 7,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "Static TeX extraction; macros, includes and compilation are not evaluated"
+        },
+        {
+          "id": "github:djeada/numerical-methods:notes%2F8_optimization%2Fconstrained_optimization.md%231",
+          "parsedUnitId": "github:djeada/numerical-methods:notes%2F8_optimization%2Fconstrained_optimization.md%231",
+          "format": "myst-markdown",
+          "formulaCount": 2,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:djeada/numerical-methods:src%2F2_systems_of_equations%2Fgauss_seidel%2Fexamples%2Fexample.ipynb%23cell-1%3A1",
+          "parsedUnitId": "github:djeada/numerical-methods:src%2F2_systems_of_equations%2Fgauss_seidel%2Fexamples%2Fexample.ipynb%23cell-1%3A1",
+          "format": "notebook-markdown",
+          "formulaCount": 6,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        }
+      ]
+    },
+    {
+      "id": "github:apurbakumarnath/numerical-methods-python",
+      "frozenIds": [
+        "github:apurbakumarnath/numerical-methods-python:01_Solving_Linear_Systems%2FGaussian_Elimination_and_Matrix_Inverse.ipynb%23cell-0%3A3",
+        "github:apurbakumarnath/numerical-methods-python:README.md%2318",
+        "github:apurbakumarnath/numerical-methods-python:00_Foundations%2FNumPy_and_Pandas_Basics.ipynb%23cell-0%3A1",
+        "github:apurbakumarnath/numerical-methods-python:README.md%231"
+      ],
+      "samples": [
+        {
+          "id": "github:apurbakumarnath/numerical-methods-python:01_Solving_Linear_Systems%2FGaussian_Elimination_and_Matrix_Inverse.ipynb%23cell-0%3A3",
+          "parsedUnitId": "github:apurbakumarnath/numerical-methods-python:01_Solving_Linear_Systems%2FGaussian_Elimination_and_Matrix_Inverse.ipynb%23cell-0%3A3",
+          "format": "notebook-markdown",
+          "formulaCount": 6,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:apurbakumarnath/numerical-methods-python:README.md%2318",
+          "parsedUnitId": "github:apurbakumarnath/numerical-methods-python:README.md%2318",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:apurbakumarnath/numerical-methods-python:00_Foundations%2FNumPy_and_Pandas_Basics.ipynb%23cell-0%3A1",
+          "parsedUnitId": "github:apurbakumarnath/numerical-methods-python:00_Foundations%2FNumPy_and_Pandas_Basics.ipynb%23cell-0%3A1",
+          "format": "notebook-markdown",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        },
+        {
+          "id": "github:apurbakumarnath/numerical-methods-python:README.md%231",
+          "parsedUnitId": "github:apurbakumarnath/numerical-methods-python:README.md%231",
+          "format": "commonmark",
+          "formulaCount": 0,
+          "parseStatus": "parsed",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "No reviewed mathematical recipe covers this frozen knowledge unit"
+        }
+      ]
+    },
+    {
+      "id": "github:mickychiang/control-systems-notes",
+      "frozenIds": [],
+      "samples": []
+    },
+    {
+      "id": "github:alexander-yakovlev/control-theory",
+      "frozenIds": [],
+      "samples": []
+    },
+    {
+      "id": "mathinsight",
+      "frozenIds": [
+        "mathinsight:739dc25a5164fab4db584b1dc13ff1cdf59717fb3045fa2b26e52dd3c52a00c0",
+        "mathinsight:d05b260c6a89ff5adfacb149d081ced2b1ca9acae108dbe00c0217ed4916a794",
+        "mathinsight:3f8d44f783a43421ffb0f537f2048e9ff63f3626fa308ccddd65057501ad98e3"
+      ],
+      "samples": [
+        {
+          "id": "mathinsight:739dc25a5164fab4db584b1dc13ff1cdf59717fb3045fa2b26e52dd3c52a00c0",
+          "formulaCount": 0,
+          "parseStatus": "source-unavailable",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "Frozen resource not available in current corrected discovery; retained for comparison"
+        },
+        {
+          "id": "mathinsight:d05b260c6a89ff5adfacb149d081ced2b1ca9acae108dbe00c0217ed4916a794",
+          "formulaCount": 0,
+          "parseStatus": "source-unavailable",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "Frozen resource not available in current corrected discovery; retained for comparison"
+        },
+        {
+          "id": "mathinsight:3f8d44f783a43421ffb0f537f2048e9ff63f3626fa308ccddd65057501ad98e3",
+          "parsedUnitId": "mathinsight:3f8d44f783a43421ffb0f537f2048e9ff63f3626fa308ccddd65057501ad98e3.html%231",
+          "format": "html",
+          "formulaCount": 143,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        }
+      ]
+    },
+    {
+      "id": "falstad",
+      "frozenIds": [
+        "falstad:86670ebac295f0b98f2d599ad5d355af6c8edf390ddd93d3a64a7a7648de590b",
+        "falstad:d11360f1789bf555aff08d2c904b3ee9e95a5d522cdc1b9c30f9ef4c81921cda",
+        "falstad:06f00881477c710affbb5f3cdd5af9de22f01696529dbd656c980fbe867183f3"
+      ],
+      "samples": [
+        {
+          "id": "falstad:86670ebac295f0b98f2d599ad5d355af6c8edf390ddd93d3a64a7a7648de590b",
+          "parsedUnitId": "falstad:86670ebac295f0b98f2d599ad5d355af6c8edf390ddd93d3a64a7a7648de590b.html%231",
+          "format": "html",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "falstad:d11360f1789bf555aff08d2c904b3ee9e95a5d522cdc1b9c30f9ef4c81921cda",
+          "formulaCount": 0,
+          "parseStatus": "unsupported",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "Only a short HTML shell or metadata was readable; embedded/JavaScript mathematical model not inspected"
+        },
+        {
+          "id": "falstad:06f00881477c710affbb5f3cdd5af9de22f01696529dbd656c980fbe867183f3",
+          "parsedUnitId": "falstad:06f00881477c710affbb5f3cdd5af9de22f01696529dbd656c980fbe867183f3.html%231",
+          "format": "html",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        }
+      ]
+    },
+    {
+      "id": "phet",
+      "frozenIds": [
+        "phet:0bf641a8a5019f5cfe35d29b95066d24f694ab8d073125b55b94a3f1c568a02c",
+        "phet:1f06f6ce5c0c777fd4d3124ffcbc03218de8380b6ce08321d62f06b2733540d8",
+        "phet:b2a0c4a17b33e915f63476953f471e7a09c2b18a42eeba6fcbdb8c0476d33f84"
+      ],
+      "samples": [
+        {
+          "id": "phet:0bf641a8a5019f5cfe35d29b95066d24f694ab8d073125b55b94a3f1c568a02c",
+          "formulaCount": 0,
+          "parseStatus": "unsupported",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "Only a short HTML shell or metadata was readable; embedded/JavaScript mathematical model not inspected"
+        },
+        {
+          "id": "phet:1f06f6ce5c0c777fd4d3124ffcbc03218de8380b6ce08321d62f06b2733540d8",
+          "formulaCount": 0,
+          "parseStatus": "unsupported",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "Only a short HTML shell or metadata was readable; embedded/JavaScript mathematical model not inspected"
+        },
+        {
+          "id": "phet:b2a0c4a17b33e915f63476953f471e7a09c2b18a42eeba6fcbdb8c0476d33f84",
+          "formulaCount": 0,
+          "parseStatus": "unsupported",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "Only a short HTML shell or metadata was readable; embedded/JavaScript mathematical model not inspected"
+        }
+      ]
+    },
+    {
+      "id": "betterexplained",
+      "frozenIds": [
+        "betterexplained:c808423c2a2363894928f4bb9b9c6d671ddf35c4176a418a74c398c52ab2a782",
+        "betterexplained:082fa3c5e58268881a3f1d3087c12116be649b6fcc13b6a154756c6db73b3841",
+        "betterexplained:fb50a9a30ddd6637cfd61b99f853f56c63939c83eb6413764d0460a69b72bb4f"
+      ],
+      "samples": [
+        {
+          "id": "betterexplained:c808423c2a2363894928f4bb9b9c6d671ddf35c4176a418a74c398c52ab2a782",
+          "parsedUnitId": "betterexplained:c808423c2a2363894928f4bb9b9c6d671ddf35c4176a418a74c398c52ab2a782.html%231",
+          "format": "html",
+          "formulaCount": 1,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "betterexplained:082fa3c5e58268881a3f1d3087c12116be649b6fcc13b6a154756c6db73b3841",
+          "parsedUnitId": "betterexplained:082fa3c5e58268881a3f1d3087c12116be649b6fcc13b6a154756c6db73b3841.html%231",
+          "format": "html",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "betterexplained:fb50a9a30ddd6637cfd61b99f853f56c63939c83eb6413764d0460a69b72bb4f",
+          "parsedUnitId": "betterexplained:fb50a9a30ddd6637cfd61b99f853f56c63939c83eb6413764d0460a69b72bb4f.html%231",
+          "format": "html",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        }
+      ]
+    },
+    {
+      "id": "physicsfundamentals",
+      "frozenIds": [
+        "physicsfundamentals:941e0f5ef364347932d20aa493a22f42a410e14b7604832d6de2de78193793cc",
+        "physicsfundamentals:541a91642791fb2a324691897b2818cc30b1e32379a00eafcb3fa464ccc908f5",
+        "physicsfundamentals:2ff67e5c4b1d418baca7d32077e7f06fb5337e7838bdce617f703824a6efb21b"
+      ],
+      "samples": [
+        {
+          "id": "physicsfundamentals:941e0f5ef364347932d20aa493a22f42a410e14b7604832d6de2de78193793cc",
+          "parsedUnitId": "physicsfundamentals:941e0f5ef364347932d20aa493a22f42a410e14b7604832d6de2de78193793cc.html%231",
+          "format": "html",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "physicsfundamentals:541a91642791fb2a324691897b2818cc30b1e32379a00eafcb3fa464ccc908f5",
+          "parsedUnitId": "physicsfundamentals:541a91642791fb2a324691897b2818cc30b1e32379a00eafcb3fa464ccc908f5.html%231",
+          "format": "html",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "physicsfundamentals:2ff67e5c4b1d418baca7d32077e7f06fb5337e7838bdce617f703824a6efb21b",
+          "parsedUnitId": "physicsfundamentals:2ff67e5c4b1d418baca7d32077e7f06fb5337e7838bdce617f703824a6efb21b.html%231",
+          "format": "html",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        }
+      ]
+    },
+    {
+      "id": "physicstuff",
+      "frozenIds": [
+        "physicstuff:f916c37bf04fe7e67acef960b9b74d1e039ca15c6efc17ae0850c00b0ccb4889",
+        "physicstuff:2f6250bffb2e098a0dbe922cbe3adf3c71e4964437ef64f7979ca29f360632a5",
+        "physicstuff:6ac19a5c8670405e7995b901e76e7cdece9ad6a9c71ef24ee21561a1fb9943c4"
+      ],
+      "samples": [
+        {
+          "id": "physicstuff:f916c37bf04fe7e67acef960b9b74d1e039ca15c6efc17ae0850c00b0ccb4889",
+          "parsedUnitId": "physicstuff:f916c37bf04fe7e67acef960b9b74d1e039ca15c6efc17ae0850c00b0ccb4889.html%231",
+          "format": "html",
+          "formulaCount": 74,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "physicstuff:2f6250bffb2e098a0dbe922cbe3adf3c71e4964437ef64f7979ca29f360632a5",
+          "parsedUnitId": "physicstuff:2f6250bffb2e098a0dbe922cbe3adf3c71e4964437ef64f7979ca29f360632a5.html%231",
+          "format": "html",
+          "formulaCount": 59,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "physicstuff:6ac19a5c8670405e7995b901e76e7cdece9ad6a9c71ef24ee21561a1fb9943c4",
+          "parsedUnitId": "physicstuff:6ac19a5c8670405e7995b901e76e7cdece9ad6a9c71ef24ee21561a1fb9943c4.html%231",
+          "format": "html",
+          "formulaCount": 208,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        }
+      ]
+    },
+    {
+      "id": "maotian",
+      "frozenIds": [
+        "maotian:3a42717852b27f2ad03222f5be9ade5fd50c0c88769fa5fa333fa94284e26aa4",
+        "maotian:c43cde967edda5abc4b30c2eef7444199f6fd0019a5d43b97d709ba23b3a3cd4",
+        "maotian:4936897bd9bff3f363dd3cac0c817e661bcbb90a4eaa0baad52555ff545061fa"
+      ],
+      "samples": [
+        {
+          "id": "maotian:3a42717852b27f2ad03222f5be9ade5fd50c0c88769fa5fa333fa94284e26aa4",
+          "parsedUnitId": "maotian:3a42717852b27f2ad03222f5be9ade5fd50c0c88769fa5fa333fa94284e26aa4.html%231",
+          "format": "html",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "maotian:c43cde967edda5abc4b30c2eef7444199f6fd0019a5d43b97d709ba23b3a3cd4",
+          "parsedUnitId": "maotian:c43cde967edda5abc4b30c2eef7444199f6fd0019a5d43b97d709ba23b3a3cd4.html%231",
+          "format": "html",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        },
+        {
+          "id": "maotian:4936897bd9bff3f363dd3cac0c817e661bcbb90a4eaa0baad52555ff545061fa",
+          "parsedUnitId": "maotian:4936897bd9bff3f363dd3cac0c817e661bcbb90a4eaa0baad52555ff545061fa.html%231",
+          "format": "html",
+          "formulaCount": 0,
+          "parseStatus": "partial",
+          "verifiedModels": [],
+          "disposition": "needs-review",
+          "reason": "HTML text extracted; interactive/script mathematics and MathML require review"
+        }
+      ]
+    }
+  ]
+}

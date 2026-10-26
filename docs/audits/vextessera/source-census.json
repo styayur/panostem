@@ -1,0 +1,987 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-26T10:18:41.339Z",
+  "baselineCommit": "bce6e55198d59fef4ace05162f2114fcedf53f3f",
+  "conceptCount": 494,
+  "sourceCount": 22,
+  "availableGitClones": 12,
+  "unavailableRepositories": 3,
+  "websiteResources": 1555,
+  "files": 18402,
+  "parsedFiles": 3658,
+  "units": 13976,
+  "dispositions": {
+    "visualized": 9,
+    "reused": 4,
+    "parameterized": 0,
+    "needs-modeling": 5766,
+    "needs-review": 8197,
+    "unsupported": 0,
+    "rights-restricted": 0,
+    "source-unavailable": 0,
+    "failed": 0,
+    "not-yet-processed": 0
+  },
+  "fileDispositions": {
+    "visualized": 0,
+    "reused": 0,
+    "parameterized": 0,
+    "needs-modeling": 0,
+    "needs-review": 0,
+    "unsupported": 14642,
+    "rights-restricted": 101,
+    "source-unavailable": 1,
+    "failed": 0,
+    "not-yet-processed": 0
+  },
+  "coverage": {
+    "registeredSourcesAudited": {
+      "numerator": 22,
+      "denominator": 22
+    },
+    "fileParsing": {
+      "numerator": 3658,
+      "denominator": 18402
+    },
+    "canonicalConceptResolution": {
+      "numerator": 8364,
+      "denominator": 13976
+    },
+    "formulaBearingUnits": {
+      "numerator": 6605,
+      "denominator": 13976,
+      "note": "Formula-bearing is not a suitability or correctness decision"
+    },
+    "suitableForVisualization": {
+      "numerator": null,
+      "denominator": null,
+      "reason": "Whole-corpus mathematical suitability review is incomplete"
+    },
+    "verifiedSceneAssociation": {
+      "numerator": 13,
+      "denominator": 13976
+    },
+    "latestReviewedRenderPass": {
+      "numerator": 11,
+      "denominator": 11
+    },
+    "mediaRedistribution": {
+      "numerator": 0,
+      "denominator": 11
+    }
+  },
+  "renderedScenes": 11,
+  "verifiedSceneLinks": 13,
+  "publiclyDistributableScenes": 0,
+  "notYetProcessedUnits": 0,
+  "unprocessedSources": [],
+  "errors": [],
+  "discoveryComplete": false,
+  "releaseReady": false,
+  "frozenCorpusHash": "03b27273a01e1180c66158c4d7476cdaaac0a6d6f3c00a840682fe921b42c075",
+  "reviewedSampleHash": "a3b6f5eeee53916823697ce452e84918716baa7da9a38940bb631aba91bfc4c0",
+  "averageGenerationSeconds": 0.052454545456302265,
+  "averageRenderSeconds": 7.029636363636448,
+  "sampleMediaBytes": 173090,
+  "batchPeakResidentSetKb": 387928,
+  "rendererPeakResourceUsage": null,
+  "sourceModelCorrespondence": "Exact reviewed formula and content-hash checks; no independent whole-corpus accuracy percentage claimed",
+  "sources": [
+    {
+      "id": "github:hitsz-openauto/math1005",
+      "url": "https://github.com/HITSZ-OpenAuto/MATH1005",
+      "access": "accessible",
+      "localRevision": "e29056d7bd048b528b8c78996d4803cc5890703d",
+      "localDirty": false,
+      "remote": {
+        "canonicalName": "HITSZ-OpenAuto/MATH1005",
+        "defaultBranch": "main",
+        "pushedAt": "2026-10-14T06:58:55Z",
+        "license": "NOASSERTION",
+        "archived": false
+      },
+      "files": 59,
+      "parsedFiles": 2,
+      "units": 8,
+      "formats": {
+        ".yml": 1,
+        "(none)": 6,
+        ".pdf": 48,
+        ".md": 2,
+        ".7z": 1,
+        ".toml": 1
+      },
+      "fileDispositions": {
+        "unsupported": 57,
+        "needs-review": 2
+      },
+      "rights": "review-required",
+      "discoveryComplete": true,
+      "discoveryScope": "All files in verified local clone at recorded revision",
+      "independentSourceModels": [],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:pkuanonym/rekcarc-tsc-uht",
+      "url": "https://github.com/PKUanonym/REKCARC-TSC-UHT",
+      "access": "accessible",
+      "localRevision": "37cd19f7a9fb80dc846a7016b3fd482ed5fe7cc0",
+      "localDirty": false,
+      "remote": {
+        "canonicalName": "PKUanonym/REKCARC-TSC-UHT",
+        "defaultBranch": "master",
+        "pushedAt": "2026-09-17T14:23:19Z",
+        "license": "CC-BY-SA-4.0",
+        "archived": false
+      },
+      "files": 14633,
+      "parsedFiles": 965,
+      "units": 3499,
+      "formats": {
+        "(none)": 297,
+        ".md": 284,
+        ".jpg": 1556,
+        ".zip": 109,
+        ".pdf": 1885,
+        ".doc": 223,
+        ".ppt": 54,
+        ".docx": 343,
+        ".jpeg": 26,
+        ".pptx": 71,
+        ".txt": 1076,
+        ".tex": 51,
+        ".png": 1502,
+        ".ms14": 15,
+        ".ms14 (security copy)": 11,
+        ".gra": 4,
+        ".tmp": 4,
+        ".ms9": 1,
+        ".ms9 (security copy)": 1,
+        ".nd": 1,
+        ".py": 242,
+        ".s": 131,
+        ".gz": 13,
+        ".o": 69,
+        ".dat": 6,
+        ".d": 9,
+        ".l1": 2,
+        ".l2": 2,
+        ".l3": 1,
+        ".c": 525,
+        ".bin": 239,
+        ".desktop": 1,
+        ".pages": 15,
+        ".xls": 11,
+        ".dwg": 5,
+        ".bmp": 208,
+        ".xlsx": 26,
+        ".html": 622,
+        ".mw": 1,
+        ".gif": 26,
+        ".json": 4,
+        ".rar": 29,
+        ".cpp": 413,
+        ".hpp": 4,
+        ".18_pth_mat_vect_private": 2,
+        ".c~": 8,
+        ".plist": 5,
+        ".h": 521,
+        ".21_mat17a": 1,
+        ".21_mat17b": 1,
+        ".xmind": 1,
+        ".mp4": 7,
+        ".sv": 5,
+        ".mkv": 1,
+        ".v": 346,
+        ".vhd": 2,
+        ".qmsg": 13,
+        ".abo": 1,
+        ".cdb": 71,
+        ".hdb": 66,
+        ".ddb": 7,
+        ".xml": 21,
+        ".kpt": 7,
+        ".logdb": 6,
+        ".rdb": 6,
+        ".tdb": 2,
+        ".db_info": 3,
+        ".hier_info": 2,
+        ".hif": 2,
+        ".sci": 4,
+        ".syn_hier_info": 2,
+        ".rpt": 10,
+        ".cdf": 5,
+        ".done": 2,
+        ".dpf": 2,
+        ".smsg": 3,
+        ".summary": 6,
+        ".pin": 2,
+        ".pof": 3,
+        ".qpf": 2,
+        ".qsf": 2,
+        ".qws": 1,
+        ".bak": 14,
+        ".xlsm": 1,
+        ".vsd": 19,
+        ".opj": 4,
+        ".ogg": 2,
+        ".blk": 1,
+        ".map": 1,
+        ".eps": 8,
+        ".bib": 1,
+        ".cls": 1,
+        ".prefs": 8,
+        ".jar": 50,
+        ".java": 689,
+        ".l": 8,
+        ".output": 7,
+        ".y": 8,
+        ".decaf": 211,
+        ".result": 402,
+        ".exe": 68,
+        ".linux": 8,
+        ".amd64": 7,
+        ".mac": 8,
+        ".swp": 1,
+        ".tac": 52,
+        ".iml": 8,
+        ".dll": 3,
+        ".handler": 1,
+        ".asm": 22,
+        ".data": 33,
+        ".om": 21,
+        ".s~": 8,
+        ".ld": 42,
+        ".vpreview": 1,
+        ".do": 14,
+        ".tdf": 2,
+        ".bpm": 2,
+        ".cbp": 2,
+        ".dfp": 1,
+        ".rcfdb": 2,
+        ".dpi": 1,
+        ".sof": 2,
+        ".mk": 9,
+        ".tar": 1,
+        ".jmp": 5,
+        ".jrp": 3,
+        ".csproj": 2,
+        ".meta": 49,
+        ".tif": 28,
+        ".mat": 15,
+        ".unity": 1,
+        ".cs": 1,
+        ".shader": 1,
+        ".db": 2,
+        ".asset": 21,
+        ".dwlt": 2,
+        ".info": 98,
+        ".mdb": 1,
+        ".stamp": 1,
+        ".sln": 1,
+        ".backup": 1,
+        ".bakert": 1,
+        ".psd": 7,
+        ".zjq": 1,
+        ".csv": 10,
+        ".vsdx": 3,
+        ".m": 155,
+        ".wav": 110,
+        ".asv": 6,
+        ".sh": 12,
+        ".class": 11,
+        ".bat": 16,
+        ".avi": 2,
+        ".lab": 10,
+        ".css": 48,
+        ".aiff": 1,
+        ".yuv": 1,
+        ".names": 1,
+        ".test": 1,
+        ".train": 1,
+        ".mf": 2,
+        ".fxml": 1,
+        ".woff": 4,
+        ".js": 56,
+        ".htm": 2,
+        ".gz(busy)": 2,
+        ".fig": 1,
+        ".dot": 1,
+        ".cxml": 1,
+        ".properties": 2,
+        ".svn-base": 8,
+        ".jsp": 2,
+        ".fdt": 1,
+        ".fdx": 1,
+        ".fnm": 1,
+        ".frq": 1,
+        ".nrm": 1,
+        ".prx": 1,
+        ".tii": 1,
+        ".tis": 1,
+        ".gen": 1,
+        ".war": 1,
+        ".ans": 241,
+        ".in": 242,
+        ".pl": 2,
+        ".cu_inl": 4,
+        ".cu": 3,
+        ".qsub": 1,
+        ".par": 1,
+        ".a": 1,
+        ".graph": 1,
+        ".6": 1,
+        ".win": 1,
+        ".dev": 1,
+        ".layout": 1,
+        ".sldprt": 2,
+        ".gsp": 8,
+        ".out": 11,
+        ".pro": 52,
+        ".ui": 70,
+        ".qrc": 15,
+        ".qm": 4,
+        ".ts": 3,
+        ".user": 12,
+        ".mp3": 125,
+        ".8-pre1": 2,
+        ".ico": 9,
+        ".22": 1,
+        ".yml": 2,
+        ".dmg": 2,
+        ".rep": 1,
+        ".ipynb": 7,
+        ".sqlite3": 6,
+        ".conf": 4,
+        ".lnk": 8,
+        ".graffle": 4,
+        ".svg": 15,
+        ".1": 2,
+        ".index": 5,
+        ".qhp": 5,
+        ".sha1": 5,
+        ".tags": 4,
+        ".php": 4,
+        ".pkl": 1
+      },
+      "fileDispositions": {
+        "unsupported": 13668,
+        "needs-review": 965
+      },
+      "rights": "review-required",
+      "discoveryComplete": true,
+      "discoveryScope": "All files in verified local clone at recorded revision",
+      "independentSourceModels": [],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:theophilec/complex-analysis",
+      "url": "https://github.com/theophilec/complex-analysis",
+      "access": "accessible",
+      "localRevision": "96d9fd56689a6767b52526fa0f2f288b710e2a47",
+      "localDirty": true,
+      "remote": {
+        "canonicalName": "theophilec/complex-analysis",
+        "defaultBranch": "master",
+        "pushedAt": "2020-01-13T17:00:26Z",
+        "license": "NOASSERTION",
+        "archived": false
+      },
+      "files": 13,
+      "parsedFiles": 11,
+      "units": 15,
+      "formats": {
+        "(none)": 1,
+        ".tex": 10,
+        ".pdf": 1,
+        ".md": 1
+      },
+      "fileDispositions": {
+        "unsupported": 2,
+        "needs-review": 11
+      },
+      "rights": "review-required",
+      "discoveryComplete": true,
+      "discoveryScope": "All files in verified local clone at recorded revision",
+      "independentSourceModels": [
+        "polar"
+      ],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:pkm-er/pkmer-math",
+      "url": "https://github.com/PKM-er/Pkmer-Math",
+      "access": "accessible",
+      "localRevision": "575be4fd4761d7446b051c835ee8ea0a49aca520",
+      "localDirty": false,
+      "remote": {
+        "canonicalName": "PKM-er/Pkmer-Math",
+        "defaultBranch": "main",
+        "pushedAt": "2026-10-09T09:00:26Z",
+        "license": "NOASSERTION",
+        "archived": false
+      },
+      "files": 1302,
+      "parsedFiles": 1206,
+      "units": 7678,
+      "formats": {
+        ".md": 1206,
+        ".webp": 5,
+        ".jpg": 2,
+        ".png": 57,
+        "(none)": 4,
+        ".yml": 1,
+        ".base": 1,
+        ".pdf": 26
+      },
+      "fileDispositions": {
+        "needs-review": 1206,
+        "unsupported": 96
+      },
+      "rights": "review-required",
+      "discoveryComplete": true,
+      "discoveryScope": "All files in verified local clone at recorded revision",
+      "independentSourceModels": [
+        "square",
+        "linear"
+      ],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:e0328/essence-of-linear-algebra",
+      "url": "https://github.com/e0328/Essence-of-Linear-Algebra",
+      "access": "source-unavailable",
+      "accessError": "gh: Not Found (HTTP 404)\n",
+      "remote": null,
+      "files": 0,
+      "parsedFiles": 0,
+      "units": 0,
+      "formats": {},
+      "fileDispositions": {},
+      "rights": "review-required",
+      "discoveryComplete": false,
+      "discoveryScope": "No verified local Git clone",
+      "independentSourceModels": [],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:mikeroyal/calculus-guide",
+      "url": "https://github.com/mikeroyal/Calculus-Guide",
+      "access": "accessible",
+      "localRevision": "3e67ab5ff67ecd09e0552da432ab481e0d546730",
+      "localDirty": true,
+      "remote": {
+        "canonicalName": "mikeroyal/Calculus-Guide",
+        "defaultBranch": "main",
+        "pushedAt": "2021-09-05T21:55:32Z",
+        "license": "NOASSERTION",
+        "archived": false
+      },
+      "files": 1,
+      "parsedFiles": 1,
+      "units": 107,
+      "formats": {
+        ".md": 1
+      },
+      "fileDispositions": {
+        "needs-review": 1
+      },
+      "rights": "review-required",
+      "discoveryComplete": true,
+      "discoveryScope": "All files in verified local clone at recorded revision",
+      "independentSourceModels": [],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:gorcat/note_math",
+      "url": "https://github.com/GorCat/note_math",
+      "access": "accessible",
+      "localRevision": "19fd8b26962e61e37bc4a4756211f3f8ac7c3913",
+      "localDirty": true,
+      "remote": {
+        "canonicalName": "GorCat/note_math",
+        "defaultBranch": "master",
+        "pushedAt": "2022-10-10T08:40:33Z",
+        "license": "NOASSERTION",
+        "archived": false
+      },
+      "files": 152,
+      "parsedFiles": 14,
+      "units": 374,
+      "formats": {
+        ".xls": 1,
+        ".md": 14,
+        ".png": 125,
+        ".jpg": 1,
+        ".pdf": 8,
+        ".docx": 1,
+        ".xlsx": 2
+      },
+      "fileDispositions": {
+        "unsupported": 138,
+        "needs-review": 14
+      },
+      "rights": "review-required",
+      "discoveryComplete": true,
+      "discoveryScope": "All files in verified local clone at recorded revision",
+      "independentSourceModels": [
+        "means"
+      ],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:maksimim/jaynesprobabilitytheory",
+      "url": "https://github.com/MaksimIM/JaynesProbabilityTheory",
+      "access": "accessible",
+      "localRevision": "ea8afb47c1346c88a7e64f1c378310bf9c859e00",
+      "localDirty": false,
+      "remote": {
+        "canonicalName": "MaksimIM/JaynesProbabilityTheory",
+        "defaultBranch": "master",
+        "pushedAt": "2021-10-25T05:29:21Z",
+        "license": "CC0-1.0",
+        "archived": false
+      },
+      "files": 63,
+      "parsedFiles": 42,
+      "units": 157,
+      "formats": {
+        "(none)": 2,
+        ".html": 20,
+        ".md": 21,
+        ".pdf": 18,
+        ".sh": 1,
+        ".ipynb": 1
+      },
+      "fileDispositions": {
+        "unsupported": 21,
+        "needs-review": 42
+      },
+      "rights": "review-required",
+      "discoveryComplete": true,
+      "discoveryScope": "All files in verified local clone at recorded revision",
+      "independentSourceModels": [
+        "union"
+      ],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:vincentc75/mit_sdsmm",
+      "url": "https://github.com/VincentC75/MIT_SDSMM",
+      "access": "accessible",
+      "localRevision": "461c36a9ea4a8da599795f6ce444b8c1e7712319",
+      "localDirty": false,
+      "remote": {
+        "canonicalName": "VincentC75/MIT_SDSMM",
+        "defaultBranch": "main",
+        "pushedAt": "2025-04-16T13:48:55Z",
+        "license": "NOASSERTION",
+        "archived": false
+      },
+      "files": 6,
+      "parsedFiles": 6,
+      "units": 10,
+      "formats": {
+        ".rmd": 5,
+        ".md": 1
+      },
+      "fileDispositions": {
+        "needs-review": 6
+      },
+      "rights": "review-required",
+      "discoveryComplete": true,
+      "discoveryScope": "All files in verified local clone at recorded revision",
+      "independentSourceModels": [
+        "union"
+      ],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:mikeroyal/physics-guide",
+      "url": "https://github.com/mikeroyal/Physics-Guide",
+      "access": "accessible",
+      "localRevision": "4fac548579ea41fef265d4d5382aaf4a47286229",
+      "localDirty": false,
+      "remote": {
+        "canonicalName": "mikeroyal/Physics-Guide",
+        "defaultBranch": "main",
+        "pushedAt": "2021-09-16T21:38:25Z",
+        "license": "NOASSERTION",
+        "archived": false
+      },
+      "files": 1,
+      "parsedFiles": 1,
+      "units": 37,
+      "formats": {
+        ".md": 1
+      },
+      "fileDispositions": {
+        "needs-review": 1
+      },
+      "rights": "review-required",
+      "discoveryComplete": true,
+      "discoveryScope": "All files in verified local clone at recorded revision",
+      "independentSourceModels": [],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:pizofreude/thefeaman",
+      "url": "https://github.com/pizofreude/TheFEAMan",
+      "access": "accessible",
+      "localRevision": "686dc5faf1009d9c294d302c11785146b0f30dbc",
+      "localDirty": false,
+      "remote": {
+        "canonicalName": "pizofreude/TheFEAMan",
+        "defaultBranch": "main",
+        "pushedAt": "2025-10-25T16:49:55Z",
+        "license": "Apache-2.0",
+        "archived": false
+      },
+      "files": 73,
+      "parsedFiles": 3,
+      "units": 32,
+      "formats": {
+        "(none)": 4,
+        ".yml": 3,
+        ".md": 3,
+        ".pdf": 52,
+        ".zip": 3,
+        ".prot": 2,
+        ".bif": 2,
+        ".jpg": 3,
+        ".xlsx": 1
+      },
+      "fileDispositions": {
+        "unsupported": 70,
+        "needs-review": 3
+      },
+      "rights": "review-required",
+      "discoveryComplete": true,
+      "discoveryScope": "All files in verified local clone at recorded revision",
+      "independentSourceModels": [],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:djeada/numerical-methods",
+      "url": "https://github.com/djeada/Numerical-Methods",
+      "access": "accessible",
+      "localRevision": "23cc8410e6641e4391b56d5b3acd8665ac30e3fc",
+      "localDirty": false,
+      "remote": {
+        "canonicalName": "djeada/Numerical-Methods",
+        "defaultBranch": "master",
+        "pushedAt": "2026-10-22T20:56:52Z",
+        "license": "MIT",
+        "archived": false
+      },
+      "files": 532,
+      "parsedFiles": 78,
+      "units": 672,
+      "formats": {
+        ".yml": 1,
+        "(none)": 2,
+        ".md": 60,
+        ".ipynb": 45,
+        ".tex": 6,
+        ".py": 370,
+        ".svg": 47,
+        ".txt": 1
+      },
+      "fileDispositions": {
+        "unsupported": 454,
+        "needs-review": 78
+      },
+      "rights": "review-required",
+      "discoveryComplete": true,
+      "discoveryScope": "All files in verified local clone at recorded revision",
+      "independentSourceModels": [
+        "newton",
+        "bisection",
+        "oscillator",
+        "gradient",
+        "wave",
+        "heat"
+      ],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:apurbakumarnath/numerical-methods-python",
+      "url": "https://github.com/ApurbaKumarNath/numerical-methods-python",
+      "access": "accessible",
+      "localRevision": "692cd958ced6e813a969e4045573a0a0387662d4",
+      "localDirty": false,
+      "remote": {
+        "canonicalName": "ApurbaKumarNath/numerical-methods-python",
+        "defaultBranch": "main",
+        "pushedAt": "2025-09-20T15:31:52Z",
+        "license": "NOASSERTION",
+        "archived": false
+      },
+      "files": 12,
+      "parsedFiles": 10,
+      "units": 68,
+      "formats": {
+        ".ipynb": 9,
+        ".csv": 1,
+        ".md": 1,
+        ".txt": 1
+      },
+      "fileDispositions": {
+        "needs-review": 10,
+        "unsupported": 2
+      },
+      "rights": "review-required",
+      "discoveryComplete": true,
+      "discoveryScope": "All files in verified local clone at recorded revision",
+      "independentSourceModels": [
+        "linear"
+      ],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:mickychiang/control-systems-notes",
+      "url": "https://github.com/MickyChiang/Control-Systems-Notes",
+      "access": "source-unavailable",
+      "accessError": "gh: Not Found (HTTP 404)\n",
+      "remote": null,
+      "files": 0,
+      "parsedFiles": 0,
+      "units": 0,
+      "formats": {},
+      "fileDispositions": {},
+      "rights": "review-required",
+      "discoveryComplete": false,
+      "discoveryScope": "No verified local Git clone",
+      "independentSourceModels": [],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "github:alexander-yakovlev/control-theory",
+      "url": "https://github.com/alexander-yakovlev/Control-Theory",
+      "access": "source-unavailable",
+      "accessError": "gh: Not Found (HTTP 404)\n",
+      "remote": null,
+      "files": 0,
+      "parsedFiles": 0,
+      "units": 0,
+      "formats": {},
+      "fileDispositions": {},
+      "rights": "review-required",
+      "discoveryComplete": false,
+      "discoveryScope": "No verified local Git clone",
+      "independentSourceModels": [],
+      "limitations": [
+        "Repository license does not establish rights to third-party textbooks/images; public bodies are excluded"
+      ]
+    },
+    {
+      "id": "mathinsight",
+      "url": "https://mathinsight.org/",
+      "access": {
+        "accessible": true,
+        "scope": "At least one resource HTTP 200; each URL has an independent status record"
+      },
+      "files": 903,
+      "parsedFiles": 818,
+      "units": 818,
+      "formats": {
+        "html": 903
+      },
+      "fileDispositions": {
+        "needs-review": 818,
+        "unsupported": 3,
+        "source-unavailable": 1,
+        "rights-restricted": 81
+      },
+      "rights": "review-required",
+      "discoveryComplete": false,
+      "discoveryScope": "All resources found by current ProviderRegistry discovery; site-wide hidden/unlinked resources unproven",
+      "independentSourceModels": [],
+      "limitations": [
+        "All ProviderRegistry-discovered URLs are recorded; unlinked/site-wide completeness is not proven",
+        "Static HTML is not execution or verification of the original interactive solver"
+      ]
+    },
+    {
+      "id": "falstad",
+      "url": "https://falstad.com/mathphysics.html",
+      "access": {
+        "accessible": true,
+        "scope": "At least one resource HTTP 200; each URL has an independent status record"
+      },
+      "files": 85,
+      "parsedFiles": 57,
+      "units": 57,
+      "formats": {
+        "html": 85
+      },
+      "fileDispositions": {
+        "needs-review": 57,
+        "unsupported": 8,
+        "rights-restricted": 20
+      },
+      "rights": "review-required",
+      "discoveryComplete": false,
+      "discoveryScope": "All resources found by current ProviderRegistry discovery; site-wide hidden/unlinked resources unproven",
+      "independentSourceModels": [],
+      "limitations": [
+        "All ProviderRegistry-discovered URLs are recorded; unlinked/site-wide completeness is not proven",
+        "Static HTML is not execution or verification of the original interactive solver"
+      ]
+    },
+    {
+      "id": "phet",
+      "url": "https://phet.colorado.edu/",
+      "access": {
+        "accessible": true,
+        "scope": "At least one resource HTTP 200; each URL has an independent status record"
+      },
+      "files": 122,
+      "parsedFiles": 0,
+      "units": 0,
+      "formats": {
+        "html": 122
+      },
+      "fileDispositions": {
+        "unsupported": 122
+      },
+      "rights": "review-required",
+      "discoveryComplete": false,
+      "discoveryScope": "All resources found by current ProviderRegistry discovery; site-wide hidden/unlinked resources unproven",
+      "independentSourceModels": [],
+      "limitations": [
+        "All ProviderRegistry-discovered URLs are recorded; unlinked/site-wide completeness is not proven",
+        "Static HTML is not execution or verification of the original interactive solver"
+      ]
+    },
+    {
+      "id": "betterexplained",
+      "url": "https://betterexplained.com/",
+      "access": {
+        "accessible": true,
+        "scope": "At least one resource HTTP 200; each URL has an independent status record"
+      },
+      "files": 144,
+      "parsedFiles": 144,
+      "units": 144,
+      "formats": {
+        "html": 144
+      },
+      "fileDispositions": {
+        "needs-review": 144
+      },
+      "rights": "review-required",
+      "discoveryComplete": false,
+      "discoveryScope": "All resources found by current ProviderRegistry discovery; site-wide hidden/unlinked resources unproven",
+      "independentSourceModels": [],
+      "limitations": [
+        "All ProviderRegistry-discovered URLs are recorded; unlinked/site-wide completeness is not proven",
+        "Static HTML is not execution or verification of the original interactive solver"
+      ]
+    },
+    {
+      "id": "physicsfundamentals",
+      "url": "https://physicsfundamentalsinfo.com/labs/",
+      "access": {
+        "accessible": true,
+        "scope": "At least one resource HTTP 200; each URL has an independent status record"
+      },
+      "files": 152,
+      "parsedFiles": 151,
+      "units": 151,
+      "formats": {
+        "html": 152
+      },
+      "fileDispositions": {
+        "needs-review": 151,
+        "unsupported": 1
+      },
+      "rights": "review-required",
+      "discoveryComplete": false,
+      "discoveryScope": "All resources found by current ProviderRegistry discovery; site-wide hidden/unlinked resources unproven",
+      "independentSourceModels": [],
+      "limitations": [
+        "All ProviderRegistry-discovered URLs are recorded; unlinked/site-wide completeness is not proven",
+        "Static HTML is not execution or verification of the original interactive solver"
+      ]
+    },
+    {
+      "id": "physicstuff",
+      "url": "https://physicstuff.com/lab",
+      "access": {
+        "accessible": true,
+        "scope": "At least one resource HTTP 200; each URL has an independent status record"
+      },
+      "files": 56,
+      "parsedFiles": 56,
+      "units": 56,
+      "formats": {
+        "html": 56
+      },
+      "fileDispositions": {
+        "needs-review": 56
+      },
+      "rights": "review-required",
+      "discoveryComplete": false,
+      "discoveryScope": "All resources found by current ProviderRegistry discovery; site-wide hidden/unlinked resources unproven",
+      "independentSourceModels": [],
+      "limitations": [
+        "All ProviderRegistry-discovered URLs are recorded; unlinked/site-wide completeness is not proven",
+        "Static HTML is not execution or verification of the original interactive solver"
+      ]
+    },
+    {
+      "id": "maotian",
+      "url": "https://maotian.nomaki.jp/",
+      "access": {
+        "accessible": true,
+        "scope": "At least one resource HTTP 200; each URL has an independent status record"
+      },
+      "files": 93,
+      "parsedFiles": 93,
+      "units": 93,
+      "formats": {
+        "html": 93
+      },
+      "fileDispositions": {
+        "needs-review": 93
+      },
+      "rights": "review-required",
+      "discoveryComplete": false,
+      "discoveryScope": "All resources found by current ProviderRegistry discovery; site-wide hidden/unlinked resources unproven",
+      "independentSourceModels": [],
+      "limitations": [
+        "All ProviderRegistry-discovered URLs are recorded; unlinked/site-wide completeness is not proven",
+        "Static HTML is not execution or verification of the original interactive solver"
+      ]
+    }
+  ]
+}

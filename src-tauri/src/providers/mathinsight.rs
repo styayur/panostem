@@ -4,7 +4,7 @@ use crate::error::{AppError, Result};
 use crate::models::{NormalizedQuery, ResultType, SearchResult};
 use async_trait::async_trait;
 use scraper::{Html, Selector};
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet, VecDeque};
 use std::sync::Mutex;
 use url::Url;
 
@@ -27,16 +27,16 @@ impl MathInsightProvider {
 
     async fn fetch(ctx: &SearchContext) -> Result<CachedIndex> {
         let (pages, applets, videos, general) = tokio::try_join!(
-            fetch_text(ctx, PAGE_LIST),
-            fetch_text(ctx, APPLET_LIST),
-            fetch_text(ctx, VIDEO_LIST),
+            fetch_list_pages(ctx, PAGE_LIST, ResultType::Article),
+            fetch_list_pages(ctx, APPLET_LIST, ResultType::Applet),
+            fetch_list_pages(ctx, VIDEO_LIST, ResultType::Video),
             fetch_text(ctx, GENERAL_INDEX),
         )?;
 
         let mut entries = Vec::new();
-        entries.extend(parse_list(&pages, ResultType::Article)?);
-        entries.extend(parse_list(&applets, ResultType::Applet)?);
-        entries.extend(parse_list(&videos, ResultType::Video)?);
+        entries.extend(pages);
+        entries.extend(applets);
+        entries.extend(videos);
 
         // Enrich with title + description + term tags from the general index.
         let enriched = parse_general_index(&general)?;
@@ -74,6 +74,56 @@ impl MathInsightProvider {
     }
 }
 
+/// Follow only same-origin links to the same listing endpoint. Refuse partial success.
+async fn fetch_list_pages(
+    ctx: &SearchContext,
+    first: &str,
+    kind: ResultType,
+) -> Result<Vec<IndexEntry>> {
+    let base = Url::parse(first).map_err(|e| AppError::Parse(e.to_string()))?;
+    let mut queue = VecDeque::from([base.clone()]);
+    let mut visited = HashSet::new();
+    let mut entries = Vec::new();
+    while let Some(url) = queue.pop_front() {
+        if !visited.insert(url.to_string()) {
+            continue;
+        }
+        if visited.len() > 100 {
+            return Err(AppError::Parse(
+                "Math Insight pagination exceeded 100 pages; completeness unknown".into(),
+            ));
+        }
+        let body = fetch_text(ctx, url.as_str()).await?;
+        entries.extend(parse_list(&body, kind)?);
+        for next in pagination_links(&body, &base) {
+            if !visited.contains(next.as_str()) {
+                queue.push_back(next);
+            }
+        }
+    }
+    Ok(common::dedupe(entries))
+}
+
+fn pagination_links(body: &str, base: &Url) -> Vec<Url> {
+    let doc = Html::parse_document(body);
+    let Ok(selector) = Selector::parse("a[href]") else {
+        return Vec::new();
+    };
+    doc.select(&selector)
+        .filter_map(|a| base.join(a.value().attr("href")?).ok())
+        .filter(|u| {
+            u.origin() == base.origin()
+                && u.path() == base.path()
+                && u.query_pairs()
+                    .any(|(k, v)| k == "page" && v.parse::<u32>().is_ok())
+        })
+        .map(|mut u| {
+            u.set_fragment(None);
+            u
+        })
+        .collect()
+}
+
 async fn fetch_text(ctx: &SearchContext, url: &str) -> Result<String> {
     let resp = ctx.client.get(url).send().await?;
     if !resp.status().is_success() {
@@ -88,6 +138,7 @@ async fn fetch_text(ctx: &SearchContext, url: &str) -> Result<String> {
 fn is_nav(href: &str) -> bool {
     href == "#"
         || href.starts_with("#")
+        || href.starts_with('?')
         || href.starts_with("/thread")
         || href.starts_with("/index/")
         || href.starts_with("/about/")
@@ -119,6 +170,12 @@ fn parse_list(body: &str, default_type: ResultType) -> Result<Vec<IndexEntry>> {
             continue;
         }
         let Ok(url) = base.join(href) else { continue };
+        if url.origin() != base.origin() {
+            continue;
+        }
+        if url.path() == "/" || url.query_pairs().any(|(key, _)| key == "page") {
+            continue;
+        }
 
         let result_type = if href.starts_with("/applet/") {
             ResultType::Applet
@@ -172,6 +229,9 @@ fn parse_general_index(body: &str) -> Result<Vec<IndexEnrichment>> {
                 continue;
             }
             let Ok(url) = base.join(href) else { continue };
+            if url.origin() != base.origin() {
+                continue;
+            }
             let title_attr = el.value().attr("title").unwrap_or("").trim().to_string();
             let (title, desc) = match title_attr.split_once(": ") {
                 Some((t, d)) => (t.trim().to_string(), Some(d.trim().to_string())),
@@ -250,6 +310,31 @@ impl Default for MathInsightProvider {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn pagination_is_bounded_to_listing_origin_and_path() -> Result<()> {
+        let base = Url::parse(PAGE_LIST).map_err(|e| AppError::Parse(e.to_string()))?;
+        let links = pagination_links(
+            r#"<a href="?page=2">next</a><a href="/page/list?page=3#x">3</a><a href="https://evil.test/page/list?page=4">bad</a><a href="/accounts?page=2">bad</a><a href="?page=oops">bad</a>"#,
+            &base,
+        );
+        assert_eq!(links.len(), 2);
+        assert!(links
+            .iter()
+            .all(|u| u.origin() == base.origin() && u.fragment().is_none()));
+        Ok(())
+    }
+
+    #[test]
+    fn pagination_controls_are_not_knowledge_resources() -> Result<()> {
+        let entries = parse_list(
+            r#"<a href="?page=2">Next</a><a href="https://mathinsight.org/?page=1">Previous</a><a href="/gradient">Gradient</a>"#,
+            ResultType::Article,
+        )?;
+        assert_eq!(entries.len(), 1);
+        assert!(entries[0].url.ends_with("/gradient"));
+        Ok(())
+    }
 
     #[test]
     fn parses_page_list_fixture() {

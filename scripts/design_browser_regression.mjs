@@ -34,7 +34,8 @@ export async function designRegression(browser, base) {
           ),
           `${locale}/${theme}/${width}: overflow`,
         );
-        assert.equal(await page.locator(".app-nav button:visible").count(), 4);
+        assert.equal(await page.locator(".app-nav button:visible").count(), 5);
+        assert.equal(await page.locator('.app-nav button[aria-current="page"]').count(), 1);
         if (width === 390) {
           const toggle = page.locator(".source-toggle");
           await toggle.click();

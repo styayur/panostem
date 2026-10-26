@@ -12,7 +12,7 @@
     "build": "tsc && vite build",
     "build:web": "tsc && vite build --mode web",
     "preview": "vite preview",
-    "test": "node --experimental-strip-types scripts/unit_test.mjs && node --experimental-strip-types scripts/preview_security_test.mjs && node --experimental-strip-types scripts/retrieval_test.mjs && node --experimental-strip-types scripts/search_golden.mjs && node scripts/index_baseline_test.mjs && npm run test:learning && npm run test:workbench && npm run test:studio",
+    "test": "node --experimental-strip-types scripts/unit_test.mjs && node --experimental-strip-types scripts/preview_security_test.mjs && node --experimental-strip-types scripts/retrieval_test.mjs && node --experimental-strip-types scripts/search_golden.mjs && node scripts/index_baseline_test.mjs && npm run test:learning && npm run test:workbench && npm run test:studio && npm run test:knowledge",
     "test:learning": "node --experimental-strip-types scripts/learning_test.mjs",
     "test:web": "node --experimental-strip-types scripts/web_regression.mjs",
     "test:web:build": "npm run build:web && node --experimental-strip-types scripts/web_build_smoke.mjs",
@@ -31,8 +31,12 @@
     "test:studio": "node --experimental-strip-types scripts/studio_test.mjs",
     "test:runtime": "python -m unittest discover -s tests/runtime -v",
     "test:runtime:smoke": "python scripts/runtime_smoke.py",
-    "lint": "eslint src/studio",
-    "test:studio:desktop": "node scripts/studio_desktop_regression.mjs"
+    "lint": "eslint src/studio src/knowledge",
+    "test:studio:desktop": "node scripts/studio_desktop_regression.mjs",
+    "test:knowledge": "node --experimental-strip-types scripts/knowledge_test.mjs",
+    "knowledge:census": "node --experimental-strip-types scripts/knowledge/census.mjs",
+    "knowledge:batch": "node --experimental-strip-types scripts/knowledge/batch.mjs",
+    "knowledge:ingest": "node --experimental-strip-types scripts/knowledge/ingest.mjs"
   },
   "dependencies": {
     "@codemirror/lang-python": "6.2.1",
@@ -42,8 +46,15 @@
     "jsxgraph": "1.13.3",
     "katex": "^0.19.0",
     "lucide-react": "^1.56.0",
+    "parse5": "8.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "remark-frontmatter": "5.0.0",
+    "remark-gfm": "4.0.1",
+    "remark-math": "6.0.0",
+    "remark-parse": "11.0.0",
+    "robots-parser": "3.0.1",
+    "unified": "11.0.5",
     "zustand": "^5.0.1"
   },
   "devDependencies": {
@@ -64,6 +75,7 @@
     "vite": "^8.3.4"
   },
   "overrides": {
-    "postcss-selector-parser": "^7.1.6"
+    "postcss-selector-parser": "^7.1.6",
+    "katex": "$katex"
   }
 }
