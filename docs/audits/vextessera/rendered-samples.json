@@ -1,0 +1,441 @@
+[
+  {
+    "model": "newton",
+    "title": "Newton iteration: x squared minus four",
+    "mathVerified": true,
+    "rendered": true,
+    "decoded": true,
+    "rightsCleared": false,
+    "sources": [
+      {
+        "id": "github:djeada/numerical-methods:notes%2F1_root_and_extrema_finding%2Fnewtons_method.md%23161",
+        "origin": "https://github.com/djeada/Numerical-Methods",
+        "revision": "23cc8410e6641e4391b56d5b3acd8665ac30e3fc",
+        "contentHash": "20be4002b4a284f395708759f50bc1f64ea08c0d9b05c773d060608659fb7f42",
+        "location": {
+          "path": "notes/1_root_and_extrema_finding/newtons_method.md",
+          "startLine": 161,
+          "endLine": 212,
+          "heading": [
+            "Newton's Method",
+            "Example"
+          ]
+        }
+      }
+    ],
+    "verification": [
+      "Symbolic derivative 2x",
+      "Positive initial guess 3 converges to root 2; residual < 1e-12"
+    ],
+    "verificationHash": "00905e857a9a2275ab572b521bf9286ad60cc852a8d077dfeedd2453c682018c",
+    "generationSeconds": 0.07800000000861473,
+    "bytes": 9997,
+    "renderSeconds": 7.187000000005355,
+    "projectRevision": "0a6e20138b05cab8929ee93c7b86ae370368c3672409c0ff74e4064b1913d292",
+    "status": "verified-local-scene",
+    "elapsedSeconds": 7.453000000008615,
+    "localArtifacts": "ignored runtime corpus/samples/newton; media is not publicly redistributed"
+  },
+  {
+    "model": "bisection",
+    "title": "Bisection: bracket and error bound",
+    "mathVerified": true,
+    "rendered": true,
+    "decoded": true,
+    "rightsCleared": false,
+    "sources": [
+      {
+        "id": "github:djeada/numerical-methods:notes%2F1_root_and_extrema_finding%2Fbisection_method.md%23150",
+        "origin": "https://github.com/djeada/Numerical-Methods",
+        "revision": "23cc8410e6641e4391b56d5b3acd8665ac30e3fc",
+        "contentHash": "7436e7743a937555d6947d9579579ff4490d3ba7cb5da79e85bfa4413ab49dc8",
+        "location": {
+          "path": "notes/1_root_and_extrema_finding/bisection_method.md",
+          "startLine": 150,
+          "endLine": 248,
+          "heading": [
+            "Bisection Method",
+            "Example"
+          ]
+        }
+      }
+    ],
+    "verification": [
+      "Bracket contains analytical root at every step",
+      "Interval width = 5/2^30 within floating tolerance"
+    ],
+    "verificationHash": "033f4814e43482a8dc7a7a7622f570550134745916143fa822c3f5fab964cd47",
+    "generationSeconds": 0.01600000000325963,
+    "bytes": 10402,
+    "renderSeconds": 7.5,
+    "projectRevision": "18f234e9ca5cc65e2530e85d7810805972c2d2a39b6b221491e7e737e3819ed8",
+    "status": "verified-local-scene",
+    "elapsedSeconds": 7.7039999999979045,
+    "localArtifacts": "ignored runtime corpus/samples/bisection; media is not publicly redistributed"
+  },
+  {
+    "model": "oscillator",
+    "title": "Harmonic oscillator: phase and conserved energy",
+    "mathVerified": true,
+    "rendered": true,
+    "decoded": true,
+    "rightsCleared": false,
+    "sources": [
+      {
+        "id": "github:djeada/numerical-methods:notes%2F7_ordinary_differential_equations%2Fordinary_differential_equations.md%23302",
+        "origin": "https://github.com/djeada/Numerical-Methods",
+        "revision": "23cc8410e6641e4391b56d5b3acd8665ac30e3fc",
+        "contentHash": "1f7a9c24cf675593d244cd9892623dafd417af645c487370165ecbf8a400b5df",
+        "location": {
+          "path": "notes/7_ordinary_differential_equations/ordinary_differential_equations.md",
+          "startLine": 302,
+          "endLine": 313,
+          "heading": [
+            "Ordinary Differential Equations",
+            "Important model examples",
+            "Harmonic oscillator"
+          ]
+        }
+      }
+    ],
+    "verification": [
+      "ODE residual is identically zero",
+      "Initial displacement 1, velocity 0",
+      "Mass=1 kg, angular frequency=2 rad/s, energy=2 J"
+    ],
+    "verificationHash": "3f44e3ca95584dfbd50e37f1eecee23867263b073a4703d61e76655a2f88cbd1",
+    "generationSeconds": 0.21799999999348074,
+    "bytes": 13490,
+    "renderSeconds": 7.764999999984866,
+    "projectRevision": "44e4aef8f2b405f92df2084337079e1f9e7bef9abec57753b3e2737813fb0eb5",
+    "status": "verified-local-scene",
+    "elapsedSeconds": 8.203000000008615,
+    "localArtifacts": "ignored runtime corpus/samples/oscillator; media is not publicly redistributed"
+  },
+  {
+    "model": "gradient",
+    "title": "Gradient descent on a derived quadratic surface",
+    "mathVerified": true,
+    "rendered": true,
+    "decoded": true,
+    "rightsCleared": false,
+    "sources": [
+      {
+        "id": "github:djeada/numerical-methods:notes%2F1_root_and_extrema_finding%2Fgradient_descent.md%2340",
+        "origin": "https://github.com/djeada/Numerical-Methods",
+        "revision": "23cc8410e6641e4391b56d5b3acd8665ac30e3fc",
+        "contentHash": "47385d942e5a444400e0b78280fc70e58ab16bf906ec1904a2e15d2a81c7c22c",
+        "location": {
+          "path": "notes/1_root_and_extrema_finding/gradient_descent.md",
+          "startLine": 40,
+          "endLine": 68,
+          "heading": [
+            "Gradient Descent",
+            "Derivation"
+          ]
+        }
+      }
+    ],
+    "verification": [
+      "Independent symbolic gradient (x,y)",
+      "Chosen step 1/4 with L=1; strict objective descent except at origin"
+    ],
+    "verificationHash": "a26ca4c6daf19e5f2d93a3c4145b623dfbfc3b8e7e37a23eb712ec85daffcadb",
+    "generationSeconds": 0.014999999984866008,
+    "bytes": 17706,
+    "renderSeconds": 7,
+    "projectRevision": "3b45382895d34be51db312a1501f0d0bba18cff92cce33506d8d91dd2c913031",
+    "status": "verified-local-scene",
+    "elapsedSeconds": 7.202999999979511,
+    "localArtifacts": "ignored runtime corpus/samples/gradient; media is not publicly redistributed"
+  },
+  {
+    "model": "square",
+    "title": "Complex squaring: angle and radius",
+    "mathVerified": true,
+    "rendered": true,
+    "decoded": true,
+    "rightsCleared": false,
+    "sources": [
+      {
+        "id": "github:pkm-er/pkmer-math:Other%2F%E5%A4%8D%E5%88%86%E6%9E%90%2F%E5%85%B1%E5%BD%A2%E6%98%A0%E5%B0%84%2F%E5%85%B1%E5%BD%A2%E6%98%A0%E5%B0%84.md%2315",
+        "origin": "https://github.com/PKM-er/Pkmer-Math",
+        "revision": "575be4fd4761d7446b051c835ee8ea0a49aca520",
+        "contentHash": "c6fe54c13a431543137f75b7123d53cedcef4e5c7855a11ccbe92cdf0ca91e3b",
+        "location": {
+          "path": "Other/复分析/共形映射/共形映射.md",
+          "startLine": 15,
+          "endLine": 17,
+          "heading": [
+            "原理",
+            "示例"
+          ]
+        }
+      }
+    ],
+    "verification": [
+      "Complex derivative is 2z",
+      "Unit semicircle maps to full unit circle",
+      "At z=0 derivative vanishes; conformality is not claimed there"
+    ],
+    "verificationHash": "eb82a6974194472462f871683f5d4ff00f0a3767bc37d734c1d54340a03f912c",
+    "generationSeconds": 0.01600000000325963,
+    "bytes": 11647,
+    "renderSeconds": 6.25,
+    "projectRevision": "4a21d6b9d73f9e59891b813dfb756a408032e351bf9fab93ccf85307e33f2aa1",
+    "status": "verified-local-scene",
+    "elapsedSeconds": 6.437999999994645,
+    "localArtifacts": "ignored runtime corpus/samples/square; media is not publicly redistributed"
+  },
+  {
+    "model": "polar",
+    "title": "Polar form of a complex number",
+    "mathVerified": true,
+    "rendered": true,
+    "decoded": true,
+    "rightsCleared": false,
+    "sources": [
+      {
+        "id": "github:theophilec/complex-analysis:chapter-1.tex%231",
+        "origin": "https://github.com/theophilec/complex-analysis",
+        "revision": "96d9fd56689a6767b52526fa0f2f288b710e2a47",
+        "contentHash": "d96265d36b581513e8300b892633684a8531be19c7a416b35246934926072bf0",
+        "location": {
+          "path": "chapter-1.tex",
+          "startLine": 1,
+          "endLine": 217,
+          "heading": []
+        }
+      }
+    ],
+    "verification": [
+      "Euler identity checked independently by complex exponential and real trig",
+      "Radius fixed to 1; angle in radians"
+    ],
+    "verificationHash": "2119f0527ecde2ee2e1bd22a57c5269eee148183be44a39438092e4d76197208",
+    "generationSeconds": 0.01600000000325963,
+    "bytes": 11314,
+    "renderSeconds": 6.562999999994645,
+    "projectRevision": "f11f396bd2ed3c5097f10107b2b4489bab8f5c4dc1bb072331e73d4992ac8ef7",
+    "status": "verified-local-scene",
+    "elapsedSeconds": 6.76600000000326,
+    "localArtifacts": "ignored runtime corpus/samples/polar; media is not publicly redistributed"
+  },
+  {
+    "model": "linear",
+    "title": "Linear map: determinant and inverse",
+    "mathVerified": true,
+    "rendered": true,
+    "decoded": true,
+    "rightsCleared": false,
+    "sources": [
+      {
+        "id": "github:pkm-er/pkmer-math:%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%2F%E8%A1%8C%E5%88%97%E5%BC%8F%2F%E8%A1%8C%E5%88%97%E5%BC%8F%E6%A6%82%E8%BF%B0.md%231",
+        "origin": "https://github.com/PKM-er/Pkmer-Math",
+        "revision": "575be4fd4761d7446b051c835ee8ea0a49aca520",
+        "contentHash": "46a6fc91e9c2a07e3009b59c22948afe5e7e0a5ec90c461d7e7d0cf00cc8ccae",
+        "location": {
+          "path": "线性代数/行列式/行列式概述.md",
+          "startLine": 1,
+          "endLine": 32,
+          "heading": []
+        }
+      },
+      {
+        "id": "github:apurbakumarnath/numerical-methods-python:01_Solving_Linear_Systems%2FGaussian_Elimination_and_Matrix_Inverse.ipynb%23cell-0%3A11",
+        "origin": "https://github.com/ApurbaKumarNath/numerical-methods-python",
+        "revision": "692cd958ced6e813a969e4045573a0a0387662d4",
+        "contentHash": "dfc5811620cef047cea20b9d2fc0000718abd21dc61d3be80d876cf90ada7fee",
+        "location": {
+          "path": "01_Solving_Linear_Systems/Gaussian_Elimination_and_Matrix_Inverse.ipynb",
+          "startLine": 11,
+          "endLine": 17,
+          "heading": [
+            "Part 1: Solving a Linear System Using the Inverse Matrix",
+            "Core Concept",
+            "The Solution Method"
+          ],
+          "cell": 0
+        }
+      }
+    ],
+    "verification": [
+      "Shoelace/cross-product area equals determinant 2",
+      "Inverse times matrix equals identity <1e-12",
+      "The concrete nonsingular matrix is an independently selected example"
+    ],
+    "verificationHash": "46b10dacab9597a8aac12042f8154eaf0c57deff7cbf2d607ca3d113e4b0d901",
+    "generationSeconds": 0.015000000013969839,
+    "bytes": 15389,
+    "renderSeconds": 8.64000000001397,
+    "projectRevision": "9be72d8fd848a19177395ebcaa8a8680a9bbae2b56e770bb5db5598286f5bade",
+    "status": "verified-local-scene",
+    "elapsedSeconds": 8.905999999988126,
+    "localArtifacts": "ignored runtime corpus/samples/linear; media is not publicly redistributed"
+  },
+  {
+    "model": "union",
+    "title": "Inclusion-exclusion for overlapping events",
+    "mathVerified": true,
+    "rendered": true,
+    "decoded": true,
+    "rightsCleared": false,
+    "sources": [
+      {
+        "id": "github:maksimim/jaynesprobabilitytheory:chapter2.md%23487",
+        "origin": "https://github.com/MaksimIM/JaynesProbabilityTheory",
+        "revision": "ea8afb47c1346c88a7e64f1c378310bf9c859e00",
+        "contentHash": "63a34387ef495abf4981e9a692d61f673ea6d801266d5846ad064d6a38057371",
+        "location": {
+          "path": "chapter2.md",
+          "startLine": 487,
+          "endLine": 503,
+          "heading": [
+            "The quantitative rules",
+            "Exercise 2.3"
+          ]
+        }
+      },
+      {
+        "id": "github:vincentc75/mit_sdsmm:MIT_Probability_Statistics.Rmd%231",
+        "origin": "https://github.com/VincentC75/MIT_SDSMM",
+        "revision": "461c36a9ea4a8da599795f6ce444b8c1e7712319",
+        "contentHash": "7eb566a592f057b70a565405ed321681d035cf117e423ed7f30fafad319a20a0",
+        "location": {
+          "path": "MIT_Probability_Statistics.Rmd",
+          "startLine": 1,
+          "endLine": 253,
+          "heading": []
+        }
+      }
+    ],
+    "verification": [
+      "All 256 pairs of events on a uniform four-element sample space satisfy inclusion-exclusion",
+      "Non-independent overlapping events included"
+    ],
+    "verificationHash": "8a102b76049cb3f8e5937e28b7a4d125f12ae1fa9e48afeb49c6b82ba7ee5ca3",
+    "generationSeconds": 0.0470000000204891,
+    "bytes": 20693,
+    "renderSeconds": 7.35899999999674,
+    "projectRevision": "4153fff774b0ffd6fbb64bdc081fa56272ed48de9672b5cd531a460d2b22c4ad",
+    "status": "verified-local-scene",
+    "elapsedSeconds": 7.609000000025844,
+    "localArtifacts": "ignored runtime corpus/samples/union; media is not publicly redistributed"
+  },
+  {
+    "model": "means",
+    "title": "Harmonic, geometric, arithmetic and quadratic means",
+    "mathVerified": true,
+    "rendered": true,
+    "decoded": true,
+    "rightsCleared": false,
+    "sources": [
+      {
+        "id": "github:gorcat/note_math:%E5%88%9D%E7%AD%89%E5%87%BD%E6%95%B0%2F%E5%B8%B8%E7%94%A8%E5%AE%9A%E7%90%86.md%239",
+        "origin": "https://github.com/GorCat/note_math",
+        "revision": "19fd8b26962e61e37bc4a4756211f3f8ac7c3913",
+        "contentHash": "03e5760fa4a88b8b5ecbf2354754619617985c62e10c97723ddaba27d64b4783",
+        "location": {
+          "path": "初等函数/常用定理.md",
+          "startLine": 9,
+          "endLine": 21,
+          "heading": [
+            "常用定理",
+            "一.均值不等式",
+            "1.定义"
+          ]
+        }
+      }
+    ],
+    "verification": [
+      "Symbolic squared adjacent differences factor as nonnegative multiples of (a-b)^2 on the positive domain",
+      "Positive-domain H<=G<=A<=Q checked for 100 samples",
+      "Equality at a=b=2 verified analytically"
+    ],
+    "verificationHash": "7de2f311edd9a7d9f34eb2e0b7d8ee479fceb7f8e77c87ab01ba8505be73b8a0",
+    "generationSeconds": 0.030999999988125637,
+    "bytes": 16813,
+    "renderSeconds": 6.264999999984866,
+    "projectRevision": "b304b3111a623ff575a40aa948928e53c3c483683991ee6fd80ebe2de1727ad0",
+    "status": "verified-local-scene",
+    "elapsedSeconds": 6.562999999994645,
+    "localArtifacts": "ignored runtime corpus/samples/means; media is not publicly redistributed"
+  },
+  {
+    "model": "wave",
+    "title": "Standing wave: fixed boundaries and PDE residual",
+    "mathVerified": true,
+    "rendered": true,
+    "decoded": true,
+    "rightsCleared": false,
+    "sources": [
+      {
+        "id": "github:djeada/numerical-methods:notes%2F7_ordinary_differential_equations%2Fpartial_differential_equations.md%23110",
+        "origin": "https://github.com/djeada/Numerical-Methods",
+        "revision": "23cc8410e6641e4391b56d5b3acd8665ac30e3fc",
+        "contentHash": "c516614bc9e87e8f305e7f78f00b0adde6f3505989279bfaa8988a69925aa5a8",
+        "location": {
+          "path": "notes/7_ordinary_differential_equations/partial_differential_equations.md",
+          "startLine": 110,
+          "endLine": 128,
+          "heading": [
+            "Partial Differential Equations",
+            "Three classical types",
+            "Hyperbolic"
+          ]
+        }
+      }
+    ],
+    "verification": [
+      "Wave PDE residual zero symbolically",
+      "Fixed boundaries x=0 and pi; c=1 m/s; initial velocity zero"
+    ],
+    "verificationHash": "b36a09c154a8efc1cd30e39c08893c56593afc326c32cb26945ac0cc66207e78",
+    "generationSeconds": 0.030999999988125637,
+    "bytes": 23122,
+    "renderSeconds": 6.797000000020489,
+    "projectRevision": "dca8f93a23aa179d5feacab96e05b596c11f577af1d80c1a85bf7ac24cb362e0",
+    "status": "verified-local-scene",
+    "elapsedSeconds": 7.014999999984866,
+    "localArtifacts": "ignored runtime corpus/samples/wave; media is not publicly redistributed"
+  },
+  {
+    "model": "heat",
+    "title": "Thermal diffusion: decay of a sine mode",
+    "mathVerified": true,
+    "rendered": true,
+    "decoded": true,
+    "rightsCleared": false,
+    "sources": [
+      {
+        "id": "github:djeada/numerical-methods:notes%2F7_ordinary_differential_equations%2Fpartial_differential_equations.md%2390",
+        "origin": "https://github.com/djeada/Numerical-Methods",
+        "revision": "23cc8410e6641e4391b56d5b3acd8665ac30e3fc",
+        "contentHash": "c516614bc9e87e8f305e7f78f00b0adde6f3505989279bfaa8988a69925aa5a8",
+        "location": {
+          "path": "notes/7_ordinary_differential_equations/partial_differential_equations.md",
+          "startLine": 90,
+          "endLine": 108,
+          "heading": [
+            "Partial Differential Equations",
+            "Three classical types",
+            "Parabolic"
+          ]
+        }
+      }
+    ],
+    "verification": [
+      "Heat PDE residual zero symbolically",
+      "Fixed zero-temperature boundaries; thermal diffusivity positive",
+      "Squared L2 norm decreases with time"
+    ],
+    "verificationHash": "a52bc0c71c8c32234c4ac2b92a008fae32ba42defd50fad584548d8e379eb043",
+    "generationSeconds": 0.09400000001187436,
+    "bytes": 22517,
+    "renderSeconds": 6,
+    "projectRevision": "c25f8918e165976a3c9063a15209e68d604aafc36486b5fc7b588f5ab2d362c6",
+    "status": "verified-local-scene",
+    "elapsedSeconds": 6.282000000006519,
+    "localArtifacts": "ignored runtime corpus/samples/heat; media is not publicly redistributed"
+  }
+]

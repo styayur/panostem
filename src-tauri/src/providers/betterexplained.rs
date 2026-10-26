@@ -169,9 +169,9 @@ fn parse_native_results(body: &str) -> Vec<IndexEntry> {
     if let Ok(sel) = Selector::parse("a[rel=\"bookmark\"]") {
         for el in doc.select(&sel) {
             if let Some(href) = el.value().attr("href") {
-                if !href.contains("/articles/") {
+                let Some(url) = article_url(href) else {
                     continue;
-                }
+                };
                 let title = el.text().collect::<Vec<_>>().concat();
                 let title = title.split_whitespace().collect::<Vec<_>>().join(" ");
                 if !title.is_empty() {
@@ -184,7 +184,7 @@ fn parse_native_results(body: &str) -> Vec<IndexEntry> {
                         },
                         title: title.clone(),
                         description,
-                        url: href.to_string(),
+                        url,
                         result_type: result_type_for(&title),
                         tags: common::title_words(&title),
                         thumbnail: None,
@@ -194,6 +194,16 @@ fn parse_native_results(body: &str) -> Vec<IndexEntry> {
         }
     }
     out
+}
+
+fn article_url(href: &str) -> Option<String> {
+    let base = Url::parse(BASE).ok()?;
+    let mut url = base.join(href).ok()?;
+    if url.origin() != base.origin() || !url.path().starts_with("/articles/") {
+        return None;
+    }
+    url.set_fragment(None);
+    Some(url.to_string())
 }
 
 fn parse_archive(body: &str) -> Result<Vec<IndexEntry>> {
@@ -221,7 +231,10 @@ fn parse_archive(body: &str) -> Result<Vec<IndexEntry>> {
             continue;
         }
 
-        if !href.contains("/articles/") || text.is_empty() {
+        let Some(url) = article_url(href) else {
+            continue;
+        };
+        if text.is_empty() {
             continue;
         }
 
@@ -243,9 +256,7 @@ fn parse_archive(body: &str) -> Result<Vec<IndexEntry>> {
             },
             title: final_title,
             description,
-            url: Url::parse(href)
-                .map(|u| u.to_string())
-                .unwrap_or_else(|_| href.to_string()),
+            url,
             result_type,
             tags,
             thumbnail: None,
@@ -263,6 +274,16 @@ impl Default for BetterExplainedProvider {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn archive_normalizes_relative_urls_and_refuses_foreign_hosts() {
+        assert_eq!(
+            article_url("/articles/test/#eq"),
+            Some("https://betterexplained.com/articles/test/".into())
+        );
+        assert!(article_url("https://evil.test/articles/test/").is_none());
+        assert!(article_url("javascript:alert(1)").is_none());
+    }
 
     #[test]
     fn parses_archive_fixture() {

@@ -28,6 +28,7 @@ import { conceptById } from "./lib/concepts";
 import { studioText } from "./studio/uiText";
 import { localize } from "./learning/types";
 const StudioPage = lazy(() => import("./studio/StudioPage"));
+const KnowledgePage = lazy(() => import("./knowledge/KnowledgePage"));
 
 export default function App() {
   const t = useT();
@@ -55,6 +56,7 @@ export default function App() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    if (params.get("route") === "knowledge") { setPage("knowledge"); return; }
     if (params.get("route") === "studio") { setPage("studio"); return; }
     const concept=params.get("concept");
     if(params.get("route")==="search"&&concept&&conceptById.has(concept))useWorkbenchStore.getState().open(concept,{type:"resource"});
@@ -87,6 +89,7 @@ export default function App() {
         </div>
 
         <nav aria-label={t("app.navigation")} className="app-nav flex items-center gap-1">
+          <NavButton active={page === "knowledge"} onClick={() => setPage("knowledge")} icon={<BookMarked className="h-3.5 w-3.5" />} label={locale === "en" ? "Knowledge" : locale === "zh-CN" ? "知识" : "知識"} />
           <NavButton active={page === "studio"} onClick={() => setPage("studio")} icon={<Code2 className="h-3.5 w-3.5" />} label={localize(studioText.studio,locale)} />
           <NavButton
             active={page === "search"}
@@ -134,6 +137,7 @@ export default function App() {
         {page === "favorites" && <FavoritesPage />}
         {page === "settings" && <SettingsPage />}
         {page === "studio" && <Suspense fallback={<p className="p-6">…</p>}><StudioPage /></Suspense>}
+        {page === "knowledge" && <Suspense fallback={<p className="p-6">…</p>}><KnowledgePage /></Suspense>}
       </main>
     </div>
   );

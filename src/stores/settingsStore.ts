@@ -3,7 +3,7 @@ import * as cmd from "../lib/commands";
 import type { Settings } from "../lib/types";
 import { reportError } from "./noticeStore";
 
-export type Page = "search" | "favorites" | "settings" | "studio";
+export type Page = "search" | "favorites" | "settings" | "studio" | "knowledge";
 
 interface SettingsState {
   settings: Settings;

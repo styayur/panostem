@@ -117,3 +117,11 @@ Panostem 替换原 STEM Visual Explorer 公开名称，Tauri 标识和旧存储�
 应用源码保持 [AGPL-3.0-only](LICENSE)。ManimGL 与 CodeMirror 使用 MIT，下载的 Python/原生依赖保留各自许可。实际清单与声明文本位于 `licenses/`，摘要见[第三方声明](THIRD_PARTY_NOTICES.md)。应用许可不会自动决定用户场景、视频、教材或外部素材的权利。
 
 后续工作包括更多原生平台验证、更强的操作系统隔离、编辑工具与来源/索引维护。请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，通过 [Issues](https://github.com/styayur/panostem/issues) 提供可复现问题；漏洞走私密渠道。发布遵循受保护 PR、真实成功检查、实际二进制和逐资产校验。
+## 本地知识导入（Vextessera 工程预览）
+
+知识工作区可以在本机读取科学文档，查看来源位置、公式、权威概念关联和待审阅状态，
+不会运行文档代码或上传正文。可复现的来源普查、经过验证的数学场景和断点批处理台账
+见[知识可视化管线说明](docs/knowledge-pipeline.md)。
+
+本阶段不宣称全量语料已完成可视化，也不冒充 Vextessera 已发布。
+实际数量及限制见[机器可读来源报告](docs/audits/vextessera/source-census.json)。

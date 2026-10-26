@@ -43,14 +43,14 @@
   "current": {
     "concept_resolution_accuracy": 1,
     "cross_language_concept_parity": 1,
-    "cross_language_top10_overlap": 0.5075268817204301,
+    "cross_language_top10_overlap": 0.5225806451612903,
     "concept_recall": 1,
-    "zero_result_queries": 687,
-    "zero_result_rate": 0.4924731182795699,
+    "zero_result_queries": 666,
+    "zero_result_rate": 0.4774193548387097,
     "query_count": 1395,
     "cross_language_top10_overlap_when_available": 1,
-    "precision_at_5": 0.44999999999999996,
-    "precision_at_10": 0.2916666666666667,
+    "precision_at_5": 0.4666666666666667,
+    "precision_at_10": 0.33333333333333337,
     "false_positive_regression_count": 0
   },
   "precision": [
@@ -61,7 +61,7 @@
           "language": "en",
           "query": "gradient",
           "precision_at_5": 1,
-          "precision_at_10": 0.9,
+          "precision_at_10": 1,
           "judged_top10": [
             {
               "title": "Understanding Pythagorean Distance and the Gradient",
@@ -109,9 +109,9 @@
               "relevant": true
             },
             {
-              "title": "Mandelbrot Set",
-              "url": "https://physicstuff.com/mathematics-statistics/mandelbrot-set",
-              "relevant": false
+              "title": "Applet: Gradient and directional derivative on a mountain",
+              "url": "https://mathinsight.org/applet/gradient_directional_derivative_mountain",
+              "relevant": true
             }
           ]
         },
@@ -119,7 +119,7 @@
           "language": "zh-CN",
           "query": "梯度",
           "precision_at_5": 1,
-          "precision_at_10": 0.9,
+          "precision_at_10": 1,
           "judged_top10": [
             {
               "title": "Understanding Pythagorean Distance and the Gradient",
@@ -167,9 +167,9 @@
               "relevant": true
             },
             {
-              "title": "Mandelbrot Set",
-              "url": "https://physicstuff.com/mathematics-statistics/mandelbrot-set",
-              "relevant": false
+              "title": "Applet: Gradient and directional derivative on a mountain",
+              "url": "https://mathinsight.org/applet/gradient_directional_derivative_mountain",
+              "relevant": true
             }
           ]
         },
@@ -177,7 +177,7 @@
           "language": "zh-TW",
           "query": "梯度",
           "precision_at_5": 1,
-          "precision_at_10": 0.9,
+          "precision_at_10": 1,
           "judged_top10": [
             {
               "title": "Understanding Pythagorean Distance and the Gradient",
@@ -225,15 +225,15 @@
               "relevant": true
             },
             {
-              "title": "Mandelbrot Set",
-              "url": "https://physicstuff.com/mathematics-statistics/mandelbrot-set",
-              "relevant": false
+              "title": "Applet: Gradient and directional derivative on a mountain",
+              "url": "https://mathinsight.org/applet/gradient_directional_derivative_mountain",
+              "relevant": true
             }
           ]
         }
       ],
       "precision_at_5": 1,
-      "precision_at_10": 0.9
+      "precision_at_10": 1
     },
     {
       "id": "curl",
@@ -242,11 +242,16 @@
           "language": "en",
           "query": "curl",
           "precision_at_5": 1,
-          "precision_at_10": 0.9,
+          "precision_at_10": 1,
           "judged_top10": [
             {
               "title": "Vector Calculus: Understanding Circulation and Curl",
               "url": "https://betterexplained.com/articles/vector-calculus-understanding-circulation-and-curl/",
+              "relevant": true
+            },
+            {
+              "title": "A path-dependent vector field with zero curl",
+              "url": "https://mathinsight.org/path_dependent_zero_curl",
               "relevant": true
             },
             {
@@ -260,16 +265,6 @@
               "relevant": true
             },
             {
-              "title": "The curl of a gradient is zero",
-              "url": "https://mathinsight.org/curl_gradient_zero",
-              "relevant": true
-            },
-            {
-              "title": "A path-dependent vector field with zero curl",
-              "url": "https://mathinsight.org/path_dependent_zero_curl",
-              "relevant": true
-            },
-            {
               "title": "Subtleties about curl",
               "url": "https://mathinsight.org/curl_subtleties",
               "relevant": true
@@ -277,6 +272,11 @@
             {
               "title": "The components of the curl",
               "url": "https://mathinsight.org/curl_components",
+              "relevant": true
+            },
+            {
+              "title": "The curl of a gradient is zero",
+              "url": "https://mathinsight.org/curl_gradient_zero",
               "relevant": true
             },
             {
@@ -290,9 +290,9 @@
               "relevant": true
             },
             {
-              "title": "The idea behind Green's theorem",
-              "url": "https://mathinsight.org/greens_theorem_idea#scalar_curl",
-              "relevant": false
+              "title": "Applet: A line integral gives x-component of curl",
+              "url": "https://mathinsight.org/applet/x_component_curl_line_integral",
+              "relevant": true
             }
           ]
         },
@@ -300,11 +300,16 @@
           "language": "zh-CN",
           "query": "旋度",
           "precision_at_5": 1,
-          "precision_at_10": 0.9,
+          "precision_at_10": 1,
           "judged_top10": [
             {
               "title": "Vector Calculus: Understanding Circulation and Curl",
               "url": "https://betterexplained.com/articles/vector-calculus-understanding-circulation-and-curl/",
+              "relevant": true
+            },
+            {
+              "title": "A path-dependent vector field with zero curl",
+              "url": "https://mathinsight.org/path_dependent_zero_curl",
               "relevant": true
             },
             {
@@ -318,16 +323,6 @@
               "relevant": true
             },
             {
-              "title": "The curl of a gradient is zero",
-              "url": "https://mathinsight.org/curl_gradient_zero",
-              "relevant": true
-            },
-            {
-              "title": "A path-dependent vector field with zero curl",
-              "url": "https://mathinsight.org/path_dependent_zero_curl",
-              "relevant": true
-            },
-            {
               "title": "Subtleties about curl",
               "url": "https://mathinsight.org/curl_subtleties",
               "relevant": true
@@ -335,6 +330,11 @@
             {
               "title": "The components of the curl",
               "url": "https://mathinsight.org/curl_components",
+              "relevant": true
+            },
+            {
+              "title": "The curl of a gradient is zero",
+              "url": "https://mathinsight.org/curl_gradient_zero",
               "relevant": true
             },
             {
@@ -348,9 +348,9 @@
               "relevant": true
             },
             {
-              "title": "The idea behind Green's theorem",
-              "url": "https://mathinsight.org/greens_theorem_idea#scalar_curl",
-              "relevant": false
+              "title": "Applet: A line integral gives x-component of curl",
+              "url": "https://mathinsight.org/applet/x_component_curl_line_integral",
+              "relevant": true
             }
           ]
         },
@@ -358,11 +358,16 @@
           "language": "zh-TW",
           "query": "旋度",
           "precision_at_5": 1,
-          "precision_at_10": 0.9,
+          "precision_at_10": 1,
           "judged_top10": [
             {
               "title": "Vector Calculus: Understanding Circulation and Curl",
               "url": "https://betterexplained.com/articles/vector-calculus-understanding-circulation-and-curl/",
+              "relevant": true
+            },
+            {
+              "title": "A path-dependent vector field with zero curl",
+              "url": "https://mathinsight.org/path_dependent_zero_curl",
               "relevant": true
             },
             {
@@ -376,16 +381,6 @@
               "relevant": true
             },
             {
-              "title": "The curl of a gradient is zero",
-              "url": "https://mathinsight.org/curl_gradient_zero",
-              "relevant": true
-            },
-            {
-              "title": "A path-dependent vector field with zero curl",
-              "url": "https://mathinsight.org/path_dependent_zero_curl",
-              "relevant": true
-            },
-            {
               "title": "Subtleties about curl",
               "url": "https://mathinsight.org/curl_subtleties",
               "relevant": true
@@ -393,6 +388,11 @@
             {
               "title": "The components of the curl",
               "url": "https://mathinsight.org/curl_components",
+              "relevant": true
+            },
+            {
+              "title": "The curl of a gradient is zero",
+              "url": "https://mathinsight.org/curl_gradient_zero",
               "relevant": true
             },
             {
@@ -406,15 +406,15 @@
               "relevant": true
             },
             {
-              "title": "The idea behind Green's theorem",
-              "url": "https://mathinsight.org/greens_theorem_idea#scalar_curl",
-              "relevant": false
+              "title": "Applet: A line integral gives x-component of curl",
+              "url": "https://mathinsight.org/applet/x_component_curl_line_integral",
+              "relevant": true
             }
           ]
         }
       ],
       "precision_at_5": 1,
-      "precision_at_10": 0.9
+      "precision_at_10": 1
     },
     {
       "id": "fourier-transform",
@@ -636,7 +636,7 @@
           "language": "en",
           "query": "determinant",
           "precision_at_5": 1,
-          "precision_at_10": 0.8,
+          "precision_at_10": 0.9,
           "judged_top10": [
             {
               "title": "Determinants and linear transformations",
@@ -656,6 +656,11 @@
             {
               "title": "The relationship between determinants and area or volume",
               "url": "https://mathinsight.org/relationship_determinants_area_volume",
+              "relevant": true
+            },
+            {
+              "title": "The determinant of a matrix",
+              "url": "https://mathinsight.org/determinant_matrix",
               "relevant": true
             },
             {
@@ -689,7 +694,7 @@
           "language": "zh-CN",
           "query": "行列式",
           "precision_at_5": 1,
-          "precision_at_10": 0.8,
+          "precision_at_10": 0.9,
           "judged_top10": [
             {
               "title": "Determinants and linear transformations",
@@ -709,6 +714,11 @@
             {
               "title": "The relationship between determinants and area or volume",
               "url": "https://mathinsight.org/relationship_determinants_area_volume",
+              "relevant": true
+            },
+            {
+              "title": "The determinant of a matrix",
+              "url": "https://mathinsight.org/determinant_matrix",
               "relevant": true
             },
             {
@@ -742,7 +752,7 @@
           "language": "zh-TW",
           "query": "行列式",
           "precision_at_5": 1,
-          "precision_at_10": 0.8,
+          "precision_at_10": 0.9,
           "judged_top10": [
             {
               "title": "Determinants and linear transformations",
@@ -762,6 +772,11 @@
             {
               "title": "The relationship between determinants and area or volume",
               "url": "https://mathinsight.org/relationship_determinants_area_volume",
+              "relevant": true
+            },
+            {
+              "title": "The determinant of a matrix",
+              "url": "https://mathinsight.org/determinant_matrix",
               "relevant": true
             },
             {
@@ -793,7 +808,7 @@
         }
       ],
       "precision_at_5": 1,
-      "precision_at_10": 0.8000000000000002
+      "precision_at_10": 0.9
     },
     {
       "id": "taylor-series",
@@ -863,21 +878,16 @@
           "language": "en",
           "query": "line integral",
           "precision_at_5": 1,
-          "precision_at_10": 0.9,
+          "precision_at_10": 1,
           "judged_top10": [
-            {
-              "title": "Examples of scalar line integrals",
-              "url": "https://mathinsight.org/line_integral_scalar_examples",
-              "relevant": true
-            },
-            {
-              "title": "Line integrals are independent of parametrization",
-              "url": "https://mathinsight.org/line_integral_independent_parametrization",
-              "relevant": true
-            },
             {
               "title": "Alternate notation for vector line integrals",
               "url": "https://mathinsight.org/line_integral_vector_alternative_notation",
+              "relevant": true
+            },
+            {
+              "title": "Examples of scalar line integrals",
+              "url": "https://mathinsight.org/line_integral_scalar_examples",
               "relevant": true
             },
             {
@@ -891,13 +901,13 @@
               "relevant": true
             },
             {
-              "title": "Line integrals as circulation",
-              "url": "https://mathinsight.org/line_integral_circulation",
+              "title": "Line integrals are independent of parametrization",
+              "url": "https://mathinsight.org/line_integral_independent_parametrization",
               "relevant": true
             },
             {
-              "title": "The definition of curl from line integrals",
-              "url": "https://mathinsight.org/curl_definition_line_integral",
+              "title": "Line integrals as circulation",
+              "url": "https://mathinsight.org/line_integral_circulation",
               "relevant": true
             },
             {
@@ -911,9 +921,14 @@
               "relevant": true
             },
             {
-              "title": "A simple example of using the gradient theorem",
-              "url": "https://mathinsight.org/gradient_theorem_simple_examples",
-              "relevant": false
+              "title": "The definition of curl from line integrals",
+              "url": "https://mathinsight.org/curl_definition_line_integral",
+              "relevant": true
+            },
+            {
+              "title": "Applet: A line integral gives x-component of curl",
+              "url": "https://mathinsight.org/applet/x_component_curl_line_integral",
+              "relevant": true
             }
           ]
         },
@@ -921,21 +936,16 @@
           "language": "zh-CN",
           "query": "线积分",
           "precision_at_5": 1,
-          "precision_at_10": 0.9,
+          "precision_at_10": 1,
           "judged_top10": [
-            {
-              "title": "Examples of scalar line integrals",
-              "url": "https://mathinsight.org/line_integral_scalar_examples",
-              "relevant": true
-            },
-            {
-              "title": "Line integrals are independent of parametrization",
-              "url": "https://mathinsight.org/line_integral_independent_parametrization",
-              "relevant": true
-            },
             {
               "title": "Alternate notation for vector line integrals",
               "url": "https://mathinsight.org/line_integral_vector_alternative_notation",
+              "relevant": true
+            },
+            {
+              "title": "Examples of scalar line integrals",
+              "url": "https://mathinsight.org/line_integral_scalar_examples",
               "relevant": true
             },
             {
@@ -949,13 +959,13 @@
               "relevant": true
             },
             {
-              "title": "Line integrals as circulation",
-              "url": "https://mathinsight.org/line_integral_circulation",
+              "title": "Line integrals are independent of parametrization",
+              "url": "https://mathinsight.org/line_integral_independent_parametrization",
               "relevant": true
             },
             {
-              "title": "The definition of curl from line integrals",
-              "url": "https://mathinsight.org/curl_definition_line_integral",
+              "title": "Line integrals as circulation",
+              "url": "https://mathinsight.org/line_integral_circulation",
               "relevant": true
             },
             {
@@ -969,9 +979,14 @@
               "relevant": true
             },
             {
-              "title": "A simple example of using the gradient theorem",
-              "url": "https://mathinsight.org/gradient_theorem_simple_examples",
-              "relevant": false
+              "title": "The definition of curl from line integrals",
+              "url": "https://mathinsight.org/curl_definition_line_integral",
+              "relevant": true
+            },
+            {
+              "title": "Applet: A line integral gives x-component of curl",
+              "url": "https://mathinsight.org/applet/x_component_curl_line_integral",
+              "relevant": true
             }
           ]
         },
@@ -979,21 +994,16 @@
           "language": "zh-TW",
           "query": "線積分",
           "precision_at_5": 1,
-          "precision_at_10": 0.9,
+          "precision_at_10": 1,
           "judged_top10": [
-            {
-              "title": "Examples of scalar line integrals",
-              "url": "https://mathinsight.org/line_integral_scalar_examples",
-              "relevant": true
-            },
-            {
-              "title": "Line integrals are independent of parametrization",
-              "url": "https://mathinsight.org/line_integral_independent_parametrization",
-              "relevant": true
-            },
             {
               "title": "Alternate notation for vector line integrals",
               "url": "https://mathinsight.org/line_integral_vector_alternative_notation",
+              "relevant": true
+            },
+            {
+              "title": "Examples of scalar line integrals",
+              "url": "https://mathinsight.org/line_integral_scalar_examples",
               "relevant": true
             },
             {
@@ -1007,13 +1017,13 @@
               "relevant": true
             },
             {
-              "title": "Line integrals as circulation",
-              "url": "https://mathinsight.org/line_integral_circulation",
+              "title": "Line integrals are independent of parametrization",
+              "url": "https://mathinsight.org/line_integral_independent_parametrization",
               "relevant": true
             },
             {
-              "title": "The definition of curl from line integrals",
-              "url": "https://mathinsight.org/curl_definition_line_integral",
+              "title": "Line integrals as circulation",
+              "url": "https://mathinsight.org/line_integral_circulation",
               "relevant": true
             },
             {
@@ -1027,15 +1037,20 @@
               "relevant": true
             },
             {
-              "title": "A simple example of using the gradient theorem",
-              "url": "https://mathinsight.org/gradient_theorem_simple_examples",
-              "relevant": false
+              "title": "The definition of curl from line integrals",
+              "url": "https://mathinsight.org/curl_definition_line_integral",
+              "relevant": true
+            },
+            {
+              "title": "Applet: A line integral gives x-component of curl",
+              "url": "https://mathinsight.org/applet/x_component_curl_line_integral",
+              "relevant": true
             }
           ]
         }
       ],
       "precision_at_5": 1,
-      "precision_at_10": 0.9
+      "precision_at_10": 1
     },
     {
       "id": "surface-integral",
@@ -1438,11 +1453,21 @@
           "language": "en",
           "query": "divergence",
           "precision_at_5": 1,
-          "precision_at_10": 0.7,
+          "precision_at_10": 0.9,
           "judged_top10": [
             {
               "title": "Vector Calculus: Understanding Divergence",
               "url": "https://betterexplained.com/articles/divergence/",
+              "relevant": true
+            },
+            {
+              "title": "Divergence and curl example",
+              "url": "https://mathinsight.org/divergence_curl_examples",
+              "relevant": true
+            },
+            {
+              "title": "Divergence and curl notation",
+              "url": "https://mathinsight.org/divergence_curl_notation",
               "relevant": true
             },
             {
@@ -1466,13 +1491,13 @@
               "relevant": true
             },
             {
-              "title": "Divergence and curl example",
-              "url": "https://mathinsight.org/divergence_curl_examples",
+              "title": "Applet: Outward flowing 2D vector field with negative divergence",
+              "url": "https://mathinsight.org/applet/outward_flowing_negative_divergent_vector_field_2D",
               "relevant": true
             },
             {
-              "title": "Divergence and curl notation",
-              "url": "https://mathinsight.org/divergence_curl_notation",
+              "title": "Applet: Outward flowing vector field with zero divergence",
+              "url": "https://mathinsight.org/applet/outward_flowing_nondivergent_vector_field",
               "relevant": true
             }
           ]
@@ -1481,11 +1506,21 @@
           "language": "zh-CN",
           "query": "散度",
           "precision_at_5": 1,
-          "precision_at_10": 0.7,
+          "precision_at_10": 0.9,
           "judged_top10": [
             {
               "title": "Vector Calculus: Understanding Divergence",
               "url": "https://betterexplained.com/articles/divergence/",
+              "relevant": true
+            },
+            {
+              "title": "Divergence and curl example",
+              "url": "https://mathinsight.org/divergence_curl_examples",
+              "relevant": true
+            },
+            {
+              "title": "Divergence and curl notation",
+              "url": "https://mathinsight.org/divergence_curl_notation",
               "relevant": true
             },
             {
@@ -1509,13 +1544,13 @@
               "relevant": true
             },
             {
-              "title": "Divergence and curl example",
-              "url": "https://mathinsight.org/divergence_curl_examples",
+              "title": "Applet: Outward flowing 2D vector field with negative divergence",
+              "url": "https://mathinsight.org/applet/outward_flowing_negative_divergent_vector_field_2D",
               "relevant": true
             },
             {
-              "title": "Divergence and curl notation",
-              "url": "https://mathinsight.org/divergence_curl_notation",
+              "title": "Applet: Outward flowing vector field with zero divergence",
+              "url": "https://mathinsight.org/applet/outward_flowing_nondivergent_vector_field",
               "relevant": true
             }
           ]
@@ -1524,11 +1559,21 @@
           "language": "zh-TW",
           "query": "散度",
           "precision_at_5": 1,
-          "precision_at_10": 0.7,
+          "precision_at_10": 0.9,
           "judged_top10": [
             {
               "title": "Vector Calculus: Understanding Divergence",
               "url": "https://betterexplained.com/articles/divergence/",
+              "relevant": true
+            },
+            {
+              "title": "Divergence and curl example",
+              "url": "https://mathinsight.org/divergence_curl_examples",
+              "relevant": true
+            },
+            {
+              "title": "Divergence and curl notation",
+              "url": "https://mathinsight.org/divergence_curl_notation",
               "relevant": true
             },
             {
@@ -1552,13 +1597,210 @@
               "relevant": true
             },
             {
-              "title": "Divergence and curl example",
-              "url": "https://mathinsight.org/divergence_curl_examples",
+              "title": "Applet: Outward flowing 2D vector field with negative divergence",
+              "url": "https://mathinsight.org/applet/outward_flowing_negative_divergent_vector_field_2D",
               "relevant": true
             },
             {
-              "title": "Divergence and curl notation",
-              "url": "https://mathinsight.org/divergence_curl_notation",
+              "title": "Applet: Outward flowing vector field with zero divergence",
+              "url": "https://mathinsight.org/applet/outward_flowing_nondivergent_vector_field",
+              "relevant": true
+            }
+          ]
+        }
+      ],
+      "precision_at_5": 1,
+      "precision_at_10": 0.9
+    },
+    {
+      "id": "eigenvalue",
+      "languages": [
+        {
+          "language": "en",
+          "query": "eigenvalue",
+          "precision_at_5": 0.4,
+          "precision_at_10": 0.2,
+          "judged_top10": [
+            {
+              "title": "The stability of the asynchronous state as function of largest eigenvalue",
+              "url": "https://mathinsight.org/stability_asynchronous_state_largest_eigenvalue",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Determine eigenvalues and eigenvectors through exploration",
+              "url": "https://mathinsight.org/applet/determine_eigenvectors_exploration",
+              "relevant": true
+            }
+          ]
+        },
+        {
+          "language": "zh-CN",
+          "query": "特征值",
+          "precision_at_5": 0.4,
+          "precision_at_10": 0.2,
+          "judged_top10": [
+            {
+              "title": "The stability of the asynchronous state as function of largest eigenvalue",
+              "url": "https://mathinsight.org/stability_asynchronous_state_largest_eigenvalue",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Determine eigenvalues and eigenvectors through exploration",
+              "url": "https://mathinsight.org/applet/determine_eigenvectors_exploration",
+              "relevant": true
+            }
+          ]
+        },
+        {
+          "language": "zh-TW",
+          "query": "特徵值",
+          "precision_at_5": 0.4,
+          "precision_at_10": 0.2,
+          "judged_top10": [
+            {
+              "title": "The stability of the asynchronous state as function of largest eigenvalue",
+              "url": "https://mathinsight.org/stability_asynchronous_state_largest_eigenvalue",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Determine eigenvalues and eigenvectors through exploration",
+              "url": "https://mathinsight.org/applet/determine_eigenvectors_exploration",
+              "relevant": true
+            }
+          ]
+        }
+      ],
+      "precision_at_5": 0.4000000000000001,
+      "precision_at_10": 0.20000000000000004
+    },
+    {
+      "id": "dot-product",
+      "languages": [
+        {
+          "language": "en",
+          "query": "dot product",
+          "precision_at_5": 1,
+          "precision_at_10": 0.7,
+          "judged_top10": [
+            {
+              "title": "Dot product examples",
+              "url": "https://mathinsight.org/dot_product_examples",
+              "relevant": true
+            },
+            {
+              "title": "Dot product in matrix notation",
+              "url": "https://mathinsight.org/dot_product_matrix_notation",
+              "relevant": true
+            },
+            {
+              "title": "The dot product",
+              "url": "https://mathinsight.org/dot_product",
+              "relevant": true
+            },
+            {
+              "title": "The formula for the dot product in terms of vector components",
+              "url": "https://mathinsight.org/dot_product_formula_components",
+              "relevant": true
+            },
+            {
+              "title": "Dot Product Applet",
+              "url": "https://falstad.com/dotproduct/",
+              "relevant": true
+            },
+            {
+              "title": "Vector Calculus: Understanding the Dot Product",
+              "url": "https://betterexplained.com/articles/vector-calculus-understanding-the-dot-product/",
+              "relevant": true
+            },
+            {
+              "title": "Applet: The dot product as projection",
+              "url": "https://mathinsight.org/applet/dot_product_projection",
+              "relevant": true
+            }
+          ]
+        },
+        {
+          "language": "zh-CN",
+          "query": "点积",
+          "precision_at_5": 1,
+          "precision_at_10": 0.7,
+          "judged_top10": [
+            {
+              "title": "Dot product examples",
+              "url": "https://mathinsight.org/dot_product_examples",
+              "relevant": true
+            },
+            {
+              "title": "Dot product in matrix notation",
+              "url": "https://mathinsight.org/dot_product_matrix_notation",
+              "relevant": true
+            },
+            {
+              "title": "The dot product",
+              "url": "https://mathinsight.org/dot_product",
+              "relevant": true
+            },
+            {
+              "title": "The formula for the dot product in terms of vector components",
+              "url": "https://mathinsight.org/dot_product_formula_components",
+              "relevant": true
+            },
+            {
+              "title": "Dot Product Applet",
+              "url": "https://falstad.com/dotproduct/",
+              "relevant": true
+            },
+            {
+              "title": "Vector Calculus: Understanding the Dot Product",
+              "url": "https://betterexplained.com/articles/vector-calculus-understanding-the-dot-product/",
+              "relevant": true
+            },
+            {
+              "title": "Applet: The dot product as projection",
+              "url": "https://mathinsight.org/applet/dot_product_projection",
+              "relevant": true
+            }
+          ]
+        },
+        {
+          "language": "zh-TW",
+          "query": "內積",
+          "precision_at_5": 1,
+          "precision_at_10": 0.7,
+          "judged_top10": [
+            {
+              "title": "Dot product examples",
+              "url": "https://mathinsight.org/dot_product_examples",
+              "relevant": true
+            },
+            {
+              "title": "Dot product in matrix notation",
+              "url": "https://mathinsight.org/dot_product_matrix_notation",
+              "relevant": true
+            },
+            {
+              "title": "The dot product",
+              "url": "https://mathinsight.org/dot_product",
+              "relevant": true
+            },
+            {
+              "title": "The formula for the dot product in terms of vector components",
+              "url": "https://mathinsight.org/dot_product_formula_components",
+              "relevant": true
+            },
+            {
+              "title": "Dot Product Applet",
+              "url": "https://falstad.com/dotproduct/",
+              "relevant": true
+            },
+            {
+              "title": "Vector Calculus: Understanding the Dot Product",
+              "url": "https://betterexplained.com/articles/vector-calculus-understanding-the-dot-product/",
+              "relevant": true
+            },
+            {
+              "title": "Applet: The dot product as projection",
+              "url": "https://mathinsight.org/applet/dot_product_projection",
               "relevant": true
             }
           ]
@@ -1568,184 +1810,22 @@
       "precision_at_10": 0.6999999999999998
     },
     {
-      "id": "eigenvalue",
-      "languages": [
-        {
-          "language": "en",
-          "query": "eigenvalue",
-          "precision_at_5": 0.2,
-          "precision_at_10": 0.1,
-          "judged_top10": [
-            {
-              "title": "The stability of the asynchronous state as function of largest eigenvalue",
-              "url": "https://mathinsight.org/stability_asynchronous_state_largest_eigenvalue",
-              "relevant": true
-            }
-          ]
-        },
-        {
-          "language": "zh-CN",
-          "query": "特征值",
-          "precision_at_5": 0.2,
-          "precision_at_10": 0.1,
-          "judged_top10": [
-            {
-              "title": "The stability of the asynchronous state as function of largest eigenvalue",
-              "url": "https://mathinsight.org/stability_asynchronous_state_largest_eigenvalue",
-              "relevant": true
-            }
-          ]
-        },
-        {
-          "language": "zh-TW",
-          "query": "特徵值",
-          "precision_at_5": 0.2,
-          "precision_at_10": 0.1,
-          "judged_top10": [
-            {
-              "title": "The stability of the asynchronous state as function of largest eigenvalue",
-              "url": "https://mathinsight.org/stability_asynchronous_state_largest_eigenvalue",
-              "relevant": true
-            }
-          ]
-        }
-      ],
-      "precision_at_5": 0.20000000000000004,
-      "precision_at_10": 0.10000000000000002
-    },
-    {
-      "id": "dot-product",
-      "languages": [
-        {
-          "language": "en",
-          "query": "dot product",
-          "precision_at_5": 1,
-          "precision_at_10": 0.6,
-          "judged_top10": [
-            {
-              "title": "Dot product examples",
-              "url": "https://mathinsight.org/dot_product_examples",
-              "relevant": true
-            },
-            {
-              "title": "Dot product in matrix notation",
-              "url": "https://mathinsight.org/dot_product_matrix_notation",
-              "relevant": true
-            },
-            {
-              "title": "The dot product",
-              "url": "https://mathinsight.org/dot_product",
-              "relevant": true
-            },
-            {
-              "title": "The formula for the dot product in terms of vector components",
-              "url": "https://mathinsight.org/dot_product_formula_components",
-              "relevant": true
-            },
-            {
-              "title": "Dot Product Applet",
-              "url": "https://falstad.com/dotproduct/",
-              "relevant": true
-            },
-            {
-              "title": "Vector Calculus: Understanding the Dot Product",
-              "url": "https://betterexplained.com/articles/vector-calculus-understanding-the-dot-product/",
-              "relevant": true
-            }
-          ]
-        },
-        {
-          "language": "zh-CN",
-          "query": "点积",
-          "precision_at_5": 1,
-          "precision_at_10": 0.6,
-          "judged_top10": [
-            {
-              "title": "Dot product examples",
-              "url": "https://mathinsight.org/dot_product_examples",
-              "relevant": true
-            },
-            {
-              "title": "Dot product in matrix notation",
-              "url": "https://mathinsight.org/dot_product_matrix_notation",
-              "relevant": true
-            },
-            {
-              "title": "The dot product",
-              "url": "https://mathinsight.org/dot_product",
-              "relevant": true
-            },
-            {
-              "title": "The formula for the dot product in terms of vector components",
-              "url": "https://mathinsight.org/dot_product_formula_components",
-              "relevant": true
-            },
-            {
-              "title": "Dot Product Applet",
-              "url": "https://falstad.com/dotproduct/",
-              "relevant": true
-            },
-            {
-              "title": "Vector Calculus: Understanding the Dot Product",
-              "url": "https://betterexplained.com/articles/vector-calculus-understanding-the-dot-product/",
-              "relevant": true
-            }
-          ]
-        },
-        {
-          "language": "zh-TW",
-          "query": "內積",
-          "precision_at_5": 1,
-          "precision_at_10": 0.6,
-          "judged_top10": [
-            {
-              "title": "Dot product examples",
-              "url": "https://mathinsight.org/dot_product_examples",
-              "relevant": true
-            },
-            {
-              "title": "Dot product in matrix notation",
-              "url": "https://mathinsight.org/dot_product_matrix_notation",
-              "relevant": true
-            },
-            {
-              "title": "The dot product",
-              "url": "https://mathinsight.org/dot_product",
-              "relevant": true
-            },
-            {
-              "title": "The formula for the dot product in terms of vector components",
-              "url": "https://mathinsight.org/dot_product_formula_components",
-              "relevant": true
-            },
-            {
-              "title": "Dot Product Applet",
-              "url": "https://falstad.com/dotproduct/",
-              "relevant": true
-            },
-            {
-              "title": "Vector Calculus: Understanding the Dot Product",
-              "url": "https://betterexplained.com/articles/vector-calculus-understanding-the-dot-product/",
-              "relevant": true
-            }
-          ]
-        }
-      ],
-      "precision_at_5": 1,
-      "precision_at_10": 0.6
-    },
-    {
       "id": "cross-product",
       "languages": [
         {
           "language": "en",
           "query": "cross product",
           "precision_at_5": 1,
-          "precision_at_10": 0.5,
+          "precision_at_10": 0.6,
           "judged_top10": [
             {
               "title": "Cross product examples",
               "url": "https://mathinsight.org/cross_product_examples",
+              "relevant": true
+            },
+            {
+              "title": "The cross product",
+              "url": "https://mathinsight.org/cross_product",
               "relevant": true
             },
             {
@@ -1764,8 +1844,8 @@
               "relevant": true
             },
             {
-              "title": "The cross product",
-              "url": "https://mathinsight.org/cross_product",
+              "title": "Applet: Cross product",
+              "url": "https://mathinsight.org/applet/cross_product",
               "relevant": true
             },
             {
@@ -1786,11 +1866,6 @@
             {
               "title": "The relationship between determinants and area or volume",
               "url": "https://mathinsight.org/relationship_determinants_area_volume#volume3d",
-              "relevant": false
-            },
-            {
-              "title": "The relationship between determinants and area or volume",
-              "url": "https://mathinsight.org/relationship_determinants_area_volume#volume3d1",
               "relevant": false
             }
           ]
@@ -1799,11 +1874,16 @@
           "language": "zh-CN",
           "query": "叉积",
           "precision_at_5": 1,
-          "precision_at_10": 0.5,
+          "precision_at_10": 0.6,
           "judged_top10": [
             {
               "title": "Cross product examples",
               "url": "https://mathinsight.org/cross_product_examples",
+              "relevant": true
+            },
+            {
+              "title": "The cross product",
+              "url": "https://mathinsight.org/cross_product",
               "relevant": true
             },
             {
@@ -1822,8 +1902,8 @@
               "relevant": true
             },
             {
-              "title": "The cross product",
-              "url": "https://mathinsight.org/cross_product",
+              "title": "Applet: Cross product",
+              "url": "https://mathinsight.org/applet/cross_product",
               "relevant": true
             },
             {
@@ -1844,11 +1924,6 @@
             {
               "title": "The relationship between determinants and area or volume",
               "url": "https://mathinsight.org/relationship_determinants_area_volume#volume3d",
-              "relevant": false
-            },
-            {
-              "title": "The relationship between determinants and area or volume",
-              "url": "https://mathinsight.org/relationship_determinants_area_volume#volume3d1",
               "relevant": false
             }
           ]
@@ -1857,11 +1932,16 @@
           "language": "zh-TW",
           "query": "外積",
           "precision_at_5": 1,
-          "precision_at_10": 0.5,
+          "precision_at_10": 0.6,
           "judged_top10": [
             {
               "title": "Cross product examples",
               "url": "https://mathinsight.org/cross_product_examples",
+              "relevant": true
+            },
+            {
+              "title": "The cross product",
+              "url": "https://mathinsight.org/cross_product",
               "relevant": true
             },
             {
@@ -1880,8 +1960,8 @@
               "relevant": true
             },
             {
-              "title": "The cross product",
-              "url": "https://mathinsight.org/cross_product",
+              "title": "Applet: Cross product",
+              "url": "https://mathinsight.org/applet/cross_product",
               "relevant": true
             },
             {
@@ -1903,17 +1983,12 @@
               "title": "The relationship between determinants and area or volume",
               "url": "https://mathinsight.org/relationship_determinants_area_volume#volume3d",
               "relevant": false
-            },
-            {
-              "title": "The relationship between determinants and area or volume",
-              "url": "https://mathinsight.org/relationship_determinants_area_volume#volume3d1",
-              "relevant": false
             }
           ]
         }
       ],
       "precision_at_5": 1,
-      "precision_at_10": 0.5
+      "precision_at_10": 0.6
     },
     {
       "id": "partial-derivative",
@@ -1922,7 +1997,7 @@
           "language": "en",
           "query": "partial derivative",
           "precision_at_5": 1,
-          "precision_at_10": 0.6,
+          "precision_at_10": 1,
           "judged_top10": [
             {
               "title": "Elementary partial derivative problems",
@@ -1930,18 +2005,8 @@
               "relevant": true
             },
             {
-              "title": "A differentiable function with discontinuous partial derivatives",
-              "url": "https://mathinsight.org/differentiable_function_discontinuous_partial_derivatives",
-              "relevant": true
-            },
-            {
               "title": "Introduction to partial derivatives",
               "url": "https://mathinsight.org/partial_derivative_introduction",
-              "relevant": true
-            },
-            {
-              "title": "Non-differentiable functions must have discontinuous partial derivatives",
-              "url": "https://mathinsight.org/nondifferentiable_discontinuous_partial_derivatives",
               "relevant": true
             },
             {
@@ -1955,9 +2020,34 @@
               "relevant": true
             },
             {
-              "title": "The gradient vector",
-              "url": "https://mathinsight.org/gradient_vector",
-              "relevant": false
+              "title": "A differentiable function with discontinuous partial derivatives",
+              "url": "https://mathinsight.org/differentiable_function_discontinuous_partial_derivatives",
+              "relevant": true
+            },
+            {
+              "title": "Non-differentiable functions must have discontinuous partial derivatives",
+              "url": "https://mathinsight.org/nondifferentiable_discontinuous_partial_derivatives",
+              "relevant": true
+            },
+            {
+              "title": "Applet: A differentiable function with discontinuous partial derivatives",
+              "url": "https://mathinsight.org/applet/differentiable_function_discontinuous_partial_derivatives",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Example partial derivative by limit definintion",
+              "url": "https://mathinsight.org/applet/partial_derivative_limit_definition_example",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Non-differentiable function with partial derivatives",
+              "url": "https://mathinsight.org/applet/nondifferentiable_function_partial_derivatives",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Non-differentiable function with partial derivatives",
+              "url": "https://mathinsight.org/applet/nondifferentiable_function_partial_derivatives_2",
+              "relevant": true
             }
           ]
         },
@@ -1965,7 +2055,7 @@
           "language": "zh-CN",
           "query": "偏导数",
           "precision_at_5": 1,
-          "precision_at_10": 0.6,
+          "precision_at_10": 1,
           "judged_top10": [
             {
               "title": "Elementary partial derivative problems",
@@ -1973,18 +2063,8 @@
               "relevant": true
             },
             {
-              "title": "A differentiable function with discontinuous partial derivatives",
-              "url": "https://mathinsight.org/differentiable_function_discontinuous_partial_derivatives",
-              "relevant": true
-            },
-            {
               "title": "Introduction to partial derivatives",
               "url": "https://mathinsight.org/partial_derivative_introduction",
-              "relevant": true
-            },
-            {
-              "title": "Non-differentiable functions must have discontinuous partial derivatives",
-              "url": "https://mathinsight.org/nondifferentiable_discontinuous_partial_derivatives",
               "relevant": true
             },
             {
@@ -1998,9 +2078,34 @@
               "relevant": true
             },
             {
-              "title": "The gradient vector",
-              "url": "https://mathinsight.org/gradient_vector",
-              "relevant": false
+              "title": "A differentiable function with discontinuous partial derivatives",
+              "url": "https://mathinsight.org/differentiable_function_discontinuous_partial_derivatives",
+              "relevant": true
+            },
+            {
+              "title": "Non-differentiable functions must have discontinuous partial derivatives",
+              "url": "https://mathinsight.org/nondifferentiable_discontinuous_partial_derivatives",
+              "relevant": true
+            },
+            {
+              "title": "Applet: A differentiable function with discontinuous partial derivatives",
+              "url": "https://mathinsight.org/applet/differentiable_function_discontinuous_partial_derivatives",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Example partial derivative by limit definintion",
+              "url": "https://mathinsight.org/applet/partial_derivative_limit_definition_example",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Non-differentiable function with partial derivatives",
+              "url": "https://mathinsight.org/applet/nondifferentiable_function_partial_derivatives",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Non-differentiable function with partial derivatives",
+              "url": "https://mathinsight.org/applet/nondifferentiable_function_partial_derivatives_2",
+              "relevant": true
             }
           ]
         },
@@ -2008,7 +2113,7 @@
           "language": "zh-TW",
           "query": "偏導數",
           "precision_at_5": 1,
-          "precision_at_10": 0.6,
+          "precision_at_10": 1,
           "judged_top10": [
             {
               "title": "Elementary partial derivative problems",
@@ -2016,18 +2121,8 @@
               "relevant": true
             },
             {
-              "title": "A differentiable function with discontinuous partial derivatives",
-              "url": "https://mathinsight.org/differentiable_function_discontinuous_partial_derivatives",
-              "relevant": true
-            },
-            {
               "title": "Introduction to partial derivatives",
               "url": "https://mathinsight.org/partial_derivative_introduction",
-              "relevant": true
-            },
-            {
-              "title": "Non-differentiable functions must have discontinuous partial derivatives",
-              "url": "https://mathinsight.org/nondifferentiable_discontinuous_partial_derivatives",
               "relevant": true
             },
             {
@@ -2041,15 +2136,40 @@
               "relevant": true
             },
             {
-              "title": "The gradient vector",
-              "url": "https://mathinsight.org/gradient_vector",
-              "relevant": false
+              "title": "A differentiable function with discontinuous partial derivatives",
+              "url": "https://mathinsight.org/differentiable_function_discontinuous_partial_derivatives",
+              "relevant": true
+            },
+            {
+              "title": "Non-differentiable functions must have discontinuous partial derivatives",
+              "url": "https://mathinsight.org/nondifferentiable_discontinuous_partial_derivatives",
+              "relevant": true
+            },
+            {
+              "title": "Applet: A differentiable function with discontinuous partial derivatives",
+              "url": "https://mathinsight.org/applet/differentiable_function_discontinuous_partial_derivatives",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Example partial derivative by limit definintion",
+              "url": "https://mathinsight.org/applet/partial_derivative_limit_definition_example",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Non-differentiable function with partial derivatives",
+              "url": "https://mathinsight.org/applet/nondifferentiable_function_partial_derivatives",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Non-differentiable function with partial derivatives",
+              "url": "https://mathinsight.org/applet/nondifferentiable_function_partial_derivatives_2",
+              "relevant": true
             }
           ]
         }
       ],
       "precision_at_5": 1,
-      "precision_at_10": 0.6
+      "precision_at_10": 1
     },
     {
       "id": "double-integral",
@@ -2061,8 +2181,18 @@
           "precision_at_10": 1,
           "judged_top10": [
             {
+              "title": "Area calculation for changing variables in double integrals",
+              "url": "https://mathinsight.org/double_integral_change_variables_area_calculation",
+              "relevant": true
+            },
+            {
               "title": "Double integral examples",
               "url": "https://mathinsight.org/double_integral_examples",
+              "relevant": true
+            },
+            {
+              "title": "Double integrals as area",
+              "url": "https://mathinsight.org/double_integral_area",
               "relevant": true
             },
             {
@@ -2093,16 +2223,6 @@
             {
               "title": "Introduction to double integrals",
               "url": "https://mathinsight.org/double_integral_introduction",
-              "relevant": true
-            },
-            {
-              "title": "Area calculation for changing variables in double integrals",
-              "url": "https://mathinsight.org/double_integral_change_variables_area_calculation",
-              "relevant": true
-            },
-            {
-              "title": "Double integrals as area",
-              "url": "https://mathinsight.org/double_integral_area",
               "relevant": true
             },
             {
@@ -2119,8 +2239,18 @@
           "precision_at_10": 1,
           "judged_top10": [
             {
+              "title": "Area calculation for changing variables in double integrals",
+              "url": "https://mathinsight.org/double_integral_change_variables_area_calculation",
+              "relevant": true
+            },
+            {
               "title": "Double integral examples",
               "url": "https://mathinsight.org/double_integral_examples",
+              "relevant": true
+            },
+            {
+              "title": "Double integrals as area",
+              "url": "https://mathinsight.org/double_integral_area",
               "relevant": true
             },
             {
@@ -2151,16 +2281,6 @@
             {
               "title": "Introduction to double integrals",
               "url": "https://mathinsight.org/double_integral_introduction",
-              "relevant": true
-            },
-            {
-              "title": "Area calculation for changing variables in double integrals",
-              "url": "https://mathinsight.org/double_integral_change_variables_area_calculation",
-              "relevant": true
-            },
-            {
-              "title": "Double integrals as area",
-              "url": "https://mathinsight.org/double_integral_area",
               "relevant": true
             },
             {
@@ -2177,8 +2297,18 @@
           "precision_at_10": 1,
           "judged_top10": [
             {
+              "title": "Area calculation for changing variables in double integrals",
+              "url": "https://mathinsight.org/double_integral_change_variables_area_calculation",
+              "relevant": true
+            },
+            {
               "title": "Double integral examples",
               "url": "https://mathinsight.org/double_integral_examples",
+              "relevant": true
+            },
+            {
+              "title": "Double integrals as area",
+              "url": "https://mathinsight.org/double_integral_area",
               "relevant": true
             },
             {
@@ -2209,16 +2339,6 @@
             {
               "title": "Introduction to double integrals",
               "url": "https://mathinsight.org/double_integral_introduction",
-              "relevant": true
-            },
-            {
-              "title": "Area calculation for changing variables in double integrals",
-              "url": "https://mathinsight.org/double_integral_change_variables_area_calculation",
-              "relevant": true
-            },
-            {
-              "title": "Double integrals as area",
-              "url": "https://mathinsight.org/double_integral_area",
               "relevant": true
             },
             {
@@ -2612,9 +2732,14 @@
         {
           "language": "en",
           "query": "standing wave",
-          "precision_at_5": 0.2,
-          "precision_at_10": 0.1,
+          "precision_at_5": 0.4,
+          "precision_at_10": 0.2,
           "judged_top10": [
+            {
+              "title": "Standing Waves Simulator",
+              "url": "https://physicsfundamentalsinfo.com/labs/standing-waves-simulator",
+              "relevant": true
+            },
             {
               "title": "Standing Waves Resonance",
               "url": "https://physicstuff.com/waves-oscillations/standing-waves-resonance",
@@ -2625,9 +2750,14 @@
         {
           "language": "zh-CN",
           "query": "驻波",
-          "precision_at_5": 0.2,
-          "precision_at_10": 0.1,
+          "precision_at_5": 0.4,
+          "precision_at_10": 0.2,
           "judged_top10": [
+            {
+              "title": "Standing Waves Simulator",
+              "url": "https://physicsfundamentalsinfo.com/labs/standing-waves-simulator",
+              "relevant": true
+            },
             {
               "title": "Standing Waves Resonance",
               "url": "https://physicstuff.com/waves-oscillations/standing-waves-resonance",
@@ -2638,9 +2768,14 @@
         {
           "language": "zh-TW",
           "query": "駐波",
-          "precision_at_5": 0.2,
-          "precision_at_10": 0.1,
+          "precision_at_5": 0.4,
+          "precision_at_10": 0.2,
           "judged_top10": [
+            {
+              "title": "Standing Waves Simulator",
+              "url": "https://physicsfundamentalsinfo.com/labs/standing-waves-simulator",
+              "relevant": true
+            },
             {
               "title": "Standing Waves Resonance",
               "url": "https://physicstuff.com/waves-oscillations/standing-waves-resonance",
@@ -2649,8 +2784,8 @@
           ]
         }
       ],
-      "precision_at_5": 0.20000000000000004,
-      "precision_at_10": 0.10000000000000002
+      "precision_at_5": 0.4000000000000001,
+      "precision_at_10": 0.20000000000000004
     },
     {
       "id": "electromagnetic-induction",
@@ -2903,21 +3038,39 @@
           "query": "quantum tunneling",
           "precision_at_5": 0,
           "precision_at_10": 0,
-          "judged_top10": []
+          "judged_top10": [
+            {
+              "title": "Alpha Decay",
+              "url": "https://phet.colorado.edu/en/simulations/alpha-decay",
+              "relevant": false
+            }
+          ]
         },
         {
           "language": "zh-CN",
           "query": "量子隧穿",
           "precision_at_5": 0,
           "precision_at_10": 0,
-          "judged_top10": []
+          "judged_top10": [
+            {
+              "title": "Alpha Decay",
+              "url": "https://phet.colorado.edu/en/simulations/alpha-decay",
+              "relevant": false
+            }
+          ]
         },
         {
           "language": "zh-TW",
           "query": "量子穿隧",
           "precision_at_5": 0,
           "precision_at_10": 0,
-          "judged_top10": []
+          "judged_top10": [
+            {
+              "title": "Alpha Decay",
+              "url": "https://phet.colorado.edu/en/simulations/alpha-decay",
+              "relevant": false
+            }
+          ]
         }
       ],
       "precision_at_5": 0,
@@ -2929,8 +3082,8 @@
         {
           "language": "en",
           "query": "pendulum",
-          "precision_at_5": 0.6,
-          "precision_at_10": 0.3,
+          "precision_at_5": 0.8,
+          "precision_at_10": 0.4,
           "judged_top10": [
             {
               "title": "Foucault Pendulum",
@@ -2945,6 +3098,11 @@
             {
               "title": "Simple Pendulum",
               "url": "https://physicsfundamentalsinfo.com/labs/simple-pendulum",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Undamped pendulum",
+              "url": "https://mathinsight.org/applet/undamped_pendulum",
               "relevant": true
             },
             {
@@ -2957,8 +3115,8 @@
         {
           "language": "zh-CN",
           "query": "单摆",
-          "precision_at_5": 0.6,
-          "precision_at_10": 0.3,
+          "precision_at_5": 0.8,
+          "precision_at_10": 0.4,
           "judged_top10": [
             {
               "title": "Foucault Pendulum",
@@ -2973,6 +3131,11 @@
             {
               "title": "Simple Pendulum",
               "url": "https://physicsfundamentalsinfo.com/labs/simple-pendulum",
+              "relevant": true
+            },
+            {
+              "title": "Applet: Undamped pendulum",
+              "url": "https://mathinsight.org/applet/undamped_pendulum",
               "relevant": true
             },
             {
@@ -2985,8 +3148,8 @@
         {
           "language": "zh-TW",
           "query": "單擺",
-          "precision_at_5": 0.6,
-          "precision_at_10": 0.3,
+          "precision_at_5": 0.8,
+          "precision_at_10": 0.4,
           "judged_top10": [
             {
               "title": "Foucault Pendulum",
@@ -3004,6 +3167,11 @@
               "relevant": true
             },
             {
+              "title": "Applet: Undamped pendulum",
+              "url": "https://mathinsight.org/applet/undamped_pendulum",
+              "relevant": true
+            },
+            {
               "title": "Coulombs Law",
               "url": "https://physicstuff.com/electromagnetism/coulombs-law",
               "relevant": false
@@ -3011,8 +3179,8 @@
           ]
         }
       ],
-      "precision_at_5": 0.6,
-      "precision_at_10": 0.3
+      "precision_at_5": 0.8000000000000002,
+      "precision_at_10": 0.4000000000000001
     },
     {
       "id": "wave-function",

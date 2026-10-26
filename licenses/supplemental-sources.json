@@ -94,5 +94,25 @@
         "Rust selectors 0.38.0"
       ]
     }
+  ],
+  "Knowledge ingestion dependencies": [
+    {
+      "package": "format",
+      "version": "0.2.2",
+      "declared": "MIT (package.json licenses array)",
+      "source": "https://github.com/samsonjs/format/tree/4f898096759776b7c84fa7a25b13c923dadfe46e",
+      "linked_license": "https://sjs.mit-license.org",
+      "retrieved_at": "2026-10-26",
+      "file": "licenses/supplemental/format-0.2.2-LICENSE.txt",
+      "sha256": "5b0db51328b429968ba1bde2d2a86719c33634a81d5ebc4fcbcf39fe790779f7"
+    },
+    {
+      "package": "remark-math",
+      "version": "6.0.0",
+      "declared": "MIT",
+      "source": "https://github.com/remarkjs/remark-math/blob/d5d0660b150810a535bbb07eac6cc96a4510aa24/license",
+      "file": "licenses/supplemental/remark-math-6.0.0-LICENSE.txt",
+      "sha256": "cb992262f361a5359e6771c28740d33c7041e15332ae8537fae40538992591a9"
+    }
   ]
 }

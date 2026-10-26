@@ -1,0 +1,24 @@
+.knowledge-page { height: 100%; overflow: auto; color: var(--ps-ink); }
+.knowledge-page > header { padding: 16px 24px; border-bottom: 1px solid rgb(var(--ps-border-rgb)); }
+.knowledge-page h1 { font-size: 20px; font-weight: 600; }
+.knowledge-page h2 { font-size: 18px; font-weight: 600; }
+.knowledge-page h3 { margin-top: 20px; font-size: 13px; font-weight: 600; }
+.knowledge-page p { margin: 8px 0; max-width: 80ch; }
+.knowledge-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 12px 0; }
+.knowledge-page button, .knowledge-page .ps-button { border: 1px solid rgb(var(--ps-border-rgb)); padding: 7px 10px; border-radius: 4px; background: rgb(var(--ps-panel-rgb)); cursor: pointer; }
+.knowledge-page button:disabled { cursor: default; opacity: .6; }
+.knowledge-page input[type=file] { display: block; max-width: 220px; font-size: 11px; margin-top: 4px; }
+.knowledge-page input[type=search] { display: block; width: min(100%, 640px); border: 1px solid rgb(var(--ps-border-rgb)); border-radius: 4px; padding: 8px; background: rgb(var(--ps-panel-rgb)); margin-top: 6px; }
+.knowledge-layout { display: grid; grid-template-columns: minmax(180px, 27%) minmax(0, 1fr); min-height: 300px; }
+.knowledge-layout > aside { border-right: 1px solid rgb(var(--ps-border-rgb)); padding: 12px; }
+.knowledge-layout > aside button { display: block; width: 100%; text-align: left; margin-bottom: 6px; overflow-wrap: anywhere; }
+.knowledge-layout > aside button[aria-pressed=true] { border-color: rgb(var(--ps-accent-rgb)); }
+.knowledge-layout small { display: block; margin-top: 4px; }
+.knowledge-layout article { padding: 20px 24px; min-width: 0; }
+.knowledge-page code, .knowledge-page pre { white-space: pre-wrap; overflow-wrap: anywhere; font-family: var(--ps-mono); font-size: 12px; }
+.knowledge-document { padding: 16px; margin: 16px 0; background: var(--ps-code-bg); color: var(--ps-code-ink); }
+.knowledge-empty { padding: 24px; }
+.knowledge-state { color: rgb(var(--ps-warning-rgb)); }
+.knowledge-matches { padding: 8px 12px; border-bottom: 1px solid rgb(var(--ps-border-rgb)); font-size: 12px; }
+.knowledge-matches button { display: block; text-align: left; margin-top: 4px; color: rgb(var(--ps-accent-rgb)); overflow-wrap: anywhere; }
+@media (max-width: 640px) { .knowledge-layout { grid-template-columns: minmax(0, 1fr); } .knowledge-layout > aside { max-height: 220px; overflow: auto; border-right: 0; border-bottom: 1px solid rgb(var(--ps-border-rgb)); } .knowledge-layout article, .knowledge-page > header { padding: 12px; } }

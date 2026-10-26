@@ -9,6 +9,7 @@ import { openExternal } from "../lib/commands";
 import { httpUrl } from "../lib/urls";
 import { attempt } from "../stores/noticeStore";
 import { lazy, Suspense } from "react";
+import { KnowledgeMatches } from "../knowledge/KnowledgeMatches";
 const Equation = lazy(() => import("../visualizations/Equation"));
 export default function WorkbenchInspector({
   capability,
@@ -47,6 +48,7 @@ export default function WorkbenchInspector({
       aria-label={t("inspector")}
     >
       <h2>{t("inspector")}</h2>
+      <KnowledgeMatches conceptId={c.id} />
       {lesson && session!.activeSurface === "visualize" ? (
         <>
           <h3>{localize(lesson.definition.title, locale)}</h3>

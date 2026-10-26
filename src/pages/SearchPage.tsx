@@ -15,6 +15,7 @@ import { useWorkbenchStore } from "../workbench/workbenchStore";
 const ConceptWorkbench = lazy(() => import("../workbench/ConceptWorkbench"));
 const CommandPalette = lazy(() => import("../commands/CommandPalette"));
 import { useSearchStore } from "../stores/searchStore";
+import { KnowledgeMatches } from "../knowledge/KnowledgeMatches";
 
 export default function SearchPage() {
   const t = useT();
@@ -87,6 +88,7 @@ export default function SearchPage() {
 
       {paletteOpen&&<Suspense fallback={null}><CommandPalette/></Suspense>}
       {!session&&<SearchContext onConcept={openConcept} />}
+      {!session && <KnowledgeMatches query={response?.query} />}
       {!session&&resume&&<button className="text-left text-xs px-3 py-1 text-accent dark:text-accent" onClick={()=>useWorkbenchStore.getState().restore()}>{useSettingsStore.getState().settings.ui_locale==="en"?"Resume Concept Session":useSettingsStore.getState().settings.ui_locale==="zh-CN"?"继续概念会话":"繼續概念工作階段"}</button>}
 
       {session ? (

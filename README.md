@@ -115,3 +115,13 @@ Panostem replaces the public STEM Visual Explorer name. The Tauri identifier and
 Application source remains [AGPL-3.0-only](LICENSE). ManimGL and CodeMirror are MIT; downloaded Python/native libraries retain their licenses. Actual inventories and notice texts are included in `licenses/` and summarized in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The app license does not automatically determine rights in user scenes, videos, textbooks or external assets.
 
 Next work includes wider native-platform validation, stronger OS isolation, editor tooling and provider/index maintenance. Read [CONTRIBUTING.md](CONTRIBUTING.md), report reproducible [Issues](https://github.com/styayur/panostem/issues), and use private security reporting for vulnerabilities. Releases follow protected PRs, successful checks, real binaries and per-asset checksums.
+## Local knowledge ingestion (Vextessera engineering preview)
+
+The Knowledge workspace can read local scientific documents without executing
+their code or uploading their contents. It exposes source positions, formulas,
+canonical concept links and honest review states. The reproducible source census,
+reviewed mathematical recipes and checkpointed corpus ledger are documented in
+[the knowledge pipeline guide](docs/knowledge-pipeline.md).
+
+This engineering stage does not declare the full corpus visualized or publish a
+Vextessera release. See the machine-readable [source report](docs/audits/vextessera/source-census.json).
