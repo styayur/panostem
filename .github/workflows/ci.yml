@@ -43,6 +43,7 @@ jobs:
           export SVE_CHROMIUM="$(node --input-type=module -e 'import {chromium} from "playwright"; process.stdout.write(chromium.executablePath())')"
           python scripts/knowledge_browser_test.py --out artifacts/knowledge-browser
           python scripts/migration_browser_test.py --out artifacts/migration-browser
+          python scripts/publication_browser_test.py --base http://127.0.0.1:1425/ --out artifacts/publication-browser
       - name: Pages build smoke test
         run: npm run test:web:build
 

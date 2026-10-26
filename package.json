@@ -37,7 +37,8 @@
     "knowledge:census": "node --experimental-strip-types scripts/knowledge/census.mjs",
     "knowledge:batch": "node --experimental-strip-types scripts/knowledge/batch.mjs",
     "knowledge:ingest": "node --experimental-strip-types scripts/knowledge/ingest.mjs",
-    "test:knowledge:catalog": "node --experimental-strip-types scripts/knowledge_catalog_test.mjs"
+    "test:knowledge:catalog": "node --experimental-strip-types scripts/knowledge_catalog_test.mjs",
+    "test:publication": "python scripts/publication_browser_test.py"
   },
   "dependencies": {
     "@codemirror/lang-python": "6.2.1",
