@@ -13,12 +13,13 @@ import shutil
 import subprocess
 import sys
 import time
-from sample_models import verify, scene_code, model_definition, HELPER
+from sample_models import verify, scene_code, model_definition, MODEL_CONCEPTS, HELPER
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--allow-execution', action='store_true')
 parser.add_argument('--corpus', default='.panostem-runtime/vextessera-corpus')
 parser.add_argument('--runtime-root', default='.panostem-runtime')
+parser.add_argument('--extend-samples',action='store_true')
 args = parser.parse_args()
 if not args.allow_execution:
     raise SystemExit('Application-owned generated source execution requires --allow-execution')
@@ -42,12 +43,14 @@ for file in corpus.glob('*.json'):
             units.update((u['id'], u) for u in record.get('units', []))
 
 
-def pick(source, path, line, fragment):
-    candidates = [u for u in units.values() if u['sourceId'] == f'github:{source.lower()}' and u['location']['path'] == path and u['location']['startLine'] == line]
+def pick(source, path, line, fragment, allow_text=False):
+    source_id=f'github:{source.lower()}' if '/' in source else source
+    candidates = [u for u in units.values() if u['sourceId'] == source_id and u['location']['path'] == path and u['location']['startLine'] == line]
     if len(candidates) != 1:
         raise ValueError(f'Reviewed source locator missing/ambiguous: {source}/{path}:{line}')
     u = candidates[0]
     formula = next((f for f in u['formulas'] if fragment in f['expression']), None)
+    if formula is None and allow_text and fragment in u['text']:formula={'expression':fragment}
     if formula is None:
         raise ValueError(f'Reviewed mathematical evidence changed: {u["id"]}')
     return {**u, '_reviewedFormula': formula['expression']}
@@ -65,9 +68,18 @@ recipes = [
     ('means', 'Harmonic, geometric, arithmetic and quadratic means', [('GorCat/note_math', '初等函数/常用定理.md', 9, r'H_{n}\leq G_{n}\leq A_{n}\leq Q_{n}')]),
     ('wave', 'Standing wave: fixed boundaries and PDE residual', [('djeada/Numerical-Methods', 'notes/7_ordinary_differential_equations/partial_differential_equations.md', 110, 'u_{tt} = c^2u_{xx}')]),
     ('heat', 'Thermal diffusion: decay of a sine mode', [('djeada/Numerical-Methods', 'notes/7_ordinary_differential_equations/partial_differential_equations.md', 90, r'u_t = \alpha u_{xx}')]),
+    ('beam','Cantilever bending: verified finite-element convergence',[('pizofreude/TheFEAMan','docs/TM_Formelsammlung/TM2_Biegelinien.pdf',1,'w(x)=q*x^2')]),
+    ('electric','Point charge: field and potential',[('physicsfundamentals','b9467320349fe99421f73db280112485eaf88eac5aa9f04b2b37761586de3ece.html',1,'E = kQ/r²',True)]),
+    ('control','Authored filtered PID model: verified closed-loop response',[('djeada/Numerical-Methods','notes/7_ordinary_differential_equations/ordinary_differential_equations.md',111,r"\mathbf{u}' = \mathbf{f}")]),
 ]
-frozen_path = corpus / 'reviewed-model-samples.json'
+old_frozen_path=corpus/'reviewed-model-samples.json'
+frozen_path = corpus / ('reviewed-model-samples-v2.json' if args.extend_samples or (corpus/'reviewed-model-samples-v2.json').exists() else 'reviewed-model-samples.json')
 frozen = json.loads(frozen_path.read_text()) if frozen_path.exists() else None
+if frozen is None and args.extend_samples:
+    original=json.loads(old_frozen_path.read_text())
+    frozen=[{'model':kind,'sourceHashes':{u['id']:u['contentHash'] for u in [pick(*location) for location in locations]}} for kind,_,locations in recipes]
+    if any(entry not in frozen for entry in original):raise ValueError('Original frozen samples changed; extension refused')
+    frozen_path.write_bytes(json.dumps(frozen,indent=2).encode('utf-8'))
 results = []
 bindings = []
 freeze = []
@@ -89,13 +101,16 @@ for kind, title, locations in recipes:
         project = corpus / 'samples' / kind
         project.mkdir(parents=True, exist_ok=True)
         code = scene_code(kind, title, data)
-        (project / 'main.py').write_text(code, encoding='utf-8')
-        (project / 'helpers.py').write_text(HELPER, encoding='utf-8')
-        concepts = sorted({id for u in evidence for id in u['conceptIds']})
+        (project / 'main.py').write_bytes(code.encode('utf-8'))
+        (project / 'helpers.py').write_bytes(HELPER.encode('utf-8'))
+        concepts = MODEL_CONCEPTS[kind]
+        known = {c['id'] for c in json.loads((root/'src/lib/concepts.json').read_text(encoding='utf-8'))}
+        if any(id not in known for id in concepts):raise ValueError('Reviewed model references an unknown canonical concept')
         metadata = {'version': 1, 'id': f'knowledge-{kind}', 'title': title, 'description': 'Independently authored mathematical example; concrete parameter choices are derived, not attributed to source.',
                     'entry': 'main.py', 'scene': 'ModelScene', 'license': 'AGPL-3.0-only', 'concept_ids': concepts,
                     'learning_objectives': data['checks'], 'source_ids': sorted({u['sourceId'] for u in evidence})}
         (project / 'scene.json').write_text(json.dumps(metadata, indent=2), encoding='utf-8')
+        (project / 'panostem.json').write_text(json.dumps(metadata, indent=2), encoding='utf-8')
         model = model_definition(kind, concepts, evidence, data, result['verificationHash'])
         (project / 'model.json').write_text(json.dumps(model, indent=2), encoding='utf-8')
         intent = {'schemaVersion':1,'unitIds':[u['id'] for u in evidence],'modelId':kind,'dimensions':'3d' if kind=='gradient' else '2d',
@@ -111,7 +126,8 @@ for kind, title, locations in recipes:
         ffmpeg = runtime / 'bin' / ('ffmpeg.exe' if sys.platform == 'win32' else 'ffmpeg')
         subprocess.run([str(ffmpeg), '-v', 'error', '-i', str(project / movie['path']), '-f', 'null', '-'], check=True, timeout=60, capture_output=True)
         result.update({'decoded': True, 'movie': str(project / movie['path']), 'bytes': movie['size'], 'renderSeconds': rendered['elapsed'], 'python': str(project / 'main.py'), 'projectRevision': info['revision']})
-        binding = {'id': f'knowledge-{kind}', 'modelId': kind, 'modelVersion': 1, 'semanticKey': hashlib.sha256((kind + json.dumps(data, sort_keys=True)).encode()).hexdigest(),
+        semantics = {field:model[field] for field in ('id','version','variables','parameters','equations','initialConditions','boundaryConditions','assumptions','solver')}
+        binding = {'id': f'knowledge-{kind}', 'modelId': kind, 'modelVersion': 1, 'semanticKey': hashlib.sha256(json.dumps(semantics, sort_keys=True).encode()).hexdigest(),
                    'unitIds': [u['id'] for u in evidence], 'sourceHashes': hashes, 'conceptIds': concepts, 'entry': 'main.py', 'scene': 'ModelScene',
                    'verifiedFormulas': {u['id']: [u['_reviewedFormula']] for u in evidence}, 'coverageScope': 'Listed equations and derived example only; not every claim in the source unit',
                    'mathVerified': True, 'rendered': True, 'decoded': True, 'rightsCleared': False}

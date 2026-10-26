@@ -79,6 +79,9 @@ test('read-only filesystem adapter records bad encodings, unsupported media and 
   assert.equal(records.length, 3); assert.equal(records.find(r => r.path === 'bad.md').disposition, 'failed'); assert.equal(records.find(r => r.path === 'scan.pdf').disposition, 'unsupported');
   const outside = path.join(temp, 'outside.md'); await fs.writeFile(outside, 'private');
   const escaped = await adapter.read({ path: '../outside.md', full: outside, bytes: 7 }, 'r'); assert.equal(escaped.disposition, 'failed');
+  const oversized=path.join(source,'grew.md');await fs.writeFile(oversized,'x'.repeat(2001));
+  const bounded=new KnowledgeSourceAdapter(source,'bounded',{maxBytes:1000});
+  assert.equal((await bounded.read({path:'grew.md',full:oversized,bytes:3},'r')).disposition,'failed','Actual file size must be bounded even when discovery metadata is stale');
   const census = { sources: [{ id: 'test', repository: 'test/repo', kind: 'github', access: 'accessible' }] };
   await writeJson(path.join(out, 'census.json'), census); await writeJson(path.join(out, 'test__repo.json'), { records });
   const run = extra => execFileSync(process.execPath, ['scripts/knowledge/batch.mjs', '--corpus', out, ...extra], { cwd: path.resolve(import.meta.dirname, '..'), encoding: 'utf8' });

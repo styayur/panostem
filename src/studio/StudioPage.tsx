@@ -16,6 +16,8 @@ import {
 import { exportShare, importShare, shareMime, type Share } from "./share";
 import { useSceneRegistry } from "./registry";
 import "./studio.css";
+import { knowledgeModels, knowledgeModelById } from "../knowledge/catalog";
+import { useModelSelection } from "../knowledge/selection";
 const PythonEditor = lazy(() => import("./PythonEditor"));
 const inputText = (file: Uint8Array) => new TextDecoder().decode(file);
 
@@ -272,21 +274,29 @@ export default function StudioPage() {
     setLicense(s.manifest.scene.license);
     setIncludeSource(false);
   };
-  const example = async () => {
+  const example = async (key = "oscillator") => {
+    const model=key.startsWith("knowledge-")?knowledgeModelById.get(key.slice(10)):undefined;
+    if(key!=="oscillator"&&!model?.sharePath)throw new Error("No cleared scene share is available for this model");
     const response = await fetch(
-      `${import.meta.env.BASE_URL}examples/oscillator.panostem.zip`,
+      `${import.meta.env.BASE_URL}${model?.sharePath?`${model.sharePath}?v=${model.shareHash}`:"examples/oscillator.panostem.zip"}`,
     );
     if (!response.ok)
       throw new Error(
         "Example share is unavailable; import a local share ZIP instead",
       );
-    await imported(
-      new File([await response.arrayBuffer()], "oscillator.panostem.zip"),
-    );
+    const bytes=await response.arrayBuffer();
+    if(model?.shareHash){
+      const digest=Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256",bytes))).map(n=>n.toString(16).padStart(2,"0")).join("");
+      if(digest!==model.shareHash)throw new Error("Model share hash does not match reviewed catalog");
+    }
+    await imported(new File([bytes], `${key}.panostem.zip`));
   };
   useEffect(() => {
-    if (new URLSearchParams(location.search).get("example") === "oscillator")
-      run(example);
+    const selection=useModelSelection.getState();
+    if(selection.template&&knowledgeModelById.has(selection.template))setTemplate(`knowledge-${selection.template}`);
+    const requested=selection.example?`knowledge-${selection.example}`:new URLSearchParams(location.search).get("example");
+    if(requested==="oscillator"||(requested?.startsWith("knowledge-")&&knowledgeModelById.get(requested.slice(10))?.sharePath))void run(()=>example(requested));
+    selection.clear();
   }, []);
   const download = (bytes: Uint8Array, name: string) => {
     const url = URL.createObjectURL(
@@ -511,6 +521,7 @@ export default function StudioPage() {
                     {t(x)}
                   </option>
                 ))}
+                {knowledgeModels.map(model=><option key={model.id} value={`knowledge-${model.id}`}>{localize(model.title,locale)}</option>)}
               </select>
             </label>
             <div className="studio-actions">

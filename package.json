@@ -12,7 +12,7 @@
     "build": "tsc && vite build",
     "build:web": "tsc && vite build --mode web",
     "preview": "vite preview",
-    "test": "node --experimental-strip-types scripts/unit_test.mjs && node --experimental-strip-types scripts/preview_security_test.mjs && node --experimental-strip-types scripts/retrieval_test.mjs && node --experimental-strip-types scripts/search_golden.mjs && node scripts/index_baseline_test.mjs && npm run test:learning && npm run test:workbench && npm run test:studio && npm run test:knowledge",
+    "test": "node --experimental-strip-types scripts/unit_test.mjs && node --experimental-strip-types scripts/preview_security_test.mjs && node --experimental-strip-types scripts/retrieval_test.mjs && node --experimental-strip-types scripts/search_golden.mjs && node scripts/index_baseline_test.mjs && npm run test:learning && npm run test:workbench && npm run test:studio && npm run test:knowledge && npm run test:knowledge:catalog",
     "test:learning": "node --experimental-strip-types scripts/learning_test.mjs",
     "test:web": "node --experimental-strip-types scripts/web_regression.mjs",
     "test:web:build": "npm run build:web && node --experimental-strip-types scripts/web_build_smoke.mjs",
@@ -36,7 +36,8 @@
     "test:knowledge": "node --experimental-strip-types scripts/knowledge_test.mjs",
     "knowledge:census": "node --experimental-strip-types scripts/knowledge/census.mjs",
     "knowledge:batch": "node --experimental-strip-types scripts/knowledge/batch.mjs",
-    "knowledge:ingest": "node --experimental-strip-types scripts/knowledge/ingest.mjs"
+    "knowledge:ingest": "node --experimental-strip-types scripts/knowledge/ingest.mjs",
+    "test:knowledge:catalog": "node --experimental-strip-types scripts/knowledge_catalog_test.mjs"
   },
   "dependencies": {
     "@codemirror/lang-python": "6.2.1",

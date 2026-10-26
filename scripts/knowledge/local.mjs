@@ -7,9 +7,9 @@ import { parseDocument } from '../../src/knowledge/parse.ts';
 const exec = promisify(execFile);
 export const hash = value => createHash('sha256').update(value).digest('hex');
 export const textFormats = new Set(['.md', '.markdown', '.mdown', '.tex', '.rmd', '.ipynb', '.html', '.htm']);
-export const ignored = new Set(['.git', '.obsidian', 'node_modules', '.venv', 'venv', '__pycache__', '.ipynb_checkpoints', 'target', '.DS_Store']);
+export const ignored = new Set(['.git', '.obsidian', 'node_modules', '.venv', 'venv', '__pycache__', '.ipynb_checkpoints', 'target', '.ds_store']);
 export async function gitRead(root, args) {
-  try { return (await exec('git', ['-C', root, ...args], { timeout: 20000, maxBuffer: 4 * 1024 * 1024 })).stdout.trim(); }
+  try { return (await exec('git', ['-c', 'core.fsmonitor=false', '-C', root, ...args], { env: { ...process.env, GIT_OPTIONAL_LOCKS:'0' }, timeout: 20000, maxBuffer: 4 * 1024 * 1024 })).stdout.trim(); }
   catch { return null; }
 }
 export async function writeJson(file, value) {
@@ -20,7 +20,11 @@ export async function writeJson(file, value) {
 }
 /** No links followed, includes resolved, code executed, dependencies installed, or source files written. */
 export class KnowledgeSourceAdapter {
-  constructor(root, sourceId, options = {}) { this.root = path.resolve(root); this.sourceId = sourceId; this.options = options; }
+  constructor(root, sourceId, options = {}) {
+    this.root = path.resolve(root); this.sourceId = sourceId; this.options = options;
+    const max=options.maxBytes??2_000_000;
+    if(!Number.isInteger(max)||max<1||max>32_000_000)throw new Error('Invalid document byte limit');
+  }
   async *discover() {
     const rootStat = await fs.lstat(this.root);
     if (!rootStat.isDirectory() || rootStat.isSymbolicLink()) throw new Error('Source root must be a real directory, not a symlink');
@@ -29,7 +33,7 @@ export class KnowledgeSourceAdapter {
       const entries = await fs.readdir(folder, { withFileTypes: true });
       entries.sort((a, b) => a.name.localeCompare(b.name));
       for (const entry of entries) {
-        if (ignored.has(entry.name) || (this.options.ignore ?? []).includes(entry.name)) continue;
+        if (ignored.has(entry.name.toLowerCase()) || (this.options.ignore ?? []).includes(entry.name)) continue;
         const relative = prefix ? `${prefix}/${entry.name}` : entry.name;
         const full = path.join(folder, entry.name);
         const info = await fs.lstat(full);
@@ -55,8 +59,18 @@ export class KnowledgeSourceAdapter {
       if (contained === '..' || contained.startsWith('..' + path.sep) || path.isAbsolute(contained)) throw new Error('Read path escaped source root');
       // Recheck immediately before opening; refuse any path that changed into a link.
       if ((await fs.lstat(record.full)).isSymbolicLink()) throw new Error('Source became a symlink');
-      const bytes = await fs.readFile(record.full);
-      if (bytes.length > (this.options.maxBytes ?? 2_000_000)) throw new Error('File grew beyond configured byte limit');
+      const handle=await fs.open(record.full,'r');
+      let bytes;
+      try {
+        const info=await handle.stat();
+        if(!info.isFile())throw new Error('Source is not a regular file');
+        const limit=this.options.maxBytes??2_000_000;
+        if(info.size>limit)throw new Error('File grew beyond configured byte limit');
+        const buffer=Buffer.alloc(limit+1);let used=0;
+        while(used<buffer.length){const {bytesRead}=await handle.read(buffer,used,buffer.length-used,null);if(!bytesRead)break;used+=bytesRead;}
+        if(used>limit)throw new Error('File grew beyond configured byte limit');
+        bytes=buffer.subarray(0,used);
+      } finally {await handle.close();}
       const text = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
       const contentHash = hash(bytes);
       const units = parseDocument({ sourceId: this.sourceId, path: record.path, origin: this.options.origin ?? record.path,
