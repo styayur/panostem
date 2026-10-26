@@ -39,7 +39,7 @@ for name,info in sorted(lock["packages"].items()):
 data=json.loads(subprocess.check_output(["cargo","metadata","--locked","--format-version","1","--manifest-path",str(root/"src-tauri/Cargo.toml")],cwd=root,text=True))
 rust=[]
 for pkg in sorted(data["packages"],key=lambda p:(p["name"],p["version"])):
-    if pkg["name"]=="panostem":continue
+    if pkg["name"] in ("panostem","vextessera"):continue
     folder=Path(pkg["manifest_path"]).parent
     rust.append({"name":pkg["name"],"version":pkg["version"],"license":pkg.get("license") or "UNDECLARED","source":pkg.get("source"),"texts":collect(folder,f"Rust {pkg['name']} {pkg['version']}")})
 (dest/"rust-build-inventory.json").write_text(json.dumps(rust,indent=2),encoding="utf-8")

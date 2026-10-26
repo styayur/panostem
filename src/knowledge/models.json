@@ -161,7 +161,7 @@
     "sharePath": "knowledge/newton.panostem.zip",
     "mediaPath": "knowledge/newton.mp4",
     "mediaHash": "7d611f845e6c9e8b089558ff51b7bfd1e6565d01e47b44d37b92e10876ee5744",
-    "shareHash": "a57657737155e20f3f1e963d905b44f21e67ca593e8532ebe793d0bbb8978da8"
+    "shareHash": "27bc45cc86b423553ffed96c1c2821395d88acd06a059feb663dc107ca65cf65"
   },
   {
     "id": "bisection",
@@ -329,7 +329,7 @@
     "sharePath": "knowledge/bisection.panostem.zip",
     "mediaPath": "knowledge/bisection.mp4",
     "mediaHash": "2a5a2297c043ddbcef1fc01dfa3af58342caad70eaae5cc3b80ec8fcc0a165e4",
-    "shareHash": "4c42d90bc21ad551671200c3b32433fc2b8c5faa7a177f0d45872108aa939421"
+    "shareHash": "3befbc628eb457681d222f73043634e05a5726a47e65488b9ecfa91083db95af"
   },
   {
     "id": "oscillator",
@@ -983,7 +983,7 @@
     "sharePath": "knowledge/oscillator.panostem.zip",
     "mediaPath": "knowledge/oscillator.mp4",
     "mediaHash": "9805bade2f7eefb6da47627601dcea585632c4930ec6929eb22dda097b829c99",
-    "shareHash": "fce2a3b3db5872c9abce5ffd845417a05b6f26d8b5fe139caa7ecd466c0f7ca2"
+    "shareHash": "29f7d0c399a8c8534d0767c410d1d911b7186ec40315c1e59c510d02aedc0f5e"
   },
   {
     "id": "gradient",
@@ -1195,7 +1195,7 @@
     "sharePath": "knowledge/gradient.panostem.zip",
     "mediaPath": "knowledge/gradient.mp4",
     "mediaHash": "8c8906c2c85b31f88fa4c06d86f0cbac81c17de630841f8e5b635780da180f47",
-    "shareHash": "ef065b7871d07bddee0563fca0c2e2e2029af8c09fee025c3cd6fcdc8ce9e43d"
+    "shareHash": "662dfa82a401ff2b4418751ee9389ae4e8eae19becdc6a2491c2848ccf63e3c4"
   },
   {
     "id": "square",
@@ -4153,7 +4153,7 @@
     "sharePath": "knowledge/wave.panostem.zip",
     "mediaPath": "knowledge/wave.mp4",
     "mediaHash": "03dd022b6b3db004fec3c6779af9341a4eefc865d0de9473ed9c7325611867c1",
-    "shareHash": "00ca4e271d84c900f6a77fec875c915fda7fe86a2904f186914a193965934702"
+    "shareHash": "034c4379749594d57eccbc5382850e16d7eb04fe867a65203681da7783415a81"
   },
   {
     "id": "heat",
@@ -4799,7 +4799,7 @@
     "sharePath": "knowledge/heat.panostem.zip",
     "mediaPath": "knowledge/heat.mp4",
     "mediaHash": "df12123a0a5b36ec4c7eb7927ee07b026a60cf2e14a7e9e6fd7982d39dd0f12f",
-    "shareHash": "2edaef1cc587107086c476859c3868776ebb954af8a4c4f392e51fecf27e192a"
+    "shareHash": "2871d3fd8a514e7e10f88379cc75a050cf0d89f2bd51783fbebc06b8e4800461"
   },
   {
     "id": "beam",

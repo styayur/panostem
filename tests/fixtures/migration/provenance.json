@@ -1,0 +1,9 @@
+{
+  "share": {
+    "tag": "v0.5.0-alpha.2",
+    "commit": "d9870a061c9b5a89d0d0ee7a128ba95c63292d75",
+    "path": "public/examples/oscillator.panostem.zip",
+    "sha256": "0827d91ce4c29a981e49d4b4763300e0f9243899c55c1bfda083a7f2ca5df963"
+  },
+  "purpose": "Application-owned historical share fixture; no private data or third-party assets"
+}

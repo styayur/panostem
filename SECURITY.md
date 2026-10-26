@@ -8,7 +8,7 @@ Security fixes target the latest release and current `main`.
 
 Do not report exploitable issues in a public issue. Use GitHub private vulnerability reporting:
 
-https://github.com/styayur/panostem/security/advisories/new
+https://github.com/styayur/vextessera/security/advisories/new
 
 Include the affected surface/version, source URL or query, Windows/browser environment, reproduction, impact, and minimal proof-of-concept details. Remove browsing history, cookies, local paths, and personal data.
 
@@ -30,7 +30,7 @@ itself proof of an application sandbox escape; no local-run sandbox is claimed.
 
 Relevant issues include URL-scheme validation, path or IPC escapes from WebViewer windows, unsafe injection into embedded pages, proxy/header bypasses, dependency compromise, index poisoning, and translation data leakage.
 
-Panostem does not bypass CSP, X-Frame-Options, authentication, CAPTCHAs, or anti-bot controls. It is a resource discovery/comparison tool, not a general-purpose browser.
+Vextessera does not bypass CSP, X-Frame-Options, authentication, CAPTCHAs, or anti-bot controls. It is a resource discovery/comparison tool, not a general-purpose browser.
 
 ## Alpha.2 execution and preview controls
 

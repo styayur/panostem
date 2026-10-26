@@ -12,7 +12,7 @@ if sys.platform=="win32":assert binary.read_bytes()[:2]==b"MZ"
 info=json.loads(subprocess.check_output([str(binary),"--verify-build"],timeout=30,text=True))
 package=json.loads((root/"package.json").read_text(encoding="utf-8-sig"))
 config=json.loads((root/"src-tauri/tauri.conf.json").read_text(encoding="utf-8-sig"))
-assert info["product"]==config["productName"]=="Panostem"
+assert info["product"]==config["productName"]=="Vextessera"
 assert info["version"]==info["app_version"]==package["version"]==config["version"]
 assert info["bundle_identifier"]==config["identifier"]=="org.stemvisualexplorer.app"
 assert info["runtime_commit"]=="f427fc67df75513be0cd3f3329e327a9a19401c3"

@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.6.0-alpha.1
+
+- Vextessera public identity, vector icon, package/binary/asset names and Web base;
+  preserve historical releases and all data/project/share compatibility identities.
+- Read-only source ingestion and 22-source census across Markdown/Obsidian, partial
+  MyST, static TeX, inert Rmd/Notebook/HTML. No imported code execution or uploads.
+- Complete discovered-resource disposition ledger, incremental hashes, recoverable
+  batch filters/checkpoints/retries, explicit rights/access/modeling/review queues.
+- Fourteen source-grounded, independently verified ManimGL models; six cleared
+  self-rendered Web movies/source shares and fourteen native Studio templates.
+- Continuous search/source/model/Concept Workbench/Studio navigation with immutable
+  citations, units/assumptions/invariants, revision trust and ordinary Python freedom.
+- Real source and bundled-template render/decode, privacy/three-language/browser,
+  historical-share/data-schema migration and embedded-template identity checks.
+- Windows x64 alpha scope remains unsigned; installer lifecycle is unverified on
+  this host. Full-corpus visualization and global website discovery remain queued.
+
 ## 0.5.0-alpha.2
 
 - Unify shell, search/favorites/settings, Workbench/lessons and Studio with shared

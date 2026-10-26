@@ -1,6 +1,6 @@
-# Panostem interface conventions
+# Vextessera interface conventions
 
-Panostem is a STEM workbench and local scene editor. Its interface uses technical
+Vextessera is a STEM workbench and local scene editor. Its interface uses technical
 document hierarchy and IDE density: clear titles, fine panel separators, readable
 data, and a restrained teal selection/focus accent. Zensical's documentation
 hierarchy informed the review; no Zensical code, layout or assets were copied.

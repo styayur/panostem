@@ -121,7 +121,7 @@ impl Default for ProviderRegistry {
 pub fn http_client() -> reqwest::Client {
     reqwest::Client::builder()
         .user_agent(format!(
-            "Panostem/{} (+https://github.com/styayur/panostem)",
+            "Vextessera/{} (+https://github.com/styayur/vextessera)",
             env!("CARGO_PKG_VERSION")
         ))
         .timeout(std::time::Duration::from_secs(20))

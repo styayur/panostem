@@ -81,9 +81,9 @@ export default function App() {
       <a className="skip-link" href="#main-content">{t("common.skipContent")}</a>
       <header className="app-header flex items-center gap-2 border-b border-edge-light bg-panel px-3 py-2 dark:border-edge-dark dark:bg-surface-dark">
         <div className="app-brand mr-2 flex items-center gap-2">
-          <img className="h-7 w-7" src={`${import.meta.env.BASE_URL}panostem.svg`} alt="" aria-hidden="true" />
+          <img className="h-7 w-7" src={`${import.meta.env.BASE_URL}vextessera.svg`} alt="" aria-hidden="true" />
           <div className="leading-tight">
-            <div className="text-[13px] font-semibold">Panostem</div>
+            <div className="text-[13px] font-semibold">Vextessera</div>
             <div className="hidden text-[11px] text-muted sm:block">{t("app.subtitle")}</div>
           </div>
         </div>

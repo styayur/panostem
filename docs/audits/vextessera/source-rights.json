@@ -1,0 +1,317 @@
+[
+  {
+    "sourceId": "github:hitsz-openauto/math1005",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "CC BY-NC-SA 4.0 in actual LICENSE; source bodies excluded",
+    "rootEvidence": [
+      {
+        "path": "LICENSE",
+        "sha256": "fa10b76637fb18d164bec8746d15efa976b597f536dde8fce30f026e8fcdafad"
+      }
+    ],
+    "revision": "e29056d7bd048b528b8c78996d4803cc5890703d",
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 3
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:pkuanonym/rekcarc-tsc-uht",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "CC-BY-SA-4.0; README differs; third-party course rights separate; source bodies excluded",
+    "rootEvidence": [
+      {
+        "path": "LICENSE",
+        "sha256": "fcc8a87920214067b4f9f81aceec79d4593e70184c25fe81f0e880ab30347856"
+      }
+    ],
+    "revision": "37cd19f7a9fb80dc846a7016b3fd482ed5fe7cc0",
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 5,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 5
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:theophilec/complex-analysis",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; source bodies excluded",
+    "rootEvidence": [],
+    "revision": "96d9fd56689a6767b52526fa0f2f288b710e2a47",
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 2,
+      "verified-local-scene": 1
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:pkm-er/pkmer-math",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; source bodies excluded",
+    "rootEvidence": [],
+    "revision": "575be4fd4761d7446b051c835ee8ea0a49aca520",
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 4,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 4
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:e0328/essence-of-linear-algebra",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; source bodies excluded",
+    "rootEvidence": [],
+    "revision": null,
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 0,
+    "frozenSampleDispositionCounts": {},
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:mikeroyal/calculus-guide",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; source bodies excluded",
+    "rootEvidence": [],
+    "revision": "3e67ab5ff67ecd09e0552da432ab481e0d546730",
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 3
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:gorcat/note_math",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; source bodies excluded",
+    "rootEvidence": [],
+    "revision": "19fd8b26962e61e37bc4a4756211f3f8ac7c3913",
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 2,
+      "verified-local-scene": 1
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:maksimim/jaynesprobabilitytheory",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "CC0-1.0; source bodies excluded",
+    "rootEvidence": [
+      {
+        "path": "LICENSE",
+        "sha256": "f4e7f373b9b996950337e8d41a4a2939c2d90b7725e9baf3d5084a22717ad328"
+      }
+    ],
+    "revision": "ea8afb47c1346c88a7e64f1c378310bf9c859e00",
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 5,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 5
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:vincentc75/mit_sdsmm",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; source bodies excluded",
+    "rootEvidence": [],
+    "revision": "461c36a9ea4a8da599795f6ce444b8c1e7712319",
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 2,
+      "verified-local-scene": 1
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:mikeroyal/physics-guide",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; source bodies excluded",
+    "rootEvidence": [],
+    "revision": "4fac548579ea41fef265d4d5382aaf4a47286229",
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 3
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:pizofreude/thefeaman",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "Apache-2.0 in LICENSE; README says MIT; PDF/textbook rights separate; source bodies excluded",
+    "rootEvidence": [
+      {
+        "path": "LICENSE",
+        "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
+      }
+    ],
+    "revision": "686dc5faf1009d9c294d302c11785146b0f30dbc",
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 3
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:djeada/numerical-methods",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "MIT; source bodies excluded",
+    "rootEvidence": [
+      {
+        "path": "LICENSE",
+        "sha256": "2e3ddb76d6849ccfce10615ae6702c568bed67ce2b46fc58677c2dbbf534b177"
+      }
+    ],
+    "revision": "23cc8410e6641e4391b56d5b3acd8665ac30e3fc",
+    "publicMediaSceneIds": [
+      "newton",
+      "bisection",
+      "oscillator",
+      "gradient",
+      "wave",
+      "heat"
+    ],
+    "frozenSampleCount": 5,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 5
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:apurbakumarnath/numerical-methods-python",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; source bodies excluded",
+    "rootEvidence": [],
+    "revision": "692cd958ced6e813a969e4045573a0a0387662d4",
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 4,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 4
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:mickychiang/control-systems-notes",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; source bodies excluded",
+    "rootEvidence": [],
+    "revision": null,
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 0,
+    "frozenSampleDispositionCounts": {},
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "github:alexander-yakovlev/control-theory",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; source bodies excluded",
+    "rootEvidence": [],
+    "revision": null,
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 0,
+    "frozenSampleDispositionCounts": {},
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "mathinsight",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; no site bodies/media packaged; source bodies excluded",
+    "rootEvidence": [],
+    "revision": null,
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 3
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "falstad",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; no site bodies/media packaged; source bodies excluded",
+    "rootEvidence": [],
+    "revision": null,
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 3
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "phet",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "Regular HTML sims CC BY-NC 4.0; external links only; no site bodies/media packaged; source bodies excluded",
+    "rootEvidence": [],
+    "revision": null,
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 3
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "betterexplained",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; no site bodies/media packaged; source bodies excluded",
+    "rootEvidence": [],
+    "revision": null,
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 3
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "physicsfundamentals",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; no site bodies/media packaged; source bodies excluded",
+    "rootEvidence": [],
+    "revision": null,
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 3
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "physicstuff",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; no site bodies/media packaged; source bodies excluded",
+    "rootEvidence": [],
+    "revision": null,
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 3
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  },
+  {
+    "sourceId": "maotian",
+    "rightsStatus": "review-required",
+    "licenseEvidence": "No redistribution grant established; no site bodies/media packaged; source bodies excluded",
+    "rootEvidence": [],
+    "revision": null,
+    "publicMediaSceneIds": [],
+    "frozenSampleCount": 3,
+    "frozenSampleDispositionCounts": {
+      "needs-review": 3
+    },
+    "nextAction": "Re-review exact document/formula, assumptions and file-level rights before adding a new scene binding; do not execute imported code"
+  }
+]

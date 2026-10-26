@@ -25,7 +25,7 @@ const en: Dict = {
     "This provider uses a native resource card; no embedded page is requested.",
   "workspace.openViewers": "Open all in WebViewers",
 
-  "app.subtitle": "Concept-driven STEM learning workbench.",
+  "app.subtitle": "Source-grounded STEM knowledge workbench.",
   "nav.search": "Search",
   "nav.favorites": "Favorites",
   "nav.settings": "Settings",
@@ -119,7 +119,7 @@ const en: Dict = {
   "settings.cacheNote": "Cached indexes are stored locally only.",
   "settings.about": "About",
   "settings.aboutText":
-    "Panostem is a deterministic local search client. It performs no AI ranking, requires no account, sends no telemetry and never talks to a cloud database. Network requests go directly to the source websites you search.",
+    "Vextessera is a deterministic local search client. It performs no AI ranking, requires no account, sends no telemetry and never talks to a cloud database. Network requests go directly to the source websites you search.",
   "settings.license":
     "Licensed under the GNU Affero General Public License v3.0.",
 
@@ -159,7 +159,7 @@ const zhCN: Dict = {
   "resource.nativeCard": "此来源使用原生资源卡片，不请求嵌入网页。",
   "workspace.openViewers": "全部在独立窗口打开",
 
-  "app.subtitle": "以概念为核心的 STEM 学习工作台。",
+  "app.subtitle": "以来源与数学为依据的 STEM 知识工作台。",
   "nav.search": "搜索",
   "nav.favorites": "收藏",
   "nav.settings": "设置",
@@ -250,7 +250,7 @@ const zhCN: Dict = {
   "settings.cacheNote": "索引缓存仅保存在本地。",
   "settings.about": "关于",
   "settings.aboutText":
-    "Panostem 是一个确定性的本地搜索客户端：不做 AI 排序、无需登录、不上报遥测、也不使用云数据库。网络请求直接发往你搜索的来源网站。",
+    "Vextessera 是一个确定性的本地搜索客户端：不做 AI 排序、无需登录、不上报遥测、也不使用云数据库。网络请求直接发往你搜索的来源网站。",
   "settings.license": "本项目基于 GNU Affero 通用公共许可证 v3.0 发布。",
 
   "settings.translation": "语言与翻译",
@@ -289,7 +289,7 @@ const zhTW: Dict = {
   "resource.nativeCard": "此來源使用原生資源卡片，不請求嵌入網頁。",
   "workspace.openViewers": "全部在獨立視窗開啟",
 
-  "app.subtitle": "以概念為核心的 STEM 學習工作臺。",
+  "app.subtitle": "以來源與數學為依據的 STEM 知識工作臺。",
   "nav.search": "搜尋",
   "nav.favorites": "收藏",
   "nav.settings": "設定",
@@ -380,7 +380,7 @@ const zhTW: Dict = {
   "settings.cacheNote": "索引快取僅保存在本機。",
   "settings.about": "關於",
   "settings.aboutText":
-    "Panostem 是確定性的本機搜尋客戶端：不做 AI 排序、無需登入、不回傳遙測、也不使用雲端資料庫。網路請求直接送往你搜尋的來源網站。",
+    "Vextessera 是確定性的本機搜尋客戶端：不做 AI 排序、無需登入、不回傳遙測、也不使用雲端資料庫。網路請求直接送往你搜尋的來源網站。",
   "settings.license": "本專案採用 GNU Affero 通用公共授權條款 v3.0 發布。",
 
   "settings.translation": "語言與翻譯",

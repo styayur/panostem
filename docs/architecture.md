@@ -1,6 +1,6 @@
 # Architecture
 
-Panostem is a concept-driven STEM learning environment with an independent native ManimGL authoring engine. External WebViewers remain supporting resource viewers with restricted IPC.
+Vextessera is a concept-driven STEM learning environment with an independent native ManimGL authoring engine. External WebViewers remain supporting resource viewers with restricted IPC.
 
 ## ManimGL architecture
 
@@ -16,7 +16,7 @@ Preview is a separate OpenGL window. Video/frame results are served through a
 random-token protocol limited to app windows; external viewers have no access.
 Web only validates/imports packages and plays media. See
 [ADR 0005](adr/0005-panostem-manimgl.md), [runtime guide](manimgl.md) and
-[migration notes](migration-panostem.md) for contracts and known limitations.
+[migration notes](migration-vextessera.md) for contracts and known limitations.
 
 ## Core domain
 
@@ -82,3 +82,25 @@ platforms and unsigned packages must be identified explicitly.
 The canonical ontology also backs glossary translation. Rust and TypeScript consume the same ontology, benchmark labels and golden contract. Candidate retrieval is strict AND across concept groups; graph exploration is explicitly opt-in. Search explanations and the shared diagnostic presenter make zero results distinguishable from failed/disabled providers and filters. See [retrieval.md](retrieval.md).
 
 Index schema/cache version 2 adds deterministic semantic metadata with field provenance. Web content-hash cache keys prevent same-date stale snapshots; desktop invalidates old schema caches and rebuilds without fatal deserialization. A staged weekly/manual refresh rejects provider-count/URL/title/duplicate/semantic regressions before creating a PR. CI compares the old and new engines on the same baseline corpus as well as the refreshed corpus. No cloud service, telemetry, IPC capability or embedding bypass was added.
+
+## Source-grounded model pipeline
+
+The read-only `KnowledgeSourceAdapter` feeds versioned units with exact source
+positions, content hashes, formulas, references and authoritative Concept IDs.
+Web discovery remains in `ProviderRegistry`; the census does not introduce a
+competing search provider architecture. Static parsing never executes imported
+Notebook, Rmd, HTML or repository code. Private bodies/indexes stay outside public
+artifacts.
+
+Reviewed `MathematicalModel` and `VisualizationIntent` contracts bind equations,
+units, assumptions, conditions and verification to ordinary ManimGL producers.
+The registry requires matching source hashes plus independent math, actual render
+and decode evidence. Batch classification is checkpointed and separate from
+scene/render completion. Source changes invalidate bindings rather than silently
+reusing evidence.
+
+`ModelWorkbench` connects search/Concept Workbench with citations, contracts,
+selected public movies/source shares and fourteen native templates. The native
+controller creates a normal project without executing it; revision trust governs
+subsequent runs. The build embeds exact catalog/helper/template hashes. Web has
+no Python executor. See [pipeline and scope](knowledge-pipeline.md).

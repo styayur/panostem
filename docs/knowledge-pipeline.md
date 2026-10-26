@@ -1,8 +1,7 @@
 # Source-grounded knowledge pipeline
 
-This implements the first Vextessera engineering stage on the existing Panostem
-application. Product and repository renaming remain gated by the later migration
-and release work. The application remains AGPL-3.0-only.
+Vextessera extends the existing concept/search and native ManimGL application.
+The application remains AGPL-3.0-only; third-party knowledge rights are separate.
 
 ## Read-only ingestion
 
