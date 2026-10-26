@@ -119,6 +119,8 @@ jobs:
         if: always()
         with:
           name: manimgl-real-render
+          include-hidden-files: true
+          if-no-files-found: error
           path: |
             .panostem-runtime/smoke-evidence.json
             .panostem-runtime/smoke-*/renders/smoke/scene.mp4
