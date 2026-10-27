@@ -15,7 +15,7 @@ parser.add_argument('--out',default='.panostem-runtime/vextessera-audit/public-w
 args=parser.parse_args()
 base=args.base.rstrip('/')+'/'
 out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
-catalog=json.loads((Path(__file__).resolve().parents[1]/'src/knowledge/models.json').read_text())
+catalog=json.loads((Path(__file__).resolve().parents[1]/'src/knowledge/models.json').read_text(encoding='utf-8'))
 results={'base':base,'models':[],'queries':[],'pythonExecution':False}
 with sync_playwright() as p:
     browser=p.chromium.launch(headless=True,**({'executable_path':os.environ['SVE_CHROMIUM']} if os.environ.get('SVE_CHROMIUM') else {}))

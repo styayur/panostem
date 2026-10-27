@@ -20,7 +20,7 @@ for key,file in (("requirements_sha256","requirements.lock"),("controller_sha256
     assert info[key]==hashlib.sha256((root/"src-tauri/runtime"/file).read_bytes()).hexdigest()
 for key,file in (("knowledge_catalog_sha256","knowledge_catalog.json"),("knowledge_helpers_sha256","knowledge_helpers.py")):
     assert info[key]==hashlib.sha256((root/"src-tauri/runtime/examples"/file).read_bytes()).hexdigest()
-models=json.loads((root/"src/knowledge/models.json").read_text())
+models=json.loads((root/"src/knowledge/models.json").read_text(encoding='utf-8'))
 assert set(info["knowledge_template_hashes"])=={m["id"] for m in models}
 for m in models:
     assert info["knowledge_template_hashes"][m["id"]]==m["sourceHash"]==hashlib.sha256((root/"src-tauri/runtime/examples"/f"knowledge_{m['id']}.py").read_bytes()).hexdigest()

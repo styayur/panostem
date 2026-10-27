@@ -25,7 +25,7 @@ with sync_playwright() as p:
     assert invoke('plugin:app|identifier')=='org.stemvisualexplorer.audit20260929','Refusing to change a production profile'
     product=invoke('plugin:app|name')
     version=invoke('plugin:app|version')
-    assert product=='Vextessera' and version==json.loads((root/'package.json').read_text())['version']
+    assert product=='Vextessera' and version==json.loads((root/'package.json').read_text(encoding='utf-8'))['version']
     page.goto(args.base+'/?route=knowledge');page.wait_for_load_state('networkidle')
     page.evaluate('async ()=>{const {useSettingsStore}=await import("/src/stores/settingsStore.ts");await useSettingsStore.getState().update({ui_locale:"en"});}')
     page.get_by_role('button',name='Mathematical models (14)',exact=True).click()
@@ -39,9 +39,9 @@ with sync_playwright() as p:
     page.locator('.cm-content').wait_for()
     assert page.get_by_role('button',name='Render video',exact=True).is_disabled()
     info=invoke('studio_request',request={'action':'inspect','project':str(project)})
-    model=json.loads((project/'model.json').read_text())
+    model=json.loads((project/'model.json').read_text(encoding='utf-8'))
     assert model['conceptIds']==['derivative','iteration']
-    catalog=json.loads((root/'src/knowledge/models.json').read_text())
+    catalog=json.loads((root/'src/knowledge/models.json').read_text(encoding='utf-8'))
     expected=next(m for m in catalog if m['id']=='newton')
     assert hashlib.sha256((project/'main.py').read_bytes()).hexdigest()==expected['sourceHash']
     page.get_by_label('I trust this project revision',exact=False).check()

@@ -74,9 +74,9 @@ recipes = [
 ]
 old_frozen_path=corpus/'reviewed-model-samples.json'
 frozen_path = corpus / ('reviewed-model-samples-v2.json' if args.extend_samples or (corpus/'reviewed-model-samples-v2.json').exists() else 'reviewed-model-samples.json')
-frozen = json.loads(frozen_path.read_text()) if frozen_path.exists() else None
+frozen = json.loads(frozen_path.read_text(encoding='utf-8')) if frozen_path.exists() else None
 if frozen is None and args.extend_samples:
-    original=json.loads(old_frozen_path.read_text())
+    original=json.loads(old_frozen_path.read_text(encoding='utf-8'))
     frozen=[{'model':kind,'sourceHashes':{u['id']:u['contentHash'] for u in [pick(*location) for location in locations]}} for kind,_,locations in recipes]
     if any(entry not in frozen for entry in original):raise ValueError('Original frozen samples changed; extension refused')
     frozen_path.write_bytes(json.dumps(frozen,indent=2).encode('utf-8'))
