@@ -8,7 +8,7 @@ Source-grounded STEM knowledge retrieval, mathematical verification, and ManimGL
 [![Release](https://img.shields.io/github/v/release/styayur/vextessera?include_prereleases)](https://github.com/styayur/vextessera/releases)
 [![AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
 
-**Alpha.** This source prepares **v0.6.0-alpha.1**. Download only assets actually listed in [Releases](https://github.com/styayur/vextessera/releases). Historical alpha.1/alpha.2 and stable v0.2.0 remain available with their original names and bytes. Windows x64 is the primary validated target; Linux/macOS remain experimental. The [engineering audit](docs/audits/vextessera/progress.md) separates completed checks from publication evidence and open queues.
+**Alpha.** Current prerelease: **[v0.6.0-alpha.1](https://github.com/styayur/vextessera/releases/tag/v0.6.0-alpha.1)**. The actual Windows installer, portable ZIP and public SHA-256 downloads were verified; [publication evidence](docs/audits/vextessera/publication.md) records source/driver commits, checks, assets, Pages and remaining limits. Historical v0.5.0-alpha.1, v0.5.0-alpha.2 and stable v0.2.0 retain their original names and bytes. Windows x64 is the primary validated target; Linux/macOS remain experimental.
 
 ![Actual Vextessera source-grounded model reader](docs/vextessera/model-reader.png)
 

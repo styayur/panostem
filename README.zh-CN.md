@@ -8,7 +8,7 @@
 [![Release](https://img.shields.io/github/v/release/styayur/vextessera?include_prereleases)](https://github.com/styayur/vextessera/releases)
 [![AGPL-3.0-only](https://img.shields.io/badge/license-AGPL--3.0--only-blue)](LICENSE)
 
-**Alpha。** 当前源码准备发布 **v0.6.0-alpha.1**；请仅下载[版本页](https://github.com/styayur/vextessera/releases)中实际存在的资产。历史 alpha.1、alpha.2 和 v0.2.0 保留原名称及字节。Windows x64 是主要验证目标，Linux/macOS 仍为实验状态。[工程审计](docs/audits/vextessera/progress.md)分别记录已完成检查、发布证据和待处理事项。
+**Alpha。** 当前预发布版本为 **[v0.6.0-alpha.1](https://github.com/styayur/vextessera/releases/tag/v0.6.0-alpha.1)**。Windows 安装器、便携包及公开下载的 SHA-256 已实际核验；[发布审计](docs/audits/vextessera/publication.md)记录源码／流程提交、检查、资产、Pages 和剩余限制。历史 v0.5.0-alpha.1、v0.5.0-alpha.2 和 v0.2.0 保留原名称及字节。Windows x64 是主要验证目标，Linux/macOS 仍为实验状态。
 
 ![Vextessera 来源与数学模型阅读区实际截图](docs/vextessera/model-reader-zh.png)
 
