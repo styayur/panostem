@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-27T08:34:16.872172+08:00",
+  "timezone": "Asia/Singapore",
+  "repository": "https://github.com/styayur/vextessera",
+  "repositoryId": 1393107744,
+  "defaultBranch": "main",
+  "origin": "https://github.com/styayur/vextessera.git",
+  "sourceCommit": "230559d7b46166fb10a86dcdf29a4d43bfd1e96c",
+  "workflowRevision": "ae9f9e7eafeb866d8720bb9fe9c8dae178b43ee4",
+  "pullRequests": [
+    {
+      "number": 38,
+      "mergeCommit": "f4512e16c44d038b34fe2aae0b97c059aa4f309d",
+      "url": "https://github.com/styayur/vextessera/pull/38"
+    },
+    {
+      "number": 40,
+      "mergeCommit": "ee33f64cff7902900a83da2043c68b94ad718dea",
+      "url": "https://github.com/styayur/vextessera/pull/40"
+    },
+    {
+      "number": 41,
+      "mergeCommit": "230559d7b46166fb10a86dcdf29a4d43bfd1e96c",
+      "url": "https://github.com/styayur/vextessera/pull/41"
+    },
+    {
+      "number": 42,
+      "mergeCommit": "ae9f9e7eafeb866d8720bb9fe9c8dae178b43ee4",
+      "url": "https://github.com/styayur/vextessera/pull/42"
+    }
+  ],
+  "release": {
+    "releaseId": 424910353,
+    "releaseUrl": "https://github.com/styayur/vextessera/releases/tag/v0.6.0-alpha.1",
+    "tag": "v0.6.0-alpha.1",
+    "sourceCommit": "230559d7b46166fb10a86dcdf29a4d43bfd1e96c",
+    "tagObject": "9a1930e1c03375509f5caefe3afbe88cc12c59e1",
+    "prerelease": true,
+    "assets": [
+      {
+        "name": "SHA256SUMS.txt",
+        "size": 214,
+        "sha256": "10d4600b2ef8803137e08c135ebf184726b4ee99744c54c4b49816ab316784c6",
+        "githubDigest": "sha256:10d4600b2ef8803137e08c135ebf184726b4ee99744c54c4b49816ab316784c6",
+        "publicUrl": "https://github.com/styayur/vextessera/releases/download/v0.6.0-alpha.1/SHA256SUMS.txt",
+        "httpStatus": 200,
+        "anonymousDownload": true
+      },
+      {
+        "name": "vextessera_0.6.0-alpha.1_windows-x64.zip",
+        "size": 9230253,
+        "sha256": "77f311d54544ed75c3518b6863e35bdfcf8e76f84f15d6476e53a4d66f9982ff",
+        "githubDigest": "sha256:77f311d54544ed75c3518b6863e35bdfcf8e76f84f15d6476e53a4d66f9982ff",
+        "publicUrl": "https://github.com/styayur/vextessera/releases/download/v0.6.0-alpha.1/vextessera_0.6.0-alpha.1_windows-x64.zip",
+        "httpStatus": 200,
+        "anonymousDownload": true
+      },
+      {
+        "name": "vextessera_0.6.0-alpha.1_x64-setup.exe",
+        "size": 4810416,
+        "sha256": "a3d96a0b39f053e44b90f5b168a22f9bb0bc69067c62f741db967304fe7ad73f",
+        "githubDigest": "sha256:a3d96a0b39f053e44b90f5b168a22f9bb0bc69067c62f741db967304fe7ad73f",
+        "publicUrl": "https://github.com/styayur/vextessera/releases/download/v0.6.0-alpha.1/vextessera_0.6.0-alpha.1_x64-setup.exe",
+        "httpStatus": 200,
+        "anonymousDownload": true
+      }
+    ],
+    "checksumManifestVerified": true,
+    "portableContentsVerified": true,
+    "licenseVerification": {
+      "canonicalGitTextMatches": true,
+      "archiveCRLF": 661,
+      "archiveSha256": "e0eedba615d5cd1b986afb6c5b3a4b1ae33713e7e9dc74d19daec5e3221f9d2e",
+      "gitBlobSha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    "portableEntryCount": 94,
+    "downloadedExecutableIdentityVerified": true,
+    "binaryIdentity": {
+      "app_version": "0.6.0-alpha.1",
+      "bundle_identifier": "org.stemvisualexplorer.app",
+      "controller_sha256": "1fffc5b558a2087ff8f2f9e590467034ccfb65046a738ae43f37dcb5846f3b66",
+      "knowledge_catalog_sha256": "8007c5a9cd9652e8488126d21c624e658d855f3890e0f30186585f1bd95810a4",
+      "knowledge_helpers_sha256": "5e9df4d7f563e8cfd22959ba7b024e68453b9f16663460ddd838c5969a399fb6",
+      "knowledge_template_hashes": {
+        "beam": "3b5078477729966cc0d547918aefd7585027c77b7faf2642a01d3647b751b4b7",
+        "bisection": "34283413541b1190df8ae29ad0831baf78049eb3a29b2739357bb414168007ff",
+        "control": "0a3a3788c0a35104b4bf087a118f2cd26b3bb95551a1f374a9c1a463a688b311",
+        "electric": "219888a4de1ccb2e6b8c0aac3e763c8b8ef77407579643fcd4df7454eb0861b5",
+        "gradient": "2633edf2714447e46a5cbbefd20d596cd8c3b1d0815749fc264a6e3da2b2ecc1",
+        "heat": "6ee4d9bd5143ae2eedb318f70ae47555c3a1ff9a07c40551c1a863bc6b0c38b2",
+        "linear": "1a7a07a24568e2c75b31db3ef4735ae5bfe179fe82e4c51094330a505ec62242",
+        "means": "79d3e89d00fed3d7d9763a4b9584a3ca739ad03a6cb29c40a6f113d124918515",
+        "newton": "eb7583265d818446fc11f081eded06364825e90d5565f3a910d6d8ee5944c111",
+        "oscillator": "b68ae05679b030990170aa17f819a439ccf312cf10881cb47ebb4007edda37c2",
+        "polar": "377cdf6bc468a8a9adb6224eeb7aaee4d860ebf8de42a4ad8c5259ca069d7cef",
+        "square": "c687e8c68da4e2dfeedc675ba30b72463ee12e185c4f6e4e7382686b991cc47e",
+        "union": "34b120f08ec61069517e0c0bbdcac21f7fb00a91a6f67c7558a62945ab6830e9",
+        "wave": "d0eec483d6161723b9b5b74cab4299ebc0b82ead31a4065f96de3fda67d69d23"
+      },
+      "product": "Vextessera",
+      "requirements_sha256": "68ac4c912c0241dfc91479038c6ce5c7293a9b63e4ed88413a31a1925f3fae54",
+      "runtime_commit": "f427fc67df75513be0cd3f3329e327a9a19401c3",
+      "version": "0.6.0-alpha.1",
+      "binary_sha256": "8e44459cf895bc6cfecfc5bcbea36732b169746d2ae670a8c093da9554bb59c1"
+    },
+    "installerExecuted": false
+  },
+  "releaseWorkflow": {
+    "conclusion": "success",
+    "headSha": "ae9f9e7eafeb866d8720bb9fe9c8dae178b43ee4",
+    "status": "completed",
+    "url": "https://github.com/styayur/vextessera/actions/runs/40425637408"
+  },
+  "entrypoints": [
+    {
+      "url": "https://github.com/styayur/vextessera",
+      "status": 200,
+      "finalUrl": "https://github.com/styayur/vextessera",
+      "redirects": []
+    },
+    {
+      "url": "https://github.com/styayur/panostem",
+      "status": 200,
+      "finalUrl": "https://github.com/styayur/vextessera",
+      "redirects": [
+        {
+          "status": 301,
+          "from": "https://github.com/styayur/panostem",
+          "to": "https://github.com/styayur/vextessera"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/styayur/stem-visual-explorer",
+      "status": 200,
+      "finalUrl": "https://github.com/styayur/vextessera",
+      "redirects": [
+        {
+          "status": 301,
+          "from": "https://github.com/styayur/stem-visual-explorer",
+          "to": "https://github.com/styayur/vextessera"
+        }
+      ]
+    },
+    {
+      "url": "https://styayur.github.io/vextessera/",
+      "status": 200,
+      "finalUrl": "https://styayur.github.io/vextessera/",
+      "redirects": []
+    },
+    {
+      "url": "https://styayur.github.io/panostem/",
+      "status": 404,
+      "finalUrl": "https://styayur.github.io/panostem/",
+      "redirects": []
+    },
+    {
+      "url": "https://styayur.github.io/stem-visual-explorer/",
+      "status": 404,
+      "finalUrl": "https://styayur.github.io/stem-visual-explorer/",
+      "redirects": []
+    }
+  ],
+  "historicalPreservation": {
+    "repository": "styayur/vextessera",
+    "historicalReleaseCount": 5,
+    "historicalAssetCount": 13,
+    "historicalTagCount": 5,
+    "idsNamesSizesDigestsTimestampsPreserved": true,
+    "oldTagCommitsPreserved": true
+  },
+  "downloadedPEMetadata": {
+    "executableSignature": "NotSigned",
+    "installer": {
+      "ProductName": "Vextessera",
+      "ProductVersion": "0.6.0-alpha.1",
+      "FileDescription": "Vextessera",
+      "FileVersion": "0.6.0-alpha.1"
+    },
+    "executable": {
+      "ProductName": "Vextessera",
+      "ProductVersion": "0.6.0-alpha.1",
+      "FileDescription": "Vextessera",
+      "FileVersion": "0.6.0-alpha.1"
+    },
+    "installerSignature": "NotSigned"
+  },
+  "security": {
+    "codeqlOpenAlerts": 0,
+    "dependabotOpenAlerts": [
+      {
+        "ghsa": "GHSA-wrw7-89jp-8q8g",
+        "number": 1,
+        "package": "glib",
+        "severity": "medium"
+      }
+    ],
+    "npmVulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    }
+  },
+  "compatibility": {
+    "bundleIdentifier": "org.stemvisualexplorer.app",
+    "sqlite": "sve.db",
+    "projectMetadata": "panostem.json v1",
+    "shareFormat": "panostem-share v1",
+    "browserKeysPreserved": true,
+    "historicalShareRoundTrip": true,
+    "historicalSchemaBrowserAndSQLiteReadWriteReopen": true
+  },
+  "installerLifecycle": {
+    "status": "unverified-no-disposable-OS",
+    "host": "Windows 11 Home",
+    "installerExecutedInPrimaryProfile": false,
+    "unsigned": true,
+    "automaticUpdater": false,
+    "osPythonSandbox": false
+  },
+  "worktreeClean": true,
+  "fullCorpusVisualizationComplete": false,
+  "globalWebsiteDiscoveryComplete": false,
+  "workspaceCommitAtVerification": "ae9f9e7eafeb866d8720bb9fe9c8dae178b43ee4",
+  "sourceCounts": {
+    "sourceCount": 22,
+    "availableGitClones": 12,
+    "unavailableRepositories": 3,
+    "websiteResources": 1555,
+    "files": 18402,
+    "parsedFiles": 3659,
+    "units": 13977,
+    "dispositions": {
+      "visualized": 12,
+      "reused": 4,
+      "parameterized": 0,
+      "needs-modeling": 5765,
+      "needs-review": 8196,
+      "unsupported": 0,
+      "rights-restricted": 0,
+      "source-unavailable": 0,
+      "failed": 0,
+      "not-yet-processed": 0
+    },
+    "fileDispositions": {
+      "visualized": 0,
+      "reused": 0,
+      "parameterized": 0,
+      "needs-modeling": 0,
+      "needs-review": 0,
+      "unsupported": 14641,
+      "rights-restricted": 101,
+      "source-unavailable": 1,
+      "failed": 0,
+      "not-yet-processed": 0
+    },
+    "coverage": {
+      "registeredSourcesAudited": {
+        "numerator": 22,
+        "denominator": 22
+      },
+      "fileParsing": {
+        "numerator": 3659,
+        "denominator": 18402
+      },
+      "canonicalConceptResolution": {
+        "numerator": 8365,
+        "denominator": 13977
+      },
+      "formulaBearingUnits": {
+        "numerator": 6789,
+        "denominator": 13977,
+        "note": "Formula-bearing is not a suitability or correctness decision"
+      },
+      "suitableForVisualization": {
+        "numerator": null,
+        "denominator": null,
+        "reason": "Whole-corpus mathematical suitability review is incomplete"
+      },
+      "verifiedSceneAssociation": {
+        "numerator": 16,
+        "denominator": 13977
+      },
+      "latestReviewedRenderPass": {
+        "numerator": 14,
+        "denominator": 14
+      },
+      "mediaRedistribution": {
+        "numerator": 6,
+        "denominator": 14
+      }
+    },
+    "renderedScenes": 14,
+    "verifiedSceneLinks": 16,
+    "publiclyDistributableScenes": 6,
+    "notYetProcessedUnits": 0
+  },
+  "reports": {
+    "sources": "source-census.json",
+    "rights": "source-rights.json",
+    "frozenSourceSamples": "frozen-samples.json",
+    "originalReviewedFreeze": "reviewed-model-samples.json",
+    "extendedReviewedFreeze": "reviewed-model-samples-v2.json",
+    "renderedSamples": "rendered-samples.json",
+    "feedback": "sampling-feedback.json"
+  }
+}
